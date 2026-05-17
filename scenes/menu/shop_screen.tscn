@@ -20,7 +20,6 @@ shader_parameter/spin_amount = 0.25
 shader_parameter/pixel_filter = 256.0
 
 [node name="shop_screen" type="Control" unique_id=2077115726]
-z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

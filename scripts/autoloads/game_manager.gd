@@ -23,15 +23,16 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_d) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if get_tree().paused:
-			get_tree().paused = false
-			pause_screen.hide()
-			Util.mouse_captured()
-		else:
-			get_tree().paused = true
-			pause_screen.show()
-			Util.mouse_visible()
+	if not shop_open:
+		if Input.is_action_just_pressed("ui_cancel"):
+			if get_tree().paused:
+				get_tree().paused = false
+				pause_screen.hide()
+				Util.mouse_captured()
+			else:
+				get_tree().paused = true
+				pause_screen.show()
+				Util.mouse_visible()
 
 func add_money(amount: int) -> void:
 	money += amount
