@@ -1,6 +1,8 @@
 class_name InteractableComponent extends Area3D
 signal interacted(interactor)
 
+@export var tooltip_text: String = ""
+
 func _ready():
 	input_ray_pickable = true
 

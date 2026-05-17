@@ -5,6 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b6g0oj88drvqy" path="res://assets/models/world/ward.obj" id="4_3apbj"]
 [ext_resource type="Texture2D" uid="uid://cxpcxu3rwlbpl" path="res://assets/models/world/ward.png" id="5_bmcht"]
 [ext_resource type="PackedScene" uid="uid://bi6j5bhwkln6q" path="res://scenes/objects/shop.tscn" id="6_5y7t6"]
+[ext_resource type="PackedScene" uid="uid://476kbecnw00m" path="res://scenes/objects/microscope.tscn" id="7_jukbv"]
 [ext_resource type="PackedScene" uid="uid://cybiwybojnpur" path="res://scenes/objects/incubator.tscn" id="7_o4nha"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o4nha"]
@@ -214,6 +215,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.485724, 0.48528564, -0.738
 
 [node name="shop" parent="." unique_id=1536746055 instance=ExtResource("6_5y7t6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1127877, 1.3629224, 3.6180525)
+
+[node name="microscope" parent="." unique_id=815800569 instance=ExtResource("7_jukbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.3492775, 3.5348577)
 
 [node name="npc_spots" type="Node3D" parent="." unique_id=765567999]
 

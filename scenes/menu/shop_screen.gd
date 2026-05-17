@@ -1,7 +1,7 @@
 extends Control
 
 func leave():
-	queue_free()
+	hide()
 	
 	Util.get_player().can_move = true
 	Util.mouse_captured()

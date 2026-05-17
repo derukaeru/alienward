@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var fps_label = $Camera3D/ui/fps
 @onready var raycast = $Camera3D/RayCast3D
 @onready var baby = $Camera3D/ui/baby
+@onready var tooltip = $Camera3D/ui/tooltip
 
 
 var mouse_sensitivity: float = 0.006
@@ -63,9 +64,16 @@ func _input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			pass
-	if event.is_action_pressed("interact") and raycast.is_colliding(): 
-		_try_interact()
 
+	if raycast.is_colliding(): 
+		if raycast.get_collider() is InteractableComponent:
+			tooltip.text = raycast.get_collider().tooltip_text
+		
+		if event.is_action_pressed("interact"):
+			_try_interact()
+	else:
+		tooltip.text = ""
+	
 func _try_interact() -> void:
 	var hit = raycast.get_collider()
 	if hit is InteractableComponent:
