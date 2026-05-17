@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b4sil7n400wmm"]
+
+[ext_resource type="Script" uid="uid://dd2at83xubwnm" path="res://scenes/menu/shop_screen.gd" id="1_uannm"]
+[ext_resource type="Shader" uid="uid://byveqf80sl83v" path="res://assets/shaders/wave.gdshader" id="1_woskx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uannm"]
+shader = ExtResource("1_woskx")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0, 0.17920962, 0.43826655, 1)
+shader_parameter/colour_2 = Color(0, 0.31475976, 0.72268575, 1)
+shader_parameter/colour_3 = Color(0.4404043, 0.531235, 0.7601976, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 256.0
+
+[node name="shop_screen" type="Control" unique_id=2077115726]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uannm")
+
+[node name="background" type="ColorRect" parent="." unique_id=1493373726]
+material = SubResource("ShaderMaterial_uannm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -56.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="leave" type="Button" parent="." unique_id=852219517]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 80.0
+offset_right = -69.0
+offset_bottom = 144.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "exit"
+
+[connection signal="pressed" from="leave" to="." method="leave"]

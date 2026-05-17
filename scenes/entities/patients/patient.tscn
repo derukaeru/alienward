@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://inedntn6htqj"]
+
+[ext_resource type="Script" uid="uid://dhsfhte2l3ari" path="res://scenes/entities/patients/patient.gd" id="1_sx7n5"]
+[ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="2_vdqdh"]
+[ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="3_6srr1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_excrj"]
+radius = 0.29003906
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_excrj"]
+
+[node name="patient_template" type="CharacterBody3D" unique_id=753749075]
+script = ExtResource("1_sx7n5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927629622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_excrj")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1704717832 node_paths=PackedStringArray("body", "initial_state")]
+script = ExtResource("2_vdqdh")
+body = NodePath("..")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = "uid://cvrvya74mfw71"
+
+[node name="idle" type="Node" parent="StateMachine" unique_id=528518221]
+script = ExtResource("3_6srr1")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="to_ward" type="Node" parent="StateMachine" unique_id=889429740]
+script = ExtResource("3_6srr1")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="to_checkup" type="Node" parent="StateMachine" unique_id=1152998691]
+script = ExtResource("3_6srr1")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="waiting" type="Node" parent="StateMachine" unique_id=912767845]
+script = ExtResource("3_6srr1")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="leaving" type="Node" parent="StateMachine" unique_id=1404112392]
+script = ExtResource("3_6srr1")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1518351829]
+sprite_frames = SubResource("SpriteFrames_excrj")

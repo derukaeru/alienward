@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bi6j5bhwkln6q"]
+
+[ext_resource type="Script" uid="uid://byc3n7ldk1ehr" path="res://scenes/objects/shop.gd" id="1_suugs"]
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="2_xfthh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xfthh"]
+size = Vector3(0.5, 0.5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2dy8"]
+size = Vector3(0.5, 0.5, 0.2)
+
+[node name="shop" type="Node3D" unique_id=1536746055]
+script = ExtResource("1_suugs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=236657008]
+mesh = SubResource("BoxMesh_xfthh")
+
+[node name="InteractableComponent" type="Area3D" parent="." unique_id=1055673654]
+script = ExtResource("2_xfthh")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=53241124]
+shape = SubResource("BoxShape3D_o2dy8")
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]

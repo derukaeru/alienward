@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cis5vm6ienhms"]
+
+[ext_resource type="Script" uid="uid://c8x85tb7r7pvx" path="res://scenes/examples/dialogue_test.gd" id="1_tq12x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yabi3"]
+
+[node name="dialogue_test" type="Area3D" unique_id=1627237107]
+script = ExtResource("1_tq12x")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1584439162]
+shape = SubResource("BoxShape3D_yabi3")

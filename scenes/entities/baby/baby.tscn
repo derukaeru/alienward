@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b51jsxro6uk0a"]
+
+[ext_resource type="Script" uid="uid://b6jlalr66mhdu" path="res://scenes/entities/baby/baby.gd" id="1_712cb"]
+[ext_resource type="Texture2D" uid="uid://ddavebcvrlptn" path="res://assets/sprites/entities/baby/baby_placeholder.png" id="2_40flv"]
+[ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="3_s51qe"]
+[ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="4_3nmci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s51qe"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nmci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_40flv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="baby" type="Area3D" unique_id=927048161]
+script = ExtResource("1_712cb")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2045470989]
+shape = SubResource("BoxShape3D_s51qe")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1151640799]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_3nmci")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1014575733]
+script = ExtResource("3_s51qe")
+metadata/_custom_type_script = "uid://cvrvya74mfw71"
+
+[node name="sleeping" type="Node" parent="StateMachine" unique_id=1716365290]
+script = ExtResource("4_3nmci")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[node name="crying" type="Node" parent="StateMachine" unique_id=769059614]
+script = ExtResource("4_3nmci")
+metadata/_custom_type_script = "uid://bgrj6wbdpxop"
+
+[connection signal="interacted" from="." to="." method="pick_up"]

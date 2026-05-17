@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bgrqw4ijysn4j"]
+
+[ext_resource type="Script" uid="uid://x4mrqamaf3tn" path="res://scenes/objects/door.gd" id="1_yar34"]
+
+[sub_resource type="Animation" id="Animation_ofk05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door_collision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yar34"]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door_collision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.3900485, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw3m6"]
+_data = {
+&"RESET": SubResource("Animation_ofk05"),
+&"open": SubResource("Animation_yar34")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofk05"]
+size = Vector3(2.6, 2.6, 0.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yar34"]
+size = Vector3(2.6, 3.4, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yar34"]
+shading_mode = 0
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yar34"]
+size = Vector3(2.5, 2, 1.6)
+
+[node name="door" type="Area3D" unique_id=58050874]
+script = ExtResource("1_yar34")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1836719209]
+libraries/ = SubResource("AnimationLibrary_uw3m6")
+
+[node name="door_collision" type="StaticBody3D" parent="." unique_id=889534655]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_collision" unique_id=850839767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2984259, 0.002)
+shape = SubResource("BoxShape3D_ofk05")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="door_collision" unique_id=1074966541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5969579, 0)
+mesh = SubResource("BoxMesh_yar34")
+surface_material_override/0 = SubResource("StandardMaterial3D_yar34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1177964344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175271, 0)
+shape = SubResource("BoxShape3D_yar34")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
