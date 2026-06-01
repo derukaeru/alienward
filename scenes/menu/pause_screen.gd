@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 @onready var resume_btn: Button = $VBoxContainer/resume

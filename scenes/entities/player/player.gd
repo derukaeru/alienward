@@ -11,7 +11,6 @@ extends CharacterBody3D
 @onready var baby: TextureRect = $CameraMount/Camera3D/ui/baby
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
-
 const TILT_STRAFE_AMOUNT: float = 3.4
 const TILT_LOOK_AMOUNT: float = 1.5
 const TILT_RETURN_SPEED: float = 4.0

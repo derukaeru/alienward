@@ -10,7 +10,7 @@ var money: int = 0
 
 var shop_open: bool = false
 var microscope_open: bool = false
-var canvas_layer = CanvasLayer.new()
+var canvas_layer: CanvasLayer = CanvasLayer.new()
 
 func _ready() -> void:
 	add_child(canvas_layer)
@@ -52,7 +52,7 @@ func open_microscope_screen() -> void:
 	Util.get_player().can_move = false
 	Util.get_player().velocity = Vector3.ZERO
 
-func spawn_patient():
+func spawn_patient() -> void:
 	var patient = load(Registry.UID["patient"]).instantiate()
 	var npc = load(Registry.UID["npc"]).instantiate()
 	
