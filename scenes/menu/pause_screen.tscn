@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dcl8l8xhw4vmu" path="res://scenes/menu/pause_screen.gd" id="1_s4fn5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4fn5"]
+bg_color = Color(0, 0, 0, 0)
+
 [node name="pause_screen" type="Control" unique_id=2145161773]
 layout_mode = 3
 anchors_preset = 15
@@ -28,9 +31,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -184.0
-offset_top = -70.0
+offset_top = -100.0
 offset_right = 184.0
-offset_bottom = 70.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -38,16 +41,19 @@ size_flags_vertical = 3
 [node name="resume" type="Button" parent="VBoxContainer" unique_id=1698791073]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
 text = "resume"
 
 [node name="settings" type="Button" parent="VBoxContainer" unique_id=640017073]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
 text = "settings"
 
 [node name="exit" type="Button" parent="VBoxContainer" unique_id=1152742921]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
 text = "exit"
 
 [connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
