@@ -1,8 +1,8 @@
 extends Node
 
-@onready var pause_screen = load(Registry.UID["pause_screen"]).instantiate()
-@onready var shop_screen = load(Registry.UID["shop_screen"]).instantiate()
-@onready var microscope_screen = load(Registry.UID["microscope_screen"]).instantiate()
+@onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
+@onready var shop_screen: Node = load(Registry.UID["shop_screen"]).instantiate()
+@onready var microscope_screen: Node = load(Registry.UID["microscope_screen"]).instantiate()
 
 var day: int = 0
 var time: float = 0.0 # 0 - 100 | morning - evening

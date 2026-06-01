@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
-var speed := 3.2
+var speed: float = 3.2
 
-func move_to(target_pos: Vector3):
+func move_to(target_pos: Vector3) -> void:
 	nav_agent.target_position = target_pos
 
-func _physics_process(_delta):
+func _physics_process(_delta) -> void:
 	if nav_agent.is_navigation_finished():
 		return
 	

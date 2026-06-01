@@ -40,6 +40,7 @@ _data = {
 }
 
 [node name="loading_screen" type="Control" unique_id=444401678]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

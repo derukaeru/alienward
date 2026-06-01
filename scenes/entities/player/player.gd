@@ -1,16 +1,22 @@
 extends CharacterBody3D
 
-@export var speed: float = 4.2
+@export var speed: float = 6.8
 @export var gravity: float = 9.8
 
-@onready var camera = $Camera3D
-@onready var clipboard = $Camera3D/ui/clipboard
-@onready var fps_label = $Camera3D/ui/fps
-@onready var raycast = $Camera3D/RayCast3D
-@onready var baby = $Camera3D/ui/baby
-@onready var tooltip = $Camera3D/ui/tooltip
+@onready var camera_mount: Node3D = $CameraMount
+@onready var camera: Camera3D = $CameraMount/Camera3D
+@onready var clipboard: TextureRect = $CameraMount/Camera3D/ui/clipboard
+@onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
+@onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
+@onready var baby: TextureRect = $CameraMount/Camera3D/ui/baby
+@onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
 
+const TILT_STRAFE_AMOUNT: float = 3.4
+const TILT_LOOK_AMOUNT: float = 1.5
+const TILT_RETURN_SPEED: float = 4.0
+
+var tilt_target : float = 0.0
 var mouse_sensitivity: float = 0.006
 var can_move := true
 
@@ -22,9 +28,9 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
+	var input = Vector2(Input.get_axis("left", "right"), Input.get_axis("forward", "backward"))
 	if can_move:
-		var input = Vector2(Input.get_axis("left", "right"), Input.get_axis("forward", "backward"))
 		var direction = (camera.global_transform.basis * Vector3(input.x, 0, input.y)).normalized()
 		direction.y = 0 
 		
@@ -50,6 +56,13 @@ func _physics_process(delta) -> void:
 				baby.get_node("AnimationPlayer").animation_finished.connect(func(_a): clipboard.get_node("AnimationPlayer").play("RESET"), CONNECT_ONE_SHOT)
 	
 	move_and_slide()
+	
+	tilt_target += -input.x * TILT_STRAFE_AMOUNT * delta * 10
+	
+	tilt_target = clamp(tilt_target, -TILT_STRAFE_AMOUNT - TILT_LOOK_AMOUNT, TILT_STRAFE_AMOUNT + TILT_LOOK_AMOUNT)
+	tilt_target = lerp(tilt_target, 0.0, TILT_RETURN_SPEED * delta)
+
+	camera.rotation_degrees.z = tilt_target
 
 func _process(_delta) -> void:
 	fps_label.text = "%d" % Engine.get_frames_per_second()
@@ -59,6 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.global_rotation.x -= event.relative.y * mouse_sensitivity
 		camera.global_rotation.x = clamp(camera.global_rotation.x, -1, 0.7)
 		camera.global_rotation.y -= event.relative.x * mouse_sensitivity
+		
+		# Tilt from looking left/right
+		tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
+
 
 func _input(event) -> void:
 	if event is InputEventMouseButton:

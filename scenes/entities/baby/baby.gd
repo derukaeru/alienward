@@ -1,8 +1,8 @@
 class_name Baby extends InteractableComponent
 
-var needs = []
+var needs: Array = []
 
-func pick_up():
+func pick_up() -> void:
 	Util.get_player().held_baby = self
 	Util.get_player().clipboard.hide()
 	Util.get_player().baby.show()

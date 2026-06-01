@@ -14,4 +14,6 @@ func _on_progress_changed(_value) -> void:
 func _on_loading_finished() -> void:
 	animation.play_backwards("fade")
 	await animation.animation_finished
+	
+	get_tree().paused = false
 	queue_free()

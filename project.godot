@@ -27,7 +27,7 @@ DialogueManager="*uid://dn2540687twh5"
 
 [display]
 
-window/size/viewport_width=768
+window/size/viewport_width=704
 window/size/viewport_height=520
 window/stretch/mode="viewport"
 

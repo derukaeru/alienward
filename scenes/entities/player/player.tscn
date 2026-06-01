@@ -105,20 +105,22 @@ script = ExtResource("1_1hmtu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_635qg")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1950212368 groups=["camera"]]
+[node name="CameraMount" type="Node3D" parent="." unique_id=1182087978]
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount" unique_id=1950212368 groups=["camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7613211, 0)
 
-[node name="ui" type="CanvasLayer" parent="Camera3D" unique_id=833255871]
+[node name="ui" type="CanvasLayer" parent="CameraMount/Camera3D" unique_id=833255871]
 layer = 0
 
-[node name="fps" type="Label" parent="Camera3D/ui" unique_id=1920036204]
+[node name="fps" type="Label" parent="CameraMount/Camera3D/ui" unique_id=1920036204]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 70.0
 offset_bottom = 31.0
 text = "test: fps"
 
-[node name="clipboard" type="TextureRect" parent="Camera3D/ui" unique_id=894514367]
+[node name="clipboard" type="TextureRect" parent="CameraMount/Camera3D/ui" unique_id=894514367]
 offset_left = 504.0
 offset_top = 296.0
 offset_right = 568.0
@@ -126,10 +128,10 @@ offset_bottom = 360.0
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_nh4ur")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/ui/clipboard" unique_id=545910412]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraMount/Camera3D/ui/clipboard" unique_id=545910412]
 libraries/ = SubResource("AnimationLibrary_1murt")
 
-[node name="baby" type="TextureRect" parent="Camera3D/ui" unique_id=1274597308]
+[node name="baby" type="TextureRect" parent="CameraMount/Camera3D/ui" unique_id=1274597308]
 visible = false
 anchors_preset = 2
 anchor_top = 1.0
@@ -142,10 +144,10 @@ grow_vertical = 0
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_bjvvg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/ui/baby" unique_id=2124736951]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraMount/Camera3D/ui/baby" unique_id=2124736951]
 libraries/ = SubResource("AnimationLibrary_8akj5")
 
-[node name="crosshair" type="ColorRect" parent="Camera3D/ui" unique_id=554850019]
+[node name="crosshair" type="ColorRect" parent="CameraMount/Camera3D/ui" unique_id=554850019]
 material = SubResource("ShaderMaterial_bj7e2")
 anchors_preset = 8
 anchor_left = 0.5
@@ -160,7 +162,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="tooltip" type="Label" parent="Camera3D/ui" unique_id=953297657]
+[node name="tooltip" type="Label" parent="CameraMount/Camera3D/ui" unique_id=953297657]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -176,7 +178,7 @@ label_settings = SubResource("LabelSettings_8akj5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=660304650]
+[node name="RayCast3D" type="RayCast3D" parent="CameraMount/Camera3D" unique_id=660304650]
 target_position = Vector3(0, 0, -2.5)
 collide_with_areas = true
 collide_with_bodies = false
