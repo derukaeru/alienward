@@ -1,6 +1,6 @@
 extends Control
 
-func leave():
+func leave() -> void:
 	hide()
 	
 	Util.get_player().can_move = true

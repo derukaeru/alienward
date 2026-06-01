@@ -5,9 +5,11 @@ extends CharacterBody3D
 
 @onready var camera_mount: Node3D = $CameraMount
 @onready var camera: Camera3D = $CameraMount/Camera3D
+@onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
+
+# ui stuff
 @onready var clipboard: TextureRect = $CameraMount/Camera3D/ui/clipboard
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
-@onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
 @onready var baby: TextureRect = $CameraMount/Camera3D/ui/baby
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 

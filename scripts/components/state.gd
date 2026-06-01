@@ -1,4 +1,5 @@
 class_name State extends Node
+
 signal Transitioned(old_state, new_state)
 var body: CharacterBody3D
 

@@ -4,7 +4,7 @@ class_name StateMachine extends Node
 @export var initial_state: State
 
 var current_state: State
-var states:Dictionary = {}
+var states: Dictionary = {}
 
 signal state_changed(from, to)
 

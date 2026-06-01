@@ -47,6 +47,7 @@ func open_shop_screen() -> void:
 	Util.get_player().velocity = Vector3.ZERO
 
 func open_microscope_screen() -> void:
+	microscope_screen.show()
 	microscope_open = true
 	
 	Util.get_player().can_move = false

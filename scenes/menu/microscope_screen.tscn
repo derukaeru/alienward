@@ -10,3 +10,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vq0fj")
+
+[node name="background" type="ColorRect" parent="." unique_id=348291600]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="leave" type="Button" parent="." unique_id=351313080]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -149.0
+offset_top = 42.0
+offset_right = -66.0
+offset_bottom = 106.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "exit"
+
+[connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
