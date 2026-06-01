@@ -105,7 +105,6 @@ offset_right = 568.0
 offset_bottom = 360.0
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("1_n7q4b")
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="clipboard" unique_id=1536267827]
 libraries/ = SubResource("AnimationLibrary_1murt")
