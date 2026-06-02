@@ -1,5 +1,26 @@
 [gd_scene format=3 uid="uid://dix67ojrdr6ht"]
 
+[ext_resource type="Shader" uid="uid://cr7nbwelvyi4x" path="res://scenes/menu/background_scroll.gdshader" id="1_200k4"]
+[ext_resource type="Script" uid="uid://ujs8yn1ubop0" path="res://scenes/menu/title_screen.gd" id="1_spmwh"]
+[ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/title_screen.png" id="2_4crq4"]
+[ext_resource type="Texture2D" uid="uid://caclbhwuoilvm" path="res://assets/sprites/ui/buttons/start.png" id="3_7rd1m"]
+[ext_resource type="Texture2D" uid="uid://e4pub042hjx7" path="res://assets/sprites/ui/buttons/settings.png" id="4_spmwh"]
+[ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="5_lh61k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq80g"]
+shader = ExtResource("1_200k4")
+shader_parameter/x_speed = 0.5
+shader_parameter/y_speed = 0.5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hsha"]
+texture = ExtResource("3_7rd1m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0daku"]
+texture = ExtResource("4_spmwh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jxps"]
+texture = ExtResource("5_lh61k")
+
 [node name="title_screen" type="Control" unique_id=198211424]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +28,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_spmwh")
+
+[node name="background" type="TextureRect" parent="." unique_id=51746027]
+material = SubResource("ShaderMaterial_oq80g")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_4crq4")
+stretch_mode = 1
+
+[node name="start" type="Button" parent="." unique_id=1101440627]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 200.0
+offset_right = 464.0
+offset_bottom = 292.0
+pivot_offset_ratio = Vector2(0.1, 0.5)
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_1hsha")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1hsha")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1hsha")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_1hsha")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1hsha")
+
+[node name="settings" type="Button" parent="." unique_id=1572325678]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 296.0
+offset_right = 464.0
+offset_bottom = 388.0
+pivot_offset_ratio = Vector2(0.9, 0.5)
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_0daku")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0daku")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0daku")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0daku")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0daku")
+
+[node name="exit" type="Button" parent="." unique_id=1838405728]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 392.0
+offset_right = 464.0
+offset_bottom = 484.0
+pivot_offset_ratio = Vector2(0.1, 0.5)
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_5jxps")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5jxps")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5jxps")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_5jxps")
+theme_override_styles/focus = SubResource("StyleBoxTexture_5jxps")
+
+[connection signal="mouse_entered" from="start" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="start" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="start" to="." method="mouse_pressed" flags=18]
+[connection signal="mouse_entered" from="settings" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="settings" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="settings" to="." method="mouse_pressed" flags=18]
+[connection signal="mouse_entered" from="exit" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="exit" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="." method="mouse_pressed" flags=18]

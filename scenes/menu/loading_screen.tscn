@@ -39,18 +39,10 @@ _data = {
 &"fade": SubResource("Animation_w2ej8")
 }
 
-[node name="loading_screen" type="Control" unique_id=444401678]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="loading_screen" type="CanvasLayer" unique_id=1128375937]
 script = ExtResource("1_4je5t")
 
-[node name="cover" type="ColorRect" parent="." unique_id=1938715235]
-layout_mode = 1
+[node name="cover" type="ColorRect" parent="." unique_id=772281242]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,5 +50,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=771845139]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1230957482]
 libraries/ = SubResource("AnimationLibrary_4je5t")

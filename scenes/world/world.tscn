@@ -12,7 +12,7 @@ tonemap_mode = 4
 tonemap_exposure = 0.6
 fog_enabled = true
 fog_light_color = Color(0.32156864, 0.36862746, 0.7372549, 1)
-fog_density = 0.1
+fog_density = 0.08
 fog_sky_affect = 0.385
 
 [node name="world" type="Node3D" unique_id=699643948]

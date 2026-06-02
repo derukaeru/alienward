@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal loading_screen_ready
 @onready var animation: AnimationPlayer = $AnimationPlayer
