@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(504, 296)]
+"values": [Vector2(430, 296)]
 }
 
 [sub_resource type="Animation" id="Animation_bj7e2"]
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(504, 296), Vector2(504, 336), Vector2(504, 296)]
+"values": [Vector2(430, 296), Vector2(430, 336), Vector2(430, 296)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1murt"]
@@ -53,7 +53,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(504, 296)]
+"values": [Vector2(100, 296)]
 }
 
 [sub_resource type="Animation" id="Animation_bjvvg"]
@@ -99,9 +99,9 @@ text = "test: fps"
 metadata/_edit_use_anchors_ = true
 
 [node name="clipboard" type="TextureRect" parent="." unique_id=169923166]
-offset_left = 504.0
+offset_left = 430.0
 offset_top = 296.0
-offset_right = 568.0
+offset_right = 494.0
 offset_bottom = 360.0
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("1_n7q4b")
@@ -114,9 +114,9 @@ visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 504.0
+offset_left = 100.0
 offset_top = -224.0
-offset_right = 568.0
+offset_right = 164.0
 offset_bottom = -160.0
 grow_vertical = 0
 scale = Vector2(4.5, 4.5)

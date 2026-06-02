@@ -8,10 +8,18 @@ extends CharacterBody3D
 @onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
 
 # ui stuff
+@onready var ui_layer: CanvasLayer = $CameraMount/Camera3D/ui
+
 @onready var clipboard: TextureRect = $CameraMount/Camera3D/ui/clipboard
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
 @onready var baby: TextureRect = $CameraMount/Camera3D/ui/baby
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
+
+
+var ui_lag_offset: Vector2 = Vector2.ZERO
+var ui_lag_target: Vector2 = Vector2.ZERO
+const UI_LAG_STRENGTH: float = 40.0
+const UI_LAG_SPEED: float = 10.0   
 
 const TILT_STRAFE_AMOUNT: float = 3.4
 const TILT_LOOK_AMOUNT: float = 1.5
@@ -65,7 +73,13 @@ func _physics_process(delta) -> void:
 
 	camera.rotation_degrees.z = tilt_target
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
+	ui_lag_target = ui_lag_target.lerp(Vector2.ZERO, UI_LAG_SPEED * delta)
+	ui_lag_offset = ui_lag_offset.lerp(ui_lag_target, UI_LAG_SPEED * delta)
+	
+	ui_lag_offset = ui_lag_offset.clamp(Vector2(-30, -20), Vector2(30, 20))
+	ui_layer.offset = ui_lag_offset
+	
 	fps_label.text = "%d" % Engine.get_frames_per_second()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -76,7 +90,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		# Tilt from looking left/right
 		tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
-
+		
+		ui_lag_target.x -= event.relative.x * mouse_sensitivity * UI_LAG_STRENGTH
+		ui_lag_target.y -= event.relative.y * mouse_sensitivity * UI_LAG_STRENGTH
 
 func _input(event) -> void:
 	if event is InputEventMouseButton:
