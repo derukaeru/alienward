@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4mds4q31qrlq" path="res://scenes/world/map.tscn" id="1_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://bkhvrcq5sh51q" path="res://scenes/objects/swab.tscn" id="3_6m72w"]
 [ext_resource type="PackedScene" uid="uid://b51jsxro6uk0a" path="res://scenes/entities/baby/baby.tscn" id="7_j2gmx"]
 
 [sub_resource type="Environment" id="Environment_sl2e5"]
@@ -29,7 +30,10 @@ shadow_enabled = true
 [node name="entities" type="Node3D" parent="." unique_id=338493316 groups=["entities_container"]]
 
 [node name="baby" parent="entities" unique_id=927048161 instance=ExtResource("7_j2gmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312679, 1.2577752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312679, 4.014654)
+
+[node name="swab" parent="entities" unique_id=1709528205 instance=ExtResource("3_6m72w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0079482)
 
 [node name="player" parent="." unique_id=1554846954 groups=["player"] instance=ExtResource("2_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7140511, 0, -0.70335215)

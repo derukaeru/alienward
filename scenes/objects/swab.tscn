@@ -4,6 +4,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_6jvgp"]
+
 [node name="swab" type="Area3D" unique_id=1709528205]
 script = ExtResource("1_6jvgp")
 tooltip_text = "[SPACE] to pick up"
@@ -12,3 +14,6 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1719243548]
 shape = SubResource("BoxShape3D_m7jsg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1113997778]
+mesh = SubResource("BoxMesh_6jvgp")

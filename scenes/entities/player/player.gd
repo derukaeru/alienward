@@ -117,16 +117,19 @@ func _try_interact() -> void:
 	if hit is InteractableComponent:
 		if hit.pickupable:
 			pick_up(hit)
+			return
 		else:
 			hit.interact()
-	
-	# drop items
-	if held_item:
-		drop_item(hit)
+		
+		# drop items
+		if held_item:
+			drop_item(hit)
 
 func pick_up(item: InteractableComponent) -> void:
 	if held_item_id == ITEMS_ID.swab:
 		drop_item(null)
+	if held_item_id == ITEMS_ID.baby:
+		return
 	
 	held_item = item
 	set_held_item(ITEMS_ID[item.name])
@@ -147,21 +150,20 @@ func drop_item(hit: InteractableComponent) -> void:
 				
 				set_held_item("clipboard")
 		ITEMS_ID.swab:
-			held_item.global_position = global_position + Vector3.ZERO
-			held_item.set_collision_layer_value(1, true)
-			
-			held_item.show()
-			held_item = null
-			
-			set_held_item("clipboard")
-	
+			if (hit is InteractableComponent and hit.name == "scanner") or hit == null:
+				held_item.global_position = global_position + Vector3.ZERO
+				held_item.set_collision_layer_value(1, true)
+				
+				held_item.show()
+				held_item = null
+				
+				set_held_item("clipboard")
 
 func set_held_item(sprite_name: String) -> void:
 	if held_item_id == ITEMS_ID.swab:
 		held_swab_id = -1
 		
 	held_item_id = sprite_name
-	print(sprite_name)
 	
 	var held_item_sprite: TextureRect = TextureRect.new()
 	held_item_sprite.texture = load(Registry.UID[sprite_name])
