@@ -14,7 +14,6 @@ extends CharacterBody3D
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
-
 var ui_lag_offset: Vector2 = Vector2.ZERO
 var ui_lag_target: Vector2 = Vector2.ZERO
 const UI_LAG_STRENGTH: float = 40.0
