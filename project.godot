@@ -41,6 +41,7 @@ camera=""
 player=""
 entities_container=""
 map=""
+baby=""
 
 [gui]
 

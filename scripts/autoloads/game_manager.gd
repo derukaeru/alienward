@@ -13,6 +13,7 @@ var microscope_open: bool = false
 var canvas_layer: CanvasLayer = CanvasLayer.new()
 
 var latest_npc_id: int = 1
+var latest_baby_id: int = 1
 
 func _ready() -> void:
 	add_child(canvas_layer)

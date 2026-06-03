@@ -19,8 +19,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="baby" type="Area3D" unique_id=927048161]
+[node name="baby" type="Area3D" unique_id=927048161 groups=["baby"]]
 script = ExtResource("1_712cb")
+tooltip_text = "[SPACE] to pick up"
+pickupable = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2045470989]

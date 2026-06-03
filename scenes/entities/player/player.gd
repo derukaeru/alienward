@@ -27,8 +27,15 @@ var tilt_target : float = 0.0
 var mouse_sensitivity: float = 0.006
 var can_move := true
 
-var held_item: String = ""
-var held_baby: Baby = null
+const ITEMS_ID: Dictionary = {
+	clipboard = "clipboard",
+	baby = "baby_sprite",
+	swab = "swab_sprite"
+}
+
+var held_item_id: String = ""
+var held_item: InteractableComponent = null
+var held_swab_id: int = -1
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -47,7 +54,7 @@ func _physics_process(delta) -> void:
 			direction = direction.normalized()
 			
 			var speed_debuff: float = 1.0
-			if held_baby: 
+			if held_item_id == ITEMS_ID.baby: 
 				speed_debuff = 0.84
 				
 			velocity.x = direction.x * speed * speed_debuff
@@ -83,7 +90,7 @@ func _process(delta) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		camera.global_rotation.x -= event.relative.y * mouse_sensitivity
-		camera.global_rotation.x = clamp(camera.global_rotation.x, -1, 0.7)
+		camera.global_rotation.x = clamp(camera.global_rotation.x, -1.3, 1)
 		camera.global_rotation.y -= event.relative.x * mouse_sensitivity
 		
 		# tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
@@ -108,21 +115,53 @@ func _input(event) -> void:
 func _try_interact() -> void:
 	var hit = raycast.get_collider()
 	if hit is InteractableComponent:
-		hit.interact()
+		if hit.pickupable:
+			pick_up(hit)
+		else:
+			hit.interact()
 	
-	if hit is Incubator and held_baby != null:
-		camera.remove_child(held_baby)
-		Util.get_group_node("entities_container").add_child(held_baby)
-		
-		held_baby.global_position = hit.global_position + Vector3(0, .8, 0)
-		held_baby.set_collision_layer_value(1, true)
-		held_baby.show()
-		held_baby = null
-		
-		set_held_item("clipboard")
+	# drop items
+	if held_item:
+		drop_item(hit)
+
+func pick_up(item: InteractableComponent) -> void:
+	if held_item_id == ITEMS_ID.swab:
+		drop_item(null)
+	
+	held_item = item
+	set_held_item(ITEMS_ID[item.name])
+	
+	item.hide()
+	item.global_position = Vector3.ZERO
+	item.set_collision_layer_value(1, false)
+
+func drop_item(hit: InteractableComponent) -> void:
+	match held_item_id:
+		ITEMS_ID.baby:
+			if hit is Incubator:
+				held_item.global_position = hit.global_position + Vector3(0.0, 0.8, 0.0)
+				held_item.set_collision_layer_value(1, true)
+				
+				held_item.show()
+				held_item = null
+				
+				set_held_item("clipboard")
+		ITEMS_ID.swab:
+			held_item.global_position = global_position + Vector3.ZERO
+			held_item.set_collision_layer_value(1, true)
+			
+			held_item.show()
+			held_item = null
+			
+			set_held_item("clipboard")
+	
 
 func set_held_item(sprite_name: String) -> void:
-	held_item = name
+	if held_item_id == ITEMS_ID.swab:
+		held_swab_id = -1
+		
+	held_item_id = sprite_name
+	print(sprite_name)
 	
 	var held_item_sprite: TextureRect = TextureRect.new()
 	held_item_sprite.texture = load(Registry.UID[sprite_name])

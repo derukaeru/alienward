@@ -6,6 +6,8 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_vbmuw"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbmuw"]
+
 [node name="incubator" type="Area3D" unique_id=1495548128]
 script = ExtResource("1_vbmuw")
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
@@ -15,3 +17,8 @@ shape = SubResource("BoxShape3D_p2sny")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1601352981]
 mesh = SubResource("BoxMesh_vbmuw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2113657164]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=363069986]
+shape = SubResource("BoxShape3D_vbmuw")

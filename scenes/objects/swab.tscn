@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bkhvrcq5sh51q"]
+
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_6jvgp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
+
+[node name="swab" type="Area3D" unique_id=1709528205]
+script = ExtResource("1_6jvgp")
+tooltip_text = "[SPACE] to pick up"
+pickupable = true
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1719243548]
+shape = SubResource("BoxShape3D_m7jsg")

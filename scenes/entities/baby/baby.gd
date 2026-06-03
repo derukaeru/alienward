@@ -1,15 +1,8 @@
 class_name Baby extends InteractableComponent
 
 var needs: Array = []
+var baby_id: int = -1
 
-func pick_up() -> void:
-	Util.get_player().held_baby = self
-	Util.get_player().set_held_item("baby_sprite")
-	
-	hide()
-	
-	reparent(Util.get_group_node("camera"))
-	global_position = Vector3.ZERO
-	position = Vector3(-0.5, -0.35, -1)
-	
-	set_collision_layer_value(1, false)
+func _ready() -> void:
+	baby_id = GameManager.latest_baby_id + 1
+	GameManager.latest_baby_id += 1
