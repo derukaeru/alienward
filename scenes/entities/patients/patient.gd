@@ -22,6 +22,7 @@ func set_stage() -> void:
 
 func _ready() -> void:
 	set_stage()
+	move_to(Util.get_patient_spot("checkup"))
 
 func move_to(target_pos: Vector3) -> void:
 	nav_agent.target_position = target_pos

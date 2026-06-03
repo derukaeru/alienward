@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bhu3cr6flbeb8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8eh6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjlyr"]
+
+[node name="chair" type="StaticBody3D" unique_id=1269723263]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=242420490]
+shape = SubResource("BoxShape3D_u8eh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=664016185]
+mesh = SubResource("BoxMesh_rjlyr")
