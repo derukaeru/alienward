@@ -9,6 +9,9 @@ radius = 0.29003906
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_excrj"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sx7n5"]
+radius = 0.295
+
 [node name="patient_template" type="CharacterBody3D" unique_id=753749075]
 script = ExtResource("1_sx7n5")
 
@@ -34,7 +37,7 @@ metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 script = ExtResource("3_6srr1")
 metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 
-[node name="waiting" type="Node" parent="StateMachine" unique_id=912767845]
+[node name="resting" type="Node" parent="StateMachine" unique_id=912767845]
 script = ExtResource("3_6srr1")
 metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 
@@ -44,3 +47,9 @@ metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1518351829]
 sprite_frames = SubResource("SpriteFrames_excrj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=317904435]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105984724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_sx7n5")

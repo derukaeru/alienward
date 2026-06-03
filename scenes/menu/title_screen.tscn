@@ -94,5 +94,5 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_5jxps")
 [connection signal="pressed" from="settings" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="exit" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="exit" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

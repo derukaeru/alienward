@@ -21,7 +21,7 @@ var ui_lag_target: Vector2 = Vector2.ZERO
 const UI_LAG_STRENGTH: float = 40.0
 const UI_LAG_SPEED: float = 10.0   
 
-const TILT_STRAFE_AMOUNT: float = 3.4
+const TILT_STRAFE_AMOUNT: float = 1.8
 const TILT_LOOK_AMOUNT: float = 1.5
 const TILT_RETURN_SPEED: float = 4.0
 
@@ -89,7 +89,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.global_rotation.y -= event.relative.x * mouse_sensitivity
 		
 		# Tilt from looking left/right
-		tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
+		# tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
 		
 		ui_lag_target.x -= event.relative.x * mouse_sensitivity * UI_LAG_STRENGTH
 		ui_lag_target.y -= event.relative.y * mouse_sensitivity * UI_LAG_STRENGTH

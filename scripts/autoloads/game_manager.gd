@@ -12,6 +12,8 @@ var shop_open: bool = false
 var microscope_open: bool = false
 var canvas_layer: CanvasLayer = CanvasLayer.new()
 
+var latest_npc_id: int = 1
+
 func _ready() -> void:
 	add_child(canvas_layer)
 	
@@ -61,6 +63,10 @@ func spawn_patient() -> void:
 	
 	container.add_child(patient)
 	container.add_child(npc)
+	
+	patient.npc_id = latest_npc_id + 1
+	npc.patient_id = latest_npc_id + 1
+	latest_npc_id += 1
 	
 	var npc_spawn = Util.get_npc_spot("npc_enter")
 	var patient_spawn = Util.get_patient_spot("patient_enter")

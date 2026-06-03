@@ -18,6 +18,9 @@ shading_mode = 0
 albedo_texture = ExtResource("5_bmcht")
 texture_filter = 0
 
+[sub_resource type="BoxMesh" id="BoxMesh_hjj48"]
+size = Vector3(0.2, 5, 7)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ogaw"]
 size = Vector3(100, 0.1, 100)
 
@@ -54,9 +57,6 @@ size = Vector3(0.2, 8, 30)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkd4g"]
 size = Vector3(30, 8, 0.2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hjj48"]
-size = Vector3(0.2, 5, 7)
-
 [node name="map" type="Node3D" unique_id=99244539 groups=["map"]]
 script = ExtResource("1_fk7cy")
 
@@ -68,6 +68,18 @@ navigation_mesh = SubResource("NavigationMesh_o4nha")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15010214, 0)
 mesh = ExtResource("4_3apbj")
 surface_material_override/0 = SubResource("StandardMaterial3D_bj7kg")
+
+[node name="ward_wall" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1522074427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.267765, 1.8498979, 10.632329)
+mesh = SubResource("BoxMesh_hjj48")
+
+[node name="ward_wall2" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=30416621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.373727, 1.8498979, 10.632329)
+mesh = SubResource("BoxMesh_hjj48")
+
+[node name="ward_wall3" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=558218716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.710361, 1.8498979, 10.632329)
+mesh = SubResource("BoxMesh_hjj48")
 
 [node name="floor_collision" type="StaticBody3D" parent="." unique_id=1610236631]
 
@@ -154,18 +166,6 @@ shape = SubResource("BoxShape3D_8o7rx")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="walls_collision" unique_id=2140636604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09311867, 0, 13.981758)
 shape = SubResource("BoxShape3D_hkd4g")
-
-[node name="ward_wall" type="MeshInstance3D" parent="." unique_id=1522074427]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.267765, 2, 10.632329)
-mesh = SubResource("BoxMesh_hjj48")
-
-[node name="ward_wall2" type="MeshInstance3D" parent="." unique_id=30416621]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.373727, 2, 10.632329)
-mesh = SubResource("BoxMesh_hjj48")
-
-[node name="ward_wall3" type="MeshInstance3D" parent="." unique_id=558218716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.710361, 2, 10.632329)
-mesh = SubResource("BoxMesh_hjj48")
 
 [node name="doors" type="Node3D" parent="." unique_id=632524464]
 
