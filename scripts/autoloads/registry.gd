@@ -3,6 +3,7 @@ extends Node
 var UID: Dictionary = {
 	"npc": "uid://cwhgebq7q0h5y",
 	"patient": "uid://inedntn6htqj",
+	"baby": "uid://b51jsxro6uk0a",
 	
 	"world": "uid://cx0rposj2xxxe",
 	"ward": "uid://bivpb6edg64k5",
@@ -16,4 +17,9 @@ var UID: Dictionary = {
 	"pause_screen": "uid://7jemke30bxqq",
 	
 	"dialogue_box": "uid://6cae11kpahyv",
+	
+	# sprites for hand held items
+	"baby_sprite": "uid://ddavebcvrlptn",
+	"clipboard": "uid://dpwx6lq1basmc",
+	"swab_sprite": "uid://byleeb4m3vftg"
 }

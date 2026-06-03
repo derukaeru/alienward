@@ -5,7 +5,7 @@ extends Node
 @onready var microscope_screen: Node = load(Registry.UID["microscope_screen"]).instantiate()
 
 var day: int = 0
-var time: float = 0.0 # 0 - 100 | morning - evening
+var time: float = 0.0 
 var money: int = 0
 
 var shop_open: bool = false

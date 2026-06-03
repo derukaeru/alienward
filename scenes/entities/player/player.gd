@@ -10,9 +10,8 @@ extends CharacterBody3D
 # ui stuff
 @onready var ui_layer: CanvasLayer = $CameraMount/Camera3D/ui
 
-@onready var clipboard: TextureRect = $CameraMount/Camera3D/ui/clipboard
+@onready var held_item_container: Control = $CameraMount/Camera3D/ui/held_item
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
-@onready var baby: TextureRect = $CameraMount/Camera3D/ui/baby
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
 
@@ -29,10 +28,12 @@ var tilt_target : float = 0.0
 var mouse_sensitivity: float = 0.006
 var can_move := true
 
+var held_item: String = ""
 var held_baby: Baby = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	set_held_item("swab_sprite")
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -53,16 +54,14 @@ func _physics_process(delta) -> void:
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
 			
-			clipboard.get_node("AnimationPlayer").play("bob")
-			baby.get_node("AnimationPlayer").play("bob")
+			held_item_container.get_node("AnimationPlayer").play("bob")
+			held_item_container.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
 			
-			if clipboard.get_node("AnimationPlayer").current_animation == "bob":
-				clipboard.get_node("AnimationPlayer").animation_finished.connect(func(_a): clipboard.get_node("AnimationPlayer").play("RESET"), CONNECT_ONE_SHOT)
-			if baby.get_node("AnimationPlayer").current_animation == "bob":
-				baby.get_node("AnimationPlayer").animation_finished.connect(func(_a): clipboard.get_node("AnimationPlayer").play("RESET"), CONNECT_ONE_SHOT)
+			if held_item_container.get_node("AnimationPlayer").current_animation == "bob":
+				held_item_container.get_node("AnimationPlayer").animation_finished.connect(func(_a): held_item_container.get_node("AnimationPlayer").play("RESET"), CONNECT_ONE_SHOT)
 	
 	move_and_slide()
 	
@@ -88,7 +87,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.global_rotation.x = clamp(camera.global_rotation.x, -1, 0.7)
 		camera.global_rotation.y -= event.relative.x * mouse_sensitivity
 		
-		# Tilt from looking left/right
 		# tilt_target += -event.relative.x * mouse_sensitivity * TILT_LOOK_AMOUNT
 		
 		ui_lag_target.x -= event.relative.x * mouse_sensitivity * UI_LAG_STRENGTH
@@ -122,5 +120,16 @@ func _try_interact() -> void:
 		held_baby.show()
 		held_baby = null
 		
-		clipboard.show()
-		baby.hide()
+		set_held_item("clipboard")
+
+func set_held_item(sprite_name: String) -> void:
+	held_item = name
+	
+	var held_item_sprite: TextureRect = TextureRect.new()
+	held_item_sprite.texture = load(Registry.UID[sprite_name])
+	
+	for entry in held_item_container.get_children():
+		if entry is not AnimationPlayer:
+			entry.queue_free()
+	
+	held_item_container.add_child(held_item_sprite)

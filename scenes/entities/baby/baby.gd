@@ -4,8 +4,7 @@ var needs: Array = []
 
 func pick_up() -> void:
 	Util.get_player().held_baby = self
-	Util.get_player().clipboard.hide()
-	Util.get_player().baby.show()
+	Util.get_player().set_held_item("baby_sprite")
 	
 	hide()
 	
