@@ -33,7 +33,7 @@ var held_baby: Baby = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	set_held_item("swab_sprite")
+	set_held_item("clipboard")
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
