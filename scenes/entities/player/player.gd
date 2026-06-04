@@ -133,7 +133,7 @@ func pick_up(item: InteractableComponent) -> void:
 		return
 	
 	held_item = item
-	set_held_item(ITEMS_ID[item.name])
+	set_held_item(ITEMS_ID[item.internal_name])
 	
 	item.hide()
 	item.global_position = Vector3.ZERO

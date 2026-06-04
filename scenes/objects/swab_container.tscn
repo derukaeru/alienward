@@ -4,11 +4,16 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3gl7h"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_3gl7h"]
+
 [node name="swab_container" type="Area3D" unique_id=781625189]
 script = ExtResource("1_3gl7h")
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1085111296]
 shape = SubResource("CylinderShape3D_3gl7h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1179681517]
+mesh = SubResource("CylinderMesh_3gl7h")
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]

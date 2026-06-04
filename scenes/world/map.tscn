@@ -58,6 +58,12 @@ size = Vector3(0.2, 8, 30)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hkd4g"]
 size = Vector3(30, 8, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3apbj"]
+size = Vector3(9.817871, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bmcht"]
+size = Vector3(9.818, 1, 1)
+
 [node name="map" type="Node3D" unique_id=99244539 groups=["map"]]
 script = ExtResource("1_fk7cy")
 
@@ -254,3 +260,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.053851, 0, 7.2180395)
 
 [node name="checkup" type="Marker3D" parent="patient_spots" unique_id=1282253789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9351177, 0, -1.882153)
+
+[node name="table" type="StaticBody3D" parent="." unique_id=163455153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2262535, 0, 3.4635625)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table" unique_id=188272733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7914381, 0.49375963, 0)
+shape = SubResource("BoxShape3D_3apbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="table" unique_id=1161465614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076849, 0.50386465, 0)
+mesh = SubResource("BoxMesh_bmcht")

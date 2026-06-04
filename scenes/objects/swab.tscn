@@ -50,6 +50,7 @@ _data = {
 script = ExtResource("1_6jvgp")
 tooltip_text = "[SPACE] to pick up"
 pickupable = true
+internal_name = "swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1719243548]
