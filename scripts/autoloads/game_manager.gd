@@ -20,9 +20,11 @@ func _ready() -> void:
 	
 	canvas_layer.add_child(shop_screen)
 	canvas_layer.add_child(pause_screen)
+	canvas_layer.add_child(microscope_screen)
 	
 	pause_screen.hide()
 	shop_screen.hide()
+	microscope_screen.hide()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 

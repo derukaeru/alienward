@@ -101,18 +101,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _input(event) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			pass
-
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			_try_interact()
+	
 	if raycast.is_colliding(): 
 		if raycast.get_collider() is InteractableComponent:
 			tooltip.text = raycast.get_collider().tooltip_text
-		
-		if event.is_action_pressed("interact"):
-			_try_interact()
 	else:
 		tooltip.text = ""
 	
+	if Input.is_action_just_pressed("drop"):
+		drop_item(null)
+
 func _try_interact() -> void:
 	var hit = raycast.get_collider()
 	if hit is InteractableComponent:

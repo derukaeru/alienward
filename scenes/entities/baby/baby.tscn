@@ -21,7 +21,7 @@ animations = [{
 
 [node name="baby" type="Area3D" unique_id=927048161 groups=["baby"]]
 script = ExtResource("1_712cb")
-tooltip_text = "[SPACE] to pick up"
+tooltip_text = "[R-CLICK] to pick up"
 pickupable = true
 internal_name = "baby"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"

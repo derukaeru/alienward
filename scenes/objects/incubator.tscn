@@ -10,6 +10,7 @@
 
 [node name="incubator" type="Area3D" unique_id=1495548128]
 script = ExtResource("1_vbmuw")
+tooltip_text = "[R-CLICK] to place baby"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=394319433]

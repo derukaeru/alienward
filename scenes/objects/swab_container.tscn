@@ -8,6 +8,7 @@
 
 [node name="swab_container" type="Area3D" unique_id=781625189]
 script = ExtResource("1_3gl7h")
+tooltip_text = "Press [R-CLICK] to get swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1085111296]

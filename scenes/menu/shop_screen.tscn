@@ -10,14 +10,14 @@ shader_parameter/polar_center = Vector2(0.5, 0.5)
 shader_parameter/polar_zoom = 1.0
 shader_parameter/polar_repeat = 1.0
 shader_parameter/spin_rotation = 0.0
-shader_parameter/spin_speed = 1.485
+shader_parameter/spin_speed = 2.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/colour_1 = Color(0, 0.17920962, 0.43826655, 1)
 shader_parameter/colour_2 = Color(0, 0.31475976, 0.72268575, 1)
 shader_parameter/colour_3 = Color(0.4404043, 0.531235, 0.7601976, 1)
 shader_parameter/contrast = 2.0
 shader_parameter/spin_amount = 0.255
-shader_parameter/pixel_filter = 256.0
+shader_parameter/pixel_filter = 700.0
 
 [node name="shop_screen" type="Control" unique_id=2077115726]
 layout_mode = 3

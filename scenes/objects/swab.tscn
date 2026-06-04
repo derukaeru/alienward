@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkhvrcq5sh51q"]
 
-[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_6jvgp"]
+[ext_resource type="Script" uid="uid://cjtviykuv1103" path="res://scenes/objects/swab.gd" id="1_m7jsg"]
 [ext_resource type="Texture2D" uid="uid://byleeb4m3vftg" path="res://assets/sprites/objects/swab.png" id="2_m7jsg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
@@ -47,8 +47,8 @@ _data = {
 }
 
 [node name="swab" type="Area3D" unique_id=1709528205]
-script = ExtResource("1_6jvgp")
-tooltip_text = "[SPACE] to pick up"
+script = ExtResource("1_m7jsg")
+tooltip_text = "[R-CLICK] to pick up"
 pickupable = true
 internal_name = "swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
