@@ -10,13 +10,14 @@ extends CharacterBody3D
 # ui stuff
 @onready var ui_layer: CanvasLayer = $CameraMount/Camera3D/ui
 
-@onready var held_item_container: Control = $CameraMount/Camera3D/ui/held_item
+@onready var body_ui: Control = $CameraMount/Camera3D/ui/body
+@onready var held_item_container: Control = $CameraMount/Camera3D/ui/body/held_item
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
 var ui_lag_offset: Vector2 = Vector2.ZERO
 var ui_lag_target: Vector2 = Vector2.ZERO
-const UI_LAG_STRENGTH: float = 40.0
+const UI_LAG_STRENGTH: float = 56.0
 const UI_LAG_SPEED: float = 10.0   
 
 const TILT_STRAFE_AMOUNT: float = 1.8
@@ -83,7 +84,7 @@ func _process(delta) -> void:
 	ui_lag_offset = ui_lag_offset.lerp(ui_lag_target, UI_LAG_SPEED * delta)
 	
 	ui_lag_offset = ui_lag_offset.clamp(Vector2(-30, -20), Vector2(30, 20))
-	ui_layer.offset = ui_lag_offset
+	body_ui.position = ui_lag_offset
 	
 	fps_label.text = "%d" % Engine.get_frames_per_second()
 

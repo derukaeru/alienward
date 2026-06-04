@@ -1,10 +1,50 @@
 [gd_scene format=3 uid="uid://bkhvrcq5sh51q"]
 
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_6jvgp"]
+[ext_resource type="Texture2D" uid="uid://byleeb4m3vftg" path="res://assets/sprites/objects/swab.png" id="2_m7jsg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
+size = Vector3(0.64086914, 1.2606201, 0.58599854)
 
-[sub_resource type="BoxMesh" id="BoxMesh_6jvgp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fqrb"]
+
+[sub_resource type="Animation" id="Animation_m7jsg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.540442, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dlvst"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.540442, 0), Vector3(0, 0.7014135, 0), Vector3(0, 0.540442, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fqrb"]
+_data = {
+&"RESET": SubResource("Animation_m7jsg"),
+&"idle": SubResource("Animation_dlvst")
+}
 
 [node name="swab" type="Area3D" unique_id=1709528205]
 script = ExtResource("1_6jvgp")
@@ -13,7 +53,16 @@ pickupable = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1719243548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032958984, 0.13031006, 9.1552734e-05)
 shape = SubResource("BoxShape3D_m7jsg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1113997778]
-mesh = SubResource("BoxMesh_6jvgp")
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1000503716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540442, 0)
+material_overlay = SubResource("ShaderMaterial_7fqrb")
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_m7jsg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=460150281]
+libraries/ = SubResource("AnimationLibrary_7fqrb")
+autoplay = &"idle"
