@@ -42,6 +42,8 @@ player=""
 entities_container=""
 map=""
 baby=""
+patient=""
+npc=""
 
 [gui]
 

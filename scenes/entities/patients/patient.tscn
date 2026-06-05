@@ -12,7 +12,8 @@ radius = 0.29003906
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sx7n5"]
 radius = 0.295
 
-[node name="patient_template" type="CharacterBody3D" unique_id=753749075]
+[node name="patient_template" type="CharacterBody3D" unique_id=753749075 groups=["patient"]]
+collision_mask = 2
 script = ExtResource("1_sx7n5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927629622]
@@ -49,6 +50,10 @@ metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 sprite_frames = SubResource("SpriteFrames_excrj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=317904435]
+target_desired_distance = 0.1
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105984724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

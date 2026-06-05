@@ -34,7 +34,8 @@ animations = [{
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ii721"]
 radius = 0.325
 
-[node name="npc" type="CharacterBody3D" unique_id=1037296205]
+[node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
+collision_mask = 2
 script = ExtResource("1_kcbfn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=704221630]
@@ -71,3 +72,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ii721")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
+target_desired_distance = 0.1
+path_postprocessing = 1
