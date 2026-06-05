@@ -37,3 +37,8 @@ func mouse_visible() -> void:
 func mouse_captured() -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func get_baby_with_id(id: int):
+	for entry in get_tree().get_nodes_in_group("baby"):
+		if entry.id == id:
+			return entry

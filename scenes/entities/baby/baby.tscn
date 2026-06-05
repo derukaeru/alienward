@@ -46,5 +46,3 @@ metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 [node name="crying" type="Node" parent="StateMachine" unique_id=769059614]
 script = ExtResource("4_3nmci")
 metadata/_custom_type_script = "uid://bgrj6wbdpxop"
-
-[connection signal="interacted" from="." to="." method="pick_up"]

@@ -26,7 +26,8 @@ const TILT_RETURN_SPEED: float = 4.0
 
 var tilt_target : float = 0.0
 var mouse_sensitivity: float = 0.006
-var can_move := true
+var can_move: = true
+var has_interacted: bool = false
 
 const ITEMS_ID: Dictionary = {
 	clipboard = "clipboard",
@@ -36,11 +37,10 @@ const ITEMS_ID: Dictionary = {
 
 var held_item_id: String = ""
 var held_item: InteractableComponent = null
-var held_swab_id: int = -1
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	set_held_item("clipboard")
+	set_held_item_sprite("clipboard")
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -98,10 +98,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		ui_lag_target.x -= event.relative.x * mouse_sensitivity * UI_LAG_STRENGTH
 		ui_lag_target.y -= event.relative.y * mouse_sensitivity * UI_LAG_STRENGTH
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
+			has_interacted = false
 
 func _input(event) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not has_interacted:
+			has_interacted = true
 			_try_interact()
 	
 	if raycast.is_colliding(): 
@@ -128,12 +133,16 @@ func _try_interact() -> void:
 
 func pick_up(item: InteractableComponent) -> void:
 	if held_item_id == ITEMS_ID.swab:
+		if item.is_in_group("baby") and held_item.baby_id == -1:
+			held_item.baby_id = item.id
+			
+			return
 		drop_item(null)
 	if held_item_id == ITEMS_ID.baby:
 		return
 	
 	held_item = item
-	set_held_item(ITEMS_ID[item.internal_name])
+	set_held_item_sprite(ITEMS_ID[item.internal_name])
 	
 	item.hide()
 	item.global_position = Vector3.ZERO
@@ -149,7 +158,7 @@ func drop_item(hit: InteractableComponent) -> void:
 				held_item.show()
 				held_item = null
 				
-				set_held_item("clipboard")
+				set_held_item_sprite("clipboard")
 		ITEMS_ID.swab:
 			if (hit is InteractableComponent and hit.name == "scanner") or hit == null:
 				held_item.global_position = global_position + Vector3.ZERO
@@ -158,12 +167,9 @@ func drop_item(hit: InteractableComponent) -> void:
 				held_item.show()
 				held_item = null
 				
-				set_held_item("clipboard")
+				set_held_item_sprite("clipboard")
 
-func set_held_item(sprite_name: String) -> void:
-	if held_item_id == ITEMS_ID.swab:
-		held_swab_id = -1
-		
+func set_held_item_sprite(sprite_name: String) -> void:
 	held_item_id = sprite_name
 	
 	var held_item_sprite: TextureRect = TextureRect.new()
@@ -174,3 +180,9 @@ func set_held_item(sprite_name: String) -> void:
 			entry.queue_free()
 	
 	held_item_container.add_child(held_item_sprite)
+
+func remove_held_item():
+	held_item.queue_free()
+	held_item = null
+	
+	set_held_item_sprite("clipboard")

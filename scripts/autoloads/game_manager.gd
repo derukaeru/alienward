@@ -4,6 +4,8 @@ extends Node
 @onready var shop_screen: Node = load(Registry.UID["shop_screen"]).instantiate()
 @onready var microscope_screen: Node = load(Registry.UID["microscope_screen"]).instantiate()
 
+var SEED: int = 0
+
 var day: int = 0
 var time: float = 0.0 
 var money: int = 0
@@ -15,7 +17,11 @@ var canvas_layer: CanvasLayer = CanvasLayer.new()
 var latest_npc_id: int = 1
 var latest_baby_id: int = 1
 
+var microscope_dna: String = ""
+
 func _ready() -> void:
+	seed(SEED)
+	
 	add_child(canvas_layer)
 	
 	canvas_layer.add_child(shop_screen)
