@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dv3k8crc5eb37"]
+
+[ext_resource type="Script" uid="uid://c60f805vd7ibg" path="res://scenes/objects/trashcan.gd" id="1_f6caq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f6caq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ifsy5"]
+
+[node name="trashcan" type="Area3D" unique_id=715487887]
+script = ExtResource("1_f6caq")
+tooltip_text = "[R-CLICK] trash can"
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=514056657]
+shape = SubResource("CylinderShape3D_f6caq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=689078808]
+mesh = SubResource("CylinderMesh_ifsy5")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
