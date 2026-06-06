@@ -86,3 +86,5 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1088004299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_cyk10")
+
+[connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

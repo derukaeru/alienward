@@ -1,5 +1,12 @@
 class_name Incubator extends InteractableComponent
 
+func _process(delta) -> void:
+	var player: CharacterBody3D = Util.get_player()
+	if player.held_item_id == player.ITEMS_ID.baby:
+		show_tooltip_text = true
+	else:
+		show_tooltip_text = false
+
 func interact() -> void:
 	var player: CharacterBody3D = Util.get_player()
 	

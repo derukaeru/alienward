@@ -19,3 +19,12 @@ func _physics_process(_delta) -> void:
 	var direction = (next - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
+
+func interacted():
+	var player: CharacterBody3D = Util.get_player()
+	
+	if player.held_item_id == player.ITEMS_ID.baby:
+		var baby: Baby = player.held_item
+		
+		if baby.patient_id == patient_id:
+			pass

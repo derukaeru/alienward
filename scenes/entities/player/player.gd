@@ -110,8 +110,10 @@ func _input(event) -> void:
 			_try_interact()
 	
 	if raycast.is_colliding(): 
-		if raycast.get_collider() is InteractableComponent:
-			tooltip.text = raycast.get_collider().tooltip_text
+		var collider: Node = raycast.get_collider()
+		if collider is InteractableComponent:
+			if collider.show_tooltip_text:
+				tooltip.text = raycast.get_collider().tooltip_text
 	else:
 		tooltip.text = ""
 	
@@ -123,6 +125,7 @@ func _try_interact() -> void:
 	if hit is InteractableComponent:
 		if hit.pickupable:
 			pick_up(hit)
+			
 			return
 		else:
 			hit.interact()

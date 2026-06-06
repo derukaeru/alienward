@@ -10,6 +10,7 @@ size = Vector3(0.6, 0.6, 0.6)
 
 [node name="microscope" type="Area3D" unique_id=815800569]
 script = ExtResource("1_lqit0")
+show_tooltip_text = true
 tooltip_text = "Press [R-CLICK] to use microscope."
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 

@@ -17,6 +17,7 @@ mesh = SubResource("BoxMesh_xfthh")
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=1055673654]
 script = ExtResource("2_xfthh")
+show_tooltip_text = true
 tooltip_text = "Press [SPACE] to open shop."
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
