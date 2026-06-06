@@ -35,3 +35,6 @@ func _physics_process(_delta) -> void:
 	var direction = (next - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
+
+func interacted():
+	pass 

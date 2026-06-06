@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dhsfhte2l3ari" path="res://scenes/entities/patients/patient.gd" id="1_sx7n5"]
 [ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="2_vdqdh"]
 [ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="3_6srr1"]
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="4_vdqdh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_excrj"]
 radius = 0.29003906
@@ -11,6 +12,10 @@ radius = 0.29003906
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sx7n5"]
 radius = 0.295
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6srr1"]
+radius = 0.30273438
+height = 2.0009766
 
 [node name="patient_template" type="CharacterBody3D" unique_id=753749075 groups=["patient"]]
 collision_mask = 2
@@ -58,3 +63,13 @@ radius = 1.0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2105984724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_sx7n5")
+
+[node name="InteractableComponent" type="Area3D" parent="." unique_id=1176388806]
+script = ExtResource("4_vdqdh")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1870784221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9995117, 0)
+shape = SubResource("CapsuleShape3D_6srr1")
+
+[connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

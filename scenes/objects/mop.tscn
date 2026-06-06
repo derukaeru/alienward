@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cdfje2xdstmkk"]
+
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_ctaj3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bnra"]
+
+[node name="mop" type="Area3D" unique_id=244697825]
+script = ExtResource("1_ctaj3")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=788199936]
+shape = SubResource("BoxShape3D_3bnra")

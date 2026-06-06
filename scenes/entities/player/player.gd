@@ -42,6 +42,12 @@ var held_item: InteractableComponent = null
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_held_item_sprite("clipboard")
+	
+	held_item_container.get_node("AnimationPlayer").animation_finished.connect(
+		func(_a): 
+			held_item_container.get_node("AnimationPlayer").play("RESET"), 
+			CONNECT_ONE_SHOT
+	)
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -63,13 +69,9 @@ func _physics_process(delta) -> void:
 			velocity.z = direction.z * speed * speed_debuff
 			
 			held_item_container.get_node("AnimationPlayer").play("bob")
-			held_item_container.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
-			
-			if held_item_container.get_node("AnimationPlayer").current_animation == "bob":
-				held_item_container.get_node("AnimationPlayer").animation_finished.connect(func(_a): held_item_container.get_node("AnimationPlayer").play("RESET"), CONNECT_ONE_SHOT)
 	
 	move_and_slide()
 	
@@ -151,9 +153,6 @@ func pick_up(item: InteractableComponent) -> void:
 
 func drop_item(hit: InteractableComponent) -> void:
 	match held_item_id:
-		ITEMS_ID.baby:
-			if hit is Incubator:
-				hit.interact()
 		ITEMS_ID.swab:
 			if hit == null:
 				held_item.global_position = global_position + Vector3.ZERO
@@ -184,6 +183,7 @@ func set_held_item_sprite(sprite_name: String) -> void:
 			entry.queue_free()
 	
 	held_item_container.add_child(held_item_sprite)
+	held_item_container.get_node("AnimationPlayer").play("get_item")
 
 func remove_held_item() -> void:
 	held_item.queue_free()

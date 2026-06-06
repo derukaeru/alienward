@@ -1,5 +1,5 @@
 class_name InteractableComponent extends Area3D
-signal interacted(interactor)
+signal interacted()
 
 @export var tooltip_text: String = ""
 @export var pickupable: bool = false
