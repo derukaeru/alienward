@@ -63,13 +63,6 @@ font_size = 32
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bj7e2"]
 shader = ExtResource("3_5y2ix")
 
-[sub_resource type="LabelSettings" id="LabelSettings_8akj5"]
-font = ExtResource("2_vxc86")
-font_size = 32
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
-
 [sub_resource type="LabelSettings" id="LabelSettings_vxc86"]
 font = ExtResource("2_vxc86")
 font_size = 32
@@ -131,20 +124,6 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="tooltip" type="Label" parent="." unique_id=1974549912]
-anchors_preset = -1
-anchor_top = 0.90300006
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.12805176
-grow_horizontal = 2
-grow_vertical = 0
-text = "test"
-label_settings = SubResource("LabelSettings_8akj5")
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="dirtiness" type="Label" parent="." unique_id=1185680120]
 anchors_preset = -1
 anchor_left = 0.81200004
@@ -158,3 +137,17 @@ offset_bottom = 0.19199753
 grow_horizontal = 0
 text = "Dirt: 0%"
 label_settings = SubResource("LabelSettings_vxc86")
+
+[node name="tooltip" type="RichTextLabel" parent="." unique_id=148292367]
+anchors_preset = -1
+anchor_top = 0.88900006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.06402588
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1

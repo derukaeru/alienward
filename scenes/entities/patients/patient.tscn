@@ -72,4 +72,5 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9995117, 0)
 shape = SubResource("CapsuleShape3D_6srr1")
 
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

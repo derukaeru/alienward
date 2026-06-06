@@ -9,7 +9,6 @@
 [node name="xray_scanner" type="Area3D" unique_id=1884134628]
 script = ExtResource("1_t340s")
 show_tooltip_text = true
-tooltip_text = "[R-CLICK] X-Ray"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=287067896]

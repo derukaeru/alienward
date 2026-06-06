@@ -1,5 +1,8 @@
 class_name Microscope extends InteractableComponent
 
+func _ready() -> void:
+	tooltip_text = Lang.TOOLTIPS.microscope
+
 func interact() -> void:
 	var player: CharacterBody3D = Util.get_player()
 	if (player.held_item_id == player.ITEMS_ID.swab) or (player.held_item_id == player.ITEMS_ID.swab_used):

@@ -1,5 +1,8 @@
 class_name Trashcan extends InteractableComponent
 
+func _ready() -> void:
+	tooltip_text = Lang.TOOLTIPS.trashcan
+
 func _process(_delta) -> void:
 	var player: CharacterBody3D = Util.get_player()
 	

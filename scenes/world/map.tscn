@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cybiwybojnpur" path="res://scenes/objects/incubator.tscn" id="7_o4nha"]
 [ext_resource type="PackedScene" uid="uid://of2kbq8uj4ok" path="res://scenes/objects/swab_container.tscn" id="8_jukbv"]
 [ext_resource type="PackedScene" uid="uid://bhu3cr6flbeb8" path="res://scenes/objects/chair.tscn" id="9_3apbj"]
+[ext_resource type="PackedScene" uid="uid://cdfje2xdstmkk" path="res://scenes/objects/mop.tscn" id="10_5y7t6"]
 [ext_resource type="PackedScene" uid="uid://dv3k8crc5eb37" path="res://scenes/objects/trashcan.tscn" id="10_bmcht"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_o4nha"]
@@ -238,9 +239,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.355576, 0.6729152, 3.65198
 [node name="chair" parent="NavigationRegion3D" unique_id=1269723263 instance=ExtResource("9_3apbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.748257, -0.15010214, -3.1326795)
 
-[node name="trashcan" parent="NavigationRegion3D" unique_id=715487887 instance=ExtResource("10_bmcht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.065344, 0.8527956, 1.8216846)
-
 [node name="npc_spots" type="Node3D" parent="." unique_id=765567999]
 
 [node name="hallway" type="Marker3D" parent="npc_spots" unique_id=465058584]
@@ -282,3 +280,8 @@ shape = SubResource("BoxShape3D_3apbj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="table" unique_id=1161465614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8076849, 0.50386465, 0)
 mesh = SubResource("BoxMesh_bmcht")
+
+[node name="mop" parent="." unique_id=244697825 instance=ExtResource("10_5y7t6")]
+
+[node name="trashcan" parent="." unique_id=715487887 instance=ExtResource("10_bmcht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.065344, 1.0028977, 1.8216846)

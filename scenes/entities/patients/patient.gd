@@ -12,6 +12,8 @@ enum REASON {
 var reason: REASON = REASON.CHECKUP
 var maternity_stage: int = 0
 
+var target_name: String = ""
+
 func set_stage() -> void:
 	if randf_range(0.0, 1.0) > 0.55: # pregnant
 		maternity_stage = 4
@@ -22,10 +24,11 @@ func set_stage() -> void:
 
 func _ready() -> void:
 	set_stage()
-	move_to(Util.get_patient_spot("waiting"))
+	move_to("waiting")
 
-func move_to(target_pos: Vector3) -> void:
-	nav_agent.target_position = target_pos
+func move_to(_name: String) -> void:
+	target_name = _name
+	nav_agent.target_position = Util.get_patient_spot(_name)
 
 func _physics_process(_delta) -> void:
 	if nav_agent.is_navigation_finished():
@@ -38,3 +41,12 @@ func _physics_process(_delta) -> void:
 
 func interacted():
 	pass 
+
+# TODO HERE
+func target_reached():
+	if target_name == "waiting": 
+		pass
+	elif target_name == "ward":
+		pass
+	elif target_name == "checkup":
+		pass

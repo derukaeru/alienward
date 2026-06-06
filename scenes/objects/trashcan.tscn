@@ -8,7 +8,6 @@
 
 [node name="trashcan" type="Area3D" unique_id=715487887]
 script = ExtResource("1_f6caq")
-tooltip_text = "[R-CLICK] trash can"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=514056657]

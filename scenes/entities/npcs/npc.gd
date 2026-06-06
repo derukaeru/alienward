@@ -5,11 +5,14 @@ class_name NPC extends CharacterBody3D
 var speed: float = 3.2
 var patient_id: int = -1
 
-func _ready() -> void:
-	move_to(Util.get_npc_spot("waiting"))
+var target_name: String = ""
 
-func move_to(target_pos: Vector3) -> void:
-	nav_agent.target_position = target_pos
+func _ready() -> void:
+	move_to("waiting")
+
+func move_to(_name) -> void:
+	target_name = _name
+	nav_agent.target_position = Util.get_npc_spot(_name)
 
 func _physics_process(_delta) -> void:
 	if nav_agent.is_navigation_finished():
@@ -28,3 +31,7 @@ func interacted():
 		
 		if baby.patient_id == patient_id:
 			pass
+
+func target_reached():
+	if target_name == "waiting":
+		pass

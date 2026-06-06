@@ -22,6 +22,13 @@ var dirtiness: float = 0.0
 
 var has_interacted: bool = false
 
+const NPC_POSITIONS: Dictionary = {
+	
+}
+const PATIENT_POSITIONS: Dictionary = {
+	
+}
+
 func _ready() -> void:
 	seed(SEED)
 	
@@ -49,11 +56,9 @@ func _process(_d) -> void:
 			get_tree().paused = true
 			pause_screen.show()
 			Util.mouse_visible()
-
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
-			GameManager.has_interacted = false
+	
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		has_interacted = false
 
 func add_money(amount: int) -> void:
 	money += amount

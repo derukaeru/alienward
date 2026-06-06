@@ -14,7 +14,7 @@ extends CharacterBody3D
 @onready var held_item_container: Control = $CameraMount/Camera3D/ui/body/held_item
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
 @onready var dirtiness_label: Label = $CameraMount/Camera3D/ui/dirtiness
-@onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
+@onready var tooltip: RichTextLabel = $CameraMount/Camera3D/ui/tooltip
 
 var ui_lag_offset: Vector2 = Vector2.ZERO
 var ui_lag_target: Vector2 = Vector2.ZERO
@@ -147,6 +147,10 @@ func pick_up(item: InteractableComponent) -> void:
 	if held_item_id == ITEMS_ID.baby:
 		return
 	
+	# TODO HERE
+	if held_item_id == "ITEMS FOR BABIES":
+		pass
+	print(item)
 	held_item = item
 	set_held_item_sprite(ITEMS_ID[item.internal_name])
 	

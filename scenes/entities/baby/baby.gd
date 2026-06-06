@@ -7,6 +7,8 @@ var patient_id: int = -1
 var is_in_incubator: bool = false
 
 func _ready() -> void:
+	tooltip_text = Lang.TOOLTIPS.baby
+	
 	id = GameManager.latest_baby_id + 1
 	GameManager.latest_baby_id += 1
 	
