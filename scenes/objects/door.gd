@@ -1,4 +1,4 @@
-extends Area3D
+class_name Door extends Area3D
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 

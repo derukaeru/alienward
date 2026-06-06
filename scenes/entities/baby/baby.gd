@@ -3,6 +3,7 @@ class_name Baby extends InteractableComponent
 var dna: String = ""
 var needs: Array = []
 var id: int = -1
+var is_in_incubator: bool = false
 
 func _ready() -> void:
 	id = GameManager.latest_baby_id + 1
@@ -10,7 +11,7 @@ func _ready() -> void:
 	
 	generate_dna()
 
-func generate_dna(): 
+func generate_dna() -> void: 
 	var choices: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 	var length: int = 12
 	

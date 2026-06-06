@@ -4,7 +4,9 @@ var UID: Dictionary = {
 	"npc": "uid://cwhgebq7q0h5y",
 	"patient": "uid://inedntn6htqj",
 	"baby": "uid://b51jsxro6uk0a",
+	
 	"swab": "uid://bkhvrcq5sh51q",
+	"swab_used": "uid://cjfwpijoxhkk6",
 	
 	"world": "uid://cx0rposj2xxxe",
 	"ward": "uid://bivpb6edg64k5",

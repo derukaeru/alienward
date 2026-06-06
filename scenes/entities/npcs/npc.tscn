@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dwrgxuccfakg6" path="res://scenes/entities/npcs/npc.gd" id="1_kcbfn"]
 [ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="2_ii721"]
 [ext_resource type="Script" uid="uid://dhavxlm0dhkco" path="res://scripts/components/directional_sprite.gd" id="3_ii721"]
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="5_cyk10"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ii721"]
 radius = 0.32
@@ -33,6 +34,9 @@ animations = [{
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ii721"]
 radius = 0.325
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cyk10"]
+size = Vector3(1, 2, 1)
 
 [node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
 collision_mask = 2
@@ -74,3 +78,11 @@ mesh = SubResource("CapsuleMesh_ii721")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
 target_desired_distance = 0.1
 path_postprocessing = 1
+
+[node name="InteractableComponent" type="Area3D" parent="." unique_id=2051864871]
+script = ExtResource("5_cyk10")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1088004299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_cyk10")

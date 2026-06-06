@@ -8,6 +8,6 @@ func _on_leave_pressed() -> void:
 	
 	GameManager.microscope_open = false
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and GameManager.microscope_open:
 		_on_leave_pressed()

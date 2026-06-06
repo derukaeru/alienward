@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chhdi2hnpq1uw"]
 
-[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_t340s"]
+[ext_resource type="Script" uid="uid://dnnf3yt2ql5ky" path="res://scenes/objects/xray_scanner.gd" id="1_t340s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hrpne"]
 
@@ -8,7 +8,7 @@
 
 [node name="xray_scanner" type="Area3D" unique_id=1884134628]
 script = ExtResource("1_t340s")
-internal_name = "[R-CLICK] X-Ray"
+tooltip_text = "[R-CLICK] X-Ray"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=287067896]

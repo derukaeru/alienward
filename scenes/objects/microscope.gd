@@ -1,8 +1,8 @@
-extends InteractableComponent
+class_name Microscope extends InteractableComponent
 
 func interact() -> void:
-	var player = Util.get_player()
-	if player.held_item_id == player.ITEMS_ID.swab:
+	var player: CharacterBody3D = Util.get_player()
+	if (player.held_item_id == player.ITEMS_ID.swab) or (player.held_item_id == player.ITEMS_ID.swab_used):
 		var id: int = player.held_item.baby_id
 		
 		if id > -1:

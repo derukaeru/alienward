@@ -1,8 +1,8 @@
-extends CharacterBody3D
+class_name Patient extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 var speed: float = 3.2
-var npc_id: int = 5123
+var npc_id: int = -1
 
 enum REASON {
 	CHECKUP,
@@ -22,7 +22,7 @@ func set_stage() -> void:
 
 func _ready() -> void:
 	set_stage()
-	move_to(Util.get_patient_spot("checkup"))
+	move_to(Util.get_patient_spot("waiting"))
 
 func move_to(target_pos: Vector3) -> void:
 	nav_agent.target_position = target_pos

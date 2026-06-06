@@ -1,12 +1,12 @@
-extends CharacterBody3D
+class_name NPC extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
+
 var speed: float = 3.2
+var patient_id: int = -1
 
-var patient_id: int = 5123
-
-func _ready():
-	move_to(Util.get_npc_spot("hallway"))
+func _ready() -> void:
+	move_to(Util.get_npc_spot("waiting"))
 
 func move_to(target_pos: Vector3) -> void:
 	nav_agent.target_position = target_pos

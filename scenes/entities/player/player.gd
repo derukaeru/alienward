@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var body_ui: Control = $CameraMount/Camera3D/ui/body
 @onready var held_item_container: Control = $CameraMount/Camera3D/ui/body/held_item
 @onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
+@onready var dirtiness_label: Label = $CameraMount/Camera3D/ui/dirtiness
 @onready var tooltip: Label = $CameraMount/Camera3D/ui/tooltip
 
 var ui_lag_offset: Vector2 = Vector2.ZERO
@@ -24,15 +25,15 @@ const TILT_STRAFE_AMOUNT: float = 1.8
 const TILT_LOOK_AMOUNT: float = 1.5
 const TILT_RETURN_SPEED: float = 4.0
 
-var tilt_target : float = 0.0
+var tilt_target: float = 0.0
 var mouse_sensitivity: float = 0.006
-var can_move: = true
-var has_interacted: bool = false
+var can_move: bool = true
 
 const ITEMS_ID: Dictionary = {
 	clipboard = "clipboard",
 	baby = "baby_sprite",
-	swab = "swab_sprite"
+	swab = "swab_sprite",
+	swab_used = "swab_used"
 }
 
 var held_item_id: String = ""
@@ -87,6 +88,7 @@ func _process(delta) -> void:
 	body_ui.position = ui_lag_offset
 	
 	fps_label.text = "%d" % Engine.get_frames_per_second()
+	dirtiness_label.text = "Dirt: %d" % GameManager.dirtiness 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -99,14 +101,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		ui_lag_target.x -= event.relative.x * mouse_sensitivity * UI_LAG_STRENGTH
 		ui_lag_target.y -= event.relative.y * mouse_sensitivity * UI_LAG_STRENGTH
 	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
-			has_interacted = false
-
 func _input(event) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not has_interacted:
-			has_interacted = true
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not GameManager.has_interacted:
+			GameManager.has_interacted = true
 			_try_interact()
 	
 	if raycast.is_colliding(): 
@@ -133,8 +131,11 @@ func _try_interact() -> void:
 
 func pick_up(item: InteractableComponent) -> void:
 	if held_item_id == ITEMS_ID.swab:
-		if item.is_in_group("baby") and held_item.baby_id == -1:
+		if item is Baby and held_item.baby_id == -1:
 			held_item.baby_id = item.id
+			
+			held_item.internal_name = "swab_used"
+			set_held_item_sprite(ITEMS_ID.swab_used)
 			
 			return
 		drop_item(null)
@@ -152,15 +153,18 @@ func drop_item(hit: InteractableComponent) -> void:
 	match held_item_id:
 		ITEMS_ID.baby:
 			if hit is Incubator:
-				held_item.global_position = hit.global_position + Vector3(0.0, 0.8, 0.0)
+				hit.interact()
+		ITEMS_ID.swab:
+			if hit == null:
+				held_item.global_position = global_position + Vector3.ZERO
 				held_item.set_collision_layer_value(1, true)
 				
 				held_item.show()
 				held_item = null
 				
 				set_held_item_sprite("clipboard")
-		ITEMS_ID.swab:
-			if (hit is InteractableComponent and hit.name == "scanner") or hit == null:
+		ITEMS_ID.swab_used:
+			if hit == null:
 				held_item.global_position = global_position + Vector3.ZERO
 				held_item.set_collision_layer_value(1, true)
 				
@@ -181,7 +185,7 @@ func set_held_item_sprite(sprite_name: String) -> void:
 	
 	held_item_container.add_child(held_item_sprite)
 
-func remove_held_item():
+func remove_held_item() -> void:
 	held_item.queue_free()
 	held_item = null
 	

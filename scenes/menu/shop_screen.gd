@@ -8,6 +8,6 @@ func leave() -> void:
 	
 	GameManager.shop_open = false
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and GameManager.shop_open:
 		leave()
