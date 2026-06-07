@@ -24,7 +24,7 @@ func set_stage() -> void:
 
 func _ready() -> void:
 	set_stage()
-	move_to("waiting")
+	move_to("checkup")
 
 func move_to(_name: String) -> void:
 	target_name = _name

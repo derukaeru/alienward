@@ -55,8 +55,8 @@ metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 sprite_frames = SubResource("SpriteFrames_excrj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=317904435]
+path_desired_distance = 0.1
 target_desired_distance = 0.1
-path_postprocessing = 1
 avoidance_enabled = true
 radius = 1.0
 
