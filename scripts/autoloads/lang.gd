@@ -6,5 +6,8 @@ const TOOLTIPS: Dictionary = {
 	microscope = "open microscope",
 	trashcan = "throw item",
 	swab = "pick up",
-	incubator = "pick up baby"
+	incubator = "place baby",
+	xray = "x-ray",
+	mop = "mop",
+	swab_container = "get swab"
 }

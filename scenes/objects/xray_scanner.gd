@@ -1,4 +1,4 @@
 class_name Xray extends InteractableComponent
 
 func _ready() -> void:
-	pass
+	tooltip_text = Lang.TOOLTIPS.xray
