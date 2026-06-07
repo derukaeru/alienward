@@ -7,6 +7,6 @@ func _on_body_entered(body) -> void:
 		anim.play("open")
 
 
-func _on_body_exited(body):
+func _on_body_exited(body) -> void:
 	if body is Player or body is NPC or body is Patient:
 		anim.play_backwards("open")

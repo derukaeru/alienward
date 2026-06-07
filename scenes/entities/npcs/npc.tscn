@@ -76,7 +76,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ii721")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
-target_desired_distance = 0.1
 path_postprocessing = 1
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=2051864871]

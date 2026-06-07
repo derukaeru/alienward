@@ -7,14 +7,7 @@ class_name Player extends CharacterBody3D
 @onready var camera: Camera3D = $CameraMount/Camera3D
 @onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
 
-# ui stuff
 @onready var ui_layer: CanvasLayer = $CameraMount/Camera3D/ui
-
-@onready var body_ui: Control = $CameraMount/Camera3D/ui/body
-@onready var held_item_container: Control = $CameraMount/Camera3D/ui/body/held_item
-@onready var fps_label: Label = $CameraMount/Camera3D/ui/fps
-@onready var dirtiness_label: Label = $CameraMount/Camera3D/ui/dirtiness
-@onready var tooltip: RichTextLabel = $CameraMount/Camera3D/ui/tooltip
 
 var ui_lag_offset: Vector2 = Vector2.ZERO
 var ui_lag_target: Vector2 = Vector2.ZERO
@@ -43,9 +36,9 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_held_item_sprite("clipboard")
 	
-	held_item_container.get_node("AnimationPlayer").animation_finished.connect(
+	ui_layer.held_item.get_node("AnimationPlayer").animation_finished.connect(
 		func(_a): 
-			held_item_container.get_node("AnimationPlayer").play("RESET"), 
+			ui_layer.held_item.get_node("AnimationPlayer").play("RESET"), 
 			CONNECT_ONE_SHOT
 	)
 
@@ -68,7 +61,7 @@ func _physics_process(delta) -> void:
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
 			
-			held_item_container.get_node("AnimationPlayer").play("bob")
+			ui_layer.held_item.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
@@ -87,10 +80,10 @@ func _process(delta) -> void:
 	ui_lag_offset = ui_lag_offset.lerp(ui_lag_target, UI_LAG_SPEED * delta)
 	
 	ui_lag_offset = ui_lag_offset.clamp(Vector2(-30, -20), Vector2(30, 20))
-	body_ui.position = ui_lag_offset
+	ui_layer.body.position = ui_lag_offset
 	
-	fps_label.text = "%d" % Engine.get_frames_per_second()
-	dirtiness_label.text = "Dirt: %d" % GameManager.dirtiness 
+	ui_layer.fps.text = "%d" % Engine.get_frames_per_second()
+	ui_layer.dirtiness.text = "Dirt: %d" % GameManager.dirtiness 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -113,9 +106,9 @@ func _input(event) -> void:
 		var collider: Node = raycast.get_collider()
 		if collider is InteractableComponent:
 			if collider.show_tooltip_text:
-				tooltip.text = raycast.get_collider().tooltip_text
+				ui_layer.tooltip.text = raycast.get_collider().tooltip_text
 	else:
-		tooltip.text = ""
+		ui_layer.tooltip.text = ""
 	
 	if Input.is_action_just_pressed("drop"):
 		drop_item(null)
@@ -150,7 +143,7 @@ func pick_up(item: InteractableComponent) -> void:
 	# TODO HERE
 	if held_item_id == "ITEMS FOR BABIES":
 		pass
-	print(item)
+		
 	held_item = item
 	set_held_item_sprite(ITEMS_ID[item.internal_name])
 	
@@ -185,12 +178,12 @@ func set_held_item_sprite(sprite_name: String) -> void:
 	var held_item_sprite: TextureRect = TextureRect.new()
 	held_item_sprite.texture = load(Registry.UID[sprite_name])
 	
-	for entry in held_item_container.get_children():
+	for entry in ui_layer.held_item.get_children():
 		if entry is not AnimationPlayer:
 			entry.queue_free()
 	
-	held_item_container.add_child(held_item_sprite)
-	held_item_container.get_node("AnimationPlayer").play("get_item")
+	ui_layer.held_item.add_child(held_item_sprite)
+	ui_layer.held_item.get_node("AnimationPlayer").play("get_item")
 
 func remove_held_item() -> void:
 	held_item.queue_free()

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b3rfrcxq10bx7"]
 
+[ext_resource type="Script" uid="uid://b6yxatl5vkw5x" path="res://scenes/menu/ui.gd" id="1_n7q4b"]
 [ext_resource type="FontFile" uid="uid://bjfk6l7cvt1vf" path="res://assets/font/alagard.ttf" id="2_vxc86"]
 [ext_resource type="Shader" uid="uid://cie80ise51xdw" path="res://assets/shaders/crosshair.gdshader" id="3_5y2ix"]
 
@@ -69,6 +70,7 @@ font_size = 32
 
 [node name="ui" type="CanvasLayer" unique_id=687749877]
 layer = 0
+script = ExtResource("1_n7q4b")
 
 [node name="body" type="Control" parent="." unique_id=290110402]
 layout_mode = 3
@@ -150,3 +152,57 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="guide_patient" type="ColorRect" parent="." unique_id=1760841950]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -100.0
+offset_right = 109.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="wards" type="VBoxContainer" parent="guide_patient" unique_id=730142562]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -96.0
+offset_right = 105.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ward_0" type="ColorRect" parent="guide_patient/wards" unique_id=1957231040]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="ward_1" type="ColorRect" parent="guide_patient/wards" unique_id=304018056]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="ward_2" type="ColorRect" parent="guide_patient/wards" unique_id=1716212726]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="ward_3" type="ColorRect" parent="guide_patient/wards" unique_id=321233476]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="checkup" type="ColorRect" parent="." unique_id=144457452]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0

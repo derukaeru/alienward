@@ -21,13 +21,10 @@ var microscope_dna: String = ""
 var dirtiness: float = 0.0
 
 var has_interacted: bool = false
+var selected_ward_on_ui: int = -1 # i wonder what this variable is for
 
-const NPC_POSITIONS: Dictionary = {
-	
-}
-const PATIENT_POSITIONS: Dictionary = {
-	
-}
+var waiting_seats_occupation: Array = [false, false, false, false, false, false]
+var ward_occupation: Array = [false, false, false, false]
 
 func _ready() -> void:
 	seed(SEED)
@@ -78,10 +75,10 @@ func open_microscope_screen() -> void:
 	Util.get_player().velocity = Vector3.ZERO
 
 func spawn_patient() -> void:
-	var patient = load(Registry.UID["patient"]).instantiate()
-	var npc = load(Registry.UID["npc"]).instantiate()
+	var patient: Patient = load(Registry.UID["patient"]).instantiate()
+	var npc: NPC = load(Registry.UID["npc"]).instantiate()
 	
-	var container = Util.get_group_node("entities_container")
+	var container: Node = Util.get_group_node("entities_container")
 	
 	container.add_child(patient)
 	container.add_child(npc)
@@ -95,3 +92,10 @@ func spawn_patient() -> void:
 	
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn
+	
+	for i in len(waiting_seats_occupation):
+		if not waiting_seats_occupation[i]:
+			patient.waiting_seat_position = i
+			npc.waiting_seat_position = i
+			
+			waiting_seats_occupation[i] = true
