@@ -79,6 +79,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="held_item" type="Control" parent="body" unique_id=1691775271]
 layout_mode = 1
@@ -109,6 +110,7 @@ offset_left = -0.12800217
 offset_top = -0.12800026
 offset_right = 0.06399536
 offset_bottom = 0.19199753
+mouse_filter = 1
 text = "test: fps"
 label_settings = SubResource("LabelSettings_n7q4b")
 
@@ -125,8 +127,7 @@ offset_right = 2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+mouse_filter = 1
 
 [node name="dirtiness" type="Label" parent="." unique_id=1185680120]
 anchors_preset = -1
@@ -139,6 +140,7 @@ offset_top = -0.12800026
 offset_right = -0.32006836
 offset_bottom = 0.19199753
 grow_horizontal = 0
+mouse_filter = 1
 text = "Dirt: 0%"
 label_settings = SubResource("LabelSettings_vxc86")
 
@@ -150,6 +152,7 @@ anchor_bottom = 1.0
 offset_top = -0.06402588
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 horizontal_alignment = 1
@@ -168,6 +171,7 @@ offset_right = 109.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.6)
 
 [node name="wards" type="VBoxContainer" parent="guide_patient" unique_id=730142562]
@@ -185,21 +189,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ward_0" type="ColorRect" parent="guide_patient/wards" unique_id=1957231040]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
 [node name="ward_1" type="ColorRect" parent="guide_patient/wards" unique_id=304018056]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
 [node name="ward_2" type="ColorRect" parent="guide_patient/wards" unique_id=1716212726]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
 [node name="ward_3" type="ColorRect" parent="guide_patient/wards" unique_id=321233476]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
@@ -208,6 +216,7 @@ color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="microscope_screen" parent="." unique_id=1116009674 instance=ExtResource("4_5y2ix")]
 visible = false

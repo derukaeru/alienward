@@ -12,11 +12,16 @@ extends CanvasLayer
 @onready var microscope_screen: Control = $microscope_screen
 @onready var shop_screen: Control = $shop_screen
 
-func _process(_delta) -> void:
+func _input(event) -> void:
 	if guide_patient.visible:
-		if Input.is_action_just_pressed("scroll_up"):
-			GameManager.selected_ward_on_ui -= 1
-		if Input.is_action_just_pressed("scroll_down"):
-			GameManager.selected_ward_on_ui += 1
-		
-		GameManager.selected_ward_on_ui = clamp(GameManager.selected_ward_on_ui, 0, 3)
+		if event is InputEventMouseButton and event.is_pressed():
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+					GameManager.selected_ward_on_ui -= 1
+				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+					GameManager.selected_ward_on_ui += 1
+				
+				GameManager.selected_ward_on_ui = clamp(GameManager.selected_ward_on_ui, 0, 3)
+				print(GameManager.selected_ward_on_ui)
+				for i in range(4):
+					get_node("guide_patient/wards/ward_%d" % i).hide()
+				get_node("guide_patient/wards/ward_%d" % GameManager.selected_ward_on_ui).show()

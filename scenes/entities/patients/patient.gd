@@ -62,16 +62,27 @@ func _process(_delta) -> void:
 		
 		if reason == REASONS.CHECKUP:
 			Util.get_player().ui_layer.checkup.hide() 
+			
+			if GameManager.clinic_open:
+				move_to("checkup")
+				GameManager.clinic_open = false
 		elif reason == REASONS.LABOR:
 			Util.get_player().ui_layer.guide_patient.hide() 
+			
+			if GameManager.selected_ward_on_ui >= 0:
+				move_to("ward_%d" % GameManager.selected_ward_on_ui)
+				GameManager.selected_ward_on_ui = -1
 
 # TODO HERE
 func target_reached() -> void:
+	if ["ward_0", "ward_1", "ward_2", "ward_3"].has(target_name):
+		global_position = Util.get_patient_spot(target_name)
 	match target_name:
 		"waiting": 
 			if waiting_seat_position < 0: return
 			global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
-		"ward":
-			pass
 		"checkup":
 			pass
+
+func reached_ward() -> void:
+	pass

@@ -20,6 +20,7 @@ var dirtiness: float = 0.0
 
 var has_interacted: bool = false
 var selected_ward_on_ui: int = -1 # i wonder what this variable is for
+var clinic_open: bool = true
 
 var waiting_seats_occupation: Array = [false, false, false, false, false, false]
 var ward_occupation: Array = [false, false, false, false]
