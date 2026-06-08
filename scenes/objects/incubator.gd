@@ -5,6 +5,7 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	var player: CharacterBody3D = Util.get_player()
+	if not player: return
 	if player.held_item_id == player.ITEMS_ID.baby:
 		show_tooltip_text = true
 	else:
@@ -12,6 +13,7 @@ func _process(_delta) -> void:
 
 func interact() -> void:
 	var player: CharacterBody3D = Util.get_player()
+	if not player: return
 	
 	if player.held_item_id == player.ITEMS_ID.baby:
 		player.held_item.global_position = global_position + Vector3(0.0, 0.8, 0.0)

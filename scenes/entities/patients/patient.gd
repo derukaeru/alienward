@@ -49,6 +49,7 @@ func interacted():
 	guided = true
 	
 	var player: CharacterBody3D = Util.get_player()
+	if not player: return
 	
 	if reason == REASONS.CHECKUP:
 		player.ui_layer.checkup.show() 
@@ -65,12 +66,12 @@ func _process(_delta) -> void:
 			Util.get_player().ui_layer.guide_patient.hide() 
 
 # TODO HERE
-func target_reached():
-	if target_name == "waiting": 
-		if waiting_seat_position < 0: return
-		
-		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
-	elif target_name == "ward":
-		pass
-	elif target_name == "checkup":
-		pass
+func target_reached() -> void:
+	match target_name:
+		"waiting": 
+			if waiting_seat_position < 0: return
+			global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
+		"ward":
+			pass
+		"checkup":
+			pass

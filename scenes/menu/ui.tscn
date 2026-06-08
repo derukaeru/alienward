@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b6yxatl5vkw5x" path="res://scenes/menu/ui.gd" id="1_n7q4b"]
 [ext_resource type="FontFile" uid="uid://bjfk6l7cvt1vf" path="res://assets/font/alagard.ttf" id="2_vxc86"]
 [ext_resource type="Shader" uid="uid://cie80ise51xdw" path="res://assets/shaders/crosshair.gdshader" id="3_5y2ix"]
+[ext_resource type="PackedScene" uid="uid://d2wp275ru8mkw" path="res://scenes/menu/microscope_screen.tscn" id="4_5y2ix"]
+[ext_resource type="PackedScene" uid="uid://b4sil7n400wmm" path="res://scenes/menu/shop_screen.tscn" id="5_wfysg"]
 
 [sub_resource type="Animation" id="Animation_n7q4b"]
 resource_name = "RESET"
@@ -68,7 +70,7 @@ shader = ExtResource("3_5y2ix")
 font = ExtResource("2_vxc86")
 font_size = 32
 
-[node name="ui" type="CanvasLayer" unique_id=687749877]
+[node name="ui" type="CanvasLayer" unique_id=687749877 groups=["player_ui"]]
 layer = 0
 script = ExtResource("1_n7q4b")
 
@@ -206,3 +208,9 @@ color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="microscope_screen" parent="." unique_id=1116009674 instance=ExtResource("4_5y2ix")]
+visible = false
+
+[node name="shop_screen" parent="." unique_id=2077115726 instance=ExtResource("5_wfysg")]
+visible = false

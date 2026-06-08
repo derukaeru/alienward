@@ -30,6 +30,7 @@ func _physics_process(delta) -> void:
 
 func interacted() -> void:
 	var player: CharacterBody3D = Util.get_player()
+	if not player: return
 	
 	if player.held_item_id == player.ITEMS_ID.baby:
 		var baby: Baby = player.held_item
@@ -38,6 +39,7 @@ func interacted() -> void:
 			pass
 
 func target_reached() -> void:
-	if target_name == "waiting":
-		if waiting_seat_position < 0: return
-		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
+	match target_name:
+		"waiting":
+			if waiting_seat_position < 0: return
+			global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)

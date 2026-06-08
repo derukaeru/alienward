@@ -45,6 +45,7 @@ map=""
 baby=""
 patient=""
 npc=""
+player_ui=""
 
 [gui]
 

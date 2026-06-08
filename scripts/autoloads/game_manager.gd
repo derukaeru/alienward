@@ -1,8 +1,6 @@
 extends Node
 
 @onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
-@onready var shop_screen: Node = load(Registry.UID["shop_screen"]).instantiate()
-@onready var microscope_screen: Node = load(Registry.UID["microscope_screen"]).instantiate()
 
 var SEED: int = 0
 
@@ -28,16 +26,10 @@ var ward_occupation: Array = [false, false, false, false]
 
 func _ready() -> void:
 	seed(SEED)
-	
 	add_child(canvas_layer)
 	
-	canvas_layer.add_child(shop_screen)
 	canvas_layer.add_child(pause_screen)
-	canvas_layer.add_child(microscope_screen)
-	
 	pause_screen.hide()
-	shop_screen.hide()
-	microscope_screen.hide()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -61,18 +53,24 @@ func add_money(amount: int) -> void:
 	money += amount
 
 func open_shop_screen() -> void:
-	shop_screen.show()
+	var player = Util.get_player()
+	if not player: return
+	
+	player.ui_layer.shop_screen.show()
 	
 	shop_open = true
 	Util.get_player().can_move = false
 	Util.get_player().velocity = Vector3.ZERO
 
 func open_microscope_screen() -> void:
-	microscope_screen.show()
+	var player = Util.get_player()
+	if not player: return
+	
+	player.ui_layer.microscope_screen.show()
 	microscope_open = true
 	
-	Util.get_player().can_move = false
-	Util.get_player().velocity = Vector3.ZERO
+	player.can_move = false
+	player.velocity = Vector3.ZERO
 
 func spawn_patient() -> void:
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()
@@ -87,8 +85,8 @@ func spawn_patient() -> void:
 	npc.patient_id = latest_npc_id + 1
 	latest_npc_id += 1
 	
-	var npc_spawn = Util.get_npc_spot("npc_enter")
-	var patient_spawn = Util.get_patient_spot("patient_enter")
+	var npc_spawn: Vector3 = Util.get_npc_spot("npc_enter")
+	var patient_spawn: Vector3 = Util.get_patient_spot("patient_enter")
 	
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn

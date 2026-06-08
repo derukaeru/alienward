@@ -9,6 +9,9 @@ extends CanvasLayer
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item
 
+@onready var microscope_screen: Control = $microscope_screen
+@onready var shop_screen: Control = $shop_screen
+
 func _process(_delta) -> void:
 	if guide_patient.visible:
 		if Input.is_action_just_pressed("scroll_up"):
@@ -17,9 +20,3 @@ func _process(_delta) -> void:
 			GameManager.selected_ward_on_ui += 1
 		
 		GameManager.selected_ward_on_ui = clamp(GameManager.selected_ward_on_ui, 0, 3)
-		
-		for i in range(4):
-			if i == GameManager.selected_ward_on_ui:
-				get_node("guide_patient/wards/ward_%d" % i).show()
-			else:
-				get_node("guide_patient/wards/ward_%d" % i).hide()
