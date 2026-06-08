@@ -1,0 +1,51 @@
+[
+	{
+		"day": 1,
+		"patient_types": ["checkup"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 2,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 3,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 4,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 5,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 6,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+	{
+		"day": 7,
+		"patient_types": ["checkup", "labor"],
+		"conditions": [],
+		"min_patients": 3,
+		"max_patients": 5,
+	},
+]
