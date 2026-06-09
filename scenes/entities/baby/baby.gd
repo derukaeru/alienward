@@ -2,8 +2,8 @@ class_name Baby extends InteractableComponent
 
 var dna: String = ""
 var needs: Array = []
-var id: int = -1
-var patient_id: int = -1
+var id: int = GameManager.UNASSIGNED
+var patient_id: int = GameManager.UNASSIGNED
 var is_in_incubator: bool = false
 
 func _ready() -> void:

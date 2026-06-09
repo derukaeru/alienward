@@ -4,7 +4,7 @@ func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.microscope
 
 func interact() -> void:
-	var player: CharacterBody3D = Util.get_player()
+	var player: Player = Util.get_player()
 	if not player: return
 	
 	if player.held_item_id == player.ITEMS_ID.swab or player.held_item_id == player.ITEMS_ID.swab_used:
@@ -16,7 +16,7 @@ func interact() -> void:
 			
 			return
 	
-	if GameManager.microscope_open: return
+	if player.ui_layer.microscope_open: return
 	
-	GameManager.open_microscope_screen()
+	player.ui_layer.open_microscope_screen()
 	Util.mouse_visible()

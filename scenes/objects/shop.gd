@@ -6,7 +6,10 @@ func _ready() -> void:
 	interactable.tooltip_text = Lang.TOOLTIPS.shop
 
 func _on_interactable_component_interacted() -> void:
-	if GameManager.shop_open: return
+	var player: Player = Util.get_player()
+	if not player: return
 	
-	GameManager.open_shop_screen()
+	if player.ui_layer.shop_open: return
+	
+	player.ui_layer.open_shop_screen()
 	Util.mouse_visible()

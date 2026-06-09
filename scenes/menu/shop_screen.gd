@@ -2,11 +2,14 @@ extends Control
 
 func leave() -> void:
 	hide()
+	GameManager.shop_open = false
 	
-	Util.get_player().can_move = true
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	player.can_move = true
 	Util.mouse_captured()
 	
-	GameManager.shop_open = false
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and GameManager.shop_open:

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b6jlalr66mhdu" path="res://scenes/entities/baby/baby.gd" id="1_712cb"]
 [ext_resource type="Texture2D" uid="uid://ddavebcvrlptn" path="res://assets/sprites/entities/baby/baby_placeholder.png" id="2_40flv"]
-[ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="3_s51qe"]
-[ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="4_3nmci"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s51qe"]
 size = Vector3(0.8, 0.8, 0.8)
@@ -34,15 +32,3 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3nmci")
-
-[node name="StateMachine" type="Node" parent="." unique_id=1014575733]
-script = ExtResource("3_s51qe")
-metadata/_custom_type_script = "uid://cvrvya74mfw71"
-
-[node name="sleeping" type="Node" parent="StateMachine" unique_id=1716365290]
-script = ExtResource("4_3nmci")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"
-
-[node name="crying" type="Node" parent="StateMachine" unique_id=769059614]
-script = ExtResource("4_3nmci")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"

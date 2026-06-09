@@ -21,7 +21,7 @@ func get_patient_spots() -> Dictionary:
 		patient_spots = get_tree().get_first_node_in_group("map").patient_spots
 	return patient_spots
 
-func get_player() -> Node3D:
+func get_player() -> Player:
 	return get_tree().get_first_node_in_group("player")
 	
 func get_main() -> Node3D:
@@ -38,7 +38,8 @@ func mouse_captured() -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func get_baby_with_id(id: int):
+func get_baby_with_id(id: int) -> Baby:
 	for entry in get_tree().get_nodes_in_group("baby"):
 		if entry.id == id:
 			return entry
+	return null

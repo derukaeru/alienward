@@ -3,11 +3,11 @@ class_name NPC extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 
 var speed: float = 2.4
-var patient_id: int = -1
+var patient_id: int = GameManager.UNASSIGNED
 var gravity: float = 9.8
 
 var target_name: String = ""
-var waiting_seat_position: int = -1
+var waiting_seat_position: int = GameManager.UNASSIGNED
 
 func _ready() -> void:
 	move_to("waiting")
@@ -29,7 +29,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func interacted() -> void:
-	var player: CharacterBody3D = Util.get_player()
+	var player: Player = Util.get_player()
 	if not player: return
 	
 	if player.held_item_id == player.ITEMS_ID.baby:
@@ -37,6 +37,7 @@ func interacted() -> void:
 		
 		if baby.patient_id == patient_id:
 			pass
+			# TODO
 
 func target_reached() -> void:
 	match target_name:

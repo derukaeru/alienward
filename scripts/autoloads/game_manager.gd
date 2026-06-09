@@ -3,13 +3,12 @@ extends Node
 @onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
 
 var SEED: int = 0
+const UNASSIGNED: int = -1
 
 var day: int = 0
 var time: float = 0.0 
 var money: int = 0
 
-var shop_open: bool = false
-var microscope_open: bool = false
 var canvas_layer: CanvasLayer = CanvasLayer.new()
 
 var latest_npc_id: int = 1
@@ -19,11 +18,16 @@ var microscope_dna: String = ""
 var dirtiness: float = 0.0
 
 var has_interacted: bool = false
-var selected_ward_on_ui: int = -1 # i wonder what this variable is for
+var selected_ward_on_ui: int = UNASSIGNED # i wonder what this variable is for
 var clinic_open: bool = true
 
 var waiting_seats_occupation: Array = [false, false, false, false, false, false]
 var ward_occupation: Array = [false, false, false, false]
+
+enum REASONS {
+	CHECKUP,
+	LABOR
+}
 
 func _ready() -> void:
 	seed(SEED)
@@ -35,7 +39,10 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_d) -> void:
-	if shop_open or microscope_open: return
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if player.ui_layer.shop_open or player.ui_layer.microscope_open: return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
@@ -52,26 +59,6 @@ func _process(_d) -> void:
 
 func add_money(amount: int) -> void:
 	money += amount
-
-func open_shop_screen() -> void:
-	var player = Util.get_player()
-	if not player: return
-	
-	player.ui_layer.shop_screen.show()
-	
-	shop_open = true
-	Util.get_player().can_move = false
-	Util.get_player().velocity = Vector3.ZERO
-
-func open_microscope_screen() -> void:
-	var player = Util.get_player()
-	if not player: return
-	
-	player.ui_layer.microscope_screen.show()
-	microscope_open = true
-	
-	player.can_move = false
-	player.velocity = Vector3.ZERO
 
 func spawn_patient() -> void:
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()

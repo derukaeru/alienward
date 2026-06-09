@@ -3,30 +3,26 @@ class_name Patient extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 var speed: float = 2.4
 var gravity: float = 9.8
-var npc_id: int = -1
+var npc_id: int = GameManager.UNASSIGNED
 
-enum REASONS {
-	CHECKUP,
-	LABOR
-}
 
-var reason: REASONS = REASONS.CHECKUP
-var maternity_stage: int = 0
+var reason: GameManager.REASONS = GameManager.REASONS.CHECKUP
+var maternity_stage: int = GameManager.UNASSIGNED
 
 var target_name: String = ""
 var guided: bool = false
-var waiting_seat_position: int = -1
-var ward_index: int = -1
+var waiting_seat_position: int = GameManager.UNASSIGNED
+var ward_index: int = GameManager.UNASSIGNED
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
-	print(chance)
+	
 	if chance > 0.55:
 		maternity_stage = 4
-		reason = REASONS.LABOR
+		reason = GameManager.REASONS.LABOR
 	else: 
 		maternity_stage = randi_range(1, 3)
-		reason = REASONS.CHECKUP
+		reason = GameManager.REASONS.CHECKUP
 
 func _ready() -> void:
 	set_stage()
@@ -51,25 +47,22 @@ func _physics_process(delta) -> void:
 func interacted():
 	guided = true
 	
-	var player: CharacterBody3D = Util.get_player()
-	if not player or ward_index > -1: return
+	var player: Player = Util.get_player()
+	if not player or ward_index != GameManager.UNASSIGNED: return
 	
-	if reason == REASONS.CHECKUP:
-		player.ui_layer.checkup.show() 
-	elif reason == REASONS.LABOR:
-		player.ui_layer.guide_patient.show() 
+	player.ui_layer.open_patient_screen(reason)
 
 func _process(_delta) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided:
 		guided = false
 		
-		if reason == REASONS.CHECKUP:
+		if reason == GameManager.REASONS.CHECKUP:
 			Util.get_player().ui_layer.checkup.hide() 
 			
 			if GameManager.clinic_open:
 				move_to("checkup")
 				GameManager.clinic_open = false
-		elif reason == REASONS.LABOR:
+		elif reason == GameManager.REASONS.LABOR:
 			Util.get_player().ui_layer.guide_patient.hide() 
 			
 			if GameManager.selected_ward_on_ui >= 0:
@@ -78,18 +71,14 @@ func _process(_delta) -> void:
 				move_to("ward_%d" % ward_index)
 				GameManager.selected_ward_on_ui = -1
 
-# TODO HERE
 func target_reached() -> void:
 	if ["ward_0", "ward_1", "ward_2", "ward_3"].has(target_name):
 		global_position = Util.get_patient_spot(target_name)
-		reached_ward()
+		global_position = Util.get_patient_spot("inside_ward_%d" % ward_index)
 	
 	match target_name:
 		"waiting": 
-			if waiting_seat_position < 0: return
+			if waiting_seat_position == GameManager.UNASSIGNED: return
 			global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
 		"checkup":
-			pass
-
-func reached_ward() -> void:
-	global_position = Util.get_patient_spot("inside_ward_%d" % ward_index)
+			global_position = Util.get_patient_spot("checkup_seat")

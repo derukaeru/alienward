@@ -7,7 +7,7 @@ func _ready() -> void:
 	day_configs = JSON.parse_string(json.get_as_text())
 
 func get_day_config(number: int = -1) -> Dictionary:
-	var index = number -1
+	var index = number - 1
 	if index < day_configs.size():
 		return day_configs[index]
 	else:

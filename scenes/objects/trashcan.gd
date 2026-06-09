@@ -4,7 +4,7 @@ func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.trashcan
 
 func _process(_delta) -> void:
-	var player: CharacterBody3D = Util.get_player()
+	var player: Player = Util.get_player()
 	if not player: return
 	
 	if player.held_item == null:
@@ -13,7 +13,7 @@ func _process(_delta) -> void:
 		show_tooltip_text = true
 
 func _on_interacted() -> void:
-	var player: CharacterBody3D = Util.get_player()
+	var player: Player = Util.get_player()
 	if not player: return
 	
 	if player.held_item_id == player.ITEMS_ID.baby or player.held_item_id == player.ITEMS_ID.clipboard:
