@@ -18,7 +18,9 @@ var guided: bool = false
 var waiting_seat_position: int = -1
 
 func set_stage() -> void:
-	if randf_range(0.0, 1.0) > 0.55: # pregnant
+	var chance: float = randf_range(0.0, 1.0)
+	print(chance)
+	if chance > 0.55:
 		maternity_stage = 4
 		reason = REASONS.LABOR
 	else: 
@@ -77,6 +79,8 @@ func _process(_delta) -> void:
 func target_reached() -> void:
 	if ["ward_0", "ward_1", "ward_2", "ward_3"].has(target_name):
 		global_position = Util.get_patient_spot(target_name)
+		reached_ward()
+	
 	match target_name:
 		"waiting": 
 			if waiting_seat_position < 0: return

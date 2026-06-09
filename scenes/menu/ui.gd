@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var tooltip: RichTextLabel = $tooltip
 
 @onready var guide_patient: ColorRect = $guide_patient
+@onready var checkup: ColorRect = $checkup
 
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item

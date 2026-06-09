@@ -158,6 +158,11 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="checkup" type="ColorRect" parent="." unique_id=144457452]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
 [node name="guide_patient" type="ColorRect" parent="." unique_id=1760841950]
 visible = false
 anchors_preset = 8
@@ -211,12 +216,6 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
-
-[node name="checkup" type="ColorRect" parent="." unique_id=144457452]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 1
 
 [node name="microscope_screen" parent="." unique_id=1116009674 instance=ExtResource("4_5y2ix")]
 visible = false

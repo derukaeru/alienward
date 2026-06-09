@@ -50,7 +50,7 @@ shading_mode = 0
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yar34"]
-size = Vector3(3.8745728, 2, 1.6)
+size = Vector3(3.8745728, 2, 1.9019531)
 
 [node name="door" type="Area3D" unique_id=58050874]
 script = ExtResource("1_yar34")
@@ -70,7 +70,7 @@ mesh = SubResource("BoxMesh_yar34")
 surface_material_override/0 = SubResource("StandardMaterial3D_yar34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1177964344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034820557, 1.0175271, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034820557, 1.0175271, -0.046093702)
 shape = SubResource("BoxShape3D_yar34")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
