@@ -18,7 +18,7 @@ var shop_open: bool = false
 var patient_open: bool = false
 
 func _input(event) -> void:
-	if guide_patient.visible: #TODO: fix ts
+	if guide_patient.visible:
 		if event is InputEventMouseButton and event.is_pressed():
 				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 					GameManager.selected_ward_on_ui -= 1
@@ -28,8 +28,9 @@ func _input(event) -> void:
 				GameManager.selected_ward_on_ui = clamp(GameManager.selected_ward_on_ui, 0, 3)
 				
 				for i in range(4):
-					get_node("guide_patient/wards/ward_%d" % i).hide()
-				get_node("guide_patient/wards/ward_%d" % GameManager.selected_ward_on_ui).show()
+					get_node("guide_patient/ward_%d" % i).hide()
+				
+				get_node("guide_patient/ward_%d" % GameManager.selected_ward_on_ui).show()
 
 func open_patient_screen(reason: GameManager.REASONS) -> void:
 	if patient_open: return

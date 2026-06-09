@@ -12,5 +12,8 @@ func _on_leave_pressed() -> void:
 	Util.mouse_captured()
 	
 func _process(_delta) -> void:
-	if Input.is_action_just_pressed("ui_cancel") and GameManager.microscope_open:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if Input.is_action_just_pressed("ui_cancel") and player.ui_layer.microscope_open:
 		_on_leave_pressed()

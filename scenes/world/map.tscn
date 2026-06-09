@@ -69,6 +69,10 @@ size = Vector3(9.817871, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_bmcht"]
 size = Vector3(9.818, 1, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_1ogaw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x8x7"]
+
 [node name="map" type="Node3D" unique_id=99244539 groups=["map"]]
 script = ExtResource("1_fk7cy")
 
@@ -235,6 +239,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77868, 1.1925887, 3.467913
 [node name="chair" parent="NavigationRegion3D/objects" unique_id=1269723263 instance=ExtResource("9_3apbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.748257, 0, -3.1326795)
 
+[node name="delivery_tables" type="Node3D" parent="NavigationRegion3D/objects" unique_id=1798339698]
+
+[node name="delivery_table_0" type="StaticBody3D" parent="NavigationRegion3D/objects/delivery_tables" unique_id=1334263486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7000532, 0, 7.9577856)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_0" unique_id=355365305]
+mesh = SubResource("BoxMesh_1ogaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_0" unique_id=1813511770]
+shape = SubResource("BoxShape3D_8x8x7")
+
+[node name="delivery_table_1" type="StaticBody3D" parent="NavigationRegion3D/objects/delivery_tables" unique_id=1052037412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9905605, 0, 7.9577856)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_1" unique_id=519260419]
+mesh = SubResource("BoxMesh_1ogaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_1" unique_id=138318319]
+shape = SubResource("BoxShape3D_8x8x7")
+
+[node name="delivery_table_2" type="StaticBody3D" parent="NavigationRegion3D/objects/delivery_tables" unique_id=278153894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.149245, 0, 7.9577856)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_2" unique_id=1162681970]
+mesh = SubResource("BoxMesh_1ogaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_2" unique_id=1881185742]
+shape = SubResource("BoxShape3D_8x8x7")
+
+[node name="delivery_table_3" type="StaticBody3D" parent="NavigationRegion3D/objects/delivery_tables" unique_id=234345743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.475533, 0, 7.9577856)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_3" unique_id=2064675133]
+mesh = SubResource("BoxMesh_1ogaw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/objects/delivery_tables/delivery_table_3" unique_id=1031665645]
+shape = SubResource("BoxShape3D_8x8x7")
+
 [node name="npc_spots" type="Node3D" parent="." unique_id=765567999]
 
 [node name="hallway" type="Marker3D" parent="npc_spots" unique_id=465058584]
@@ -270,28 +312,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4398103, 0, -11.288331)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7667508, 0, -12.394242)
 
 [node name="ward_0" type="Marker3D" parent="patient_spots" unique_id=2011780220]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7432532, 0, 5.9341755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7432532, 0, 6.7933598)
 
 [node name="ward_1" type="Marker3D" parent="patient_spots" unique_id=1835258370]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.793782, 0, 6.2560573)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.793782, 0, 7.1152415)
 
 [node name="ward_2" type="Marker3D" parent="patient_spots" unique_id=1235856238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.053851, 0, 6.237046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.053851, 0, 7.09623)
 
 [node name="ward_3" type="Marker3D" parent="patient_spots" unique_id=130397716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4694805, 0, 6.2836995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4694805, 0, 7.142884)
 
 [node name="inside_ward_0" type="Marker3D" parent="patient_spots" unique_id=120245023]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7432532, 0, 10.759858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7432532, 0, 12.348594)
 
 [node name="inside_ward_1" type="Marker3D" parent="patient_spots" unique_id=372254774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.793782, 0, 11.081739)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.793782, 0, 12.670475)
 
 [node name="inside_ward_2" type="Marker3D" parent="patient_spots" unique_id=792735333]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.053851, 0, 11.062729)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.053851, 0, 12.651464)
 
 [node name="inside_ward_3" type="Marker3D" parent="patient_spots" unique_id=714975137]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4694805, 0, 11.109383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4694805, 0, 12.698118)
 
 [node name="checkup" type="Marker3D" parent="patient_spots" unique_id=1282253789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9351177, 0, -1.6420478)
@@ -319,6 +361,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.806562, 0, -6.287388)
 
 [node name="seat_5" type="Marker3D" parent="patient_spots" unique_id=1305954476]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.806562, 0, -11.339718)
+
+[node name="delivery_table_0" type="Marker3D" parent="patient_spots" unique_id=2005573737]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7432532, 0.9766787, 7.995957)
+
+[node name="delivery_table_1" type="Marker3D" parent="patient_spots" unique_id=17681325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.029224, 0.9766787, 7.995957)
+
+[node name="delivery_table_2" type="Marker3D" parent="patient_spots" unique_id=1063475294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.158582, 0.9766787, 7.995957)
+
+[node name="delivery_table_3" type="Marker3D" parent="patient_spots" unique_id=749410416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.48027, 0.9766787, 7.995957)
 
 [node name="doors" type="Node3D" parent="." unique_id=632524464]
 
