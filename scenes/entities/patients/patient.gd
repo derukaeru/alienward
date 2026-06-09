@@ -16,6 +16,7 @@ var maternity_stage: int = 0
 var target_name: String = ""
 var guided: bool = false
 var waiting_seat_position: int = -1
+var ward_index: int = -1
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -51,7 +52,7 @@ func interacted():
 	guided = true
 	
 	var player: CharacterBody3D = Util.get_player()
-	if not player: return
+	if not player or ward_index > -1: return
 	
 	if reason == REASONS.CHECKUP:
 		player.ui_layer.checkup.show() 
@@ -72,7 +73,9 @@ func _process(_delta) -> void:
 			Util.get_player().ui_layer.guide_patient.hide() 
 			
 			if GameManager.selected_ward_on_ui >= 0:
-				move_to("ward_%d" % GameManager.selected_ward_on_ui)
+				ward_index = GameManager.selected_ward_on_ui
+				
+				move_to("ward_%d" % ward_index)
 				GameManager.selected_ward_on_ui = -1
 
 # TODO HERE
@@ -89,4 +92,4 @@ func target_reached() -> void:
 			pass
 
 func reached_ward() -> void:
-	pass
+	global_position = Util.get_patient_spot("inside_ward_%d" % ward_index)

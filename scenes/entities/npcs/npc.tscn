@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cwhgebq7q0h5y"]
 
-[ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="1_0o1kd"]
 [ext_resource type="Script" uid="uid://dwrgxuccfakg6" path="res://scenes/entities/npcs/npc.gd" id="1_kcbfn"]
-[ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="2_ii721"]
 [ext_resource type="Script" uid="uid://dhavxlm0dhkco" path="res://scripts/components/directional_sprite.gd" id="3_ii721"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="5_cyk10"]
 
@@ -45,24 +43,6 @@ script = ExtResource("1_kcbfn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=704221630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ii721")
-
-[node name="StateMachine" type="Node" parent="." unique_id=535555353 node_paths=PackedStringArray("body", "initial_state")]
-script = ExtResource("1_0o1kd")
-body = NodePath("..")
-initial_state = NodePath("idle")
-metadata/_custom_type_script = "uid://cvrvya74mfw71"
-
-[node name="idle" type="Node" parent="StateMachine" unique_id=677039148]
-script = ExtResource("2_ii721")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"
-
-[node name="waiting" type="Node" parent="StateMachine" unique_id=2020804119]
-script = ExtResource("2_ii721")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"
-
-[node name="leaving" type="Node" parent="StateMachine" unique_id=1815594340]
-script = ExtResource("2_ii721")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 
 [node name="DirectionalSprite" type="AnimatedSprite3D" parent="." unique_id=1442849681]
 billboard = 1

@@ -5,6 +5,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3gl7h"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3gl7h"]
+top_radius = 0.35
+bottom_radius = 0.35
+height = 1.0
 
 [node name="swab_container" type="Area3D" unique_id=781625189]
 script = ExtResource("1_3gl7h")

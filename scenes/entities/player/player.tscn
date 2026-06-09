@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c2yp5cja56jyt" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
 [ext_resource type="PackedScene" uid="uid://b3rfrcxq10bx7" path="res://scenes/menu/ui.tscn" id="2_nh4ur"]
-[ext_resource type="Script" uid="uid://cvrvya74mfw71" path="res://scripts/components/state_machine.gd" id="3_nh4ur"]
-[ext_resource type="Script" uid="uid://bgrj6wbdpxop" path="res://scripts/components/state.gd" id="4_bjvvg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
 
@@ -31,16 +29,6 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ui" parent="CameraMount/Camera3D" unique_id=687749877 instance=ExtResource("2_nh4ur")]
-
-[node name="StateMachine" type="Node" parent="." unique_id=672355803 node_paths=PackedStringArray("body", "initial_state")]
-script = ExtResource("3_nh4ur")
-body = NodePath("..")
-initial_state = NodePath("idle")
-metadata/_custom_type_script = "uid://cvrvya74mfw71"
-
-[node name="idle" type="Node" parent="StateMachine" unique_id=1296223743]
-script = ExtResource("4_bjvvg")
-metadata/_custom_type_script = "uid://bgrj6wbdpxop"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=7716181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
