@@ -12,4 +12,4 @@ Mainly to learn a lot of game development skills as I am making this all by myse
 
 ## How do I play this game?
 
-The game is not released yet, but it will be released on itch on my [itch page](derukaeru.itch.io)!
+The game is not released yet, but it will be released on my [itch.io page](derukaeru.itch.io)!
