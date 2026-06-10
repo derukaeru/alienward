@@ -9,6 +9,7 @@ extends CanvasLayer
 
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item
+@onready var hand: Control = $body/hand
 
 @onready var microscope_screen: Control = $microscope_screen
 @onready var shop_screen: Control = $shop_screen
@@ -64,3 +65,22 @@ func open_microscope_screen() -> void:
 	
 	player.can_move = false
 	player.velocity = Vector3.ZERO
+
+func show_tooltip(text: String) -> void:
+	tooltip.text = text
+	
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if player.held_item_id == player.ITEMS_ID.clipboard:
+		hand.texture = load(Registry.UID["hand_point"])
+		held_item.hide()
+
+func hide_tooltip() -> void:
+	tooltip.text = ""
+	
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	hand.texture = load(Registry.UID["hand_hold"])
+	held_item.show()

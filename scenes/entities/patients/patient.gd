@@ -34,8 +34,8 @@ var ward_index: int = GameManager.UNASSIGNED
 func _ready() -> void:
 	set_stage()
 	
-	#labor_speed = randf_range(25.0, 45.0)
-	#rest_speed = randf_range(55.0, 75.0)
+	labor_speed = randf_range(25.0, 45.0)
+	rest_speed = randf_range(55.0, 75.0)
 	
 	move_to("waiting")
 

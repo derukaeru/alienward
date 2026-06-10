@@ -24,5 +24,8 @@ var UID: Dictionary = {
 	# sprites for hand held items
 	"baby_sprite": "uid://ddavebcvrlptn",
 	"clipboard": "uid://dpwx6lq1basmc",
-	"swab_sprite": "uid://byleeb4m3vftg"
+	"swab_sprite": "uid://byleeb4m3vftg",
+	
+	"hand_hold": "uid://cceairqcr4n0v",
+	"hand_point": "uid://ssnb0c6x2qpt"
 }

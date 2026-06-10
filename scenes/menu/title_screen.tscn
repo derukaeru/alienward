@@ -1,16 +1,26 @@
 [gd_scene format=3 uid="uid://dix67ojrdr6ht"]
 
-[ext_resource type="Shader" uid="uid://cr7nbwelvyi4x" path="res://assets/shaders/background_scroll.gdshader" id="1_200k4"]
 [ext_resource type="Script" uid="uid://ujs8yn1ubop0" path="res://scenes/menu/title_screen.gd" id="1_spmwh"]
 [ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/title_screen.png" id="2_4crq4"]
 [ext_resource type="Texture2D" uid="uid://caclbhwuoilvm" path="res://assets/sprites/ui/buttons/start.png" id="3_7rd1m"]
 [ext_resource type="Texture2D" uid="uid://e4pub042hjx7" path="res://assets/sprites/ui/buttons/settings.png" id="4_spmwh"]
 [ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="5_lh61k"]
 
+[sub_resource type="Shader" id="Shader_7rd1m"]
+code = "shader_type canvas_item;
+
+uniform float speed_x = 0.5;
+uniform float speed_y = 0.5;
+
+void vertex() {
+	UV.x += TIME * speed_x;
+	UV.y += TIME * speed_y;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq80g"]
-shader = ExtResource("1_200k4")
-shader_parameter/x_speed = 0.5
-shader_parameter/y_speed = 0.5
+shader = SubResource("Shader_7rd1m")
+shader_parameter/speed_x = 0.5
+shader_parameter/speed_y = 0.5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hsha"]
 texture = ExtResource("3_7rd1m")
@@ -86,13 +96,13 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_5jxps")
 
 [connection signal="mouse_entered" from="start" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="start" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="settings" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="settings" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="settings" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="exit" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="exit" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="." method="mouse_pressed" flags=18]

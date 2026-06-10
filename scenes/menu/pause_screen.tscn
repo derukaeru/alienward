@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://7jemke30bxqq"]
 
 [ext_resource type="Script" uid="uid://dcl8l8xhw4vmu" path="res://scenes/menu/pause_screen.gd" id="1_s4fn5"]
+[ext_resource type="Texture2D" uid="uid://dh8pv1xe2t40g" path="res://assets/sprites/ui/buttons/resume.png" id="2_ruv5c"]
+[ext_resource type="Texture2D" uid="uid://e4pub042hjx7" path="res://assets/sprites/ui/buttons/settings.png" id="2_wx27k"]
+[ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="3_ruv5c"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4fn5"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2pq0"]
+texture = ExtResource("2_ruv5c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x8jkt"]
+texture = ExtResource("2_wx27k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ioglc"]
+texture = ExtResource("3_ruv5c")
 
 [node name="pause_screen" type="Control" unique_id=2145161773]
 layout_mode = 3
@@ -23,39 +32,56 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6392157)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2086276069]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -100.0
-offset_right = 184.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="resume" type="Button" parent="." unique_id=1698791073]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 154.5
+offset_right = 492.0
+offset_bottom = 240.5
+pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_c2pq0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c2pq0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c2pq0")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_c2pq0")
+theme_override_styles/focus = SubResource("StyleBoxTexture_c2pq0")
 
-[node name="resume" type="Button" parent="VBoxContainer" unique_id=1698791073]
-layout_mode = 2
+[node name="settings" type="Button" parent="." unique_id=640017073]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 244.5
+offset_right = 492.0
+offset_bottom = 330.5
+pivot_offset_ratio = Vector2(0.9, 0.5)
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
-text = "resume"
+theme_override_styles/normal = SubResource("StyleBoxTexture_x8jkt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x8jkt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x8jkt")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x8jkt")
+theme_override_styles/focus = SubResource("StyleBoxTexture_x8jkt")
 
-[node name="settings" type="Button" parent="VBoxContainer" unique_id=640017073]
-layout_mode = 2
+[node name="exit" type="Button" parent="." unique_id=1152742921]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 334.5
+offset_right = 492.0
+offset_bottom = 421.5
+pivot_offset_ratio = Vector2(0.1, 0.9)
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
-text = "settings"
+theme_override_styles/normal = SubResource("StyleBoxTexture_ioglc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ioglc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ioglc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ioglc")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ioglc")
 
-[node name="exit" type="Button" parent="VBoxContainer" unique_id=1152742921]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_s4fn5")
-text = "exit"
-
-[connection signal="pressed" from="VBoxContainer/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="VBoxContainer/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="resume" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="resume" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="resume" to="." method="mouse_pressed" flags=18]
+[connection signal="mouse_entered" from="settings" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="settings" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="settings" to="." method="mouse_pressed" flags=18]
+[connection signal="mouse_entered" from="exit" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_exited" from="exit" to="." method="mouse_exited" flags=18]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

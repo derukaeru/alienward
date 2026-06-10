@@ -41,6 +41,11 @@ func _ready() -> void:
 			ui_layer.held_item.get_node("AnimationPlayer").play("RESET"), 
 			CONNECT_ONE_SHOT
 	)
+	ui_layer.hand.get_node("AnimationPlayer").animation_finished.connect(
+		func(_a): 
+			ui_layer.hand.get_node("AnimationPlayer").play("RESET"), 
+			CONNECT_ONE_SHOT
+	)
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -62,6 +67,7 @@ func _physics_process(delta) -> void:
 			velocity.z = direction.z * speed * speed_debuff
 			
 			ui_layer.held_item.get_node("AnimationPlayer").play("bob")
+			ui_layer.hand.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
@@ -106,9 +112,9 @@ func _input(event) -> void:
 		var collider: Node = raycast.get_collider()
 		if collider is InteractableComponent:
 			if collider.show_tooltip_text:
-				ui_layer.tooltip.text = raycast.get_collider().tooltip_text
+				ui_layer.show_tooltip(raycast.get_collider().tooltip_text)
 	else:
-		ui_layer.tooltip.text = ""
+		ui_layer.hide_tooltip()
 	
 	if Input.is_action_just_pressed("drop"):
 		drop_item(null)

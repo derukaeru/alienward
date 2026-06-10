@@ -31,7 +31,13 @@ DaysConfig="*uid://bchund26hmjxt"
 
 window/size/viewport_width=768
 window/size/viewport_height=576
+window/size/window_width_override=1536
+window/size/window_height_override=1152
 window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/d4lif/OneDrive/Documents/Preggo Jam/records/recording_1.avi"
 
 [editor_plugins]
 

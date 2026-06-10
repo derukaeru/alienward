@@ -2,11 +2,11 @@ extends Control
 
 func _on_leave_pressed() -> void:
 	hide()
-	GameManager.microscope_open = false
-
 	
 	var player: Player = Util.get_player()
 	if not player: return
+	
+	player.ui_layer.microscope_open = false
 	
 	player.can_move = true
 	Util.mouse_captured()
