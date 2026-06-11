@@ -69,12 +69,7 @@ func open_microscope_screen() -> void:
 func show_tooltip(text: String) -> void:
 	tooltip.text = text
 	
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	if player.held_item_id == player.ITEMS_ID.clipboard:
-		hand.texture = load(Registry.UID["hand_point"])
-		held_item.hide()
+	set_hand_sprite()
 
 func hide_tooltip() -> void:
 	tooltip.text = ""
@@ -82,5 +77,15 @@ func hide_tooltip() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	hand.texture = load(Registry.UID["hand_hold"])
-	held_item.show()
+	set_hand_sprite()
+
+func set_hand_sprite() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if player.held_item_id == player.ITEMS_ID.clipboard and tooltip.text != "":
+		hand.texture = load(Registry.UID["hand_point"])
+		held_item.hide()
+	else:
+		hand.texture = load(Registry.UID["hand_hold"])
+		held_item.show()

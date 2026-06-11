@@ -15,8 +15,8 @@ func _ready() -> void:
 	generate_dna()
 
 func generate_dna() -> void: 
-	var choices: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-	var length: int = 12
+	var choices: String = "AGCT"
+	var length: int = 15
 	
 	for i in range(length):
-		dna.join([choices[randi_range(0, choices.length() - 1)]])
+		dna += choices[randi_range(0, choices.length() - 1)]

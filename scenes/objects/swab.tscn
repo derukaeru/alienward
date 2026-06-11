@@ -48,6 +48,7 @@ _data = {
 
 [node name="swab" type="Area3D" unique_id=1709528205]
 script = ExtResource("1_m7jsg")
+show_tooltip_text = true
 pickupable = true
 internal_name = "swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"

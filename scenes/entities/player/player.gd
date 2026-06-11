@@ -156,6 +156,7 @@ func pick_up(item: InteractableComponent) -> void:
 	item.hide()
 	item.global_position = Vector3.ZERO
 	item.set_collision_layer_value(1, false)
+	ui_layer.set_hand_sprite()
 
 func drop_item(hit: InteractableComponent) -> void:
 	match held_item_id:
