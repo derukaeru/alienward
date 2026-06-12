@@ -6,6 +6,43 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_vbmuw"]
 
+[sub_resource type="Animation" id="Animation_vbmuw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p2sny"]
+resource_name = "bob"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.365, 0.8, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhj0s"]
+_data = {
+&"RESET": SubResource("Animation_vbmuw"),
+&"bob": SubResource("Animation_p2sny")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbmuw"]
 
 [node name="incubator" type="Area3D" unique_id=1495548128]
@@ -15,8 +52,16 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=394319433]
 shape = SubResource("BoxShape3D_p2sny")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1601352981]
+[node name="ModelContainer" type="Node3D" parent="." unique_id=2115430213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=1601352981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_vbmuw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=629146643]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_nhj0s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2113657164]
 

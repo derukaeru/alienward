@@ -8,9 +8,11 @@ func _on_body_entered(body) -> void:
 	if body is Player or body is NPC or body is Patient:
 		if not animation.is_playing() and bodies.is_empty():
 			animation.play("open")
+		else:
+			await animation.animation_finished
+			animation.play("open")
 		
 		bodies.append(body)
-		
 
 func _on_body_exited(body) -> void:
 	if body is Player or body is NPC or body is Patient:

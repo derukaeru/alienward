@@ -26,6 +26,7 @@ Dialogues="*uid://cfmsup4wsxfnt"
 DialogueManager="*uid://dn2540687twh5"
 Lang="*uid://bvvh31f2evss8"
 DaysConfig="*uid://bchund26hmjxt"
+EffectsManager="*uid://cf35mhlfocojy"
 
 [display]
 

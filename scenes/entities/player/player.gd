@@ -134,7 +134,7 @@ func _try_interact() -> void:
 			drop_item(hit)
 
 func pick_up(item: InteractableComponent) -> void:
-	if held_item_id == ITEMS_ID.swab:
+	if held_item_id == ITEMS_ID.swab or held_item_id == ITEMS_ID.swab_used:
 		if item is Baby and held_item.baby_id == -1:
 			held_item.baby_id = item.id
 			
