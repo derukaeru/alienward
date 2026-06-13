@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://476kbecnw00m"]
 
 [ext_resource type="Script" uid="uid://dnxjoqdirwa8v" path="res://scenes/objects/microscope.gd" id="1_lqit0"]
+[ext_resource type="Texture2D" uid="uid://dijk4rwko08mo" path="res://assets/models/objects/microscope.png" id="2_qo7xn"]
+[ext_resource type="ArrayMesh" uid="uid://mdo4cmi6fu07" path="res://assets/models/objects/microscope.obj" id="2_td1ok"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqit0"]
 size = Vector3(0.6, 0.6, 0.6)
 
-[sub_resource type="BoxMesh" id="BoxMesh_lqit0"]
-size = Vector3(0.6, 0.6, 0.6)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu7rg"]
+shading_mode = 0
+albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+albedo_texture = ExtResource("2_qo7xn")
 
 [node name="microscope" type="Area3D" unique_id=815800569]
 script = ExtResource("1_lqit0")
@@ -16,5 +20,7 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=430893825]
 shape = SubResource("BoxShape3D_lqit0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=734545487]
-mesh = SubResource("BoxMesh_lqit0")
+[node name="Microscope" type="MeshInstance3D" parent="." unique_id=1096886516]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.044575334, -0.34734777, 0)
+material_override = SubResource("StandardMaterial3D_nu7rg")
+mesh = ExtResource("2_td1ok")

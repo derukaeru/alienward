@@ -231,10 +231,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.485724, 0.48528564, -0.738
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1127877, 1.3629224, 3.6180525)
 
 [node name="microscope" parent="NavigationRegion3D/objects" unique_id=815800569 instance=ExtResource("7_jukbv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.3492775, 3.5348577)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.8872023, 1.3492775, 3.5348577)
 
 [node name="swab_container" parent="NavigationRegion3D/objects" unique_id=781625189 instance=ExtResource("8_jukbv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77868, 1.1925887, 3.4679136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.060939, 1.1925887, 3.4679136)
 
 [node name="chair" parent="NavigationRegion3D/objects" unique_id=1269723263 instance=ExtResource("9_3apbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.748257, 0, -3.1326795)
