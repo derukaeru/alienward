@@ -1,5 +1,7 @@
 class_name Microscope extends InteractableComponent
 
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.microscope
 
@@ -14,9 +16,10 @@ func interact() -> void:
 			GameManager.microscope_dna = Util.get_baby_with_id(id).dna
 			player.remove_held_item()
 			
+			animation.play("pop")
+			
 			return
-	
+		
+	animation.play("pop")
 	if player.ui_layer.microscope_open: return
-	
 	player.ui_layer.open_microscope_screen()
-	Util.mouse_visible()

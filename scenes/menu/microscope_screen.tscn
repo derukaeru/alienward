@@ -1,37 +1,112 @@
 [gd_scene format=3 uid="uid://d2wp275ru8mkw"]
 
 [ext_resource type="Script" uid="uid://1q7rqfqvkqbl" path="res://scenes/menu/microscope_screen.gd" id="1_vq0fj"]
+[ext_resource type="Texture2D" uid="uid://pwa7rt5847ht" path="res://assets/sprites/ui/microscope_screen.png" id="2_8pnfs"]
+[ext_resource type="Shader" uid="uid://byveqf80sl83v" path="res://assets/shaders/wave.gdshader" id="3_ev5bl"]
+[ext_resource type="Script" uid="uid://dklbi1wpvkbp5" path="res://scenes/menu/dna_display.gd" id="4_e3ha5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ha5"]
+shader = ExtResource("3_ev5bl")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 1.62
+shader_parameter/spin_speed = 16.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
+shader_parameter/colour_2 = Color(0, 0, 0, 1)
+shader_parameter/colour_3 = Color(0.12955853, 0.12955844, 0.12955844, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.24
+shader_parameter/pixel_filter = 700.0
+
+[sub_resource type="Animation" id="Animation_ev5bl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_32uvo"]
+resource_name = "pop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 576), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1w5r"]
+_data = {
+&"RESET": SubResource("Animation_ev5bl"),
+&"pop": SubResource("Animation_32uvo")
+}
 
 [node name="microscope_screen" type="Control" unique_id=1116009674]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -0.00048828125
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vq0fj")
 
-[node name="background" type="ColorRect" parent="." unique_id=348291600]
+[node name="background" type="TextureRect" parent="." unique_id=805150510]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_8pnfs")
+
+[node name="gene_background" type="ColorRect" parent="." unique_id=1489907807]
+material = SubResource("ShaderMaterial_e3ha5")
+layout_mode = 0
+offset_left = 64.0
+offset_top = 63.999817
+offset_right = 448.0
+offset_bottom = 447.99982
 
 [node name="leave" type="Button" parent="." unique_id=351313080]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -149.0
-offset_top = 42.0
-offset_right = -66.0
-offset_bottom = 106.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 72.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1184094313]
+libraries/ = SubResource("AnimationLibrary_h1w5r")
+
+[node name="dna_display" type="Control" parent="." unique_id=1615135861]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 448.0
+script = ExtResource("4_e3ha5")
 
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

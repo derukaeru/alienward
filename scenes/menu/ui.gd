@@ -45,26 +45,34 @@ func open_patient_screen(reason: GameManager.REASONS) -> void:
 func open_shop_screen() -> void:
 	if shop_open: return
 	
-	var player = Util.get_player()
-	if not player: return
-	
 	shop_screen.show()
 	shop_open = true
 	
+	shop_screen.animation.play("pop")
+	await shop_screen.animation.animation_finished
+	
+	var player = Util.get_player()
+	if not player: return
+	
 	player.can_move = false
 	player.velocity = Vector3.ZERO
+	Util.mouse_visible()
 
 func open_microscope_screen() -> void:
 	if microscope_open: return
 	
+	microscope_open = true
+	microscope_screen.show()
+	
+	microscope_screen.animation.play("pop")
+	await microscope_screen.animation.animation_finished
+	
 	var player = Util.get_player()
 	if not player: return
 	
-	microscope_screen.show()
-	microscope_open = true
-	
 	player.can_move = false
 	player.velocity = Vector3.ZERO
+	Util.mouse_visible()
 
 func show_tooltip(text: String) -> void:
 	tooltip.text = text

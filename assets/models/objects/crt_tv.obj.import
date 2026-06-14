@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bcl4kb2x2d2li"
+path="res://.godot/imported/crt_tv.obj-dc91b472b6d60b3027692d00bc8289f0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crt_tv.obj-dc91b472b6d60b3027692d00bc8289f0.mesh"]
+
+source_file="res://assets/models/objects/crt_tv.obj"
+dest_files=["res://.godot/imported/crt_tv.obj-dc91b472b6d60b3027692d00bc8289f0.mesh", "res://.godot/imported/crt_tv.obj-dc91b472b6d60b3027692d00bc8289f0.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

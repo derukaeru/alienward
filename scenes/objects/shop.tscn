@@ -1,26 +1,74 @@
 [gd_scene format=3 uid="uid://bi6j5bhwkln6q"]
 
 [ext_resource type="Script" uid="uid://byc3n7ldk1ehr" path="res://scenes/objects/shop.gd" id="1_suugs"]
+[ext_resource type="ArrayMesh" uid="uid://bcl4kb2x2d2li" path="res://assets/models/objects/crt_tv.obj" id="2_o2dy8"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="2_xfthh"]
+[ext_resource type="Texture2D" uid="uid://dauef0aqf0pmj" path="res://assets/models/objects/crt_tv.png" id="2_y5y2e"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_xfthh"]
-size = Vector3(0.5, 0.5, 0.2)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_maa1b"]
+shading_mode = 0
+albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+albedo_texture = ExtResource("2_y5y2e")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dy8"]
-size = Vector3(0.5, 0.5, 0.2)
+size = Vector3(0.74975586, 0.7850342, 0.80717546)
+
+[sub_resource type="Animation" id="Animation_y5y2e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_maa1b"]
+resource_name = "pop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.245, 0.72, 1.275), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ul1bt"]
+_data = {
+&"RESET": SubResource("Animation_y5y2e"),
+&"pop": SubResource("Animation_maa1b")
+}
 
 [node name="shop" type="Node3D" unique_id=1536746055]
 script = ExtResource("1_suugs")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=236657008]
-mesh = SubResource("BoxMesh_xfthh")
+[node name="CrtTv" type="MeshInstance3D" parent="." unique_id=2030692739]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.0024549067, 0)
+material_override = SubResource("StandardMaterial3D_maa1b")
+mesh = ExtResource("2_o2dy8")
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=1055673654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25487617, 0)
 script = ExtResource("2_xfthh")
 show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=53241124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007446289, 0.14251709, 0.028918803)
 shape = SubResource("BoxShape3D_o2dy8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1162612216]
+libraries/ = SubResource("AnimationLibrary_ul1bt")
 
 [connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]

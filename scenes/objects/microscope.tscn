@@ -12,15 +12,57 @@ shading_mode = 0
 albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
 albedo_texture = ExtResource("2_qo7xn")
 
+[sub_resource type="Animation" id="Animation_qo7xn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_nu7rg"]
+resource_name = "pop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0.11336292, 0.075092554, 0.17932926), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4utjq"]
+_data = {
+&"RESET": SubResource("Animation_qo7xn"),
+&"pop": SubResource("Animation_nu7rg")
+}
+
 [node name="microscope" type="Area3D" unique_id=815800569]
 script = ExtResource("1_lqit0")
 show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=430893825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34409264, 0)
 shape = SubResource("BoxShape3D_lqit0")
 
 [node name="Microscope" type="MeshInstance3D" parent="." unique_id=1096886516]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.044575334, -0.34734777, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.044575334, -0.0032551289, 0)
 material_override = SubResource("StandardMaterial3D_nu7rg")
 mesh = ExtResource("2_td1ok")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1260849318]
+root_node = NodePath("../Microscope")
+libraries/ = SubResource("AnimationLibrary_4utjq")
