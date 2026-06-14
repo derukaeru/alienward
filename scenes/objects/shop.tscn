@@ -9,6 +9,7 @@
 shading_mode = 0
 albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 albedo_texture = ExtResource("2_y5y2e")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dy8"]
 size = Vector3(0.74975586, 0.7850342, 0.80717546)

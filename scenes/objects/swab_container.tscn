@@ -3,11 +3,50 @@
 [ext_resource type="Script" uid="uid://dsls7o86kiveu" path="res://scenes/objects/swab_container.gd" id="1_3gl7h"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3gl7h"]
+height = 0.45043945
+radius = 0.1303711
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3gl7h"]
 top_radius = 0.35
 bottom_radius = 0.35
 height = 1.0
+
+[sub_resource type="Animation" id="Animation_3gl7h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f1l53"]
+resource_name = "pop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.33, 0.65, 1.44), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5w5j"]
+_data = {
+&"RESET": SubResource("Animation_3gl7h"),
+&"pop": SubResource("Animation_f1l53")
+}
 
 [node name="swab_container" type="Area3D" unique_id=781625189]
 script = ExtResource("1_3gl7h")
@@ -15,9 +54,16 @@ tooltip_text = "Press [R-CLICK] to get swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1085111296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20617676, 0)
 shape = SubResource("CylinderShape3D_3gl7h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1179681517]
+[node name="ModelContainer" type="Node3D" parent="." unique_id=433617036]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=1179681517]
+transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, 0, 0.18981993, 0)
 mesh = SubResource("CylinderMesh_3gl7h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1641532757]
+libraries/ = SubResource("AnimationLibrary_w5w5j")
 
 [connection signal="interacted" from="." to="." method="_on_interacted"]

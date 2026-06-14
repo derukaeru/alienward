@@ -1,5 +1,7 @@
 class_name SwabContainer extends InteractableComponent
 
+@onready var animation: AnimationPlayer = $ModelContainer/AnimationPlayer
+
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.swab_container
 
@@ -17,6 +19,8 @@ func _on_interacted() -> void:
 	if not player: return
 	
 	if player.held_item_id != player.ITEMS_ID.clipboard: return
+	
+	animation.play("pop")
 	
 	var _swab: InteractableComponent = load(Registry.UID["swab"]).instantiate()
 	Util.get_group_node("entities_container").add_child(_swab)
