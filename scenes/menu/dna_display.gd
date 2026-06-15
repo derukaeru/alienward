@@ -1,9 +1,7 @@
 extends Control
-
-
 # DNA HELIX
 
-const HELIX_CENTER: Vector2 = Vector2(180.0, 40.0)
+const HELIX_CENTER: Vector2 = Vector2(96, 40.0)
 const HELIX_RADIUS: float = 60
 const BACKBONE_COLOR: Color = Color(0.818, 0.818, 0.818, 1.0)
 const BACKBONE_WIDTH: float = 5.0
@@ -51,8 +49,8 @@ func _draw():
 		
 		if i + 1 > pairs.size() - 1: return
 		
-		var pair1 = pairs[i]
-		var pair2 = pairs[i + 1]
+		#var pair1 = pairs[i]
+		#var pair2 = pairs[i + 1]
 		
-		draw_line(pair1.dot1, pair2.dot1, BACKBONE_COLOR, BACKBONE_WIDTH)
-		draw_line(pair1.dot2, pair2.dot2, BACKBONE_COLOR, BACKBONE_WIDTH)
+		#draw_line(pair1.dot1, pair2.dot1, BACKBONE_COLOR, BACKBONE_WIDTH)
+		#draw_line(pair1.dot2, pair2.dot2, BACKBONE_COLOR, BACKBONE_WIDTH)

@@ -1,6 +1,31 @@
 extends Control
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var bacteria_container: Control = $bacteria_container
+@onready var bacteria: Resource = load(Registry.UID["bacteria"])
+
+func _ready() -> void: 
+	new_dna()
+
+func new_dna() -> void:
+	var split_dna: Array = []
+	var dna: String = GameManager.microscope_dna
+	
+	for i in range(4):
+		split_dna.append(dna.substr(i * 4, 4))
+	
+	for i in range(4):
+		var new_bacteria: Bacteria = bacteria.instantiate()
+		bacteria_container.add_child(new_bacteria)
+		
+		new_bacteria.position.x = randi_range(0, 305)
+		new_bacteria.position.y = randi_range(0, 305)
+		
+		# TODO: determine color using split dna chunks
+		# TODO: determine dna base pair colors in dna_display (COLORS: Dictionary)
+
+func set_dna_color(bacteria_index: int) -> void:
+	pass
 
 func _on_leave_pressed() -> void:
 	Util.mouse_captured()

@@ -46,10 +46,16 @@ func generate_dna() -> void:
 	
 	generate_effect()
 
-func generate_effect() -> void:
-	@warning_ignore("integer_division")
+func get_split_dna(full_dna: String = dna) -> Array:
+	var chunk_array: Array = []
+	
 	for i in range(4):
-		split_dna.append(dna.substr(i * 4, 4))
+		chunk_array.append(full_dna.substr(i * 4, 4))
+	
+	return chunk_array
+
+func generate_effect() -> void:
+	split_dna = get_split_dna()
 	
 	# effect type
 	var effects_num = EffectsManager.EFFECTS.size()

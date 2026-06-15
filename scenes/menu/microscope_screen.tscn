@@ -13,10 +13,26 @@ shader_parameter/polar_zoom = 1.0
 shader_parameter/polar_repeat = 1.0
 shader_parameter/spin_rotation = 1.62
 shader_parameter/spin_speed = 16.0
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/colour_1 = Color(0.0056611504, 0.0056611514, 0.00566115, 1)
-shader_parameter/colour_2 = Color(0, 0, 0, 1)
-shader_parameter/colour_3 = Color(0.12955853, 0.12955844, 0.12955844, 1)
+shader_parameter/offset = Vector2(0.05, 0)
+shader_parameter/colour_1 = Color(0.01793969, 0.019633107, 0.0753882, 1)
+shader_parameter/colour_2 = Color(0.18403858, 0.20891783, 0.26243922, 1)
+shader_parameter/colour_3 = Color(0.090011604, 0.08640536, 0.13172427, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.135
+shader_parameter/pixel_filter = 700.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32uvo"]
+shader = ExtResource("3_ev5bl")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 1.62
+shader_parameter/spin_speed = 16.0
+shader_parameter/offset = Vector2(0.05, 0)
+shader_parameter/colour_1 = Color(0.06053035, 0.06053035, 0.060530342, 1)
+shader_parameter/colour_2 = Color(0.034340385, 0.022664854, 0.019876318, 1)
+shader_parameter/colour_3 = Color(0.12, 0.09272, 0.0828, 1)
 shader_parameter/contrast = 2.0
 shader_parameter/spin_amount = 0.24
 shader_parameter/pixel_filter = 700.0
@@ -68,6 +84,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vq0fj")
 
+[node name="gene_background" type="ColorRect" parent="." unique_id=1489907807]
+material = SubResource("ShaderMaterial_e3ha5")
+layout_mode = 0
+offset_left = 364.0
+offset_top = 16.0
+offset_right = 767.0
+offset_bottom = 446.0
+
+[node name="bacteria_background" type="ColorRect" parent="." unique_id=611094553]
+material = SubResource("ShaderMaterial_32uvo")
+layout_mode = 0
+offset_left = 38.0
+offset_top = 11.0
+offset_right = 483.0
+offset_bottom = 451.0
+
 [node name="background" type="TextureRect" parent="." unique_id=805150510]
 layout_mode = 1
 anchors_preset = 15
@@ -77,36 +109,35 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8pnfs")
 
-[node name="gene_background" type="ColorRect" parent="." unique_id=1489907807]
-material = SubResource("ShaderMaterial_e3ha5")
-layout_mode = 0
-offset_left = 64.0
-offset_top = 63.999817
-offset_right = 448.0
-offset_bottom = 447.99982
+[node name="dna_display" type="Control" parent="." unique_id=1615135861]
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 32.0
+offset_right = 704.0
+offset_bottom = 424.0
+script = ExtResource("4_e3ha5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1184094313]
+libraries/ = SubResource("AnimationLibrary_h1w5r")
+
+[node name="bacteria_container" type="Control" parent="." unique_id=1616373704]
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 35.0
+offset_right = 450.0
+offset_bottom = 420.0
 
 [node name="leave" type="Button" parent="." unique_id=351313080]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -112.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 72.0
+offset_left = -184.0
+offset_top = 464.0
+offset_right = -56.0
+offset_bottom = 536.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "exit"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1184094313]
-libraries/ = SubResource("AnimationLibrary_h1w5r")
-
-[node name="dna_display" type="Control" parent="." unique_id=1615135861]
-anchors_preset = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 448.0
-offset_bottom = 448.0
-script = ExtResource("4_e3ha5")
 
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

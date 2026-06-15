@@ -8,6 +8,8 @@ var UID: Dictionary = {
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",
 	
+	"bacteria": "uid://cfcu3gbpctv5v",
+	
 	"world": "uid://cx0rposj2xxxe",
 	"ward": "uid://bivpb6edg64k5",
 	
