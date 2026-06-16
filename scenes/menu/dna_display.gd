@@ -15,6 +15,12 @@ var COLORS: Array = [
 ]
 
 func _ready() -> void:
+	change_dna_display(COLORS)
+
+func change_dna_display(colors: Array) -> void:
+	COLORS = colors
+	pairs = []
+	
 	for i in range(16):
 		var color_index: int = (i % 2) * 2 
 		
@@ -49,8 +55,8 @@ func _draw():
 		
 		if i + 1 > pairs.size() - 1: return
 		
-		#var pair1 = pairs[i]
-		#var pair2 = pairs[i + 1]
+		var pair1 = pairs[i]
+		var pair2 = pairs[i + 1]
 		
-		#draw_line(pair1.dot1, pair2.dot1, BACKBONE_COLOR, BACKBONE_WIDTH)
-		#draw_line(pair1.dot2, pair2.dot2, BACKBONE_COLOR, BACKBONE_WIDTH)
+		draw_line(pair1.dot1, pair2.dot1, BACKBONE_COLOR, BACKBONE_WIDTH)
+		draw_line(pair1.dot2, pair2.dot2, BACKBONE_COLOR, BACKBONE_WIDTH)

@@ -17,6 +17,7 @@ func interact() -> void:
 			player.remove_held_item()
 			
 			animation.play("pop")
+			player.ui_layer.microscope_screen.new_dna()
 			
 			return
 		

@@ -16,12 +16,7 @@ var effect: Dictionary = {
 	duration = 1.0,
 }
 
-enum LETTER_TO_VAL {
-	A,
-	C,
-	G,
-	T
-}
+enum LETTER_TO_VAL {A, C, G, T}
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.baby
@@ -120,6 +115,5 @@ func generate_effect() -> void:
 		chunk_four_total += LETTER_TO_VAL[dna_chunk_four[i]] * 0.2
 	effect.intensity = remap(chunk_four_total, 0.0, 3.0, 0.5, 2.0)
 
-
 func activate_effect() -> void:
-	pass
+	EffectsManager.apply_effect(self, effect)
