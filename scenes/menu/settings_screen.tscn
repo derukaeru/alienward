@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://5186ghdvrog8"]
+
+[ext_resource type="Script" uid="uid://cle2mxx83qwgk" path="res://scenes/menu/settings_screen.gd" id="1_5xb6v"]
+
+[node name="settings_screen" type="Control" unique_id=558026876]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5xb6v")
+
+[node name="background" type="ColorRect" parent="." unique_id=1996707005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+
+[node name="main_volume_slider" type="HSlider" parent="." unique_id=1262567593]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -128.0
+offset_right = 152.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="sound_effect_volume_slider" type="HSlider" parent="." unique_id=1404800242]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="music_slider" type="HSlider" parent="." unique_id=829614814]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="fullscreen_button" type="CheckButton" parent="." unique_id=516917409]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 136.0
+offset_right = 680.0
+offset_bottom = 200.0
+
+[node name="sensitivity_slider" type="HSlider" parent="." unique_id=433960799]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[connection signal="value_changed" from="main_volume_slider" to="." method="change_main_volume"]
+[connection signal="value_changed" from="sound_effect_volume_slider" to="." method="change_sound_effect_volume"]
+[connection signal="value_changed" from="music_slider" to="." method="change_music_volume"]
+[connection signal="toggled" from="fullscreen_button" to="." method="change_fullscreen"]
+[connection signal="value_changed" from="sensitivity_slider" to="." method="change_sensitivity"]

@@ -1,11 +1,14 @@
 extends Node
 
 @onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
+@onready var settings_screen: Node = load(Registry.UID["settings_screen"]).instantiate()
 
 var SEED: int = 0
 const UNASSIGNED: int = -1
 
 var day: int = 0
+var day_going: bool = false
+
 var time: float = 0.0 
 var money: int = 0
 
@@ -39,6 +42,11 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(_d) -> void:
+	if day_going:
+		var patient_amount: int = Util.get_group_nodes("patient").size()
+		if patient_amount <= 0:
+			spawn_patient()
+	
 	var player: Player = Util.get_player()
 	if not player: return
 	

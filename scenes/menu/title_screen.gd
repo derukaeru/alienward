@@ -16,6 +16,7 @@ func mouse_pressed(source) -> void:
 	tw.tween_property(source, "scale", Vector2(button_scale, button_scale), 0.04)
 
 func _on_start_pressed() -> void:
+	GameManager.day_going = true
 	SceneChanger.change_scene("world")
 	pass
 

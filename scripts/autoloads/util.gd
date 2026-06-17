@@ -30,6 +30,9 @@ func get_main() -> Node3D:
 func get_group_node(group) -> Node:
 	return get_tree().get_first_node_in_group(group)
 
+func get_group_nodes(group) -> Array:
+	return get_tree().get_nodes_in_group(group)
+
 func mouse_visible() -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

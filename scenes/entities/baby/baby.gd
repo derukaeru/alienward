@@ -1,6 +1,7 @@
 class_name Baby extends InteractableComponent
 
 @onready var body: CharacterBody3D = $CharacterBody3D
+@onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 var dna: String = ""
 var split_dna: Array = []
@@ -8,6 +9,9 @@ var needs: Array = []
 var id: int = GameManager.UNASSIGNED
 var patient_id: int = GameManager.UNASSIGNED
 var is_in_incubator: bool = false
+
+var showing_symptoms: bool = false
+var time_to_show_symptoms: float = 10.0
 
 var effect: Dictionary = {
 	effect_index = 1,
@@ -25,9 +29,13 @@ func _ready() -> void:
 	GameManager.latest_baby_id += 1
 	
 	generate_dna()
-
-# TODO HERE
-#func _process(delta) -> void:
+	
+	get_tree().create_timer(time_to_show_symptoms).timeout.connect(
+		func(): 
+			showing_symptoms = true
+			get_tree().create_timer(effect.duration).timeout.connect(activate_effect)
+	)
+	
 	#body.move_and_slide()
 	#if not body.is_on_floor():
 		#body.velocity.y -= gravity * delta
@@ -66,14 +74,10 @@ func generate_effect() -> void:
 	var chunk_two_total: float = 0.0
 	
 	match dna_chunk_two[0]:
-		"A":
-			chunk_two_total = 0.5
-		"C":
-			chunk_two_total = 1.0
-		"G":
-			chunk_two_total = 1.5
-		"T":
-			chunk_two_total = 2.0
+		"A": chunk_two_total = 0.5
+		"C": chunk_two_total = 1.0
+		"G": chunk_two_total = 1.5
+		"T": chunk_two_total = 2.0
 	
 	for i in range(1, 3):
 		chunk_two_total += LETTER_TO_VAL[dna_chunk_two[i]] * 0.2
@@ -84,14 +88,10 @@ func generate_effect() -> void:
 	var chunk_three_total: float = 0.0
 	
 	match dna_chunk_three[0]:
-		"A":
-			chunk_three_total = 0.5
-		"C":
-			chunk_three_total = 1.0
-		"G":
-			chunk_three_total = 1.5
-		"T":
-			chunk_three_total = 2.0
+		"A": chunk_three_total = 0.5
+		"C": chunk_three_total = 1.0
+		"G": chunk_three_total = 1.5
+		"T": chunk_three_total = 2.0
 	
 	for i in range(1, 3):
 		chunk_three_total += LETTER_TO_VAL[dna_chunk_three[i]] * 0.2
@@ -102,14 +102,10 @@ func generate_effect() -> void:
 	var chunk_four_total: float = 0.0
 	
 	match dna_chunk_four[0]:
-		"A":
-			chunk_four_total = 0.5
-		"C":
-			chunk_four_total = 1.0
-		"G":
-			chunk_four_total = 1.5
-		"T":
-			chunk_four_total = 2.0
+		"A": chunk_four_total = 0.5
+		"C": chunk_four_total = 1.0
+		"G": chunk_four_total = 1.5
+		"T": chunk_four_total = 2.0
 	
 	for i in range(1, 3):
 		chunk_four_total += LETTER_TO_VAL[dna_chunk_four[i]] * 0.2
