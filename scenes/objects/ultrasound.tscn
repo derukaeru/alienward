@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cmotf4f4ugeeh"]
+
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_byoom"]
+[ext_resource type="Texture2D" uid="uid://b6x66nbtoqd3" path="res://assets/sprites/objects/ultrasound_scanner.png" id="2_atebd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_atebd"]
+
+[node name="ultrasound" type="Area3D" unique_id=328455575]
+script = ExtResource("1_byoom")
+show_tooltip_text = true
+tooltip_text = "pick up"
+pickupable = true
+internal_name = "ultrasound_scanner"
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=269439057]
+shape = SubResource("BoxShape3D_atebd")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=258193904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18799853, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_atebd")

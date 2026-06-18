@@ -21,7 +21,7 @@ var microscope_dna: String = ""
 var dirtiness: float = 0.0
 
 var has_interacted: bool = false
-var selected_ward_on_ui: int = UNASSIGNED # i wonder what this variable is for
+var selected_ward_on_ui: int = UNASSIGNED # i wonder what this variable is for | EDIT: this comment was so dumb i dont even wanna delete it
 var clinic_open: bool = true
 
 var waiting_seats_occupation: Array = [false, false, false, false, false, false]

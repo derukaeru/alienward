@@ -26,8 +26,11 @@ const ITEMS_ID: Dictionary = {
 	clipboard = "clipboard",
 	baby = "baby_sprite",
 	swab = "swab_sprite",
-	swab_used = "swab_used"
+	swab_used = "swab_used",
+	ultrasound_scanner = "ultrasound_scanner"
 }
+
+var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]
 
 var held_item_id: String = ""
 var held_item: InteractableComponent = null
@@ -142,42 +145,36 @@ func pick_up(item: InteractableComponent) -> void:
 			set_held_item_sprite(ITEMS_ID.swab_used)
 			
 			return
-		drop_item(null)
-	if held_item_id == ITEMS_ID.baby:
-		return
+		else:
+			drop_item(null)
 	
 	# TODO HERE
 	if held_item_id == "ITEMS FOR BABIES":
 		pass
-		
+	
+	if held_item and undroppable.has(held_item_id): return
+	drop_item(null)
+	
 	held_item = item
 	set_held_item_sprite(ITEMS_ID[item.internal_name])
 	
 	item.hide()
-	item.global_position = Vector3.ZERO
+	if held_item_id != ITEMS_ID.ultrasound_scanner:
+		item.global_position = Vector3.ZERO
+		
 	item.set_collision_layer_value(1, false)
 	ui_layer.set_hand_sprite()
 
 func drop_item(hit: InteractableComponent) -> void:
-	match held_item_id:
-		ITEMS_ID.swab:
-			if hit == null:
-				held_item.global_position = global_position + Vector3.ZERO
-				held_item.set_collision_layer_value(1, true)
-				
-				held_item.show()
-				held_item = null
-				
-				set_held_item_sprite("clipboard")
-		ITEMS_ID.swab_used:
-			if hit == null:
-				held_item.global_position = global_position + Vector3.ZERO
-				held_item.set_collision_layer_value(1, true)
-				
-				held_item.show()
-				held_item = null
-				
-				set_held_item_sprite("clipboard")
+	if held_item == null or undroppable.has(held_item_id): return
+	if hit == null:
+		held_item.global_position = global_position + Vector3.ZERO
+		held_item.set_collision_layer_value(1, true)
+		
+		held_item.show()
+		held_item = null
+		
+		set_held_item_sprite("clipboard")
 
 func set_held_item_sprite(sprite_name: String) -> void:
 	held_item_id = sprite_name

@@ -71,9 +71,13 @@ func interacted():
 	guided = true
 	
 	var player: Player = Util.get_player()
-	if not player or state != STATES.WAITING: return
+	if not player: return 
 	
-	player.ui_layer.open_patient_screen(reason)
+	if state == STATES.WAITING: 
+		player.ui_layer.open_patient_screen(reason)
+	elif state == STATES.CHECKUP:
+		if player.held_item_id == player.ITEMS_ID.ultrasound_scanner:
+			pass
 
 func _process(_delta) -> void:
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
