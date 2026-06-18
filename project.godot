@@ -55,6 +55,7 @@ baby=""
 patient=""
 npc=""
 player_ui=""
+bacteria=""
 
 [gui]
 

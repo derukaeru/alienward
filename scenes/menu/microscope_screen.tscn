@@ -140,4 +140,21 @@ offset_top = 35.0
 offset_right = 450.0
 offset_bottom = 420.0
 
+[node name="identifying_bacteria_bar" type="ProgressBar" parent="." unique_id=987949831]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -103.99951
+offset_right = 569.0
+offset_bottom = -45.99951
+grow_vertical = 0
+show_percentage = false
+
+[node name="identifying_timer" type="Timer" parent="." unique_id=267144552]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
+[connection signal="timeout" from="identifying_timer" to="." method="identified_bacteria"]
