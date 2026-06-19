@@ -7,7 +7,10 @@ const TOOLTIPS: Dictionary = {
 	trashcan = "throw item",
 	swab = "pick up",
 	incubator = "place baby",
-	xray = "x-ray",
+	antidote_stand = "antidote stand",
+	antidote = "pick up",
+	ultrasound_screen = "ultrasound screen",
+	ultrasound_scanner = "ultrasound scanner",
 	mop = "mop",
 	swab_container = "get swab"
 }

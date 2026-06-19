@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bq1xk1af7n2s0"]
+
+[ext_resource type="Script" uid="uid://d3xwqaucr6ne0" path="res://scenes/objects/antidote_stand.gd" id="1_s18v0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s18v0"]
+
+[sub_resource type="Animation" id="Animation_gfddq"]
+resource_name = "pop"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wtr0"]
+_data = {
+&"pop": SubResource("Animation_gfddq")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_s18v0"]
+
+[node name="antidote_stand" type="Area3D" unique_id=2015022452]
+script = ExtResource("1_s18v0")
+show_tooltip_text = true
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1174891307]
+shape = SubResource("BoxShape3D_s18v0")
+
+[node name="ModelContainer" type="Node3D" parent="." unique_id=605234218]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1008924445]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_6wtr0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=871063438]
+mesh = SubResource("BoxMesh_s18v0")

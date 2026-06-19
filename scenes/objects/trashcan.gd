@@ -16,7 +16,5 @@ func _on_interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id == player.ITEMS_ID.baby or player.held_item_id == player.ITEMS_ID.clipboard:
-		return
-	
+	if player.non_throwable.has(player.held_item_id): return
 	player.remove_held_item()

@@ -27,10 +27,12 @@ const ITEMS_ID: Dictionary = {
 	baby = "baby_sprite",
 	swab = "swab_sprite",
 	swab_used = "swab_used",
-	ultrasound_scanner = "ultrasound_scanner"
+	ultrasound_scanner = "ultrasound_scanner",
+	antidote = "antidote"
 }
 
 var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]
+var non_throwable: Array = [ITEMS_ID.baby, ITEMS_ID.clipboard]
 
 var held_item_id: String = ""
 var held_item: InteractableComponent = null
@@ -168,7 +170,8 @@ func pick_up(item: InteractableComponent) -> void:
 func drop_item(hit: InteractableComponent) -> void:
 	if held_item == null or undroppable.has(held_item_id): return
 	if hit == null:
-		held_item.global_position = global_position + Vector3.ZERO
+		if held_item_id != ITEMS_ID.ultrasound_scanner:
+			held_item.global_position = global_position + Vector3.ZERO
 		held_item.set_collision_layer_value(1, true)
 		
 		held_item.show()

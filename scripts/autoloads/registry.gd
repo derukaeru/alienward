@@ -29,6 +29,7 @@ var UID: Dictionary = {
 	"clipboard": "uid://dpwx6lq1basmc",
 	"swab_sprite": "uid://byleeb4m3vftg",
 	"ultrasound_scanner": "uid://b6x66nbtoqd3",
+	"antidote": "uid://cnely2yvr8exu",
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt"
