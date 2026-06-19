@@ -22,7 +22,7 @@ func _on_interacted() -> void:
 	
 	animation.play("pop")
 	
-	var _swab: InteractableComponent = load(Registry.UID["swab"]).instantiate()
+	var _swab: Item = load(Registry.UID["swab"]).instantiate()
 	Util.get_group_node("entities_container").add_child(_swab)
 	
 	_swab.name = "swab"

@@ -67,11 +67,13 @@ func _physics_process(delta) -> void:
 	velocity = direction * speed
 	move_and_slide()
 
-func interacted():
+func interacted() -> void:
 	guided = true
 	
 	var player: Player = Util.get_player()
-	if not player: return 
+	if not player: return
+	
+	if player.held_item_id != player.ITEMS_ID.clipboard: return
 	
 	if state == STATES.WAITING: 
 		player.ui_layer.open_patient_screen(reason)

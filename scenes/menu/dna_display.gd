@@ -42,7 +42,7 @@ func _process(_delta) -> void:
 
 	queue_redraw()
 
-func _draw():
+func _draw() -> void:
 	for i in pairs.size():
 		var pair = pairs[i]
 		

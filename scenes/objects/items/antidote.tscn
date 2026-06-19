@@ -8,6 +8,7 @@ size = Vector3(0.6484375, 0.58599854, 0.5780945)
 
 [node name="antidote" type="Area3D" unique_id=1732721454]
 script = ExtResource("1_xoq7v")
+internal_name = "antidote"
 metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=367948320]

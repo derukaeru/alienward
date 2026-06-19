@@ -27,24 +27,23 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_xfd33"]
 size = Vector3(0.77941895, 0.42907715, 0.7772217)
 
-[node name="baby" type="Area3D" unique_id=227573645 groups=["baby"]]
+[node name="baby" type="Area3D" unique_id=1860904262 groups=["baby"]]
 script = ExtResource("1_712cb")
-show_tooltip_text = true
-tooltip_text = null
+internal_name = "baby"
 metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2048977945]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=791688665]
 shape = SubResource("BoxShape3D_s51qe")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1865908804]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1583109298]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 material_overlay = SubResource("StandardMaterial3D_xfd33")
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3nmci")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=622413086]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1866384351]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=711120516]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1072220134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010314941, -0.28546143, 0.0004272461)
 shape = SubResource("BoxShape3D_xfd33")

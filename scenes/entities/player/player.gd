@@ -153,10 +153,14 @@ func _interact() -> void:
 
 func pick_up(item: Item) -> void:
 	if held_item and undroppable.has(held_item_id): return
-	drop_item(null)
 	
-	held_item = item
+	if not ITEMS_ID.has(item.internal_name):
+		print("The ITEMS_ID does not have a record for the Internal Name of this Item.")
+		return
+		
+	drop_item(null)
 	set_held_item_sprite(ITEMS_ID[item.internal_name])
+	held_item = item
 	
 	item.hide()
 	if held_item_id != ITEMS_ID.ultrasound_scanner:

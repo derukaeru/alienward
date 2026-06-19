@@ -46,23 +46,22 @@ _data = {
 &"idle": SubResource("Animation_dlvst")
 }
 
-[node name="swab" type="Area3D" unique_id=2091490128]
+[node name="swab" type="Area3D" unique_id=656635401]
 script = ExtResource("1_m7jsg")
-show_tooltip_text = true
-tooltip_text = null
+internal_name = "swab"
 metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1577606657]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1542826992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032958984, 0.13031006, 9.1552734e-05)
 shape = SubResource("BoxShape3D_m7jsg")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1002217702]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=63995945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540442, 0)
 material_overlay = SubResource("ShaderMaterial_7fqrb")
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_m7jsg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1522603310]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=365050747]
 libraries/ = SubResource("AnimationLibrary_7fqrb")
 autoplay = &"idle"
