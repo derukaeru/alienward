@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://b328136vl47io"]
 
-[ext_resource type="Script" uid="uid://tys3yr1yo5m6" path="res://scenes/objects/antidote.gd" id="1_xoq7v"]
+[ext_resource type="Script" uid="uid://tys3yr1yo5m6" path="res://scenes/objects/items/antidote.gd" id="1_xoq7v"]
 [ext_resource type="Texture2D" uid="uid://cnely2yvr8exu" path="res://assets/sprites/objects/test_texture.png" id="2_2sth7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltbe8"]
 size = Vector3(0.6484375, 0.58599854, 0.5780945)
 
-[node name="antidote" type="Area3D" unique_id=592799222]
+[node name="antidote" type="Area3D" unique_id=1732721454]
 script = ExtResource("1_xoq7v")
-show_tooltip_text = true
-pickupable = true
-internal_name = "antidote"
-metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1973654218]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=367948320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021484375, 0.05770874, -0.024490356)
 shape = SubResource("BoxShape3D_ltbe8")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1459539814]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1663859058]
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_2sth7")

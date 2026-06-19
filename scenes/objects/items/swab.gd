@@ -1,4 +1,4 @@
-class_name Swab extends InteractableComponent
+class_name Swab extends Item
 
 var baby_id: int = GameManager.UNASSIGNED
 

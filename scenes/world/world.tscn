@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjxbuxds7t565" path="res://assets/sprites/world/sky/free hdri_sky_751.jpg" id="1_6m72w"]
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://yhp2sprkwy51" path="res://scenes/objects/dirt.tscn" id="4_v5dby"]
-[ext_resource type="PackedScene" uid="uid://b328136vl47io" path="res://scenes/objects/antidote.tscn" id="5_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://b328136vl47io" path="res://scenes/objects/items/antidote.tscn" id="5_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://b51jsxro6uk0a" path="res://scenes/entities/baby/baby.tscn" id="7_j2gmx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v5dby"]

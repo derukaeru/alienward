@@ -35,7 +35,7 @@ var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]
 var non_throwable: Array = [ITEMS_ID.baby, ITEMS_ID.clipboard]
 
 var held_item_id: String = ""
-var held_item: InteractableComponent = null
+var held_item: Item = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -111,11 +111,11 @@ func _input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not GameManager.has_interacted:
 			GameManager.has_interacted = true
-			_try_interact()
+			_interact()
 	
 	if raycast.is_colliding(): 
 		var collider: Node = raycast.get_collider()
-		if collider is InteractableComponent:
+		if collider is InteractableComponent or collider is Item:
 			if collider.show_tooltip_text:
 				ui_layer.show_tooltip(raycast.get_collider().tooltip_text)
 	else:
@@ -124,36 +124,34 @@ func _input(event) -> void:
 	if Input.is_action_just_pressed("drop"):
 		drop_item(null)
 
-func _try_interact() -> void:
-	var hit = raycast.get_collider()
-	if hit is InteractableComponent:
-		if hit.pickupable:
-			pick_up(hit)
+func _interact() -> void:
+	var hit: Node = raycast.get_collider()
+	
+	if not hit: return
+	if hit is Item:
+		if hit is Baby:
+			match held_item_id:
+				ITEMS_ID.swab:
+					if held_item.baby_id == -1:
+						held_item.baby_id = hit.id
+						
+						held_item.internal_name = "swab_used"
+						set_held_item_sprite(ITEMS_ID.swab_used)
+				ITEMS_ID.antidote:
+					# TODO: do something with the baby here
+					
+					remove_held_item()
 			
-			return
-		else:
-			hit.interact()
-		
-		# drop items
 		if held_item:
 			drop_item(hit)
+		
+		if hit.pickupable:
+			pick_up(hit)
+	
+	if hit is InteractableComponent:
+		hit.interact()
 
-func pick_up(item: InteractableComponent) -> void:
-	if held_item_id == ITEMS_ID.swab or held_item_id == ITEMS_ID.swab_used:
-		if item is Baby and held_item.baby_id == -1:
-			held_item.baby_id = item.id
-			
-			held_item.internal_name = "swab_used"
-			set_held_item_sprite(ITEMS_ID.swab_used)
-			
-			return
-		else:
-			drop_item(null)
-	
-	# TODO HERE
-	if held_item_id == "ITEMS FOR BABIES":
-		pass
-	
+func pick_up(item: Item) -> void:
 	if held_item and undroppable.has(held_item_id): return
 	drop_item(null)
 	
@@ -167,7 +165,7 @@ func pick_up(item: InteractableComponent) -> void:
 	item.set_collision_layer_value(1, false)
 	ui_layer.set_hand_sprite()
 
-func drop_item(hit: InteractableComponent) -> void:
+func drop_item(hit: Node) -> void:
 	if held_item == null or undroppable.has(held_item_id): return
 	if hit == null:
 		if held_item_id != ITEMS_ID.ultrasound_scanner:

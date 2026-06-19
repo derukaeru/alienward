@@ -1,4 +1,4 @@
-class_name Baby extends InteractableComponent
+class_name Baby extends Item
 
 @onready var body: CharacterBody3D = $CharacterBody3D
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D

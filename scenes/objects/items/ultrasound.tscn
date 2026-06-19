@@ -1,20 +1,18 @@
 [gd_scene format=3 uid="uid://cmotf4f4ugeeh"]
 
-[ext_resource type="Script" uid="uid://bvxpjwvcllqvl" path="res://scenes/objects/ultrasound.gd" id="1_atebd"]
+[ext_resource type="Script" uid="uid://bvxpjwvcllqvl" path="res://scenes/objects/items/ultrasound.gd" id="1_atebd"]
 [ext_resource type="Texture2D" uid="uid://b6x66nbtoqd3" path="res://assets/sprites/objects/ultrasound_scanner.png" id="2_atebd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atebd"]
 
-[node name="ultrasound" type="Area3D" unique_id=135411444]
+[node name="ultrasound" type="Area3D" unique_id=1429801635]
 script = ExtResource("1_atebd")
-show_tooltip_text = true
-pickupable = true
 metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1290207956]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1701334582]
 shape = SubResource("BoxShape3D_atebd")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2042901733]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=633080133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18799853, 0)
 billboard = 1
 texture_filter = 0
