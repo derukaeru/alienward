@@ -1,5 +1,6 @@
 class_name Patient extends CharacterBody3D
 
+@onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var nav_agent = $NavigationAgent3D
 var speed: float = 2.4
 var gravity: float = 9.8
@@ -16,7 +17,13 @@ enum STATES {
 }
 var state: STATES = STATES.IDLE
 
-var reason: GameManager.REASONS = GameManager.REASONS.CHECKUP
+var scanning: bool = false
+var scanned: bool = false
+
+var scanning_timer: Timer
+var scan_time: float = 5.0
+
+@export var reason: GameManager.REASONS = GameManager.REASONS.CHECKUP
 var maternity_stage: int = GameManager.UNASSIGNED
 
 var target_name: String = ""
@@ -68,25 +75,46 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func interacted() -> void:
-	guided = true
+	if state == STATES.WAITING:
+		guided = true
 	
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id != player.ITEMS_ID.clipboard: return
-	
-	if state == STATES.WAITING: 
+	if state == STATES.WAITING and player.held_item_id != player.ITEMS_ID.clipboard: 
 		player.ui_layer.open_patient_screen(reason)
 	elif state == STATES.CHECKUP:
-		if player.held_item_id == player.ITEMS_ID.ultrasound_scanner:
-			pass
+		if player.held_item_id == player.ITEMS_ID.ultrasound_scanner and not scanned:
+			scanning = true
+			print("scanning")
+			
+			scanning_timer = Timer.new()
+			scanning_timer.one_shot = true
+			add_child(scanning_timer)
+			
+			scanning_timer.start(scan_time)
+			scanning_timer.timeout.connect(scan_done)
+
+func scan_done() -> void:
+	scanned = true
+	scanning = false
 
 func _process(_delta) -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if scanning:
+		var player_collider: Node = player.raycast.get_collider()
+		if not player_collider == interactable_component:
+			scanning = false
+			print("stopped scanning")
+			
+			scanning_timer.stop()
+			scanning_timer.queue_free()
+	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
 		guided = false
 		
-		var player: Player = Util.get_player()
-		if not player: return
 		
 		if reason == GameManager.REASONS.CHECKUP:
 			player.ui_layer.checkup.hide() 

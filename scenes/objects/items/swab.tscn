@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://byleeb4m3vftg" path="res://assets/sprites/objects/swab.png" id="2_m7jsg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
-size = Vector3(0.64086914, 1.2606201, 0.58599854)
+size = Vector3(0.64086914, 0.58432007, 0.58599854)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7fqrb"]
 
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.540442, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dlvst"]
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.540442, 0), Vector3(0, 0.7014135, 0), Vector3(0, 0.540442, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.201, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7fqrb"]
@@ -52,11 +52,10 @@ internal_name = "swab"
 metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1542826992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032958984, 0.13031006, 9.1552734e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0032958984, 0.06602478, 9.1552734e-05)
 shape = SubResource("BoxShape3D_m7jsg")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=63995945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540442, 0)
 material_overlay = SubResource("ShaderMaterial_7fqrb")
 billboard = 1
 texture_filter = 0

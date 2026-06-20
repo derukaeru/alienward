@@ -137,6 +137,8 @@ func _interact() -> void:
 						
 						held_item.internal_name = "swab_used"
 						set_held_item_sprite(ITEMS_ID.swab_used)
+						
+						return
 				ITEMS_ID.antidote:
 					# TODO: do something with the baby here
 					
@@ -173,7 +175,7 @@ func drop_item(hit: Node) -> void:
 	if held_item == null or undroppable.has(held_item_id): return
 	if hit == null:
 		if held_item_id != ITEMS_ID.ultrasound_scanner:
-			held_item.global_position = global_position + Vector3.ZERO
+			held_item.global_position = global_position + Vector3(0, 0.5, 0)
 		held_item.set_collision_layer_value(1, true)
 		
 		held_item.show()
