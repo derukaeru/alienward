@@ -21,6 +21,8 @@ var shop_open: bool = false
 var patient_open: bool = false
 
 var showing_warning: bool = false
+var warning_timer: Timer
+var warning_timer_speed: float = 3.0
 
 func _input(event) -> void:
 	if guide_patient.visible:
@@ -84,7 +86,32 @@ func show_tooltip(text: String) -> void:
 	tooltip.text = text
 	set_hand_sprite()
 
+func show_warning(text: String) -> void:
+	if showing_warning:
+		warning_timer.stop()
+		warning_timer.queue_free()
+		
+		warning_timer = null
+		
+	showing_warning = true
+	tooltip.text = text
+	
+	warning_timer = Timer.new()
+	warning_timer.one_shot = true
+	add_child(warning_timer)
+	
+	warning_timer.timeout.connect(
+		func(): 
+			showing_warning = false
+			tooltip.text = ""
+			
+			warning_timer.queue_free()
+			warning_timer = null
+	)
+	warning_timer.start(warning_timer_speed)
+
 func hide_tooltip() -> void:
+	if showing_warning: return
 	tooltip.text = ""
 	
 	var player: Player = Util.get_player()

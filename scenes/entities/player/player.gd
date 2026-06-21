@@ -176,7 +176,11 @@ func pick_up(item: Item) -> void:
 	ui_layer.set_hand_sprite()
 
 func drop_item(hit: Node) -> void:
-	if held_item == null or undroppable.has(held_item_id): return
+	if held_item == null or undroppable.has(held_item_id): 
+		if held_item_id == ITEMS_ID.baby:
+			ui_layer.show_warning(Lang.WARNINGS.drop_baby)
+		return
+	
 	if hit == null:
 		if held_item_id != ITEMS_ID.ultrasound_scanner:
 			held_item.global_position = global_position + Vector3(0, 0.5, 0)

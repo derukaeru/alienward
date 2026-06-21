@@ -16,3 +16,8 @@ const TOOLTIPS: Dictionary = {
 	mop = "mop",
 	swab_container = "get swab"
 }
+
+const WARNINGS: Dictionary = {
+	drop_baby = "Please put the baby at a safe place",
+	throw_item = "You cannot throw the item you're holding"
+}
