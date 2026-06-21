@@ -232,7 +232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.203953, 0.260437, -3.94268
 shape = SubResource("BoxShape3D_lqfbd")
 
 [node name="trashcan" parent="NavigationRegion3D/physical_objects" unique_id=715487887 instance=ExtResource("10_bmcht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.344208, 1.0028977, 2.1952782)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.344208, 0.034702897, 2.1952782)
 
 [node name="incubators" type="Node3D" parent="NavigationRegion3D/physical_objects" unique_id=179770066]
 
@@ -438,6 +438,7 @@ transform = Transform3D(1, 0, 0, 0, 1.2155882, 0, 0, 0, 1, -12.441639, 3.406343,
 mesh = SubResource("BoxMesh_0rc1y")
 
 [node name="mop" parent="objects" unique_id=244697825 instance=ExtResource("10_5y7t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7359805, 0.63609314, 8.163876)
 
 [node name="shop" parent="objects" unique_id=1536746055 instance=ExtResource("6_5y7t6")]
 transform = Transform3D(0.52618414, 0, 0.85037065, 0, 1, 0, -0.85037065, 0, 0.52618414, -12.616044, 1.0130254, -2.2422266)

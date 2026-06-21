@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdfje2xdstmkk"]
 
 [ext_resource type="Script" uid="uid://bctcxrpbvd54u" path="res://scenes/objects/items/mop.gd" id="1_ctaj3"]
+[ext_resource type="Texture2D" uid="uid://dkh8gc602jl65" path="res://assets/sprites/objects/mop.png" id="2_hbjhm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bnra"]
 
@@ -11,3 +12,11 @@ metadata/_custom_type_script = "uid://b16ru0358s8jd"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=639827687]
 shape = SubResource("BoxShape3D_3bnra")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=203851292]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_hbjhm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1870201072]

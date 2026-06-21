@@ -5,9 +5,6 @@ var UID: Dictionary = {
 	"patient": "uid://inedntn6htqj",
 	"baby": "uid://b51jsxro6uk0a",
 	
-	"swab": "uid://bkhvrcq5sh51q",
-	"swab_used": "uid://cjfwpijoxhkk6",
-	
 	"bacteria": "uid://cfcu3gbpctv5v",
 	
 	"world": "uid://cx0rposj2xxxe",
@@ -30,6 +27,9 @@ var UID: Dictionary = {
 	"swab_sprite": "uid://byleeb4m3vftg",
 	"ultrasound_scanner": "uid://b6x66nbtoqd3",
 	"antidote": "uid://cnely2yvr8exu",
+	"mop": "uid://dkh8gc602jl65",
+	"swab": "uid://bkhvrcq5sh51q",
+	"swab_used": "uid://cjfwpijoxhkk6",
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt"

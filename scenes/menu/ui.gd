@@ -14,9 +14,13 @@ extends CanvasLayer
 @onready var microscope_screen: Control = $microscope_screen
 @onready var shop_screen: Control = $shop_screen
 
+@onready var cleaning_progress: ProgressBar = $cleaning_progress
+
 var microscope_open: bool = false
 var shop_open: bool = false
 var patient_open: bool = false
+
+var showing_warning: bool = false
 
 func _input(event) -> void:
 	if guide_patient.visible:
@@ -75,8 +79,9 @@ func open_microscope_screen() -> void:
 	Util.mouse_visible()
 
 func show_tooltip(text: String) -> void:
-	tooltip.text = text
+	if showing_warning: return
 	
+	tooltip.text = text
 	set_hand_sprite()
 
 func hide_tooltip() -> void:
@@ -97,3 +102,6 @@ func set_hand_sprite() -> void:
 	else:
 		hand.texture = load(Registry.UID["hand_hold"])
 		held_item.show()
+
+func set_tooltip_text(text: String) -> void:
+	tooltip.text = text

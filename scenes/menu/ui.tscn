@@ -312,3 +312,17 @@ visible = false
 
 [node name="shop_screen" parent="." unique_id=2077115726 instance=ExtResource("5_wfysg")]
 visible = false
+
+[node name="cleaning_progress" type="ProgressBar" parent="." unique_id=721502491]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -112.0
+offset_right = 168.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0

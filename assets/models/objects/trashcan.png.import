@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkh8gc602jl65"
-path.s3tc="res://.godot/imported/mop.png-76633731ee1fd7d09d0de8926ec5e156.s3tc.ctex"
+uid="uid://cmn4ds5ipskqx"
+path="res://.godot/imported/trashcan.png-238cf4dcc8fb1a002b1b059046aba85d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objects/mop.png"
-dest_files=["res://.godot/imported/mop.png-76633731ee1fd7d09d0de8926ec5e156.s3tc.ctex"]
+source_file="res://assets/models/objects/trashcan.png"
+dest_files=["res://.godot/imported/trashcan.png-238cf4dcc8fb1a002b1b059046aba85d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +24,7 @@ compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/limit=1
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0

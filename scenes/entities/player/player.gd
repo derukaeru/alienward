@@ -28,11 +28,12 @@ const ITEMS_ID: Dictionary = {
 	swab = "swab_sprite",
 	swab_used = "swab_used",
 	ultrasound_scanner = "ultrasound_scanner",
-	antidote = "antidote"
+	antidote = "antidote",
+	mop = "mop"
 }
 
 var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]
-var non_throwable: Array = [ITEMS_ID.baby, ITEMS_ID.clipboard]
+var throwable: Array = [ITEMS_ID.swab, ITEMS_ID.swab_used, ITEMS_ID.antidote]
 
 var held_item_id: String = ""
 var held_item: Item = null
@@ -126,8 +127,8 @@ func _input(event) -> void:
 
 func _interact() -> void:
 	var hit: Node = raycast.get_collider()
-	
 	if not hit: return
+	
 	if hit is Item:
 		if hit is Baby:
 			match held_item_id:
@@ -143,14 +144,17 @@ func _interact() -> void:
 					# TODO: do something with the baby here
 					
 					remove_held_item()
-			
+					return
+		
 		if held_item:
 			drop_item(hit)
 		
 		if hit.pickupable:
 			pick_up(hit)
-	
-	if hit is InteractableComponent:
+	elif hit is Dirt:
+		if held_item_id == ITEMS_ID.mop:
+			hit.clean(self)
+	elif hit is InteractableComponent:
 		hit.interact()
 
 func pick_up(item: Item) -> void:
