@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
 [ext_resource type="PackedScene" uid="uid://yhp2sprkwy51" path="res://scenes/objects/dirt.tscn" id="4_v5dby"]
 [ext_resource type="PackedScene" uid="uid://b328136vl47io" path="res://scenes/objects/items/antidote.tscn" id="5_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://c41nfst6ynh2f" path="res://scenes/objects/items/chili.tscn" id="6_bq33v"]
 [ext_resource type="PackedScene" uid="uid://b51jsxro6uk0a" path="res://scenes/entities/baby/baby.tscn" id="7_j2gmx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v5dby"]
@@ -48,6 +49,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022934556, 5.8276644)
 
 [node name="antidote" parent="entities" unique_id=592799222 instance=ExtResource("5_t5ptc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6863581, 0.6916039)
+
+[node name="chili" parent="entities" unique_id=1007922539 instance=ExtResource("6_bq33v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27763796, -3.1935856)
 
 [node name="player" parent="." unique_id=1554846954 groups=["player"] instance=ExtResource("2_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7140511, 0, -7.4180455)

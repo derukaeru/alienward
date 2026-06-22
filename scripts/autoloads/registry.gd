@@ -30,6 +30,7 @@ var UID: Dictionary = {
 	"mop": "uid://dkh8gc602jl65",
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",
+	"chili": "uid://cnely2yvr8exu",
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt"

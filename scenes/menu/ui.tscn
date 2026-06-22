@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://cie80ise51xdw" path="res://assets/shaders/crosshair.gdshader" id="3_5y2ix"]
 [ext_resource type="PackedScene" uid="uid://d2wp275ru8mkw" path="res://scenes/menu/microscope_screen.tscn" id="4_5y2ix"]
 [ext_resource type="PackedScene" uid="uid://b4sil7n400wmm" path="res://scenes/menu/shop_screen.tscn" id="5_wfysg"]
+[ext_resource type="PackedScene" uid="uid://5kj01o53rvfd" path="res://scenes/menu/antidote_screen.tscn" id="7_dlyu0"]
 
 [sub_resource type="Animation" id="Animation_wfysg"]
 resource_name = "RESET"
@@ -231,6 +232,20 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.7411765)
 
+[node name="cleaning_progress" type="ProgressBar" parent="." unique_id=721502491]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -112.0
+offset_right = 168.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="guide_patient" type="ColorRect" parent="." unique_id=1760841950]
 visible = false
 anchors_preset = 8
@@ -313,16 +328,5 @@ visible = false
 [node name="shop_screen" parent="." unique_id=2077115726 instance=ExtResource("5_wfysg")]
 visible = false
 
-[node name="cleaning_progress" type="ProgressBar" parent="." unique_id=721502491]
+[node name="antidote_screen" parent="." unique_id=281006036 instance=ExtResource("7_dlyu0")]
 visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -112.0
-offset_right = 168.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 0

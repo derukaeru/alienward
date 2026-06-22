@@ -29,7 +29,8 @@ const ITEMS_ID: Dictionary = {
 	swab_used = "swab_used",
 	ultrasound_scanner = "ultrasound_scanner",
 	antidote = "antidote",
-	mop = "mop"
+	mop = "mop",
+	chili = "chili",
 }
 
 var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]

@@ -13,12 +13,14 @@ extends CanvasLayer
 
 @onready var microscope_screen: Control = $microscope_screen
 @onready var shop_screen: Control = $shop_screen
+@onready var antidote_screen: Control = $antidote_screen
 
 @onready var cleaning_progress: ProgressBar = $cleaning_progress
 
 var microscope_open: bool = false
 var shop_open: bool = false
 var patient_open: bool = false
+var antidote_open: bool = false
 
 var showing_warning: bool = false
 var warning_timer: Timer
@@ -74,6 +76,22 @@ func open_microscope_screen() -> void:
 	await microscope_screen.animation.animation_finished
 	
 	var player = Util.get_player()
+	if not player: return
+	
+	player.can_move = false
+	player.velocity = Vector3.ZERO
+	Util.mouse_visible()
+
+func open_antidote_screen() -> void:
+	if antidote_open: return
+	
+	antidote_open = true
+	antidote_screen.show()
+	
+	antidote_screen.animation.play("pop")
+	await antidote_screen.animation.animation_finished
+	
+	var player: Player = Util.get_player()
 	if not player: return
 	
 	player.can_move = false

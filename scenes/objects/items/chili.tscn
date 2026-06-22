@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c41nfst6ynh2f"]
+
+[ext_resource type="Script" uid="uid://hgtvmmlxmy40" path="res://scripts/components/BaseAntidoteItem.gd" id="1_xo7bh"]
+[ext_resource type="Texture2D" uid="uid://cnely2yvr8exu" path="res://assets/sprites/objects/test_texture.png" id="2_kw1n6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo7bh"]
+size = Vector3(0.66186523, 0.79785156, 0.6739502)
+
+[node name="chili" type="Area3D" unique_id=1007922539]
+script = ExtResource("1_xo7bh")
+internal_name = "chili"
+metadata/_custom_type_script = "uid://hgtvmmlxmy40"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1367044919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013305664, 0.10107422, -0.009460449)
+shape = SubResource("BoxShape3D_xo7bh")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=381236052]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_kw1n6")
