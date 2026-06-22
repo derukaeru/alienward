@@ -5,8 +5,8 @@
 [ext_resource type="ArrayMesh" uid="uid://cak5v3hjfcvt8" path="res://assets/models/objects/swab_container.obj" id="3_jdwra"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3gl7h"]
-height = 0.45043945
-radius = 0.1303711
+height = 0.40197754
+radius = 0.16699219
 
 [sub_resource type="Animation" id="Animation_3gl7h"]
 length = 0.001
@@ -57,7 +57,7 @@ tooltip_text = "Press [R-CLICK] to get swab"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1085111296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20617676, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1819458, 0)
 shape = SubResource("CylinderShape3D_3gl7h")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=433617036]
@@ -65,8 +65,8 @@ shape = SubResource("CylinderShape3D_3gl7h")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1641532757]
 libraries/ = SubResource("AnimationLibrary_w5w5j")
 
-[node name="SwabContainer" type="MeshInstance3D" parent="." unique_id=471607503]
-transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0, 0)
+[node name="SwabContainer" type="MeshInstance3D" parent="ModelContainer" unique_id=471607503]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_nsnwb")
 mesh = ExtResource("3_jdwra")
 

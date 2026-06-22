@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bxdci4360g1on"]
+
+[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_pa7e3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hn7fk"]
+size = Vector3(0.75, 0.2, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa7e3"]
+size = Vector3(1, 0.31304932, 1)
+
+[node name="printer" type="Area3D" unique_id=1208250620]
+script = ExtResource("1_pa7e3")
+show_tooltip_text = true
+tooltip_text = "printer"
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="ModelContainer" type="Node3D" parent="." unique_id=302359606]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=762870781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_hn7fk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1900315528]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1244180596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08035278, 0)
+shape = SubResource("BoxShape3D_pa7e3")

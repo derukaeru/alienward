@@ -1,5 +1,7 @@
 class_name Trashcan extends InteractableComponent
 
+@onready var animation: AnimationPlayer = $ModelContainer/AnimationPlayer
+
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.trashcan
 
@@ -18,5 +20,6 @@ func _on_interacted() -> void:
 	
 	if player.throwable.has(player.held_item_id):
 		player.remove_held_item()
-	else:
+		animation.play("pop")
+	elif player.held_item_id != player.ITEMS_ID.clipboard:
 		player.ui_layer.show_warning(Lang.WARNINGS.throw_item)
