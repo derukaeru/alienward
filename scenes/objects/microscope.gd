@@ -9,7 +9,7 @@ func interact() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id == player.ITEMS_ID.swab or player.held_item_id == player.ITEMS_ID.swab_used:
+	if player.held_item_id == ITEMS.IDS.swab or player.held_item_id == ITEMS.IDS.swab_used:
 		var id: int = player.held_item.baby_id
 		
 		if id > -1:

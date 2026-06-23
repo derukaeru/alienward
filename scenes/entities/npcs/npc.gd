@@ -32,7 +32,7 @@ func interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id == player.ITEMS_ID.baby:
+	if player.held_item_id == ITEMS.IDS.baby:
 		var baby: Baby = player.held_item
 		
 		if baby.patient_id == patient_id:

@@ -141,7 +141,7 @@ func set_hand_sprite() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id == player.ITEMS_ID.clipboard and tooltip.text != "":
+	if player.held_item_id == ITEMS.IDS.clipboard and tooltip.text != "":
 		hand.texture = load(Registry.UID["hand_point"])
 		held_item.hide()
 	else:

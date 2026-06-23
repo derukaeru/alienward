@@ -22,20 +22,6 @@ var tilt_target: float = 0.0
 var mouse_sensitivity: float = 0.006
 var can_move: bool = true
 
-const ITEMS_ID: Dictionary = {
-	clipboard = "clipboard",
-	baby = "baby_sprite",
-	swab = "swab_sprite",
-	swab_used = "swab_used",
-	ultrasound_scanner = "ultrasound_scanner",
-	antidote = "antidote",
-	mop = "mop",
-	chili = "chili",
-}
-
-var undroppable: Array = [ITEMS_ID.clipboard, ITEMS_ID.baby]
-var throwable: Array = [ITEMS_ID.swab, ITEMS_ID.swab_used, ITEMS_ID.antidote]
-
 var held_item_id: String = ""
 var held_item: Item = null
 
@@ -67,7 +53,7 @@ func _physics_process(delta) -> void:
 			direction = direction.normalized()
 			
 			var speed_debuff: float = 1.0
-			if held_item_id == ITEMS_ID.baby: 
+			if held_item_id == ITEMS.IDS.baby: 
 				speed_debuff = 0.84
 				
 			velocity.x = direction.x * speed * speed_debuff
@@ -133,15 +119,15 @@ func _interact() -> void:
 	if hit is Item:
 		if hit is Baby:
 			match held_item_id:
-				ITEMS_ID.swab:
+				ITEMS.IDS.swab:
 					if held_item.baby_id == -1:
 						held_item.baby_id = hit.id
 						
 						held_item.internal_name = "swab_used"
-						set_held_item_sprite(ITEMS_ID.swab_used)
+						set_held_item_sprite(ITEMS.IDS.swab_used)
 						
 						return
-				ITEMS_ID.antidote:
+				ITEMS.IDS.antidote:
 					# TODO: do something with the baby here
 					
 					remove_held_item()
@@ -153,37 +139,37 @@ func _interact() -> void:
 		if hit.pickupable:
 			pick_up(hit)
 	elif hit is Dirt:
-		if held_item_id == ITEMS_ID.mop:
+		if held_item_id == ITEMS.IDS.mop:
 			hit.clean(self)
 	elif hit is InteractableComponent:
 		hit.interact()
 
 func pick_up(item: Item) -> void:
-	if held_item and undroppable.has(held_item_id): return
+	if held_item and ITEMS.undroppable.has(held_item_id): return
 	
-	if not ITEMS_ID.has(item.internal_name):
+	if not ITEMS.IDS.has(item.internal_name):
 		print("The ITEMS_ID does not have a record for the Internal Name of this Item.")
 		return
 		
 	drop_item(null)
-	set_held_item_sprite(ITEMS_ID[item.internal_name])
+	set_held_item_sprite(ITEMS.IDS[item.internal_name])
 	held_item = item
 	
 	item.hide()
-	if held_item_id != ITEMS_ID.ultrasound_scanner:
+	if held_item_id != ITEMS.IDS.ultrasound_scanner:
 		item.global_position = Vector3.ZERO
 		
 	item.set_collision_layer_value(1, false)
 	ui_layer.set_hand_sprite()
 
 func drop_item(hit: Node) -> void:
-	if held_item == null or undroppable.has(held_item_id): 
-		if held_item_id == ITEMS_ID.baby:
+	if held_item == null or ITEMS.undroppable.has(held_item_id): 
+		if held_item_id == ITEMS.IDS.baby:
 			ui_layer.show_warning(Lang.WARNINGS.drop_baby)
 		return
 	
 	if hit == null:
-		if held_item_id != ITEMS_ID.ultrasound_scanner:
+		if held_item_id != ITEMS.IDS.ultrasound_scanner:
 			held_item.global_position = global_position + Vector3(0, 0.5, 0)
 		held_item.set_collision_layer_value(1, true)
 		

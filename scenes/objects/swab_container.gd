@@ -9,7 +9,7 @@ func _process(_delta) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id == player.ITEMS_ID.swab:
+	if player.held_item_id == ITEMS.IDS.swab:
 		show_tooltip_text = false
 	else:
 		show_tooltip_text = true
@@ -18,7 +18,7 @@ func _on_interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.held_item_id != player.ITEMS_ID.clipboard: return
+	if player.held_item_id != ITEMS.IDS.clipboard: return
 	
 	animation.play("pop")
 	

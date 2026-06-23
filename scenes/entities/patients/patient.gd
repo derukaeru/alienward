@@ -81,10 +81,10 @@ func interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if state == STATES.WAITING and player.held_item_id != player.ITEMS_ID.clipboard: 
+	if state == STATES.WAITING and player.held_item_id != ITEMS.IDS.clipboard: 
 		player.ui_layer.open_patient_screen(reason)
 	elif state == STATES.CHECKUP:
-		if player.held_item_id == player.ITEMS_ID.ultrasound_scanner and not scanned:
+		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
 			print("scanning")
 			

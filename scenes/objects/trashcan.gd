@@ -21,5 +21,5 @@ func _on_interacted() -> void:
 	if player.throwable.has(player.held_item_id):
 		player.remove_held_item()
 		animation.play("pop")
-	elif player.held_item_id != player.ITEMS_ID.clipboard:
+	elif player.held_item_id != ITEMS.ID.clipboard:
 		player.ui_layer.show_warning(Lang.WARNINGS.throw_item)
