@@ -116,22 +116,20 @@ func _interact() -> void:
 	var hit: Node = raycast.get_collider()
 	if not hit: return
 	
-	if hit is Item:
-		if hit is Baby:
-			match held_item_id:
-				ITEMS.IDS.swab:
-					if held_item.baby_id == -1:
-						held_item.baby_id = hit.id
-						
-						held_item.internal_name = "swab_used"
-						set_held_item_sprite(ITEMS.IDS.swab_used)
-						
-						return
-				ITEMS.IDS.antidote:
-					hit.give_antidote(held_item)
-					remove_held_item()
-					return
-		
+	if hit is Baby:
+		match held_item_id:
+			ITEMS.IDS.swab:
+				if held_item.baby_id == -1:
+					held_item.use(hit.id)
+					set_held_item_sprite(ITEMS.IDS.swab_used)
+			ITEMS.IDS.antidote:
+				hit.give_antidote(held_item)
+				remove_held_item()
+			ITEMS.IDS.baby:
+				ui_layer.show_warning(Lang.WARNINGS.pick_up_baby)
+			_:
+				pick_up(hit)
+	elif hit is Item:
 		if held_item:
 			drop_item(hit)
 		if hit.pickupable:

@@ -9,7 +9,6 @@ size = Vector3(0.66186523, 0.79785156, 0.6739502)
 [node name="chili" type="Area3D" unique_id=1007922539]
 script = ExtResource("1_xo7bh")
 tooltip_text = "chili"
-internal_name = "chili"
 metadata/_custom_type_script = "uid://hgtvmmlxmy40"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1367044919]

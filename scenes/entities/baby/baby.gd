@@ -1,6 +1,5 @@
 class_name Baby extends Item
 
-@onready var body: CharacterBody3D = $CharacterBody3D
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 var dna: String = ""
@@ -8,6 +7,9 @@ var split_dna: Array = []
 var needs: Array = []
 var id: int = GameManager.UNASSIGNED
 var patient_id: int = GameManager.UNASSIGNED
+
+var is_in_delivery_table: bool = false
+var delivery_table: DeliveryTable
 
 var is_in_incubator: bool = false
 var incubator: Incubator
@@ -36,10 +38,12 @@ func _ready() -> void:
 			showing_symptoms = true
 			get_tree().create_timer(effect.duration).timeout.connect(activate_effect)
 	)
-	
-	#body.move_and_slide()
-	#if not body.is_on_floor():
-		#body.velocity.y -= gravity * delta
+
+func _process(_delta) -> void:
+	if is_in_delivery_table: 
+		pass
+	elif is_in_incubator:
+		pass
 
 func generate_dna() -> void: 
 	var choices: String = "ACGT"
@@ -118,9 +122,15 @@ func activate_effect() -> void:
 func pick_up() -> void:
 	if incubator:
 		incubator.incubated_baby = null
+		incubator = null
+		is_in_incubator = false
 	
-	incubator = null
-	is_in_incubator = false
+	if delivery_table:
+		delivery_table.held_baby = null
+		delivery_table.change_tooltip()
+		
+		delivery_table = null
+		is_in_delivery_table = false
 
 func give_antidote(antidote: BaseAntidoteItem) -> void:
 	pass

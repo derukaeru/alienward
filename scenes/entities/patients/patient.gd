@@ -41,8 +41,8 @@ var ward_index: int = GameManager.UNASSIGNED
 func _ready() -> void:
 	set_stage()
 	
-	labor_speed = randf_range(25.0, 45.0)
-	rest_speed = randf_range(55.0, 75.0)
+	#labor_speed = randf_range(25.0, 45.0)
+	#rest_speed = randf_range(55.0, 75.0)
 	
 	move_to("waiting")
 
@@ -81,7 +81,7 @@ func interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if state == STATES.WAITING and player.held_item_id != ITEMS.IDS.clipboard: 
+	if state == STATES.WAITING and player.held_item_id == ITEMS.IDS.clipboard: 
 		player.ui_layer.open_patient_screen(reason)
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
@@ -141,8 +141,6 @@ func target_reached() -> void:
 		state = STATES.IDLE
 	
 	if ["inside_ward_0", "inside_ward_1", "inside_ward_2", "inside_ward_3"].has(target_name):
-		target_name = "inside_ward_%d" % ward_index
-		
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
 		
@@ -166,6 +164,14 @@ func birth_child() -> void:
 	
 	var container = Util.get_group_node("entities_container")
 	container.add_child(child)
+	
+	for entry in Util.get_group_nodes("delivery_table"):
+		if entry.name == "delivery_table_%d" % ward_index:
+			child.delivery_table = entry
+			child.is_in_delivery_table = true
+			
+			entry.held_baby = child
+			entry.change_tooltip()
 	
 	var delivery_table = Util.get_patient_spot("delivery_table_%d" % ward_index)
 	child.global_position = delivery_table

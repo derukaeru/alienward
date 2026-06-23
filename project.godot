@@ -57,6 +57,8 @@ patient=""
 npc=""
 player_ui=""
 bacteria=""
+incubator=""
+delivery_table=""
 
 [gui]
 

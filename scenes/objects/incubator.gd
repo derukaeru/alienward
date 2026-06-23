@@ -23,6 +23,10 @@ func interact() -> void:
 	if not player: return
 	
 	if player.held_item_id == ITEMS.IDS.baby:
+		if incubated_baby:
+			player.ui_layer.show_warning(Lang.WARNINGS.incubator_occupied)
+			return
+		
 		anim.play("bob")
 		player.held_item.global_position = global_position + Vector3(0.0, 0.8, 0.0)
 		player.held_item.set_collision_layer_value(1, true)
