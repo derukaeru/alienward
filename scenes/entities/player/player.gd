@@ -128,14 +128,12 @@ func _interact() -> void:
 						
 						return
 				ITEMS.IDS.antidote:
-					# TODO: do something with the baby here
-					
+					hit.give_antidote(held_item)
 					remove_held_item()
 					return
 		
 		if held_item:
 			drop_item(hit)
-		
 		if hit.pickupable:
 			pick_up(hit)
 	elif hit is Dirt:
@@ -156,6 +154,9 @@ func pick_up(item: Item) -> void:
 	held_item = item
 	
 	item.hide()
+	item.interact()
+	item.picked_up.emit()
+	
 	if held_item_id != ITEMS.IDS.ultrasound_scanner:
 		item.global_position = Vector3.ZERO
 		
@@ -174,6 +175,7 @@ func drop_item(hit: Node) -> void:
 		held_item.set_collision_layer_value(1, true)
 		
 		held_item.show()
+		held_item.dropped.emit()
 		held_item = null
 		
 		set_held_item_sprite("clipboard")

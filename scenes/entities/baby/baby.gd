@@ -8,19 +8,20 @@ var split_dna: Array = []
 var needs: Array = []
 var id: int = GameManager.UNASSIGNED
 var patient_id: int = GameManager.UNASSIGNED
+
 var is_in_incubator: bool = false
+var incubator: Incubator
 
 var showing_symptoms: bool = false
 var time_to_show_symptoms: float = 10.0
 
+enum LETTER_TO_VAL {A, C, G, T}
 var effect: Dictionary = {
 	effect_index = 1,
 	intensity = 1.0,
 	frequency = 1.0,
 	duration = 1.0,
 }
-
-enum LETTER_TO_VAL {A, C, G, T}
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.baby
@@ -113,3 +114,13 @@ func generate_effect() -> void:
 
 func activate_effect() -> void:
 	EffectsManager.apply_effect(self, effect)
+
+func pick_up() -> void:
+	if incubator:
+		incubator.incubated_baby = null
+	
+	incubator = null
+	is_in_incubator = false
+
+func give_antidote(antidote: BaseAntidoteItem) -> void:
+	pass

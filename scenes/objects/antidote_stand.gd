@@ -19,3 +19,5 @@ func interact() -> void:
 	elif player.held_item is BaseAntidoteItem:
 		base_antidote_item = player.held_item
 		player.remove_held_item()
+		
+		animation.play("pop")

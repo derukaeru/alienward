@@ -47,3 +47,5 @@ sprite_frames = SubResource("SpriteFrames_3nmci")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1072220134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010314941, -0.28546143, 0.0004272461)
 shape = SubResource("BoxShape3D_xfd33")
+
+[connection signal="picked_up" from="." to="." method="pick_up"]

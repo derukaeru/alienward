@@ -1,5 +1,10 @@
 class_name Item extends Area3D
-signal interacted()
+signal interacted
+
+@warning_ignore("unused_signal")
+signal picked_up
+@warning_ignore("unused_signal")
+signal dropped
 
 @export var show_tooltip_text: bool = true
 @export var tooltip_text: String = ""

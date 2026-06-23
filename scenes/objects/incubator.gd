@@ -1,6 +1,8 @@
 class_name Incubator extends InteractableComponent
 @onready var anim: AnimationPlayer = $ModelContainer/AnimationPlayer
 
+var incubated_baby: Baby
+
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.incubator
 
@@ -9,9 +11,12 @@ func _process(_delta) -> void:
 	if not player: return
 	
 	if player.held_item_id == ITEMS.IDS.baby:
-		show_tooltip_text = true
+		if incubated_baby:
+			tooltip_text = Lang.TOOLTIPS.incubator_occupied
+		else: 
+			tooltip_text = Lang.TOOLTIPS.incubator
 	else:
-		show_tooltip_text = false
+		tooltip_text = Lang.TOOLTIPS.incubator_normal
 
 func interact() -> void:
 	var player: Player = Util.get_player()
@@ -23,6 +28,9 @@ func interact() -> void:
 		player.held_item.set_collision_layer_value(1, true)
 		
 		player.held_item.show()
+		incubated_baby = player.held_item
+		
+		player.held_item.incubator = self
 		player.held_item = null
 		
 		player.set_held_item_sprite("clipboard")
