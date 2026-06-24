@@ -59,6 +59,7 @@ player_ui=""
 bacteria=""
 incubator=""
 delivery_table=""
+printer=""
 
 [gui]
 

@@ -1,27 +1,71 @@
 [gd_scene format=3 uid="uid://bxdci4360g1on"]
 
-[ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="1_pa7e3"]
+[ext_resource type="Script" uid="uid://cr5lfpknwj81d" path="res://scenes/objects/printer.gd" id="1_pa7e3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hn7fk"]
 size = Vector3(0.75, 0.2, 0.75)
 
+[sub_resource type="Animation" id="Animation_pa7e3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.066, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_de5bl"]
+resource_name = "print"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("paper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.33, 1.4333333, 2.85, 3.0333333, 4.76, 4.866667, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.066, 0), Vector3(0.105077446, 0.066, 0), Vector3(0.18645322, 0.066, 0), Vector3(0.22516596, 0.066, 0), Vector3(0.3073318, 0.066, 0), Vector3(0.42021862, 0.066, 0), Vector3(0.49540383, 0.066, 0), Vector3(0.6320448, 0.066, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtnd5"]
+_data = {
+&"RESET": SubResource("Animation_pa7e3"),
+&"print": SubResource("Animation_de5bl")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pa7e3"]
+size = Vector2(0.7, 0.55)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pa7e3"]
 size = Vector3(1, 0.31304932, 1)
 
-[node name="printer" type="Area3D" unique_id=1208250620]
+[node name="printer" type="Area3D" unique_id=409367441 groups=["printer"]]
 script = ExtResource("1_pa7e3")
-show_tooltip_text = true
-tooltip_text = "printer"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
-[node name="ModelContainer" type="Node3D" parent="." unique_id=302359606]
+[node name="ModelContainer" type="Node3D" parent="." unique_id=2009792074]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=762870781]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=1131239586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("BoxMesh_hn7fk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1900315528]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=324915858]
+libraries/ = SubResource("AnimationLibrary_qtnd5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1244180596]
+[node name="paper" type="MeshInstance3D" parent="ModelContainer" unique_id=423964762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066, 0)
+mesh = SubResource("PlaneMesh_pa7e3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1309920159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08035278, 0)
 shape = SubResource("BoxShape3D_pa7e3")
