@@ -14,6 +14,7 @@ const TOOLTIPS: Dictionary = {
 	microscope = "open microscope",
 	antidote_stand = "antidote stand",
 	swab_container = "get swab",
+	printer = "printer",
 	
 	trashcan = "trash can",
 	trashcan_throw = "throw item",
@@ -26,6 +27,7 @@ const TOOLTIPS: Dictionary = {
 	
 	ultrasound_screen = "ultrasound screen",
 	ultrasound_scanner = "ultrasound scanner",
+	ultrasound_print = "ultrasound photo",
 	
 	delivery_table = "delivery table",
 	delivery_table_baby = "pick up baby",

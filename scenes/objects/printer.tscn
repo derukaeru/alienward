@@ -50,6 +50,8 @@ size = Vector3(1, 0.31304932, 1)
 
 [node name="printer" type="Area3D" unique_id=409367441 groups=["printer"]]
 script = ExtResource("1_pa7e3")
+show_tooltip_text = true
+tooltip_text = "printer"
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=2009792074]

@@ -60,6 +60,9 @@ bacteria=""
 incubator=""
 delivery_table=""
 printer=""
+shop=""
+item_chute=""
+curtain=""
 
 [gui]
 

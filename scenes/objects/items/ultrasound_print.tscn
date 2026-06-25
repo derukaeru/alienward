@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dl7ni1qig34fo"]
+
+[ext_resource type="Script" uid="uid://bh35ic1l7ktfn" path="res://scenes/objects/items/ultrasound_print.gd" id="1_6o33m"]
+[ext_resource type="Texture2D" uid="uid://c4o52kbdwbt6n" path="res://assets/sprites/objects/ultrasound_paper.png" id="2_lkyiv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6o33m"]
+
+[node name="ultrasound_print" type="Area3D" unique_id=1739532601]
+script = ExtResource("1_6o33m")
+internal_name = "ultrasound_print"
+metadata/_custom_type_script = "uid://b16ru0358s8jd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=822368868]
+shape = SubResource("BoxShape3D_6o33m")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1663039769]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_lkyiv")

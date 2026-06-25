@@ -7,14 +7,17 @@ const IDS: Dictionary = {
 	swab = "swab_sprite",
 	swab_used = "swab_used",
 	ultrasound_scanner = "ultrasound_scanner",
+	ultrasound_print = "ultrasound_print",
 	antidote = "antidote",
 	mop = "mop",
+	
 	chili = "chili",
 }
 
 var undroppable: Array = [IDS.clipboard, IDS.baby]
 var throwable: Array = [IDS.swab, IDS.swab_used, IDS.antidote]
 
-var ANTIDOTE_ITEMS: Dictionary = {
-	
+# item instances ids for registry autoload
+var SHOP_ITEMS: Dictionary = {
+	chili = "chili_instance"
 }

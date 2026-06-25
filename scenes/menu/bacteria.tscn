@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfcu3gbpctv5v"]
 
-[ext_resource type="Script" uid="uid://qeefgqnh1q03" path="res://scenes/objects/bacteria.gd" id="1_23amf"]
+[ext_resource type="Script" uid="uid://qeefgqnh1q03" path="res://scenes/menu/bacteria.gd" id="1_23amf"]
 [ext_resource type="Texture2D" uid="uid://b6oiv25wf8wmx" path="res://assets/sprites/ui/bacteria.png" id="1_hufb6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23amf"]

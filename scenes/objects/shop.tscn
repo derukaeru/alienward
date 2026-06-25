@@ -51,7 +51,7 @@ _data = {
 &"pop": SubResource("Animation_maa1b")
 }
 
-[node name="shop" type="Node3D" unique_id=1536746055]
+[node name="shop" type="Node3D" unique_id=1536746055 groups=["shop"]]
 script = ExtResource("1_suugs")
 
 [node name="CrtTv" type="MeshInstance3D" parent="." unique_id=2030692739]

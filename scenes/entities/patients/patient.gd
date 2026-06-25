@@ -139,6 +139,10 @@ func target_reached() -> void:
 		global_position = Util.get_patient_spot(target_name)
 		
 		state = STATES.IDLE
+		
+		for entry in Util.get_group_nodes("curtain"):
+			if entry.name == "curtain_%d" % ward_index:
+				entry.close()
 	
 	if ["inside_ward_0", "inside_ward_1", "inside_ward_2", "inside_ward_3"].has(target_name):
 		labor_timer = get_tree().create_timer(labor_speed)
@@ -161,7 +165,6 @@ func birth_child() -> void:
 	if state != STATES.LABOR: return
 	
 	var child: Baby = load(Registry.UID["baby"]).instantiate()
-	
 	var container = Util.get_group_node("entities_container")
 	container.add_child(child)
 	

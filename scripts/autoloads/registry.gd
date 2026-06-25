@@ -21,6 +21,10 @@ var UID: Dictionary = {
 	
 	"dialogue_box": "uid://6cae11kpahyv",
 	
+	# item instances
+	"chili_instance": "uid://c41nfst6ynh2f",
+	"ultrasound_print_instance": "uid://dl7ni1qig34fo",
+	
 	# sprites for hand held items
 	"baby_sprite": "uid://ddavebcvrlptn",
 	"clipboard": "uid://dpwx6lq1basmc",
@@ -30,8 +34,9 @@ var UID: Dictionary = {
 	"mop": "uid://dkh8gc602jl65",
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",
+	"ultrasound_print": "uid://c4o52kbdwbt6n",
 	"chili": "uid://cnely2yvr8exu",
 	
 	"hand_hold": "uid://cceairqcr4n0v",
-	"hand_point": "uid://ssnb0c6x2qpt"
+	"hand_point": "uid://ssnb0c6x2qpt",
 }
