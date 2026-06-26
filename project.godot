@@ -63,6 +63,7 @@ printer=""
 shop=""
 item_chute=""
 curtain=""
+antidote_stand=""
 
 [gui]
 

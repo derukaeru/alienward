@@ -55,21 +55,169 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+color = Color(0.4390491, 0.43904912, 0.43904912, 1)
 
 [node name="exit" type="Button" parent="." unique_id=67062142]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -144.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 80.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = -32.0
+grow_vertical = 0
 text = "exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1309991290]
 libraries/ = SubResource("AnimationLibrary_fctdc")
 
+[node name="base_container" type="Control" parent="." unique_id=1310855025]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="decrease_effect_index" type="Button" parent="." unique_id=639464241]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -80.0
+offset_right = 96.0
+offset_bottom = -16.0
+grow_vertical = 2
+text = "<"
+
+[node name="increase_effect_index" type="Button" parent="." unique_id=1897630421]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = -80.0
+offset_right = 256.0
+offset_bottom = -16.0
+grow_vertical = 2
+text = ">"
+
+[node name="decrease_frequency_value" type="Button" parent="." unique_id=1450859577]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 80.0
+grow_vertical = 2
+text = "<"
+
+[node name="increase_frequency_value" type="Button" parent="." unique_id=1695385056]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 80.0
+grow_vertical = 2
+text = ">"
+
+[node name="decrease_intensity_value" type="Button" parent="." unique_id=1349775847]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 512.0
+offset_top = -80.0
+offset_right = 576.0
+offset_bottom = -16.0
+grow_vertical = 2
+text = "<"
+
+[node name="increase_intensity_value" type="Button" parent="." unique_id=1354954801]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 672.0
+offset_top = -80.0
+offset_right = 736.0
+offset_bottom = -16.0
+grow_vertical = 2
+text = ">"
+
+[node name="decrease_duration_value" type="Button" parent="." unique_id=374576082]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 512.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 80.0
+grow_vertical = 2
+text = "<"
+
+[node name="increase_duration_value" type="Button" parent="." unique_id=772178720]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 672.0
+offset_top = 16.0
+offset_right = 736.0
+offset_bottom = 80.0
+grow_vertical = 2
+text = ">"
+
+[node name="effect_index" type="Label" parent="." unique_id=1052720546]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 208.0
+offset_right = 176.0
+offset_bottom = 272.0
+
+[node name="frequency_value" type="Label" parent="." unique_id=949839517]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 304.0
+offset_right = 176.0
+offset_bottom = 368.0
+
+[node name="intensity_value" type="Label" parent="." unique_id=649510487]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 208.0
+offset_right = 656.0
+offset_bottom = 272.0
+
+[node name="duration_value" type="Label" parent="." unique_id=331323138]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 304.0
+offset_right = 656.0
+offset_bottom = 368.0
+
 [connection signal="pressed" from="exit" to="." method="leave"]
+[connection signal="pressed" from="decrease_effect_index" to="." method="change_effect_index" binds= [-1]]
+[connection signal="pressed" from="increase_effect_index" to="." method="change_effect_index" binds= [1]]
+[connection signal="pressed" from="decrease_frequency_value" to="." method="change_frequency_value" binds= [-0.1]]
+[connection signal="pressed" from="increase_frequency_value" to="." method="change_frequency_value" binds= [0.1]]
+[connection signal="pressed" from="decrease_intensity_value" to="." method="change_intensity_value" binds= [-0.1]]
+[connection signal="pressed" from="increase_intensity_value" to="." method="change_intensity_value" binds= [0.1]]
+[connection signal="pressed" from="decrease_duration_value" to="." method="change_duration_value" binds= [-0.1]]
+[connection signal="pressed" from="increase_duration_value" to="." method="change_duration_value" binds= [0.1]]
