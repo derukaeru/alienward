@@ -3,13 +3,13 @@ extends Control
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var base_container: Control = $base_container
 
-@onready var effect_index_label: Label = $effect_index
 @onready var frequency_value_label: Label = $frequency_value
 @onready var intensity_value_label: Label = $intensity_value
 @onready var duration_value_label: Label = $duration_value
+@onready var base_warning: Label = $base_warning
 
 var antidote_data: Dictionary = {
-	effect_index = 0,
+	base = -1,
 	intensity = 1.0,
 	frequency = 1.0,
 	duration = 1.0,
@@ -38,21 +38,24 @@ func _process(_delta) -> void:
 
 func opened() -> void:
 	var antidote_stand: InteractableComponent = Util.get_group_node("antidote_stand")
-	
 	if not antidote_stand: return
+	
+	
+	for entry in base_container.get_children():
+		entry.queue_free()
+	base_warning.show()
+	
 	if not antidote_stand.base_antidote_name: return
 	
 	var base_item_name: String = antidote_stand.base_antidote_name
 	var base_item_sprite: TextureRect = TextureRect.new()
-	base_item_sprite.texture = load(Registry.UID[base_item_name])
+	base_item_sprite.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	
-	for entry in base_container.get_children():
-		entry.queue_free()
+	base_item_sprite.texture = load(Registry.UID[base_item_name])
 	base_container.add_child(base_item_sprite)
-
-func change_effect_index(value: int) -> void:
-	antidote_data.effect_index = clamp(antidote_data.effect_index + value, 0, 9)
-	effect_index_label.text = str(antidote_data.effect_index)
+	base_warning.hide()
+	
+	antidote_data.base = ITEMS.ANTIDOTE_BASE_INDICES[base_item_name]
 
 func change_frequency_value(value: float) -> void:
 	antidote_data.frequency = clamp(antidote_data.frequency + value, 0.0, 2.0)
@@ -65,3 +68,25 @@ func change_intensity_value(value: float) -> void:
 func change_duration_value(value: float) -> void:
 	antidote_data.duration = clamp(antidote_data.duration + value, 0.0, 2.0)
 	duration_value_label.text = str(antidote_data.duration)
+
+func generate_antidote() -> void:
+	var antidote_stand: InteractableComponent = Util.get_group_node("antidote_stand")
+	if not antidote_stand: return
+	
+	if not antidote_stand.base_antidote_name: return
+	
+	# remove base antidote item in screen
+	for entry in base_container.get_children():
+		entry.queue_free()
+		
+	antidote_stand.generate_antidote(antidote_data)
+	antidote_data = {
+		base = -1,
+		intensity = 1.0,
+		frequency = 1.0,
+		duration = 1.0,
+	}
+	
+	change_frequency_value(0)
+	change_intensity_value(0)
+	change_duration_value(0)

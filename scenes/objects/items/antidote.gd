@@ -1,7 +1,7 @@
-extends Item
+class_name Antidote extends BaseAntidoteItem
 
 var data: Dictionary = {
-	base = 1,
+	base = 0,
 	intensity = 1.0,
 	frequency = 1.0,
 	duration = 1.0

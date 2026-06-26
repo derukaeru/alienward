@@ -21,3 +21,17 @@ func interact() -> void:
 		player.remove_held_item()
 		
 		animation.play("pop")
+
+func generate_antidote(data: Dictionary = {}) -> void:
+	if not data: return
+	
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	var antidote_instance: Antidote = load(Registry.UID["antidote_instance"]).instantiate()
+	antidote_instance.data = data
+	
+	var entities_container: Node3D = Util.get_group_node("entities_container")
+	entities_container.add_child(antidote_instance)
+	
+	player.pick_up(antidote_instance)

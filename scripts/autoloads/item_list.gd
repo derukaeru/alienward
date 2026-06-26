@@ -17,6 +17,10 @@ const IDS: Dictionary = {
 var undroppable: Array = [IDS.clipboard, IDS.baby]
 var throwable: Array = [IDS.swab, IDS.swab_used, IDS.antidote]
 
+enum ANTIDOTE_BASE_INDICES {
+	chili,
+}
+
 # item instances ids for registry autoload
 var SHOP_ITEMS: Dictionary = {
 	chili = "chili_instance"

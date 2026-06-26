@@ -1,5 +1,7 @@
 extends Node
 
+var NULL_SPRITE: String = "uid://cnely2yvr8exu"
+
 var UID: Dictionary = {
 	"npc": "uid://cwhgebq7q0h5y",
 	"patient": "uid://inedntn6htqj",
@@ -24,18 +26,19 @@ var UID: Dictionary = {
 	# item instances
 	"chili_instance": "uid://c41nfst6ynh2f",
 	"ultrasound_print_instance": "uid://dl7ni1qig34fo",
+	"antidote_instance": "uid://b328136vl47io",
 	
 	# sprites for hand held items
 	"baby_sprite": "uid://ddavebcvrlptn",
 	"clipboard": "uid://dpwx6lq1basmc",
 	"swab_sprite": "uid://byleeb4m3vftg",
 	"ultrasound_scanner": "uid://b6x66nbtoqd3",
-	"antidote": "uid://cnely2yvr8exu",
+	"antidote": NULL_SPRITE,
 	"mop": "uid://dkh8gc602jl65",
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",
 	"ultrasound_print": "uid://c4o52kbdwbt6n",
-	"chili": "uid://cnely2yvr8exu",
+	"chili": NULL_SPRITE,
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt",
