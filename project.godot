@@ -64,6 +64,7 @@ shop=""
 item_chute=""
 curtain=""
 antidote_stand=""
+ultrasound_screen=""
 
 [gui]
 

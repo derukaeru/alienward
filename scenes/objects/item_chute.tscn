@@ -41,7 +41,7 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_yklm2"]
 
-[node name="item_chute" type="Node3D" unique_id=885072988]
+[node name="item_chute" type="Node3D" unique_id=885072988 groups=["item_chute"]]
 script = ExtResource("1_bq1k7")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=471480299]

@@ -75,4 +75,13 @@ text = "exit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1362851102]
 libraries/ = SubResource("AnimationLibrary_38nrl")
 
+[node name="buy_chili" type="Button" parent="." unique_id=752324850]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 178.0
+offset_right = 398.0
+offset_bottom = 226.0
+text = "buy chili"
+
 [connection signal="pressed" from="leave" to="." method="leave"]
+[connection signal="pressed" from="buy_chili" to="." method="buy_base_item" binds= ["chili"]]

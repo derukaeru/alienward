@@ -26,10 +26,10 @@ func incubate_baby(baby: Baby = null) -> void:
 		var player: Player = Util.get_player()
 		if not player: return
 		
-		if player.held_item_id == ITEMS.IDS.baby:
-			if incubated_baby:
-				player.ui_layer.show_warning(Lang.WARNINGS.incubator_occupied)
-				return
+		if not player.held_item_id == ITEMS.IDS.baby: return
+		if incubated_baby:
+			player.ui_layer.show_warning(Lang.WARNINGS.incubator_occupied)
+			return
 		
 		anim.play("bob")
 		player.held_item.global_position = global_position + Vector3(0.0, 0.8, 0.0)

@@ -155,7 +155,7 @@ func pick_up(item: Item) -> void:
 	item.interact()
 	item.picked_up.emit()
 	
-	if held_item_id != ITEMS.IDS.ultrasound_scanner:
+	if not ITEMS.unmovable.has(held_item_id):
 		item.global_position = Vector3.ZERO
 		
 	item.set_collision_layer_value(1, false)
@@ -168,7 +168,7 @@ func drop_item(hit: Node) -> void:
 		return
 	
 	if hit == null:
-		if held_item_id != ITEMS.IDS.ultrasound_scanner:
+		if not ITEMS.unmovable.has(held_item_id):
 			held_item.global_position = global_position + Vector3(0, 0.5, 0)
 		held_item.set_collision_layer_value(1, true)
 		

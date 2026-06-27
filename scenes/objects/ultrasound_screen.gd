@@ -9,9 +9,9 @@ func _ready() -> void:
 
 func generate_image() -> void:
 	var printer: InteractableComponent = Util.get_group_node("printer")
-	
 	if not scanned_patient_id or printer.printing or printer.printed: return
-	printer.print_ultrasound()
+	
+	printer.print_ultrasound(scanned_patient_id)
 
 func interact() -> void:
 	generate_image()

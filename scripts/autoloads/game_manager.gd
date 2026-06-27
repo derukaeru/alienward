@@ -3,7 +3,7 @@ extends Node
 @onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
 @onready var settings_screen: Node = load(Registry.UID["settings_screen"]).instantiate()
 
-var SEED: int = 24122313
+var SEED: int = 0
 const UNASSIGNED: int = -1
 
 var day: int = 0

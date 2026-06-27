@@ -8,7 +8,12 @@ func _ready() -> void:
 
 var printed: bool = false
 var printing: bool = false
-func print_ultrasound() -> void:
+
+var patient_id: int = GameManager.UNASSIGNED
+
+func print_ultrasound(id: int = -1) -> void:
+	patient_id = id
+	
 	animation.play("print")
 	printing = true
 	
@@ -26,6 +31,8 @@ func interact() -> void:
 	
 	var paper: Item = load(Registry.UID["ultrasound_print_instance"]).instantiate()
 	var container: Node3D = Util.get_group_node("entities_container")
+	
+	paper.patient_id = patient_id
 	
 	container.add_child(paper)
 	player.pick_up(paper)

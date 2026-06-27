@@ -23,5 +23,8 @@ func leave() -> void:
 	player.ui_layer.shop_open = false
 	player.can_move = true
 
-func buy_base_item() -> void:
-	pass
+func buy_base_item(item_name: String) -> void:
+	var shop: Node3D = Util.get_group_node("shop")
+	if not shop: return
+	
+	shop.buy_item(item_name)

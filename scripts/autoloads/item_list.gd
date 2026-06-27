@@ -15,7 +15,8 @@ const IDS: Dictionary = {
 }
 
 var undroppable: Array = [IDS.clipboard, IDS.baby]
-var throwable: Array = [IDS.swab, IDS.swab_used, IDS.antidote]
+var nonthrowable: Array = [IDS.clipboard, IDS.mop, IDS.ultrasound_scanner, IDS.baby]
+var unmovable: Array = [IDS.ultrasound_scanner, IDS.mop]
 
 enum ANTIDOTE_BASE_INDICES {
 	chili,

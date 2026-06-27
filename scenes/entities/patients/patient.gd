@@ -19,6 +19,7 @@ var state: STATES = STATES.IDLE
 
 var scanning: bool = false
 var scanned: bool = false
+var has_ultrasound: bool = false
 
 var scanning_timer: Timer
 var scan_time: float = 5.0
@@ -94,10 +95,22 @@ func interacted() -> void:
 			
 			scanning_timer.start(scan_time)
 			scanning_timer.timeout.connect(scan_done)
+		elif player.held_item_id == ITEMS.IDS.ultrasound_print:
+			if player.held_item.patient_id == npc_id:
+				has_ultrasound = true
+				player.remove_held_item()
+				move_to("patient_enter")
 
 func scan_done() -> void:
 	scanned = true
 	scanning = false
+	
+	print("done scan")
+	
+	var ultrasound_screen: InteractableComponent = Util.get_group_node("ultrasound_screen")
+	if not ultrasound_screen: return
+	
+	ultrasound_screen.scanned_patient_id = npc_id
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cay0ggr7b2l0h" path="res://scenes/objects/curtain.gd" id="1_jg4hh"]
 [ext_resource type="Texture2D" uid="uid://ppunfpx1njvm" path="res://assets/models/objects/curtain.png" id="1_qh5wq"]
 [ext_resource type="ArrayMesh" uid="uid://diy1hbc31kp3j" path="res://assets/models/objects/curtain.obj" id="2_jg4hh"]
+[ext_resource type="ArrayMesh" uid="uid://blsk7bev0avq8" path="res://assets/models/objects/curtain_bar.obj" id="4_0ft1r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ft1r"]
 shading_mode = 0
@@ -61,3 +62,7 @@ mesh = ExtResource("2_jg4hh")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=537423528]
 root_node = NodePath("../ModelContainer")
 libraries/ = SubResource("AnimationLibrary_jg4hh")
+
+[node name="CurtainBar" type="MeshInstance3D" parent="." unique_id=292565740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4844226, 3.5, 0)
+mesh = ExtResource("4_0ft1r")
