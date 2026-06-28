@@ -23,9 +23,7 @@ func clean(player: Player) -> void:
 	cleaning_timer.start(cleaning_speed)
 
 func cleaned() -> void:
-	var player: Player = Util.get_player()
-	if player:
-		player.ui_layer.cleaning_progress.hide()
+	EventBus.done_cleaning.emit()
 	
 	queue_free()
 

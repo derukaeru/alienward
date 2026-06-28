@@ -5,6 +5,7 @@ class_name Baby extends Item
 var dna: String = ""
 var split_dna: Array = []
 var needs: Array = []
+
 var id: int = GameManager.UNASSIGNED
 var patient_id: int = GameManager.UNASSIGNED
 

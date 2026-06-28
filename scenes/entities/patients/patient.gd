@@ -4,7 +4,7 @@ class_name Patient extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 var speed: float = 2.4
 var gravity: float = 9.8
-var npc_id: int = GameManager.UNASSIGNED
+var id: int = GameManager.UNASSIGNED
 
 enum STATES {
 	RESTING,
@@ -42,10 +42,8 @@ var ward_index: int = GameManager.UNASSIGNED
 func _ready() -> void:
 	set_stage()
 	
-	#labor_speed = randf_range(25.0, 45.0)
-	#rest_speed = randf_range(55.0, 75.0)
-	
-	move_to("waiting")
+	if waiting_seat_position == GameManager.UNASSIGNED: return
+	global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -53,6 +51,9 @@ func set_stage() -> void:
 	if chance > 0.55:
 		maternity_stage = 4
 		reason = GameManager.REASONS.LABOR
+		
+		labor_speed = randf_range(25.0, 45.0)
+		rest_speed = randf_range(55.0, 75.0)
 	else: 
 		maternity_stage = randi_range(1, 3)
 		reason = GameManager.REASONS.CHECKUP
@@ -83,7 +84,7 @@ func interacted() -> void:
 	if not player: return
 	
 	if state == STATES.WAITING and player.held_item_id == ITEMS.IDS.clipboard: 
-		player.ui_layer.open_patient_screen(reason)
+		EventBus.open_patient_screen.emit()
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
@@ -96,7 +97,7 @@ func interacted() -> void:
 			scanning_timer.start(scan_time)
 			scanning_timer.timeout.connect(scan_done)
 		elif player.held_item_id == ITEMS.IDS.ultrasound_print:
-			if player.held_item.patient_id == npc_id:
+			if player.held_item.patient_id == id:
 				has_ultrasound = true
 				player.remove_held_item()
 				move_to("patient_enter")
@@ -110,7 +111,7 @@ func scan_done() -> void:
 	var ultrasound_screen: InteractableComponent = Util.get_group_node("ultrasound_screen")
 	if not ultrasound_screen: return
 	
-	ultrasound_screen.scanned_patient_id = npc_id
+	ultrasound_screen.scanned_patient_id = id
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
@@ -127,7 +128,6 @@ func _process(_delta) -> void:
 	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
 		guided = false
-		
 		
 		if reason == GameManager.REASONS.CHECKUP:
 			player.ui_layer.checkup.hide() 
@@ -147,7 +147,7 @@ func _process(_delta) -> void:
 				GameManager.selected_ward_on_ui = -1
 
 func target_reached() -> void:
-	if ["ward_0", "ward_1", "ward_2", "ward_3"].has(target_name):
+	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
 		
@@ -156,23 +156,15 @@ func target_reached() -> void:
 		for entry in Util.get_group_nodes("curtain"):
 			if entry.name == "curtain_%d" % ward_index:
 				entry.close()
-	
-	if ["inside_ward_0", "inside_ward_1", "inside_ward_2", "inside_ward_3"].has(target_name):
+	elif target_name.begins_with("inside_ward_"):
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
-		
 		state = STATES.LABOR
-	
-	match target_name:
-		"waiting": 
-			if waiting_seat_position == GameManager.UNASSIGNED: return
-			global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
-			
-			state = STATES.WAITING
-		"checkup":
-			global_position = Util.get_patient_spot("checkup_seat")
-			
-			state = STATES.CHECKUP
+	elif target_name.begins_with("seat_"):
+		state = STATES.WAITING
+	elif target_name == "checkup":
+		global_position = Util.get_patient_spot("checkup_seat")
+		state = STATES.CHECKUP
 
 func birth_child() -> void:
 	if state != STATES.LABOR: return
@@ -180,6 +172,10 @@ func birth_child() -> void:
 	var child: Baby = load(Registry.UID["baby"]).instantiate()
 	var container = Util.get_group_node("entities_container")
 	container.add_child(child)
+	
+	child.patient_id = id
+	child.id = GameManager.latest_baby_id + 1
+	GameManager.latest_baby_id += 1
 	
 	for entry in Util.get_group_nodes("delivery_table"):
 		if entry.name == "delivery_table_%d" % ward_index:

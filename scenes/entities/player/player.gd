@@ -39,6 +39,15 @@ func _ready() -> void:
 			ui_layer.hand.get_node("AnimationPlayer").play("RESET"), 
 			CONNECT_ONE_SHOT
 	)
+	
+	EventBus.clean_mop.connect(
+		func(): 
+			if held_item_id == ITEMS.IDS.mop:
+				held_item.dirtiness = 0.0
+	)
+	
+	EventBus.pick_up_baby_from_delivery_table.connect(pick_up)
+	EventBus.throw_item.connect(throw_item)
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -196,3 +205,9 @@ func remove_held_item() -> void:
 	held_item = null
 	
 	set_held_item_sprite("clipboard")
+
+func throw_item() -> void:
+	if not ITEMS.nonthrowable.has(held_item_id):
+		remove_held_item()
+	elif held_item_id != ITEMS.IDS.clipboard:
+		ui_layer.show_warning(Lang.WARNINGS.throw_item)

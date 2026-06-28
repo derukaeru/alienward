@@ -14,6 +14,10 @@ var antidote_data: Dictionary = {
 	frequency = 1.0,
 	duration = 1.0,
 }
+var base_antidote_name: String
+
+func _ready() -> void:
+	EventBus.update_base_antidote_item_name.connect(func(antidote_name: String): base_antidote_name = antidote_name)
 
 func leave() -> void:
 	Util.mouse_captured()
@@ -22,12 +26,7 @@ func leave() -> void:
 	await animation.animation_finished
 	
 	hide()
-	
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	player.ui_layer.antidote_open = false
-	player.can_move = true
+	EventBus.close_antidote_stand.emit()
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
@@ -37,25 +36,20 @@ func _process(_delta) -> void:
 		leave()
 
 func opened() -> void:
-	var antidote_stand: InteractableComponent = Util.get_group_node("antidote_stand")
-	if not antidote_stand: return
-	
-	
 	for entry in base_container.get_children():
 		entry.queue_free()
 	base_warning.show()
 	
-	if not antidote_stand.base_antidote_name: return
+	if not base_antidote_name: return
 	
-	var base_item_name: String = antidote_stand.base_antidote_name
 	var base_item_sprite: TextureRect = TextureRect.new()
 	base_item_sprite.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	
-	base_item_sprite.texture = load(Registry.UID[base_item_name])
+	base_item_sprite.texture = load(Registry.UID[base_antidote_name])
 	base_container.add_child(base_item_sprite)
 	base_warning.hide()
 	
-	antidote_data.base = ITEMS.ANTIDOTE_BASE_INDICES[base_item_name]
+	antidote_data.base = ITEMS.ANTIDOTE_BASE_INDICES[base_antidote_name]
 
 func change_frequency_value(value: float) -> void:
 	antidote_data.frequency = clamp(antidote_data.frequency + value, 0.0, 2.0)
@@ -70,16 +64,15 @@ func change_duration_value(value: float) -> void:
 	duration_value_label.text = str(antidote_data.duration)
 
 func generate_antidote() -> void:
-	var antidote_stand: InteractableComponent = Util.get_group_node("antidote_stand")
-	if not antidote_stand: return
-	
-	if not antidote_stand.base_antidote_name: return
+	if not base_antidote_name: return
 	
 	# remove base antidote item in screen
 	for entry in base_container.get_children():
 		entry.queue_free()
-		
-	antidote_stand.generate_antidote(antidote_data)
+	
+	EventBus.generate_antidote.emit(antidote_data)
+	
+	base_antidote_name = ""
 	antidote_data = {
 		base = -1,
 		intensity = 1.0,

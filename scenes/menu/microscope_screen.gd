@@ -15,7 +15,11 @@ var identifying_bacteria: Bacteria
 
 var bacteria_colors: Array = []
 
-func _ready() -> void: 
+func _ready() -> void:
+	EventBus.create_new_dna.connect(new_dna)
+	EventBus.identify_bacteria.connect(identify_bacteria)
+	EventBus.show_dna.connect(set_dna_color)
+	
 	new_dna()
 
 func new_dna() -> void:
@@ -80,12 +84,7 @@ func _on_leave_pressed() -> void:
 	await animation.animation_finished
 	
 	hide()
-	
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	player.ui_layer.microscope_open = false
-	player.can_move = true
+	EventBus.close_microscope.emit()
 	
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()

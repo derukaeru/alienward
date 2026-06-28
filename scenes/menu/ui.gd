@@ -26,6 +26,18 @@ var showing_warning: bool = false
 var warning_timer: Timer
 var warning_timer_speed: float = 3.0
 
+func _ready() -> void:
+	EventBus.open_shop.connect(open_shop_screen)
+	EventBus.open_antidote_stand.connect(open_antidote_screen)
+	EventBus.open_microscope.connect(open_microscope_screen)
+	
+	EventBus.close_antidote_stand.connect(close_antidote_screen)
+	EventBus.close_microscope.connect(close_microscope_screen)
+	EventBus.close_shop.connect(close_shop_screen)
+	
+	EventBus.done_cleaning.connect(func(): cleaning_progress.hide())
+	EventBus.open_patient_screen.connect(open_patient_screen)
+
 func _input(event) -> void:
 	if guide_patient.visible:
 		if event is InputEventMouseButton and event.is_pressed():
@@ -65,6 +77,12 @@ func open_shop_screen() -> void:
 	player.can_move = false
 	player.velocity = Vector3.ZERO
 	Util.mouse_visible()
+func close_shop_screen() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	shop_open = false
+	player.can_move = true
 
 func open_microscope_screen() -> void:
 	if microscope_open: return
@@ -81,9 +99,17 @@ func open_microscope_screen() -> void:
 	player.can_move = false
 	player.velocity = Vector3.ZERO
 	Util.mouse_visible()
+func close_microscope_screen() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	microscope_open = false
+	player.can_move = true
 
 func open_antidote_screen() -> void:
 	if antidote_open: return
+	
+	antidote_screen.opened()
 	
 	antidote_open = true
 	antidote_screen.show()
@@ -97,13 +123,20 @@ func open_antidote_screen() -> void:
 	player.can_move = false
 	player.velocity = Vector3.ZERO
 	Util.mouse_visible()
+func close_antidote_screen() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	antidote_open = false
+	player.can_move = true
 
+func set_tooltip_text(text: String) -> void:
+	tooltip.text = text
 func show_tooltip(text: String) -> void:
 	if showing_warning: return
 	
 	tooltip.text = text
 	set_hand_sprite()
-
 func show_warning(text: String) -> void:
 	if showing_warning:
 		warning_timer.stop()
@@ -127,7 +160,6 @@ func show_warning(text: String) -> void:
 			warning_timer = null
 	)
 	warning_timer.start(warning_timer_speed)
-
 func hide_tooltip() -> void:
 	if showing_warning: return
 	tooltip.text = ""
@@ -147,6 +179,3 @@ func set_hand_sprite() -> void:
 	else:
 		hand.texture = load(Registry.UID["hand_hold"])
 		held_item.show()
-
-func set_tooltip_text(text: String) -> void:
-	tooltip.text = text

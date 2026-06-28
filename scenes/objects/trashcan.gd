@@ -15,11 +15,5 @@ func _process(_delta) -> void:
 		tooltip_text = Lang.TOOLTIPS.trashcan_throw
 
 func _on_interacted() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	if not ITEMS.nonthrowable.has(player.held_item_id):
-		player.remove_held_item()
-		animation.play("pop")
-	elif player.held_item_id != ITEMS.IDS.clipboard:
-		player.ui_layer.show_warning(Lang.WARNINGS.throw_item)
+	EventBus.throw_item.emit()
+	animation.play("pop")

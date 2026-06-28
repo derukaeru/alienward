@@ -11,20 +11,11 @@ func _process(_delta) -> void:
 
 func leave() -> void:
 	Util.mouse_captured()
-	
 	animation.play_backwards("pop")
 	await animation.animation_finished
 	
 	hide()
-	
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	player.ui_layer.shop_open = false
-	player.can_move = true
+	EventBus.close_shop.emit()
 
 func buy_base_item(item_name: String) -> void:
-	var shop: Node3D = Util.get_group_node("shop")
-	if not shop: return
-	
-	shop.buy_item(item_name)
+	EventBus.shop_buy_item.emit(item_name)

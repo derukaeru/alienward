@@ -2,11 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b4mds4q31qrlq" path="res://scenes/world/map.tscn" id="1_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://bjxbuxds7t565" path="res://assets/sprites/world/sky/free hdri_sky_751.jpg" id="1_6m72w"]
+[ext_resource type="Script" uid="uid://chep6als5b8lj" path="res://scenes/world/world.gd" id="1_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
-[ext_resource type="PackedScene" uid="uid://yhp2sprkwy51" path="res://scenes/objects/dirt.tscn" id="4_v5dby"]
-[ext_resource type="PackedScene" uid="uid://b328136vl47io" path="res://scenes/objects/items/antidote.tscn" id="5_t5ptc"]
-[ext_resource type="PackedScene" uid="uid://c41nfst6ynh2f" path="res://scenes/objects/items/chili.tscn" id="6_bq33v"]
-[ext_resource type="PackedScene" uid="uid://b51jsxro6uk0a" path="res://scenes/entities/baby/baby.tscn" id="7_j2gmx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v5dby"]
 panorama = ExtResource("1_6m72w")
@@ -29,6 +26,7 @@ fog_light_energy = 1.15
 fog_sky_affect = 0.0
 
 [node name="world" type="Node3D" unique_id=699643948]
+script = ExtResource("1_v5dby")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=475919342]
 environment = SubResource("Environment_sl2e5")
@@ -40,21 +38,6 @@ shadow_enabled = true
 [node name="map" parent="." unique_id=99244539 instance=ExtResource("1_1fp7r")]
 
 [node name="entities" type="Node3D" parent="." unique_id=338493316 groups=["entities_container"]]
-
-[node name="baby" parent="entities" unique_id=927048161 instance=ExtResource("7_j2gmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1042366, 0.52416945, 0)
-
-[node name="baby2" parent="entities" unique_id=1860904262 instance=ExtResource("7_j2gmx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3071413, 0.52416945, 0)
-
-[node name="dirt" parent="entities" unique_id=1419531611 instance=ExtResource("4_v5dby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022934556, 5.8276644)
-
-[node name="antidote" parent="entities" unique_id=592799222 instance=ExtResource("5_t5ptc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6863581, 0.6916039)
-
-[node name="chili" parent="entities" unique_id=1007922539 instance=ExtResource("6_bq33v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27763796, -3.1935856)
 
 [node name="player" parent="." unique_id=1554846954 groups=["player"] instance=ExtResource("2_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7140511, 0, -7.4180455)

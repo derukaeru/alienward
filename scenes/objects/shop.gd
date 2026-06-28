@@ -5,15 +5,11 @@ extends Node3D
 
 func _ready() -> void:
 	interactable.tooltip_text = Lang.TOOLTIPS.shop
+	EventBus.shop_buy_item.connect(buy_item)
 
 func _on_interactable_component_interacted() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	if player.ui_layer.shop_open: return
-	
 	animation.play("pop")
-	player.ui_layer.open_shop_screen()
+	EventBus.open_shop.emit()
 
 func buy_item(item_id: String) -> void:
 	if not ITEMS.SHOP_ITEMS.has(item_id): 

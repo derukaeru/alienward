@@ -5,6 +5,8 @@ extends InteractableComponent
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.printer
+	
+	EventBus.generate_image.connect(print_ultrasound)
 
 var printed: bool = false
 var printing: bool = false
@@ -12,6 +14,7 @@ var printing: bool = false
 var patient_id: int = GameManager.UNASSIGNED
 
 func print_ultrasound(id: int = -1) -> void:
+	if printed or printing: return
 	patient_id = id
 	
 	animation.play("print")

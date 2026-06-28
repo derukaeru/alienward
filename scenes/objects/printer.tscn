@@ -48,7 +48,7 @@ size = Vector2(0.7, 0.55)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pa7e3"]
 size = Vector3(1, 0.31304932, 1)
 
-[node name="printer" type="Area3D" unique_id=409367441 groups=["printer"]]
+[node name="printer" type="Area3D" unique_id=409367441]
 script = ExtResource("1_pa7e3")
 show_tooltip_text = true
 tooltip_text = "printer"

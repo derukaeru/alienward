@@ -14,14 +14,14 @@ var money: int = 0
 
 var canvas_layer: CanvasLayer = CanvasLayer.new()
 
-var latest_npc_id: int = 1
+var latest_patient_id: int = 1
 var latest_baby_id: int = 1
 
 var microscope_dna: String = ""
 var dirtiness: float = 0.0
 
 var has_interacted: bool = false
-var selected_ward_on_ui: int = UNASSIGNED # i wonder what this variable is for | EDIT: this comment was so dumb i dont even wanna delete it
+var selected_ward_on_ui: int = UNASSIGNED
 var clinic_open: bool = true
 
 var waiting_seats_occupation: Array = [false, false, false, false, false, false]
@@ -77,9 +77,9 @@ func spawn_patient() -> void:
 	container.add_child(patient)
 	container.add_child(npc)
 	
-	patient.npc_id = latest_npc_id + 1
-	npc.patient_id = latest_npc_id + 1
-	latest_npc_id += 1
+	patient.id = latest_patient_id + 1
+	npc.patient_id = latest_patient_id + 1
+	latest_patient_id += 1
 	
 	var npc_spawn: Vector3 = Util.get_npc_spot("npc_enter")
 	var patient_spawn: Vector3 = Util.get_patient_spot("patient_enter")

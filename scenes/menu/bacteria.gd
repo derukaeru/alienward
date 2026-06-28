@@ -10,12 +10,7 @@ func _ready() -> void:
 	initial_position = global_position
 
 func pick_bacteria() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	var microscope_screen: Control = player.ui_layer.microscope_screen
-	
 	if not identified:
-		microscope_screen.identify_bacteria(self)
+		EventBus.identify_bacteria.emit(self)
 	else:
-		microscope_screen.set_dna_color(index)
+		EventBus.show_dna.emit(index)

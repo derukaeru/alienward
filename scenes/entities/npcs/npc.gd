@@ -36,7 +36,8 @@ func interacted() -> void:
 		var baby: Baby = player.held_item
 		
 		if baby.patient_id == patient_id:
-			pass
+			player.remove_held_item()
+			
 			# TODO
 
 func target_reached() -> void:

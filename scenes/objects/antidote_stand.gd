@@ -5,22 +5,23 @@ var base_antidote_name: String
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.antidote_stand
+	EventBus.generate_antidote.connect(generate_antidote)
 
 func interact() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if not player.held_item is BaseAntidoteItem:
-		if player.ui_layer.antidote_open: return
-		player.ui_layer.antidote_screen.opened()
-		
-		animation.play("pop")
-		player.ui_layer.open_antidote_screen()
-	elif player.held_item is BaseAntidoteItem:
+	if player.held_item is BaseAntidoteItem:
 		base_antidote_name = player.held_item.internal_name
+		EventBus.update_base_antidote_item_name.emit(base_antidote_name)
 		player.remove_held_item()
 		
 		animation.play("pop")
+	else:
+		if player.ui_layer.antidote_open: return
+		
+		animation.play("pop")
+		EventBus.open_antidote_stand.emit()
 
 func generate_antidote(data: Dictionary = {}) -> void:
 	if not data: return

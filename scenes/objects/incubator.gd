@@ -5,6 +5,7 @@ var incubated_baby: Baby
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.incubator
+	
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()

@@ -29,6 +29,12 @@ DaysConfig="*uid://bchund26hmjxt"
 EffectsManager="*uid://cf35mhlfocojy"
 SettingsManager="*uid://plbwc0ehkvel"
 ITEMS="*uid://cnekjpbjsqp6w"
+EventBus="*uid://b4kouysqf85wd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
+gdscript/warnings/integer_division=0
 
 [display]
 
@@ -55,15 +61,11 @@ map=""
 baby=""
 patient=""
 npc=""
-player_ui=""
 bacteria=""
 incubator=""
 delivery_table=""
-printer=""
-shop=""
 item_chute=""
 curtain=""
-antidote_stand=""
 ultrasound_screen=""
 
 [gui]

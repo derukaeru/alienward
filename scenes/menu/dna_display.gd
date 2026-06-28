@@ -14,9 +14,7 @@ var COLORS: Array = [
 	Color(0.686, 0.373, 0.619, 1.0)
 ]
 
-func _ready() -> void:
-	change_dna_display(COLORS)
-
+var show_dna: bool = false
 func change_dna_display(colors: Array) -> void:
 	COLORS = colors
 	pairs = []
@@ -30,6 +28,8 @@ func change_dna_display(colors: Array) -> void:
 			color1 = COLORS[color_index],
 			color2 = COLORS[color_index + 1]
 		})
+	
+	show_dna = true
 
 func _process(_delta) -> void:
 	var time_elapsed: float = Time.get_ticks_msec() / 1000.0
@@ -43,6 +43,7 @@ func _process(_delta) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	if not show_dna: return
 	for i in pairs.size():
 		var pair = pairs[i]
 		

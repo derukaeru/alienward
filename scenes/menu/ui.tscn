@@ -109,7 +109,7 @@ shader = ExtResource("3_5y2ix")
 font = ExtResource("2_vxc86")
 font_size = 32
 
-[node name="ui" type="CanvasLayer" unique_id=687749877 groups=["player_ui"]]
+[node name="ui" type="CanvasLayer" unique_id=687749877]
 layer = 0
 script = ExtResource("1_n7q4b")
 
