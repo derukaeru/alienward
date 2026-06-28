@@ -43,7 +43,7 @@ func _ready() -> void:
 	set_stage()
 	
 	if waiting_seat_position == GameManager.UNASSIGNED: return
-	global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
+	move_to("seat_%d" % waiting_seat_position)
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -85,6 +85,7 @@ func interacted() -> void:
 	
 	if state == STATES.WAITING and player.held_item_id == ITEMS.IDS.clipboard: 
 		EventBus.open_patient_screen.emit()
+		print("emit")
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
@@ -161,6 +162,7 @@ func target_reached() -> void:
 		labor_timer.timeout.connect(birth_child)
 		state = STATES.LABOR
 	elif target_name.begins_with("seat_"):
+		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
 		state = STATES.WAITING
 	elif target_name == "checkup":
 		global_position = Util.get_patient_spot("checkup_seat")

@@ -54,6 +54,7 @@ func _input(event) -> void:
 				get_node("guide_patient/ward_%d" % GameManager.selected_ward_on_ui).show()
 
 func open_patient_screen(reason: GameManager.REASONS) -> void:
+	print("patient screen")
 	if patient_open: return
 	
 	match reason:

@@ -10,7 +10,7 @@ var target_name: String = ""
 var waiting_seat_position: int = GameManager.UNASSIGNED
 
 func _ready() -> void:
-	move_to("waiting")
+	move_to("seat_%d" % waiting_seat_position)
 
 func move_to(_name) -> void:
 	target_name = _name
@@ -41,7 +41,6 @@ func interacted() -> void:
 			# TODO
 
 func target_reached() -> void:
-	match target_name:
-		"waiting":
-			if waiting_seat_position < 0: return
-			global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
+	if target_name.begins_with("seat_"):
+		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
+		target_name = ""
