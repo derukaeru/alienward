@@ -39,6 +39,8 @@ _data = {
 &"pop": SubResource("Animation_h0sbf")
 }
 
+[sub_resource type="Theme" id="Theme_woskx"]
+
 [node name="shop_screen" type="Control" unique_id=2077115726]
 layout_mode = 3
 anchors_preset = 15
@@ -75,13 +77,42 @@ text = "exit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1362851102]
 libraries/ = SubResource("AnimationLibrary_38nrl")
 
-[node name="buy_chili" type="Button" parent="." unique_id=752324850]
-layout_mode = 0
-offset_left = 275.0
-offset_top = 178.0
-offset_right = 398.0
-offset_bottom = 226.0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1110776070]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -180.0
+offset_right = 272.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_woskx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=645152244]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="chili" type="ColorRect" parent="ScrollContainer/VBoxContainer" unique_id=1905308769]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="buy" type="Button" parent="ScrollContainer/VBoxContainer/chili" unique_id=752324850]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 1
 text = "buy chili"
 
 [connection signal="pressed" from="leave" to="." method="leave"]
-[connection signal="pressed" from="buy_chili" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/chili/buy" to="." method="buy_base_item" binds= ["chili"]]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pwa7rt5847ht" path="res://assets/sprites/ui/microscope_screen.png" id="2_8pnfs"]
 [ext_resource type="Shader" uid="uid://byveqf80sl83v" path="res://assets/shaders/wave.gdshader" id="3_ev5bl"]
 [ext_resource type="Script" uid="uid://dklbi1wpvkbp5" path="res://scenes/menu/dna_display.gd" id="4_e3ha5"]
+[ext_resource type="Texture2D" uid="uid://cxqypwvny0m63" path="res://assets/sprites/ui/dna_value.png" id="5_32uvo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ha5"]
 shader = ExtResource("3_ev5bl")
@@ -73,6 +74,9 @@ _data = {
 &"RESET": SubResource("Animation_ev5bl"),
 &"pop": SubResource("Animation_32uvo")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_h1w5r"]
+font_size = 32
 
 [node name="microscope_screen" type="Control" unique_id=1116009674]
 layout_mode = 3
@@ -156,5 +160,27 @@ show_percentage = false
 wait_time = 10.0
 one_shot = true
 
+[node name="dna_value" type="TextureRect" parent="." unique_id=1520460599]
+visible = false
+layout_mode = 0
+offset_left = 440.0
+offset_top = 144.0
+offset_right = 568.0
+offset_bottom = 240.0
+texture = ExtResource("5_32uvo")
+
+[node name="Label" type="Label" parent="dna_value" unique_id=1300990257]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 72.0
+text = "no value"
+label_settings = SubResource("LabelSettings_h1w5r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="dna_display" to="." method="dna_hovered"]
+[connection signal="mouse_exited" from="dna_display" to="." method="dna_unhovered"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
 [connection signal="timeout" from="identifying_timer" to="." method="identified_bacteria"]

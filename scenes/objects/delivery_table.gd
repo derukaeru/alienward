@@ -14,3 +14,12 @@ func change_tooltip() -> void:
 		tooltip_text = Lang.TOOLTIPS.delivery_table_baby
 	else:
 		tooltip_text = Lang.TOOLTIPS.delivery_table
+
+func deliver_baby(index: int, baby: Baby) -> void:
+	if index == name.trim_prefix("delivery_table_").to_int():
+		baby.delivery_table = self
+		baby.is_in_delivery_table = true
+		
+		held_baby = baby
+		change_tooltip()
+		baby.global_position = global_position + Vector3(0.0, 0.5, 0.0)

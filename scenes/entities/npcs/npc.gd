@@ -42,5 +42,5 @@ func interacted() -> void:
 
 func target_reached() -> void:
 	if target_name.begins_with("seat_"):
-		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
+		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""

@@ -63,9 +63,7 @@ patient=""
 npc=""
 bacteria=""
 incubator=""
-delivery_table=""
 item_chute=""
-curtain=""
 ultrasound_screen=""
 
 [gui]

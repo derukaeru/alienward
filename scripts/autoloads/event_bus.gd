@@ -26,3 +26,7 @@ signal open_patient_screen
 signal close_patient_screen
 
 signal throw_item
+signal open_curtain(index: int)
+signal close_curtain(index: int)
+
+signal deliver_child(index: int, baby: Baby)

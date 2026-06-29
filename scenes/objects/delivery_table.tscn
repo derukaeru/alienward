@@ -16,7 +16,7 @@ texture_filter = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_id2aq"]
 size = Vector3(1, 0.7655029, 1)
 
-[node name="delivery_table" type="Area3D" unique_id=1872116920 groups=["delivery_table"]]
+[node name="delivery_table" type="Area3D" unique_id=1872116920]
 script = ExtResource("1_5xry3")
 show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"

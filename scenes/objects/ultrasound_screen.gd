@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func generate_image() -> void:
 	if not scanned_patient_id: return
-	EventBus.generate_image.emit()
+	EventBus.generate_image.emit(scanned_patient_id)
 
 func interact() -> void:
 	generate_image()

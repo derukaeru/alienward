@@ -84,8 +84,7 @@ func interacted() -> void:
 	if not player: return
 	
 	if state == STATES.WAITING and player.held_item_id == ITEMS.IDS.clipboard: 
-		EventBus.open_patient_screen.emit()
-		print("emit")
+		EventBus.open_patient_screen.emit(reason)
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
@@ -97,10 +96,12 @@ func interacted() -> void:
 			
 			scanning_timer.start(scan_time)
 			scanning_timer.timeout.connect(scan_done)
-		elif player.held_item_id == ITEMS.IDS.ultrasound_print:
+		if player.held_item_id == ITEMS.IDS.ultrasound_print:
 			if player.held_item.patient_id == id:
 				has_ultrasound = true
 				player.remove_held_item()
+				
+				state = STATES.READY_TO_LEAVE
 				move_to("patient_enter")
 
 func scan_done() -> void:
@@ -151,12 +152,8 @@ func target_reached() -> void:
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
-		
 		state = STATES.IDLE
-		
-		for entry in Util.get_group_nodes("curtain"):
-			if entry.name == "curtain_%d" % ward_index:
-				entry.close()
+		EventBus.close_curtain.emit(ward_index)
 	elif target_name.begins_with("inside_ward_"):
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
@@ -167,6 +164,8 @@ func target_reached() -> void:
 	elif target_name == "checkup":
 		global_position = Util.get_patient_spot("checkup_seat")
 		state = STATES.CHECKUP
+	elif target_name == "patient_enter": 
+		queue_free()
 
 func birth_child() -> void:
 	if state != STATES.LABOR: return
@@ -179,16 +178,8 @@ func birth_child() -> void:
 	child.id = GameManager.latest_baby_id + 1
 	GameManager.latest_baby_id += 1
 	
-	for entry in Util.get_group_nodes("delivery_table"):
-		if entry.name == "delivery_table_%d" % ward_index:
-			child.delivery_table = entry
-			child.is_in_delivery_table = true
-			
-			entry.held_baby = child
-			entry.change_tooltip()
+	EventBus.deliver_child.emit(ward_index, child)
 	
-	var delivery_table = Util.get_patient_spot("delivery_table_%d" % ward_index)
-	child.global_position = delivery_table
 	
 	state = STATES.RESTING
 	rest_timer = get_tree().create_timer(rest_speed)

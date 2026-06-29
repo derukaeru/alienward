@@ -6,14 +6,16 @@ extends Control
 @onready var identifying_bacteria_bar: ProgressBar = $identifying_bacteria_bar
 
 @onready var bacteria: Resource = load(Registry.UID["bacteria"])
+@onready var dna_value: TextureRect = $dna_value
+@onready var dna_value_label: Label = $dna_value/Label
 
 enum LETTERS_TO_VAL { A, C, G, T }
+var bacteria_colors: Array = []
 
 var IDENTIFY_SPEED: float = 10.0
 var identifying_bacteria: Bacteria
 @onready var identifying_timer: Timer = $identifying_timer
 
-var bacteria_colors: Array = []
 
 func _ready() -> void:
 	EventBus.create_new_dna.connect(new_dna)
@@ -23,12 +25,8 @@ func _ready() -> void:
 	new_dna()
 
 func new_dna() -> void:
-	var split_dna: Array = []
-	var dna: String = GameManager.microscope_dna
-	
-	if not dna: return
-	for i in range(4):
-		split_dna.append(dna.substr(i * 4, 4))
+	var split_dna: Array = get_split_dna()
+	if not split_dna: return
 	
 	for i in range(4):
 		var new_bacteria: Bacteria = bacteria.instantiate()
@@ -40,10 +38,32 @@ func new_dna() -> void:
 		
 		bacteria_colors.append(generate_chunk_colors(split_dna[i]))
 		new_bacteria.modulate = bacteria_colors[i][4]
+		new_bacteria.type = new_bacteria.TYPES[i]
+
+func get_split_dna() -> Array:
+	var split_dna: Array = []
+	var dna: String = GameManager.microscope_dna
+	
+	if not dna: return []
+	for i in range(4):
+		split_dna.append(dna.substr(i * 4, 4))
+	
+	return split_dna
+
+func get_baby_with_dna(dna: String) -> Baby:
+	for entry in Util.get_group_nodes("baby"): 
+		if entry.dna == dna:
+			return entry
+	return null
 
 func set_dna_color(bacteria_index: int) -> void:
 	if bacteria_colors[bacteria_index].is_empty(): return
 	dna_display.change_dna_display(bacteria_colors[bacteria_index])
+	
+	var baby: Baby = get_baby_with_dna(GameManager.microscope_dna)
+	if not baby: return
+	
+	dna_value_label.text = baby.effect[bacteria_index]
 
 func identify_bacteria(_bacteria: Bacteria) -> void:
 	if _bacteria.index == GameManager.UNASSIGNED or _bacteria.identified: return
@@ -95,3 +115,9 @@ func _process(_delta) -> void:
 	
 	if Input.is_action_just_pressed("ui_cancel") and player.ui_layer.microscope_open:
 		_on_leave_pressed()
+
+func dna_hovered():
+	dna_value.show()
+
+func dna_unhovered():
+	dna_value.hide()
