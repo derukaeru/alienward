@@ -32,7 +32,5 @@ func generate_antidote(data: Dictionary = {}) -> void:
 	var antidote_instance: Antidote = load(Registry.UID["antidote_instance"]).instantiate()
 	antidote_instance.data = data
 	
-	var entities_container: Node3D = Util.get_group_node("entities_container")
-	entities_container.add_child(antidote_instance)
-	
+	Util.add_entity_to_container(antidote_instance)
 	player.pick_up(antidote_instance)

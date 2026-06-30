@@ -23,7 +23,7 @@ func _on_interacted() -> void:
 	animation.play("pop")
 	
 	var _swab: Item = load(Registry.UID["swab"]).instantiate()
-	Util.get_group_node("entities_container").add_child(_swab)
+	Util.add_entity_to_container(_swab)
 	
 	_swab.name = "swab"
 	player.pick_up(_swab)

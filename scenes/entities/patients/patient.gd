@@ -110,10 +110,7 @@ func scan_done() -> void:
 	
 	print("done scan")
 	
-	var ultrasound_screen: InteractableComponent = Util.get_group_node("ultrasound_screen")
-	if not ultrasound_screen: return
-	
-	ultrasound_screen.scanned_patient_id = id
+	EventBus.patient_scanned.emit(id)
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
@@ -171,15 +168,13 @@ func birth_child() -> void:
 	if state != STATES.LABOR: return
 	
 	var child: Baby = load(Registry.UID["baby"]).instantiate()
-	var container = Util.get_group_node("entities_container")
-	container.add_child(child)
+	Util.add_entity_to_container(child)
 	
 	child.patient_id = id
 	child.id = GameManager.latest_baby_id + 1
 	GameManager.latest_baby_id += 1
 	
 	EventBus.deliver_child.emit(ward_index, child)
-	
 	
 	state = STATES.RESTING
 	rest_timer = get_tree().create_timer(rest_speed)

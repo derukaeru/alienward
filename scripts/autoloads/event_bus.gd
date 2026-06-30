@@ -30,3 +30,5 @@ signal open_curtain(index: int)
 signal close_curtain(index: int)
 
 signal deliver_child(index: int, baby: Baby)
+signal patient_scanned(patient_id: int)
+signal generate_item(item_id: String)

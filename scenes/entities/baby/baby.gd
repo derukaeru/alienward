@@ -34,7 +34,7 @@ func _ready() -> void:
 	generate_dna()
 	
 	get_tree().create_timer(time_to_show_symptoms).timeout.connect(
-		func(): 
+		func() -> void: 
 			showing_symptoms = true
 			get_tree().create_timer(effect.duration).timeout.connect(activate_effect)
 	)

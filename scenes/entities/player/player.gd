@@ -30,18 +30,18 @@ func _ready() -> void:
 	set_held_item_sprite("clipboard")
 	
 	ui_layer.held_item.get_node("AnimationPlayer").animation_finished.connect(
-		func(_a): 
+		func(_a) -> void: 
 			ui_layer.held_item.get_node("AnimationPlayer").play("RESET"), 
 			CONNECT_ONE_SHOT
 	)
 	ui_layer.hand.get_node("AnimationPlayer").animation_finished.connect(
-		func(_a): 
+		func(_a) -> void: 
 			ui_layer.hand.get_node("AnimationPlayer").play("RESET"), 
 			CONNECT_ONE_SHOT
 	)
 	
 	EventBus.clean_mop.connect(
-		func(): 
+		func() -> void: 
 			if held_item_id == ITEMS.IDS.mop:
 				held_item.dirtiness = 0.0
 	)

@@ -21,7 +21,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_io262"]
 size = Vector3(0.59669495, 0.6065674, 0.5522461)
 
-[node name="ultrasound_screen" type="Area3D" unique_id=1764942571 groups=["ultrasound_screen"]]
+[node name="ultrasound_screen" type="Area3D" unique_id=1764942571]
 script = ExtResource("1_b7kio")
 show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"

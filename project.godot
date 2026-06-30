@@ -54,17 +54,12 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [global_group]
 
-camera=""
 player=""
 entities_container=""
-map=""
 baby=""
 patient=""
 npc=""
 bacteria=""
-incubator=""
-item_chute=""
-ultrasound_screen=""
 
 [gui]
 

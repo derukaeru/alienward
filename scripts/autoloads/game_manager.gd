@@ -72,10 +72,8 @@ func spawn_patient() -> void:
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()
 	var npc: NPC = load(Registry.UID["npc"]).instantiate()
 	
-	var container: Node = Util.get_group_node("entities_container")
-	
-	container.add_child(patient)
-	container.add_child(npc)
+	Util.add_entity_to_container(patient)
+	Util.add_entity_to_container(npc)
 	
 	patient.id = latest_patient_id + 1
 	npc.patient_id = latest_patient_id + 1

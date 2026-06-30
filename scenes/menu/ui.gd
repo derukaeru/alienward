@@ -35,7 +35,7 @@ func _ready() -> void:
 	EventBus.close_microscope.connect(close_microscope_screen)
 	EventBus.close_shop.connect(close_shop_screen)
 	
-	EventBus.done_cleaning.connect(func(): cleaning_progress.hide())
+	EventBus.done_cleaning.connect(func() -> void: cleaning_progress.hide())
 	EventBus.open_patient_screen.connect(open_patient_screen)
 
 func _input(event) -> void:
@@ -152,7 +152,7 @@ func show_warning(text: String) -> void:
 	add_child(warning_timer)
 	
 	warning_timer.timeout.connect(
-		func(): 
+		func() -> void: 
 			showing_warning = false
 			tooltip.text = ""
 			

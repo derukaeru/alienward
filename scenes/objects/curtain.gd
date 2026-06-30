@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
-func _ready():
+func _ready() -> void:
 	EventBus.open_curtain.connect(open)
 	EventBus.close_curtain.connect(close)
 

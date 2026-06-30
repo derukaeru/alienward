@@ -116,8 +116,8 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("ui_cancel") and player.ui_layer.microscope_open:
 		_on_leave_pressed()
 
-func dna_hovered():
+func dna_hovered() -> void:
 	dna_value.show()
 
-func dna_unhovered():
+func dna_unhovered() -> void:
 	dna_value.hide()

@@ -58,3 +58,9 @@ func get_npc_with_id(id: int) -> NPC:
 		if entry.patient_id == id:
 			return entry
 	return null
+
+func add_entity_to_container(entity: Node) -> void:
+	var container: Node3D = get_group_node("entities_container")
+	if not container: return
+	
+	container.add_child(entity)

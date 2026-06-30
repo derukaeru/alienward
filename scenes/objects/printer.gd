@@ -33,9 +33,7 @@ func interact() -> void:
 	printed = false
 	
 	var paper: Item = load(Registry.UID["ultrasound_print_instance"]).instantiate()
-	var container: Node3D = Util.get_group_node("entities_container")
+	Util.add_entity_to_container(paper)
 	
 	paper.patient_id = patient_id
-	
-	container.add_child(paper)
 	player.pick_up(paper)
