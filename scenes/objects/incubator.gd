@@ -43,6 +43,7 @@ func incubate_baby(baby: Baby = null) -> void:
 		player.held_item = null
 		
 		player.set_held_item_sprite("clipboard")
+		EventBus.incubated_child.emit(incubated_baby.id)
 	else:
 		if incubated_baby: return
 		

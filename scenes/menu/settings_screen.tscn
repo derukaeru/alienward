@@ -35,14 +35,32 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="sound_effect_volume_slider" type="HSlider" parent="." unique_id=1404800242]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -320.0
+offset_right = 160.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="music_slider" type="HSlider" parent="." unique_id=829614814]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="fullscreen_button" type="CheckButton" parent="." unique_id=516917409]
 layout_mode = 0
@@ -52,9 +70,18 @@ offset_right = 680.0
 offset_bottom = 200.0
 
 [node name="sensitivity_slider" type="HSlider" parent="." unique_id=433960799]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -176.0
+offset_right = 176.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="value_changed" from="main_volume_slider" to="." method="change_main_volume"]
 [connection signal="value_changed" from="sound_effect_volume_slider" to="." method="change_sound_effect_volume"]

@@ -9,8 +9,12 @@ var gravity: float = 9.8
 var target_name: String = ""
 var waiting_seat_position: int = GameManager.UNASSIGNED
 
+var ready_to_recieve_baby: bool = false
+var ready_to_leave: bool = false
+
 func _ready() -> void:
 	move_to("seat_%d" % waiting_seat_position)
+	EventBus.incubated_child.connect(look_at_child)
 
 func move_to(_name) -> void:
 	target_name = _name
@@ -35,12 +39,17 @@ func interacted() -> void:
 	if player.held_item_id == ITEMS.IDS.baby:
 		var baby: Baby = player.held_item
 		
-		if baby.patient_id == patient_id:
+		if baby.patient_id == patient_id and ready_to_recieve_baby:
 			player.remove_held_item()
-			
+			ready_to_leave = true
 			# TODO
 
 func target_reached() -> void:
 	if target_name.begins_with("seat_"):
 		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""
+	if target_name.begins_with("look_at_"):
+		ready_to_recieve_baby = true
+
+func look_at_child(child_id: int) -> void:
+	if child_id != patient_id: return

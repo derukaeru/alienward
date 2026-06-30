@@ -24,6 +24,7 @@ var effect: Dictionary = {
 	frequency = 1.0,
 	duration = 1.0,
 }
+var is_cured: bool = true
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.baby
@@ -133,4 +134,20 @@ func pick_up() -> void:
 		is_in_delivery_table = false
 
 func give_antidote(antidote: BaseAntidoteItem) -> void:
-	pass
+	# either this method
+	# or check if its the antidote.data is the same as effect
+	# then mutate or cure based on the answer
+	
+	if antidote.data.duration == effect.duration:
+		effect.duration = 0.0
+	
+	if antidote.data.frequency == effect.frequency:
+		effect.frequency = 0.0
+	
+	if antidote.data.intensity == effect.intensity:
+		effect.intensity = 0.0
+	
+	if effect.intensity == 0 and effect.frequency == 0.0 and effect.duration == 0.0:
+		if effect.type == antidote.data.type:
+			effect.type = -1
+			is_cured = true

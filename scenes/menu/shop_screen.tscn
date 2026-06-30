@@ -77,7 +77,7 @@ text = "exit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1362851102]
 libraries/ = SubResource("AnimationLibrary_38nrl")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1110776070]
+[node name="shop_container" type="ScrollContainer" parent="." unique_id=1110776070]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,16 +92,84 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_woskx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=645152244]
+[node name="items" type="VBoxContainer" parent="shop_container" unique_id=645152244]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="chili" type="ColorRect" parent="ScrollContainer/VBoxContainer" unique_id=1905308769]
+[node name="chili" type="ColorRect" parent="shop_container/items" unique_id=1905308769]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 
-[node name="buy" type="Button" parent="ScrollContainer/VBoxContainer/chili" unique_id=752324850]
+[node name="buy" type="Button" parent="shop_container/items/chili" unique_id=752324850]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "buy chili"
+
+[node name="chili2" type="ColorRect" parent="shop_container/items" unique_id=1317541641]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="buy" type="Button" parent="shop_container/items/chili2" unique_id=568544816]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "buy chili"
+
+[node name="chili3" type="ColorRect" parent="shop_container/items" unique_id=1690417082]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="buy" type="Button" parent="shop_container/items/chili3" unique_id=779602063]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "buy chili"
+
+[node name="chili4" type="ColorRect" parent="shop_container/items" unique_id=821180343]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="buy" type="Button" parent="shop_container/items/chili4" unique_id=1841364523]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 84.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "buy chili"
+
+[node name="chili5" type="ColorRect" parent="shop_container/items" unique_id=1674943624]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="buy" type="Button" parent="shop_container/items/chili5" unique_id=453832136]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -115,4 +183,8 @@ mouse_filter = 1
 text = "buy chili"
 
 [connection signal="pressed" from="leave" to="." method="leave"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/chili/buy" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="shop_container/items/chili/buy" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="shop_container/items/chili2/buy" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="shop_container/items/chili3/buy" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="shop_container/items/chili4/buy" to="." method="buy_base_item" binds= ["chili"]]
+[connection signal="pressed" from="shop_container/items/chili5/buy" to="." method="buy_base_item" binds= ["chili"]]
