@@ -25,6 +25,7 @@ var selected_ward_on_ui: int = UNASSIGNED
 var clinic_open: bool = true
 
 var waiting_seats_occupation: Array = [false, false, false, false, false, false]
+var watch_baby: Array = [false, false, false, false, false, false, false]
 var ward_occupation: Array = [false, false, false, false]
 
 enum REASONS {

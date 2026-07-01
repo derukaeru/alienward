@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://inedntn6htqj"]
 
 [ext_resource type="Script" uid="uid://dhsfhte2l3ari" path="res://scenes/entities/patients/patient.gd" id="1_sx7n5"]
+[ext_resource type="Texture2D" uid="uid://cbughuvbnc2iw" path="res://assets/sprites/ui/scanning.png" id="3_sx7n5"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="4_vdqdh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_excrj"]
@@ -43,6 +44,16 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1870784221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9995117, 0)
 shape = SubResource("CapsuleShape3D_6srr1")
+
+[node name="ScanningSpritePivot" type="Node3D" parent="." unique_id=1933158060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1041999, 0)
+
+[node name="ScanningSprite" type="Sprite3D" parent="ScanningSpritePivot" unique_id=578199015]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0.3199631)
+visible = false
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_sx7n5")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

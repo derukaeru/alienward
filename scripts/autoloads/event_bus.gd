@@ -33,3 +33,6 @@ signal deliver_child(index: int, baby: Baby)
 signal incubated_child(id: int)
 signal patient_scanned(patient_id: int)
 signal generate_item(item_id: String)
+
+signal patient_leaving_checkup(patient_id: int)
+signal patient_leaving_labor(patient_id: int)

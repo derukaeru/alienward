@@ -6,6 +6,44 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltbe8"]
 size = Vector3(0.6484375, 0.58599854, 0.5780945)
 
+[sub_resource type="Animation" id="Animation_4xi00"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dfnfi"]
+resource_name = "bob"
+length = 0.45
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nosb7"]
+_data = {
+&"RESET": SubResource("Animation_4xi00"),
+&"bob": SubResource("Animation_dfnfi")
+}
+
 [node name="antidote" type="Area3D" unique_id=1732721454]
 script = ExtResource("1_xoq7v")
 internal_name = "antidote"
@@ -19,3 +57,7 @@ shape = SubResource("BoxShape3D_ltbe8")
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_2sth7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=446025552]
+libraries/ = SubResource("AnimationLibrary_nosb7")
+autoplay = &"bob"

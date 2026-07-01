@@ -48,8 +48,24 @@ func target_reached() -> void:
 	if target_name.begins_with("seat_"):
 		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""
-	if target_name.begins_with("look_at_"):
+	if target_name.begins_with("watch_baby_"):
 		ready_to_recieve_baby = true
+		global_position = Util.get_npc_spot(target_name)
 
 func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return
+	
+	var available_spots: Array = []
+	for i in range(GameManager.watch_baby):
+		if not GameManager.watch_baby[i]:
+			available_spots.append(i)
+	
+	if available_spots.is_empty():
+		print("no available spots")
+		return
+	
+	var spot_index: int = available_spots[randi() % available_spots.size()]
+	move_to("watch_baby_%d" % spot_index)
+
+func leaving_checkup() -> void:
+	pass

@@ -6,6 +6,44 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo7bh"]
 size = Vector3(0.66186523, 0.79785156, 0.6739502)
 
+[sub_resource type="Animation" id="Animation_xo7bh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kw1n6"]
+resource_name = "bob"
+length = 0.45
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h65p6"]
+_data = {
+&"RESET": SubResource("Animation_xo7bh"),
+&"bob": SubResource("Animation_kw1n6")
+}
+
 [node name="chili" type="Area3D" unique_id=1007922539]
 script = ExtResource("1_xo7bh")
 internal_name = "chili"
@@ -19,3 +57,7 @@ shape = SubResource("BoxShape3D_xo7bh")
 billboard = 1
 texture_filter = 0
 texture = ExtResource("2_kw1n6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=591413756]
+libraries/ = SubResource("AnimationLibrary_h65p6")
+autoplay = &"bob"

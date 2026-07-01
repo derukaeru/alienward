@@ -2,6 +2,10 @@ class_name Patient extends CharacterBody3D
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var nav_agent = $NavigationAgent3D
+
+@onready var scanning_sprite_pivot: Node3D = $ScanningSpritePivot
+@onready var scanning_sprite: Sprite3D = $ScanningSpritePivot/ScanningSprite
+
 var speed: float = 2.4
 var gravity: float = 9.8
 var id: int = GameManager.UNASSIGNED
@@ -19,6 +23,7 @@ var state: STATES = STATES.IDLE
 
 var scanning: bool = false
 var scanned: bool = false
+var scan_sprite_offset: float = 0.3
 var has_ultrasound: bool = false
 
 var scanning_timer: Timer
@@ -45,6 +50,60 @@ func _ready() -> void:
 	if waiting_seat_position == GameManager.UNASSIGNED: return
 	move_to("seat_%d" % waiting_seat_position)
 
+func _physics_process(delta) -> void:
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+		
+	if nav_agent.is_navigation_finished():
+		return
+	
+	var next = nav_agent.get_next_path_position()
+	var direction = (next - global_position).normalized()
+	velocity = direction * speed
+	move_and_slide()
+
+func _process(_delta) -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if scanning:
+		var player_collider: Node = player.raycast.get_collider()
+		if not player_collider == interactable_component:
+			scanning = false
+			print("stopped scanning")
+			
+			scanning_timer.stop()
+			scanning_timer.queue_free()
+			
+			scanning_sprite.hide()
+		else:
+			scanning_sprite.show()
+			var to_player: Vector3 = (player.global_position - scanning_sprite_pivot.global_position)
+			to_player.y = 0.0
+			to_player.normalized()
+			
+			scanning_sprite.global_position = scanning_sprite_pivot.global_position + to_player * scan_sprite_offset
+	
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
+		guided = false
+		
+		if reason == GameManager.REASONS.CHECKUP:
+			player.ui_layer.checkup.hide() 
+			player.ui_layer.patient_open = false
+			
+			if GameManager.clinic_open:
+				move_to("checkup")
+				GameManager.clinic_open = false
+		elif reason == GameManager.REASONS.LABOR:
+			player.ui_layer.guide_patient.hide() 
+			player.ui_layer.patient_open = false
+			
+			if GameManager.selected_ward_on_ui >= 0:
+				ward_index = GameManager.selected_ward_on_ui
+				
+				move_to("ward_%d" % ward_index)
+				GameManager.selected_ward_on_ui = -1
+
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
 	
@@ -63,18 +122,6 @@ func move_to(_name: String) -> void:
 	
 	target_name = _name
 	nav_agent.target_position = Util.get_patient_spot(_name)
-
-func _physics_process(delta) -> void:
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-		
-	if nav_agent.is_navigation_finished():
-		return
-	
-	var next = nav_agent.get_next_path_position()
-	var direction = (next - global_position).normalized()
-	velocity = direction * speed
-	move_and_slide()
 
 func interacted() -> void:
 	if state == STATES.WAITING:
@@ -103,6 +150,7 @@ func interacted() -> void:
 				
 				state = STATES.READY_TO_LEAVE
 				move_to("patient_enter")
+				EventBus.patient_leaving_checkup.emit(id)
 
 func scan_done() -> void:
 	scanned = true
@@ -110,40 +158,8 @@ func scan_done() -> void:
 	
 	print("done scan")
 	
+	scanning_sprite.hide()
 	EventBus.patient_scanned.emit(id)
-
-func _process(_delta) -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	if scanning:
-		var player_collider: Node = player.raycast.get_collider()
-		if not player_collider == interactable_component:
-			scanning = false
-			print("stopped scanning")
-			
-			scanning_timer.stop()
-			scanning_timer.queue_free()
-	
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
-		guided = false
-		
-		if reason == GameManager.REASONS.CHECKUP:
-			player.ui_layer.checkup.hide() 
-			player.ui_layer.patient_open = false
-			
-			if GameManager.clinic_open:
-				move_to("checkup")
-				GameManager.clinic_open = false
-		elif reason == GameManager.REASONS.LABOR:
-			player.ui_layer.guide_patient.hide() 
-			player.ui_layer.patient_open = false
-			
-			if GameManager.selected_ward_on_ui >= 0:
-				ward_index = GameManager.selected_ward_on_ui
-				
-				move_to("ward_%d" % ward_index)
-				GameManager.selected_ward_on_ui = -1
 
 func target_reached() -> void:
 	if target_name.begins_with("ward_"):
