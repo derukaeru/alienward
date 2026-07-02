@@ -30,11 +30,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ii721"]
-radius = 0.325
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_cyk10"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ii721"]
+radius = 0.325
 
 [node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
 collision_mask = 2
@@ -51,12 +51,10 @@ animation = &"4"
 script = ExtResource("3_ii721")
 metadata/_custom_type_script = "uid://dhavxlm0dhkco"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1144057456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_ii721")
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
-path_postprocessing = 1
+avoidance_enabled = true
+radius = 1.0
+debug_enabled = true
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=2051864871]
 script = ExtResource("5_cyk10")
@@ -65,6 +63,12 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableComponent" unique_id=1088004299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_cyk10")
+
+[node name="ModelContainer" type="Node3D" parent="." unique_id=1217877875]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=1144057456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ii721")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

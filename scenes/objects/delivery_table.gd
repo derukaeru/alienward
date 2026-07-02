@@ -4,6 +4,7 @@ var held_baby: Baby
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.delivery_table
+	EventBus.deliver_child.connect(deliver_baby)
 
 func interact() -> void:
 	if held_baby:
@@ -22,4 +23,4 @@ func deliver_baby(index: int, baby: Baby) -> void:
 		
 		held_baby = baby
 		change_tooltip()
-		baby.global_position = global_position + Vector3(0.0, 0.5, 0.0)
+		baby.global_position = global_position + Vector3(0.0, 1.8, 0.0)

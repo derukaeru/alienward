@@ -179,6 +179,7 @@ text = "no value"
 label_settings = SubResource("LabelSettings_h1w5r")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="mouse_entered" from="dna_display" to="." method="dna_hovered"]
 [connection signal="mouse_exited" from="dna_display" to="." method="dna_unhovered"]

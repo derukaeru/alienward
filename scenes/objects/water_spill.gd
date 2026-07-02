@@ -1,4 +1,4 @@
-class_name Dirt extends InteractableComponent
+class_name WaterSpill extends InteractableComponent
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite3D = $Sprite3D
@@ -44,4 +44,3 @@ func _process(_delta) -> void:
 			cleaning_timer.stop()
 			cleaning_timer.queue_free()
 			cleaning_timer = null
-			

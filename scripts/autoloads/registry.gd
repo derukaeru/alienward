@@ -23,6 +23,9 @@ var UID: Dictionary = {
 	
 	"dialogue_box": "uid://6cae11kpahyv",
 	
+	"dirt": "uid://yhp2sprkwy51",
+	"water_spill": "uid://cjod10hvj1g0s",
+	
 	# item instances
 	"chili_instance": "uid://c41nfst6ynh2f",
 	"ultrasound_print_instance": "uid://dl7ni1qig34fo",

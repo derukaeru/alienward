@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cjod10hvj1g0s"]
+
+[ext_resource type="Script" uid="uid://kmkh4yfqu6yd" path="res://scenes/objects/water_spill.gd" id="1_2n1ca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rqsb"]
+size = Vector3(1, 0.045959473, 1)
+
+[sub_resource type="Animation" id="Animation_0rqsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2n1ca"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rqsb"]
+_data = {
+&"RESET": SubResource("Animation_0rqsb"),
+&"show": SubResource("Animation_2n1ca")
+}
+
+[node name="WaterSpill" type="Area3D" unique_id=1079028658]
+script = ExtResource("1_2n1ca")
+metadata/_custom_type_script = "uid://dnsqly26s4wb0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1707068434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023101807, 0)
+shape = SubResource("BoxShape3D_0rqsb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=887407109]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=363294856]
+libraries/ = SubResource("AnimationLibrary_0rqsb")

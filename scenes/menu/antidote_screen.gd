@@ -43,7 +43,7 @@ func opened() -> void:
 	if not base_antidote_name: return
 	
 	var base_item_sprite: TextureRect = TextureRect.new()
-	base_item_sprite.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	base_item_sprite.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
 	
 	base_item_sprite.texture = load(Registry.UID[base_antidote_name])
 	base_container.add_child(base_item_sprite)

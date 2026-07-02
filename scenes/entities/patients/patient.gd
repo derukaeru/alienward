@@ -135,7 +135,6 @@ func interacted() -> void:
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
-			print("scanning")
 			
 			scanning_timer = Timer.new()
 			scanning_timer.one_shot = true
@@ -149,14 +148,11 @@ func interacted() -> void:
 				player.remove_held_item()
 				
 				state = STATES.READY_TO_LEAVE
-				move_to("patient_enter")
 				EventBus.patient_leaving_checkup.emit(id)
 
 func scan_done() -> void:
 	scanned = true
 	scanning = false
-	
-	print("done scan")
 	
 	scanning_sprite.hide()
 	EventBus.patient_scanned.emit(id)
@@ -165,11 +161,9 @@ func target_reached() -> void:
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
-		state = STATES.IDLE
-		EventBus.close_curtain.emit(ward_index)
-	elif target_name.begins_with("inside_ward_"):
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
+		EventBus.close_curtain.emit(ward_index)
 		state = STATES.LABOR
 	elif target_name.begins_with("seat_"):
 		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
@@ -181,10 +175,13 @@ func target_reached() -> void:
 		queue_free()
 
 func birth_child() -> void:
+	print("birthfr")
 	if state != STATES.LABOR: return
 	
 	var child: Baby = load(Registry.UID["baby"]).instantiate()
 	Util.add_entity_to_container(child)
+	
+	print("birth")
 	
 	child.patient_id = id
 	child.id = GameManager.latest_baby_id + 1

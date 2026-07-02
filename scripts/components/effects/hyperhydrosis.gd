@@ -1,7 +1,32 @@
 class_name HyperhydrosisEffect extends BaseEffect
 
-func activate(baby: Baby, effect_data: Dictionary) -> void:
-	pass
+var spawning_water: bool = false
+var spawn_timer: Timer
+var stop_spawn_timer: Timer
+
+func activate(baby: Baby) -> void:
+	if spawning_water: return
+	spawning_water = true
+	
+	spawn_timer = Timer.new()
+	spawn_timer.timeout.connect(spawn_water)
+	
+	add_child(spawn_timer)
+	spawn_timer.start(0.5)
+	
+	stop_spawn_timer = Timer.new()
+	stop_spawn_timer.timeout.connect(deactivate)
+	
+	add_child(stop_spawn_timer)
+	stop_spawn_timer.start(baby.effect.duration)
 
 func deactivate() -> void:
-	pass
+	spawn_timer.stop()
+	spawning_water = false
+
+func spawn_water() -> void:
+	var water_spill: WaterSpill = load(Registry.UID["water_spill"]).instantiate()
+	Util.add_entity_to_container(water_spill)
+	
+	# water spill position randomly around the baby
+	# position is offset (0.0, 0.1, 0.0) above the ground

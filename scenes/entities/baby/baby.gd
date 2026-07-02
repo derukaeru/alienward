@@ -1,6 +1,7 @@
 class_name Baby extends Item
 
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
+@onready var effect_timer: Timer = $EffectTimer
 
 var dna: String = ""
 var split_dna: Array = []
@@ -39,6 +40,12 @@ func _ready() -> void:
 			showing_symptoms = true
 			get_tree().create_timer(effect.duration).timeout.connect(activate_effect)
 	)
+	
+	# the lowest the frequency can go is once every 20s
+	# 2.0 in effect.frequency means most frequent and 0.1 is least frequent
+	effect_timer.wait_time = 100 * (2.0 - effect.frequency) + 20
+	effect_timer.timeout.connect(activate_effect)
+	effect_timer.start()
 
 func _process(_delta) -> void:
 	if is_in_delivery_table: 
@@ -118,7 +125,7 @@ func generate_effect() -> void:
 	effect.intensity = remap(chunk_four_total, 0.0, 3.0, 0.5, 2.0)
 
 func activate_effect() -> void:
-	EffectsManager.apply_effect(self, effect)
+	EffectsManager.apply_effect(self)
 
 func pick_up() -> void:
 	if incubator:

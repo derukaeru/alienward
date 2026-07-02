@@ -14,7 +14,7 @@ func _ready() -> void:
 	EFFECTS[8] = TeleportationEffect.new()
 	EFFECTS[9] = ZeroGravityEffect.new()
 
-func apply_effect(baby: Baby, effect_data: Dictionary) -> void:
-	var idx: int = effect_data["effect_index"]
+func apply_effect(baby: Baby) -> void:
+	var idx: int = baby.effect["effect_index"]
 	if EFFECTS.has(idx):
-		EFFECTS[idx].activate(baby, effect_data)
+		EFFECTS[idx].activate(baby)

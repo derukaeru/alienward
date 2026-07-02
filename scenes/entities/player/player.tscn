@@ -32,7 +32,9 @@ collide_with_bodies = false
 
 [node name="ui" parent="CameraMount/Camera3D" unique_id=687749877 instance=ExtResource("2_nh4ur")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=7716181]
+[node name="ModelContainer" type="Node3D" parent="." unique_id=1155144846]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=7716181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_58kc7")
 surface_material_override/0 = SubResource("StandardMaterial3D_nh4ur")
