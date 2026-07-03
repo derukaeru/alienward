@@ -23,4 +23,4 @@ func deliver_baby(index: int, baby: Baby) -> void:
 		
 		held_baby = baby
 		change_tooltip()
-		baby.global_position = global_position + Vector3(0.0, 1.8, 0.0)
+		baby.global_position = global_position + Vector3(0.0, 1.0, 0.0)

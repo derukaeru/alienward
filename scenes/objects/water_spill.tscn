@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cjod10hvj1g0s"]
 
 [ext_resource type="Script" uid="uid://kmkh4yfqu6yd" path="res://scenes/objects/water_spill.gd" id="1_2n1ca"]
+[ext_resource type="Texture2D" uid="uid://c5qhrehq4s0cy" path="res://assets/sprites/objects/water_spill.png" id="2_0rqsb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rqsb"]
-size = Vector3(1, 0.045959473, 1)
+size = Vector3(0.5, 0.046, 0.5)
 
 [sub_resource type="Animation" id="Animation_0rqsb"]
 length = 0.001
@@ -52,6 +53,9 @@ shape = SubResource("BoxShape3D_0rqsb")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=887407109]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_0rqsb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=363294856]
 libraries/ = SubResource("AnimationLibrary_0rqsb")

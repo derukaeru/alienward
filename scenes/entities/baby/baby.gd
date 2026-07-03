@@ -26,6 +26,7 @@ var effect: Dictionary = {
 	duration = 1.0,
 }
 var is_cured: bool = true
+var held: bool = false
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.baby
@@ -49,9 +50,51 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if is_in_delivery_table: 
-		pass
+		held = false
 	elif is_in_incubator:
-		pass
+		held = false
+	elif held:
+		var player: Player = Util.get_player()
+		if not player: return
+		
+		global_position = player.global_position
+
+func activate_effect() -> void:
+	EffectsManager.apply_effect(self)
+
+func pick_up() -> void:
+	if incubator:
+		incubator.incubated_baby = null
+		incubator = null
+		is_in_incubator = false
+	
+	if delivery_table:
+		delivery_table.held_baby = null
+		delivery_table.change_tooltip()
+		
+		delivery_table = null
+		is_in_delivery_table = false
+	
+	held = true
+
+func give_antidote(antidote: BaseAntidoteItem) -> void:
+	# either this method
+	# or check if its the antidote.data is the same as effect
+	# then mutate or cure based on the answer
+	
+	if antidote.data.duration == effect.duration:
+		effect.duration = 0.0
+	
+	if antidote.data.frequency == effect.frequency:
+		effect.frequency = 0.0
+	
+	if antidote.data.intensity == effect.intensity:
+		effect.intensity = 0.0
+	
+	if effect.intensity == 0 and effect.frequency == 0.0 and effect.duration == 0.0:
+		if effect.type == antidote.data.type:
+			effect.type = -1
+			is_cured = true
 
 func generate_dna() -> void: 
 	var choices: String = "ACGT"
@@ -123,38 +166,3 @@ func generate_effect() -> void:
 	for i in range(1, 3):
 		chunk_four_total += LETTER_TO_VAL[dna_chunk_four[i]] * 0.2
 	effect.intensity = remap(chunk_four_total, 0.0, 3.0, 0.5, 2.0)
-
-func activate_effect() -> void:
-	EffectsManager.apply_effect(self)
-
-func pick_up() -> void:
-	if incubator:
-		incubator.incubated_baby = null
-		incubator = null
-		is_in_incubator = false
-	
-	if delivery_table:
-		delivery_table.held_baby = null
-		delivery_table.change_tooltip()
-		
-		delivery_table = null
-		is_in_delivery_table = false
-
-func give_antidote(antidote: BaseAntidoteItem) -> void:
-	# either this method
-	# or check if its the antidote.data is the same as effect
-	# then mutate or cure based on the answer
-	
-	if antidote.data.duration == effect.duration:
-		effect.duration = 0.0
-	
-	if antidote.data.frequency == effect.frequency:
-		effect.frequency = 0.0
-	
-	if antidote.data.intensity == effect.intensity:
-		effect.intensity = 0.0
-	
-	if effect.intensity == 0 and effect.frequency == 0.0 and effect.duration == 0.0:
-		if effect.type == antidote.data.type:
-			effect.type = -1
-			is_cured = true

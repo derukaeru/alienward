@@ -33,11 +33,13 @@ func incubate_baby(baby: Baby = null) -> void:
 			return
 		
 		anim.play("bob")
-		player.held_item.global_position = global_position + Vector3(0.0, 0.8, 0.0)
-		player.held_item.set_collision_layer_value(1, true)
 		
+		player.held_item.held = false
 		player.held_item.show()
 		incubated_baby = player.held_item
+		
+		incubated_baby.global_position = global_position + Vector3(0.0, 0.7, 0.0)
+		incubated_baby.set_collision_layer_value(1, true)
 		
 		player.held_item.incubator = self
 		player.held_item = null

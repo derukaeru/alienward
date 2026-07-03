@@ -3,16 +3,7 @@ extends Node
 var EFFECTS: Dictionary = {}
 
 func _ready() -> void:
-	EFFECTS[0] = BioluminescenceEffect.new()
-	EFFECTS[1] = CrystalGrowthEffect.new()
-	EFFECTS[2] = HallucinogenicFumesEffect.new()
-	EFFECTS[3] = HyperhydrosisEffect.new()
-	EFFECTS[4] = HypothermiaEffect.new()
-	EFFECTS[5] = SoundMimicryEffect.new()
-	EFFECTS[6] = SpontaneousCombustionEffect.new()
-	EFFECTS[7] = StaticDischargeEffect.new()
-	EFFECTS[8] = TeleportationEffect.new()
-	EFFECTS[9] = ZeroGravityEffect.new()
+	EFFECTS[0] = HyperhydrosisEffect.new()
 
 func apply_effect(baby: Baby) -> void:
 	var idx: int = baby.effect["effect_index"]

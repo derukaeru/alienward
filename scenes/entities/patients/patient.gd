@@ -111,8 +111,8 @@ func set_stage() -> void:
 		maternity_stage = 4
 		reason = GameManager.REASONS.LABOR
 		
-		labor_speed = randf_range(25.0, 45.0)
-		rest_speed = randf_range(55.0, 75.0)
+		#labor_speed = randf_range(25.0, 45.0)
+		#rest_speed = randf_range(55.0, 75.0)
 	else: 
 		maternity_stage = randi_range(1, 3)
 		reason = GameManager.REASONS.CHECKUP
@@ -175,13 +175,10 @@ func target_reached() -> void:
 		queue_free()
 
 func birth_child() -> void:
-	print("birthfr")
 	if state != STATES.LABOR: return
 	
 	var child: Baby = load(Registry.UID["baby"]).instantiate()
 	Util.add_entity_to_container(child)
-	
-	print("birth")
 	
 	child.patient_id = id
 	child.id = GameManager.latest_baby_id + 1

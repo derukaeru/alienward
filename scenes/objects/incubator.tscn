@@ -45,6 +45,9 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc5qe"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 shading_mode = 0
 albedo_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
 albedo_texture = ExtResource("2_nhj0s")
