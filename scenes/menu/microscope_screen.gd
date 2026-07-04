@@ -7,13 +7,14 @@ extends Control
 
 @onready var bacteria: Resource = load(Registry.UID["bacteria"])
 @onready var dna_value: TextureRect = $dna_value
-@onready var dna_value_label: Label = $dna_value/Label
+@onready var dna_value_label: Label = $dna_value/value
+@onready var bacteria_type_label: Label = $dna_value/type
 
 enum LETTERS_TO_VAL { A, C, G, T }
 var bacteria_colors: Array = []
 var effect_names: Array = ["effect_index", "intensity", "frequency", "duration"]
 
-var IDENTIFY_SPEED: float = 10.0
+var IDENTIFY_SPEED: float = 6.0
 var identifying_bacteria: Bacteria
 @onready var identifying_timer: Timer = $identifying_timer
 
@@ -28,7 +29,6 @@ func _ready() -> void:
 func new_dna() -> void:
 	var split_dna: Array = get_split_dna()
 	if not split_dna: return
-	print(split_dna)
 	for i in range(4):
 		var new_bacteria: Bacteria = bacteria.instantiate()
 		bacteria_container.add_child(new_bacteria)
@@ -64,6 +64,7 @@ func set_dna_color(bacteria_index: int) -> void:
 	var baby: Baby = get_baby_with_dna(GameManager.microscope_dna)
 	if not baby: return
 	
+	bacteria_type_label.text = str(effect_names[bacteria_index])
 	dna_value_label.text = str(baby.effect[effect_names[bacteria_index]])
 
 func identify_bacteria(_bacteria: Bacteria) -> void:

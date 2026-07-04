@@ -102,7 +102,7 @@ func _process(_delta) -> void:
 				ward_index = GameManager.selected_ward_on_ui
 				
 				move_to("ward_%d" % ward_index)
-				GameManager.selected_ward_on_ui = -1
+				GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)

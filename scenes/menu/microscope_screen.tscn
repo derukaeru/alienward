@@ -75,8 +75,15 @@ _data = {
 &"pop": SubResource("Animation_32uvo")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32uvo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32uvo"]
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_h1w5r"]
 font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1w5r"]
 
 [node name="microscope_screen" type="Control" unique_id=1116009674]
 layout_mode = 3
@@ -129,12 +136,17 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -184.0
-offset_top = 464.0
-offset_right = -56.0
-offset_bottom = 536.0
+offset_left = -188.0
+offset_top = 466.0
+offset_right = -57.0
+offset_bottom = 537.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_32uvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_32uvo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_32uvo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_32uvo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_32uvo")
 text = "exit"
 
 [node name="bacteria_container" type="Control" parent="." unique_id=1616373704]
@@ -150,8 +162,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = -103.99951
-offset_right = 569.0
+offset_top = -102.99951
+offset_right = 451.0
 offset_bottom = -45.99951
 grow_vertical = 0
 show_percentage = false
@@ -163,23 +175,52 @@ one_shot = true
 [node name="dna_value" type="TextureRect" parent="." unique_id=1520460599]
 visible = false
 layout_mode = 0
-offset_left = 440.0
+offset_left = 360.0
 offset_top = 144.0
-offset_right = 568.0
-offset_bottom = 240.0
+offset_right = 552.0
+offset_bottom = 272.0
+mouse_filter = 2
 texture = ExtResource("5_32uvo")
 
-[node name="Label" type="Label" parent="dna_value" unique_id=1300990257]
+[node name="type" type="Label" parent="dna_value" unique_id=1307642862]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 16.0
-offset_right = 104.0
-offset_bottom = 72.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 48.0
+text = "no type"
+label_settings = SubResource("LabelSettings_32uvo")
+
+[node name="value" type="Label" parent="dna_value" unique_id=1300990257]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 119.0
 text = "no value"
 label_settings = SubResource("LabelSettings_h1w5r")
-horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="remove_dna" type="Button" parent="." unique_id=1090432015]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -261.0
+offset_top = -109.99951
+offset_right = -192.0
+offset_bottom = -38.99951
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h1w5r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h1w5r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h1w5r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h1w5r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h1w5r")
+text = "x"
 
 [connection signal="mouse_entered" from="dna_display" to="." method="dna_hovered"]
 [connection signal="mouse_exited" from="dna_display" to="." method="dna_unhovered"]

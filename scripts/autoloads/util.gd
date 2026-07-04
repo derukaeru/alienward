@@ -64,3 +64,11 @@ func add_entity_to_container(entity: Node) -> void:
 	if not container: return
 	
 	container.add_child(entity)
+	
+func get_next_available_ward(current: int, direction: int) -> int:
+	var next: int = current + direction
+	while next >= 0 and next < GameManager.ward_occupation.size():
+		if not GameManager.ward_occupation[next]:
+			return next
+		next += direction
+	return current

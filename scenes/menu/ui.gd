@@ -5,7 +5,10 @@ extends CanvasLayer
 @onready var tooltip: RichTextLabel = $tooltip
 
 @onready var guide_patient: ColorRect = $guide_patient
+@onready var patient_wards: Array = guide_patient.get_children()
+
 @onready var checkup: ColorRect = $checkup
+@onready var no_ward_label: Label = $guide_patient/no_ward
 
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item
@@ -40,18 +43,21 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if guide_patient.visible:
+		for entry in patient_wards:
+			entry.hide()
+		
+		if GameManager.selected_ward_on_ui > GameManager.UNASSIGNED:
+			patient_wards[GameManager.selected_ward_on_ui].show()
+		
+		if not GameManager.ward_occupation.has(false): 
+			no_ward_label.show()
+			return
+		
 		if event is InputEventMouseButton and event.is_pressed():
-				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-					GameManager.selected_ward_on_ui -= 1
-				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-					GameManager.selected_ward_on_ui += 1
-				
-				GameManager.selected_ward_on_ui = clamp(GameManager.selected_ward_on_ui, 0, 3)
-				
-				for i in range(4):
-					get_node("guide_patient/ward_%d" % i).hide()
-				
-				get_node("guide_patient/ward_%d" % GameManager.selected_ward_on_ui).show()
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, -1)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, 1)
 
 func open_patient_screen(reason: GameManager.REASONS) -> void:
 	if patient_open: return
