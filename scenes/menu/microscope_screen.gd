@@ -14,7 +14,7 @@ enum LETTERS_TO_VAL { A, C, G, T }
 var bacteria_colors: Array = []
 var effect_names: Array = ["effect_index", "intensity", "frequency", "duration"]
 
-var IDENTIFY_SPEED: float = 6.0
+var IDENTIFY_SPEED: float = 4.4
 var identifying_bacteria: Bacteria
 @onready var identifying_timer: Timer = $identifying_timer
 
@@ -123,3 +123,18 @@ func dna_hovered() -> void:
 
 func dna_unhovered() -> void:
 	dna_value.hide()
+
+func remove_dna():
+	for entry in bacteria_container.get_children():
+		entry.queue_free()
+	
+	GameManager.microscope_dna = ""
+	dna_value_label.text = "no value"
+	bacteria_type_label.text = "no type"
+	
+	bacteria_colors = []
+	identifying_bacteria = null
+	identifying_bacteria_bar.value = 0.0
+	
+	dna_display.show_dna = false
+	

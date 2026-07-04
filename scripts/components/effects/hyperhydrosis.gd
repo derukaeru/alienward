@@ -6,7 +6,6 @@ var stop_spawn_timer: Timer
 
 func activate(baby: Baby) -> void:
 	if spawning_water: return
-	print("spawning water")
 	spawning_water = true
 	
 	spawn_timer = Timer.new()
@@ -28,7 +27,6 @@ func deactivate() -> void:
 	stop_spawn_timer.queue_free()
 	
 	spawning_water = false
-	print("stopped spawning water")
 
 func spawn_water(baby: Baby) -> void:
 	var water_spill: WaterSpill = load(Registry.UID["water_spill"]).instantiate()

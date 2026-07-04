@@ -39,7 +39,7 @@ func interacted() -> void:
 	if player.held_item_id == ITEMS.IDS.baby:
 		var baby: Baby = player.held_item
 		
-		if baby.patient_id == patient_id and ready_to_recieve_baby:
+		if baby.patient_id == patient_id and ready_to_recieve_baby and baby.is_cured:
 			player.remove_held_item()
 			ready_to_leave = true
 			# TODO
@@ -56,7 +56,7 @@ func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return
 	
 	var available_spots: Array = []
-	for i in range(GameManager.watch_baby):
+	for i in GameManager.watch_baby.size():
 		if not GameManager.watch_baby[i]:
 			available_spots.append(i)
 	

@@ -226,3 +226,4 @@ text = "x"
 [connection signal="mouse_exited" from="dna_display" to="." method="dna_unhovered"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
 [connection signal="timeout" from="identifying_timer" to="." method="identified_bacteria"]
+[connection signal="pressed" from="remove_dna" to="." method="remove_dna"]
