@@ -49,7 +49,7 @@ func get_baby_with_id(id: int) -> Baby:
 
 func get_patient_with_id(id: int) -> Patient:
 	for entry in get_tree().get_nodes_in_group("patient"):
-		if entry.npc_id == id:
+		if entry.id == id:
 			return entry
 	return null
 

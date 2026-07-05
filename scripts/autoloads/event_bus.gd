@@ -34,5 +34,12 @@ signal incubated_child(id: int)
 signal patient_scanned(patient_id: int)
 signal generate_item(item_id: String)
 
-signal patient_leaving_checkup(patient_id: int)
-signal patient_leaving_labor(patient_id: int)
+signal patient_to_ward(id: int)
+signal patient_to_clinic(id: int)
+
+signal patient_reached_ward(id: int)
+signal patient_reached_clinic(id: int)
+
+signal patient_leaving_ward(id: int)
+signal patient_leaving_clinic(id: int)
+signal left(id: int)

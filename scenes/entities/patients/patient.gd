@@ -54,12 +54,16 @@ func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
-	if nav_agent.is_navigation_finished():
-		return
+	if nav_agent.is_navigation_finished(): return
 	
 	var next = nav_agent.get_next_path_position()
 	var direction = (next - global_position).normalized()
 	velocity = direction * speed
+	
+	if velocity.length() > 0.1:
+		var look_target = global_position + Vector3(velocity.x, 0, velocity.z)
+		look_at(look_target, Vector3.UP)
+	
 	move_and_slide()
 
 func _process(_delta) -> void:
@@ -103,6 +107,7 @@ func _process(_delta) -> void:
 				
 				move_to("ward_%d" % ward_index)
 				GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
+				EventBus.patient_to_ward.emit(id)
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -148,7 +153,7 @@ func interacted() -> void:
 				player.remove_held_item()
 				
 				state = STATES.READY_TO_LEAVE
-				EventBus.patient_leaving_checkup.emit(id)
+				EventBus.patient_leaving_clinic.emit(id)
 
 func scan_done() -> void:
 	scanned = true
@@ -161,9 +166,13 @@ func target_reached() -> void:
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
+		
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
+		
 		EventBus.close_curtain.emit(ward_index)
+		EventBus.patient_reached_ward.emit(id)
+		
 		state = STATES.LABOR
 	elif target_name.begins_with("seat_"):
 		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
@@ -171,8 +180,10 @@ func target_reached() -> void:
 	elif target_name == "checkup":
 		global_position = Util.get_patient_spot("checkup_seat")
 		state = STATES.CHECKUP
+		EventBus.patient_reached_clinic.emit(id)
 	elif target_name == "patient_enter": 
 		queue_free()
+		EventBus.left.emit(id)
 
 func birth_child() -> void:
 	if state != STATES.LABOR: return
