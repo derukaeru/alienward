@@ -11,3 +11,5 @@ func _ready() -> void:
 		patient_spots[child.name.to_lower()] = child
 	
 	GameManager.spawn_patient()
+	await get_tree().create_timer(1.0).timeout
+	GameManager.spawn_patient()

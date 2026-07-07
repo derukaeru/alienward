@@ -17,7 +17,8 @@ height = 2.0009766
 radius = 0.295
 
 [node name="patient" type="CharacterBody3D" unique_id=753749075 groups=["patient"]]
-collision_mask = 2
+collision_layer = 9
+collision_mask = 10
 script = ExtResource("1_sx7n5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927629622]
@@ -31,7 +32,7 @@ sprite_frames = SubResource("SpriteFrames_excrj")
 path_desired_distance = 0.1
 target_desired_distance = 0.3
 avoidance_enabled = true
-radius = 1.0
+radius = 10.0
 debug_enabled = true
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=1176388806]

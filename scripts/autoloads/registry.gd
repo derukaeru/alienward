@@ -45,4 +45,6 @@ var UID: Dictionary = {
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt",
+	
+	"bioluminescence_shader": "uid://c3ov2tp76hj31",
 }

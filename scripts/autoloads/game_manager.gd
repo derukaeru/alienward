@@ -73,22 +73,31 @@ func spawn_patient() -> void:
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()
 	var npc: NPC = load(Registry.UID["npc"]).instantiate()
 	
-	Util.add_entity_to_container(patient)
-	Util.add_entity_to_container(npc)
-	
 	patient.id = latest_patient_id + 1
 	npc.patient_id = latest_patient_id + 1
+	
 	latest_patient_id += 1
+	npc.patient = patient
+	
+	var available_seats: Array = []
+	for i in len(waiting_seats_occupation):
+		if waiting_seats_occupation[i] == false:
+			available_seats.append(i)
+	
+	if available_seats.is_empty(): 
+		print("no available seat")
+	else:
+		var seat_index: int = available_seats[randi() % available_seats.size()]
+		patient.waiting_seat_position = seat_index
+		npc.waiting_seat_position = seat_index
+		
+		waiting_seats_occupation[seat_index] = true
+	
+	Util.add_entity_to_container(patient)
+	Util.add_entity_to_container(npc)
 	
 	var npc_spawn: Vector3 = Util.get_npc_spot("npc_enter")
 	var patient_spawn: Vector3 = Util.get_patient_spot("patient_enter")
 	
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn
-	
-	for i in len(waiting_seats_occupation):
-		if not waiting_seats_occupation[i]:
-			patient.waiting_seat_position = i
-			npc.waiting_seat_position = i
-			
-			waiting_seats_occupation[i] = true

@@ -37,7 +37,8 @@ size = Vector3(1, 2, 1)
 radius = 0.325
 
 [node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
-collision_mask = 2
+collision_layer = 9
+collision_mask = 10
 script = ExtResource("1_kcbfn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=704221630]
@@ -52,9 +53,10 @@ script = ExtResource("3_ii721")
 metadata/_custom_type_script = "uid://dhavxlm0dhkco"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
+path_desired_distance = 0.1
+target_desired_distance = 0.3
 avoidance_enabled = true
-radius = 1.0
-neighbor_distance = 30.0
+radius = 10.0
 debug_enabled = true
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=2051864871]

@@ -143,7 +143,7 @@ func _interact() -> void:
 			drop_item(hit)
 		if hit.pickupable:
 			pick_up(hit)
-	elif hit is Dirt:
+	elif hit is Dirt or hit is WaterSpill:
 		if held_item_id == ITEMS.IDS.mop:
 			hit.clean(self)
 	elif hit is InteractableComponent:

@@ -15,12 +15,12 @@ func activate(baby: Baby) -> void:
 	spawn_timer.start(0.3)
 	
 	stop_spawn_timer = Timer.new()
-	stop_spawn_timer.timeout.connect(deactivate)
+	stop_spawn_timer.timeout.connect(deactivate.bind(baby))
 	
 	Util.add_entity_to_container(stop_spawn_timer)
 	stop_spawn_timer.start(baby.effect.duration)
 
-func deactivate() -> void:
+func deactivate(baby: Baby) -> void:
 	spawn_timer.stop()
 	
 	spawn_timer.queue_free()

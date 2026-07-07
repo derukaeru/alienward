@@ -6,5 +6,5 @@ var effectiveness: float = 1.0
 func activate(baby: Baby) -> void:
 	pass
 
-func deactivate() -> void:
+func deactivate(baby: Baby) -> void:
 	pass

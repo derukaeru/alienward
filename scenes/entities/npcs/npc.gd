@@ -24,7 +24,9 @@ enum STATES {
 var state: STATES = STATES.IDLE
 
 func _ready() -> void:
-	move_to("seat_%d" % waiting_seat_position)
+	if waiting_seat_position:
+		move_to("seat_%d" % waiting_seat_position)
+	
 	EventBus.incubated_child.connect(look_at_child)
 	EventBus.patient_to_ward.connect(escort_patient)
 	EventBus.patient_reached_ward.connect(
