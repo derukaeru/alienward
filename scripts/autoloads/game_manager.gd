@@ -6,8 +6,9 @@ extends Node
 var SEED: int = 232421
 const UNASSIGNED: int = -1
 
-var day: int = 0
+var current_day: int = 0
 var day_going: bool = false
+var processed_patient_this_day: int = 0
 
 var time: float = 0.0 
 var money: int = 0
@@ -101,3 +102,23 @@ func spawn_patient() -> void:
 	
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn
+
+func start() -> void:
+	pass
+
+func start_day(day: int = current_day) -> void:
+	if current_day >= 7: return
+	day_going = true
+
+func end_day() -> void:
+	pass
+
+func reset_for_day() -> void:
+	# clear baby, patient, items
+	# open all curtains
+	# remove ultrasound
+	# remove antidote base
+	# remove all effects
+	# clear microscope
+	
+	pass

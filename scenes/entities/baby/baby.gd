@@ -112,18 +112,16 @@ func get_split_dna(full_dna: String = dna) -> Array:
 		chunk_array.append(full_dna.substr(i * 4, 4))
 	
 	return chunk_array
-
 func generate_effect() -> void:
 	split_dna = get_split_dna()
-	
 	# effect type
 	var effects_num = EffectsManager.EFFECTS.size()
 	var dna_chunk_one: String = split_dna[0]
 	var chunk_one_total: int = 0
 	
 	for i in range(len(dna_chunk_one)):
-		chunk_one_total += round(LETTER_TO_VAL[dna_chunk_one[i]] * i)
-	effect.effect_index = round(remap(chunk_one_total, 0, 48, 0, effects_num))
+		chunk_one_total += round(LETTER_TO_VAL[dna_chunk_one[i]] * (i + 1))
+	effect.effect_index = int(round(remap(chunk_one_total, 0, 30, 0, effects_num)))
 	
 	# intensity
 	var dna_chunk_two: String = split_dna[1]
@@ -151,10 +149,10 @@ func generate_effect() -> void:
 	
 	for i in range(1, 3):
 		chunk_three_total += LETTER_TO_VAL[dna_chunk_three[i]] * 0.2
-	effect.intensity = snapped(remap(chunk_three_total, 0.0, 3.0, 0.5, 2.0), 0.1)
+	effect.frequency = snapped(remap(chunk_three_total, 0.0, 3.0, 0.5, 2.0), 0.1)
 	
 	# duration
-	var dna_chunk_four: String = split_dna[2]
+	var dna_chunk_four: String = split_dna[3]
 	var chunk_four_total: float = 0.0
 	
 	match dna_chunk_four[0]:
@@ -165,4 +163,4 @@ func generate_effect() -> void:
 	
 	for i in range(1, 3):
 		chunk_four_total += LETTER_TO_VAL[dna_chunk_four[i]] * 0.2
-	effect.intensity = snapped(remap(chunk_four_total, 0.0, 3.0, 0.5, 2.0), 0.1)
+	effect.duration = snapped(remap(chunk_four_total, 0.0, 3.0, 0.5, 2.0), 0.1)

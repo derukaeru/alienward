@@ -12,6 +12,7 @@ const IDS: Dictionary = {
 	mop = "mop",
 	
 	chili = "chili",
+	
 }
 
 var undroppable: Array = [IDS.clipboard, IDS.baby]

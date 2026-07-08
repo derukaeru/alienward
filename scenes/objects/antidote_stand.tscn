@@ -14,7 +14,7 @@ _data = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_s18v0"]
 
-[node name="antidote_stand" type="Area3D" unique_id=2015022452 groups=["antidote_stand"]]
+[node name="antidote_stand" type="Area3D" unique_id=2015022452]
 script = ExtResource("1_s18v0")
 show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"

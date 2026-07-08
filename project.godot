@@ -60,6 +60,8 @@ baby=""
 patient=""
 npc=""
 bacteria=""
+navigation_region=""
+map=""
 
 [gui]
 

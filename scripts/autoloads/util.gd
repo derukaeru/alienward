@@ -72,3 +72,6 @@ func get_next_available_ward(current: int, direction: int) -> int:
 			return next
 		next += direction
 	return current
+
+func get_nav_reg() -> NavigationRegion3D:
+	return get_group_node("navigation_region")
