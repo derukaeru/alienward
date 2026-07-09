@@ -39,3 +39,7 @@ const WARNINGS: Dictionary = {
 	pick_up_baby = "Place down the baby first",
 	incubator_occupied = "This incubator is occupied"
 }
+
+const subtitles: Dictionary = {
+	guide_patient = "guided patient"
+}

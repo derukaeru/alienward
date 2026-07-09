@@ -19,6 +19,7 @@ extends CanvasLayer
 @onready var antidote_screen: Control = $antidote_screen
 
 @onready var cleaning_progress: ProgressBar = $cleaning_progress
+@onready var subtitle_container: Control = $subtitle_container
 
 var microscope_open: bool = false
 var shop_open: bool = false
@@ -40,6 +41,8 @@ func _ready() -> void:
 	
 	EventBus.done_cleaning.connect(func() -> void: cleaning_progress.hide())
 	EventBus.open_patient_screen.connect(open_patient_screen)
+	
+	EventBus.add_subtitle.connect(add_subtitle)
 
 func _input(event) -> void:
 	if guide_patient.visible:
@@ -185,3 +188,10 @@ func set_hand_sprite() -> void:
 	else:
 		hand.texture = load(Registry.UID["hand_hold"])
 		held_item.show()
+func add_subtitle(text: String) -> void:
+	var subtitle: Label = load(Registry.UID["subtitle_instance"]).instantiate()
+	subtitle_container.add_child(subtitle)
+	
+	if text:
+		subtitle.text = text
+	

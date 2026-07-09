@@ -346,3 +346,13 @@ visible = false
 
 [node name="antidote_screen" parent="." unique_id=281006036 instance=ExtResource("7_dlyu0")]
 visible = false
+
+[node name="subtitle_container" type="Control" parent="." unique_id=857979586]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = -6.1035156e-05
+grow_vertical = 0

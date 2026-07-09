@@ -98,6 +98,7 @@ func _process(_delta) -> void:
 			if GameManager.clinic_open:
 				move_to("checkup")
 				GameManager.clinic_open = false
+				Util.add_subtitle(Lang.subtitles.guide_patient)
 		elif reason == GameManager.REASONS.LABOR:
 			player.ui_layer.guide_patient.hide() 
 			player.ui_layer.patient_open = false
@@ -108,6 +109,8 @@ func _process(_delta) -> void:
 				move_to("ward_%d" % ward_index)
 				GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
 				EventBus.patient_to_ward.emit(id)
+				
+				Util.add_subtitle(Lang.subtitles.guide_patient)
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -127,6 +130,7 @@ func move_to(_name: String) -> void:
 	
 	target_name = _name
 	nav_agent.target_position = Util.get_patient_spot(_name)
+	print(target_name)
 
 func interacted() -> void:
 	if state == STATES.WAITING:
@@ -163,6 +167,7 @@ func scan_done() -> void:
 	EventBus.patient_scanned.emit(id)
 
 func target_reached() -> void:
+	print(target_name)
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)

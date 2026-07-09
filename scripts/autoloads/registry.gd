@@ -15,6 +15,8 @@ var UID: Dictionary = {
 	"shop_screen": "uid://b4sil7n400wmm",
 	"microscope_screen": "uid://d2wp275ru8mkw",
 	
+	"subtitle_instance": "uid://2k1clpfoqeso",
+	
 	"loading_screen": "uid://tetiuyj7kfoe",
 	"splash_screen": "uid://b4ggbq71lpwo4",
 	"title_screen": "uid://dix67ojrdr6ht",
