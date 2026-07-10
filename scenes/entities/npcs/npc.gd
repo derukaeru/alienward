@@ -1,6 +1,7 @@
 class_name NPC extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
+@onready var animation = $AnimationPlayer
 
 var speed: float = 2.4
 var patient_id: int = GameManager.UNASSIGNED
@@ -13,6 +14,8 @@ var ready_to_recieve_baby: bool = false
 var ready_to_leave: bool = false
 var patient: Patient
 
+var moving: bool = false
+
 enum STATES {
 	IDLE,
 	WAITING,
@@ -22,6 +25,7 @@ enum STATES {
 	GUIDING_OUT_OF_WARD
 }
 var state: STATES = STATES.IDLE
+var look_target: Vector3
 
 func _ready() -> void:
 	if waiting_seat_position:
@@ -53,9 +57,18 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	
 	if velocity.length() > 0.1:
-		var look_target = global_position + Vector3(velocity.x, 0, velocity.z)
-		look_at(look_target, Vector3.UP)
+		var target: Vector3 = global_position + Vector3(velocity.x, 0, velocity.z)
+		look_target = target
+		
+		moving = true
+	else:
+		moving = false
+		
+	if moving:
+		if not animation.is_playing():
+			animation.play("walk")
 	
+	rotation.y=lerp_angle(rotation.y,atan2(-look_target.x,-look_target.z),.1) 
 	move_and_slide()
 
 func _process(_delta: float) -> void:
@@ -81,10 +94,16 @@ func interacted() -> void:
 			move_to("ward_%d" % patient.ward_index)
 			state = STATES.GUIDING_OUT_OF_WARD
 
+func look_at_target(target: Vector3) -> void:
+	velocity = Vector3.ZERO
+	look_target = target
+
 func target_reached() -> void:
 	if target_name.begins_with("seat_"):
 		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""
+		
+		look_at_target(Util.get_npc_spot("waiting"))
 		state = STATES.WAITING
 	elif target_name.begins_with("watch_baby_"):
 		ready_to_recieve_baby = true

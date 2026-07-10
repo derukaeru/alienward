@@ -41,5 +41,9 @@ const WARNINGS: Dictionary = {
 }
 
 const subtitles: Dictionary = {
-	guide_patient = "guided patient"
+	guide_patient = "guided patient",
+	cleaned_mop = "cleaned mop",
+	scanned_patient = "scanned patient",
+	generated_print = "generated print",
+	gave_antidote = "gave antidote",
 }

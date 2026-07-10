@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwrgxuccfakg6" path="res://scenes/entities/npcs/npc.gd" id="1_kcbfn"]
 [ext_resource type="Script" uid="uid://dhavxlm0dhkco" path="res://scripts/components/directional_sprite.gd" id="3_ii721"]
+[ext_resource type="Texture2D" uid="uid://c6n2foxpu75km" path="res://assets/models/entities/npc.png" id="4_cyk10"]
+[ext_resource type="ArrayMesh" uid="uid://ndb7bjepxp4k" path="res://assets/models/entities/npc.obj" id="4_kcbfn"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="5_cyk10"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ii721"]
@@ -33,8 +35,71 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_cyk10"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ii721"]
-radius = 0.325
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fe8l"]
+shading_mode = 0
+albedo_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
+albedo_texture = ExtResource("4_cyk10")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_cyk10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0fe8l"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25073004, 0.5, 0.75141144, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.072, 0), Vector3(0, 0, 0), Vector3(0, 0.072, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25073004, 0.5, 0.75141144, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.17453292), Vector3(0, 0, 0), Vector3(0, 0, -0.17453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgdeb"]
+_data = {
+&"RESET": SubResource("Animation_cyk10"),
+&"walk": SubResource("Animation_0fe8l")
+}
 
 [node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
 collision_layer = 9
@@ -68,10 +133,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_cyk10")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=1217877875]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=1144057456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_ii721")
+[node name="Npc" type="MeshInstance3D" parent="ModelContainer" unique_id=903281352]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0fe8l")
+mesh = ExtResource("4_kcbfn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=82076134]
+libraries/ = SubResource("AnimationLibrary_dgdeb")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

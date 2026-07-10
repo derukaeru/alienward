@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dhsfhte2l3ari" path="res://scenes/entities/patients/patient.gd" id="1_sx7n5"]
 [ext_resource type="Texture2D" uid="uid://cbughuvbnc2iw" path="res://assets/sprites/ui/scanning.png" id="3_sx7n5"]
+[ext_resource type="Texture2D" uid="uid://4tyxi4fua816" path="res://assets/models/entities/patient.png" id="4_6srr1"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="4_vdqdh"]
+[ext_resource type="ArrayMesh" uid="uid://dnpgpvgkag2cy" path="res://assets/models/entities/patient.obj" id="5_3d8qu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_excrj"]
 radius = 0.29003906
@@ -13,8 +15,71 @@ radius = 0.29003906
 radius = 0.30273438
 height = 2.0009766
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sx7n5"]
-radius = 0.295
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0a1m"]
+shading_mode = 0
+albedo_color = Color(0.728822, 0.728822, 0.728822, 1)
+albedo_texture = ExtResource("4_6srr1")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_3d8qu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6srr1"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.07200658, 0), Vector3(0, 0, 0), Vector3(0, 0.072, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelContainer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.17453294), Vector3(0, 0, 0), Vector3(0, 0, 0.17453292), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3d8qu"]
+_data = {
+&"RESET": SubResource("Animation_3d8qu"),
+&"walk": SubResource("Animation_6srr1")
+}
 
 [node name="patient" type="CharacterBody3D" unique_id=753749075 groups=["patient"]]
 collision_layer = 9
@@ -54,10 +119,15 @@ texture_filter = 0
 texture = ExtResource("3_sx7n5")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=143464862]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=2105984724]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_sx7n5")
+[node name="Patient" type="MeshInstance3D" parent="ModelContainer" unique_id=1121559694]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p0a1m")
+mesh = ExtResource("5_3d8qu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1690839195]
+libraries/ = SubResource("AnimationLibrary_3d8qu")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

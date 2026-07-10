@@ -23,6 +23,8 @@ func print_ultrasound(id: int = GameManager.UNASSIGNED) -> void:
 	
 	printing = false
 	printed = true
+	
+	Util.add_subtitle(Lang.subtitles.generated_print)
 
 func interact() -> void:
 	var player: Player = Util.get_player()

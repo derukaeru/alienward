@@ -44,6 +44,7 @@ func _ready() -> void:
 		func() -> void: 
 			if held_item_id == ITEMS.IDS.mop:
 				held_item.dirtiness = 0.0
+				Util.add_subtitle(Lang.subtitles.cleaned_mop)
 	)
 	
 	EventBus.pick_up_baby_from_delivery_table.connect(pick_up)
@@ -134,6 +135,8 @@ func _interact() -> void:
 			ITEMS.IDS.antidote:
 				hit.give_antidote(held_item)
 				remove_held_item()
+				
+				Util.add_subtitle(Lang.subtitles.gave_antidote)
 			ITEMS.IDS.baby:
 				ui_layer.show_warning(Lang.WARNINGS.pick_up_baby)
 			_:
