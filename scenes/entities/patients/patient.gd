@@ -71,8 +71,7 @@ func _physics_process(delta) -> void:
 		moving = false
 		
 	if moving:
-		var target: Vector3 = global_position + Vector3(velocity.x, 0, velocity.z)
-		look_target = target
+		look_target = Vector3(velocity.x, 0, velocity.z)
 		
 		if not animation.is_playing():
 			animation.play("walk")
@@ -165,6 +164,7 @@ func interacted() -> void:
 			
 			scanning_timer.start(scan_time)
 			scanning_timer.timeout.connect(scan_done)
+		
 		if player.held_item_id == ITEMS.IDS.ultrasound_print:
 			if player.held_item.patient_id == id:
 				has_ultrasound = true
@@ -172,6 +172,8 @@ func interacted() -> void:
 				
 				state = STATES.READY_TO_LEAVE
 				EventBus.patient_leaving_clinic.emit(id)
+				
+				# TODO: leave
 
 func scan_done() -> void:
 	scanned = true

@@ -513,7 +513,7 @@ shape = SubResource("BoxShape3D_hjj48")
 transform = Transform3D(-0.99946916, 0, 0.03257951, 0, 1, 0, -0.03257951, 0, -0.99946916, -8.897875, 1.2175801, 3.4801388)
 
 [node name="antidote_stand" parent="objects" unique_id=2015022452 instance=ExtResource("18_7rdmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0557556, 1.9938906, 3.4427185)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.0557556, 1.0044106, 3.5079207)
 
 [node name="item_chute" parent="objects" unique_id=885072988 instance=ExtResource("19_6j5tl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.458923, 3.0145073, -3.6606655)

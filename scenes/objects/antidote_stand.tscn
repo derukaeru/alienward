@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bq1xk1af7n2s0"]
 
 [ext_resource type="Script" uid="uid://d3xwqaucr6ne0" path="res://scenes/objects/antidote_stand.gd" id="1_s18v0"]
+[ext_resource type="Texture2D" uid="uid://stvbrfflvt18" path="res://assets/models/objects/antidote_stand.png" id="2_6wtr0"]
+[ext_resource type="ArrayMesh" uid="uid://dxmqqg60ax31j" path="res://assets/models/objects/antidote_stand.obj" id="2_gfddq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s18v0"]
+size = Vector3(1.0732422, 1.4042969, 1.107666)
 
 [sub_resource type="Animation" id="Animation_gfddq"]
 resource_name = "pop"
@@ -12,7 +15,48 @@ _data = {
 &"pop": SubResource("Animation_gfddq")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_s18v0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuusw"]
+shading_mode = 0
+albedo_color = Color(0.62967473, 0.62967473, 0.6296747, 1)
+albedo_texture = ExtResource("2_6wtr0")
+texture_filter = 0
+
+[sub_resource type="Animation" id="Animation_ewmhc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.85932034, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s7j0x"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.85932034, 0), Vector3(0, 0.879154, 0), Vector3(0, 0.85932034, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcpqm"]
+_data = {
+&"RESET": SubResource("Animation_ewmhc"),
+&"idle": SubResource("Animation_s7j0x")
+}
 
 [node name="antidote_stand" type="Area3D" unique_id=2015022452]
 script = ExtResource("1_s18v0")
@@ -20,6 +64,7 @@ show_tooltip_text = true
 metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1174891307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00048828125, 0.6869712, -0.012329102)
 shape = SubResource("BoxShape3D_s18v0")
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=605234218]
@@ -28,5 +73,15 @@ shape = SubResource("BoxShape3D_s18v0")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_6wtr0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ModelContainer" unique_id=871063438]
-mesh = SubResource("BoxMesh_s18v0")
+[node name="AntidoteStand" type="MeshInstance3D" parent="ModelContainer" unique_id=556695577]
+transform = Transform3D(0.425, 0, 0, 0, 0.425, 0, 0, 0, 0.425, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_uuusw")
+mesh = ExtResource("2_gfddq")
+
+[node name="BaseAntidoteSprite" type="Sprite3D" parent="." unique_id=1563426096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85932034, 0)
+texture_filter = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BaseAntidoteSprite" unique_id=1741991121]
+libraries/ = SubResource("AnimationLibrary_wcpqm")
+autoplay = &"idle"

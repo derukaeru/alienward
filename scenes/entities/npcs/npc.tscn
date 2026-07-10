@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="5_cyk10"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ii721"]
-radius = 0.32
+radius = 0.5263672
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kcbfn"]
 animations = [{
@@ -102,7 +102,7 @@ _data = {
 }
 
 [node name="npc" type="CharacterBody3D" unique_id=1037296205 groups=["npc"]]
-collision_layer = 9
+collision_layer = 11
 collision_mask = 10
 script = ExtResource("1_kcbfn")
 
