@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://djhx67h6d4tv8"]
+
+[ext_resource type="Script" uid="uid://hgi5lcla6va6" path="res://scenes/objects/fumes.gd" id="1_23xk2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qcw6k"]
+size = Vector3(5.0681458, 3.8632813, 4.574463)
+
+[node name="fumes" type="Area3D" unique_id=419716013]
+script = ExtResource("1_23xk2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1112388617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_qcw6k")

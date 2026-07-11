@@ -29,9 +29,12 @@ var UID: Dictionary = {
 	"water_spill": "uid://cjod10hvj1g0s",
 	
 	# item instances
-	"chili_instance": "uid://c41nfst6ynh2f",
 	"ultrasound_print_instance": "uid://dl7ni1qig34fo",
 	"antidote_instance": "uid://b328136vl47io",
+	"chili_instance": "uid://c41nfst6ynh2f",
+	"ginger_instance": "uid://buekuvxp14xat",
+	"coffee_bean_instance": "uid://d06ar3qs1prff",
+	"ink_sac_instance": "uid://cvc5jqvc2bum4",
 	
 	# sprites for hand held items
 	"baby_sprite": "uid://ddavebcvrlptn",
@@ -43,10 +46,14 @@ var UID: Dictionary = {
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",
 	"ultrasound_print": "uid://c4o52kbdwbt6n",
-	"chili": NULL_SPRITE,
+	"chili": "uid://d3mgfl15h1hqx",
+	"coffee_bean": "uid://dn7kddm81blbe",
+	"ginger": "uid://c40w002lqkhxm",
+	"ink_sac": "uid://df1yri0gtbcot",
 	
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt",
 	
 	"bioluminescence_shader": "uid://c3ov2tp76hj31",
+	"fumes_instance": "uid://djhx67h6d4tv8",
 }

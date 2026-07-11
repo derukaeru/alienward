@@ -12,7 +12,9 @@ const IDS: Dictionary = {
 	mop = "mop",
 	
 	chili = "chili",
-	
+	ink_sac = "ink_sac",
+	ginger = "ginger",
+	coffee_bean = "coffee_bean",
 }
 
 var undroppable: Array = [IDS.clipboard, IDS.baby]
@@ -20,10 +22,8 @@ var nonthrowable: Array = [IDS.clipboard, IDS.mop, IDS.ultrasound_scanner, IDS.b
 var unmovable: Array = [IDS.ultrasound_scanner, IDS.mop]
 
 enum ANTIDOTE_BASE_INDICES {
+	ginger,
+	ink_sac,
 	chili,
-}
-
-# item instances ids for registry autoload
-var SHOP_ITEMS: Dictionary = {
-	chili = "chili_instance"
+	coffee_bean
 }

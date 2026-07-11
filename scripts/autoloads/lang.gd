@@ -8,6 +8,9 @@ const TOOLTIPS: Dictionary = {
 	mop = "mop",
 	antidote = "antidote",
 	chili = "chili",
+	ginger = "ginger",
+	coffee_bean = "coffee_bean",
+	ink_sac = "ink sac",
 	
 	# misc.
 	shop = "open shop",

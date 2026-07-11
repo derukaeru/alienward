@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c41nfst6ynh2f"]
 
 [ext_resource type="Script" uid="uid://devramk8aelhd" path="res://scenes/objects/items/chili.gd" id="1_xo7bh"]
-[ext_resource type="Texture2D" uid="uid://cnely2yvr8exu" path="res://assets/sprites/objects/test_texture.png" id="2_kw1n6"]
+[ext_resource type="Texture2D" uid="uid://d3mgfl15h1hqx" path="res://assets/sprites/objects/chili.png" id="2_xo7bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo7bh"]
 size = Vector3(0.66186523, 0.79785156, 0.6739502)
@@ -56,7 +56,7 @@ shape = SubResource("BoxShape3D_xo7bh")
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=381236052]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_kw1n6")
+texture = ExtResource("2_xo7bh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=591413756]
 libraries/ = SubResource("AnimationLibrary_h65p6")

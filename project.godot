@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="alienward"
-config/tags=PackedStringArray("to_be_finished")
+config/tags=PackedStringArray("to_be_finished", "ysws")
 run/main_scene="uid://cx0rposj2xxxe"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"

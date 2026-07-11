@@ -8,7 +8,7 @@ class_name Patient extends CharacterBody3D
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
-var speed: float = 2.4
+var speed: float = 2.32
 var gravity: float = 9.8
 var id: int = GameManager.UNASSIGNED
 

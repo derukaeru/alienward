@@ -120,9 +120,9 @@ metadata/_custom_type_script = "uid://dhavxlm0dhkco"
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=618488769]
 path_desired_distance = 0.1
 target_desired_distance = 0.3
+simplify_path = true
 avoidance_enabled = true
 radius = 10.0
-debug_enabled = true
 
 [node name="InteractableComponent" type="Area3D" parent="." unique_id=2051864871]
 script = ExtResource("5_cyk10")

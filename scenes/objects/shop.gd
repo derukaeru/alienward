@@ -12,7 +12,7 @@ func _on_interactable_component_interacted() -> void:
 	EventBus.open_shop.emit()
 
 func buy_item(item_id: String) -> void:
-	if not ITEMS.SHOP_ITEMS.has(item_id): 
+	if not ITEMS.IDS.has(item_id): 
 		print("This item is not in the SHOP ITEMS list. Item: \"%d\"" % item_id)
 		return
 	
