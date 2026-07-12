@@ -129,5 +129,8 @@ mesh = ExtResource("5_3d8qu")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1690839195]
 libraries/ = SubResource("AnimationLibrary_3d8qu")
 
+[node name="bubble_container" type="Node3D" parent="." unique_id=2031653805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9958525, 0)
+
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

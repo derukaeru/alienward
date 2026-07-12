@@ -1,0 +1,1 @@
+class_name StatusBubble extends Node3D

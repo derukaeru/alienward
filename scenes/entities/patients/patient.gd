@@ -7,6 +7,7 @@ class_name Patient extends CharacterBody3D
 @onready var scanning_sprite: Sprite3D = $ScanningSpritePivot/ScanningSprite
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var bubble_container: Node3D = $bubble_container
 
 var speed: float = 2.32
 var gravity: float = 9.8
@@ -191,6 +192,14 @@ func look_at_target(target: Vector3) -> void:
 	look_target.y = 0
 	look_target = look_target.normalized()
 
+func remove_bubble() -> void:
+	for entry in bubble_container.get_children():
+		entry.queue_free()
+
+func add_bubble() -> void:
+	var bubble = Registry.status_bubble.instantiate()
+	bubble_container.add_child(bubble)
+
 func target_reached() -> void:
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
@@ -219,7 +228,7 @@ func target_reached() -> void:
 func birth_child() -> void:
 	if state != STATES.LABOR: return
 
-	var child: Baby = load(Registry.UID["baby"]).instantiate()
+	var child: Baby = load(Registry.UID.baby).instantiate()
 	Util.add_entity_to_container(child)
 
 	child.patient_id = id
