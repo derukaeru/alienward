@@ -5,4 +5,7 @@ func _ready() -> void:
 	get_tree().create_timer(duration).timeout.connect(queue_free)
 
 func _process(_delta) -> void:
-	pass
+	var coll: Array = get_overlapping_areas()
+	for entry in coll:
+		if entry is Player:
+			entry.hallucinogen = true

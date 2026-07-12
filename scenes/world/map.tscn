@@ -319,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.652472)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3881433, 0, -14.439322)
 
 [node name="waiting" type="Marker3D" parent="npc_spots" unique_id=777103579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54783, 0, -8.388447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4945107, 0, -8.388447)
 
 [node name="seat_0" type="Marker3D" parent="npc_spots" unique_id=12137339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.130697, 0, -6.462768)
@@ -399,7 +399,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9351177, 0, -1.6420478)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9351177, 0, -3.2366967)
 
 [node name="waiting" type="Marker3D" parent="patient_spots" unique_id=526870178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6623116, 0, -8.359579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4374747, 0, -9.01417)
 
 [node name="seat_0" type="Marker3D" parent="patient_spots" unique_id=1079119706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.203492, 0, -7.5542927)

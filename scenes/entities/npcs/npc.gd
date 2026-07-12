@@ -19,6 +19,7 @@ var moving: bool = false
 enum STATES {
 	IDLE,
 	WAITING,
+	WALKING,
 	GUIDING_TO_WARD,
 	WAITING_FOR_PATIENT,
 	WATCHING_BABY,
@@ -30,7 +31,7 @@ var look_target: Vector3
 func _ready() -> void:
 	if waiting_seat_position:
 		move_to("seat_%d" % waiting_seat_position)
-	
+
 	EventBus.incubated_child.connect(look_at_child)
 	EventBus.patient_to_ward.connect(escort_patient)
 	EventBus.patient_reached_ward.connect(
@@ -39,41 +40,46 @@ func _ready() -> void:
 				move_to("seat_%d" % waiting_seat_position)
 				state = STATES.WAITING
 	)
-	
+
 	patient = Util.get_patient_with_id(patient_id)
 
 func move_to(_name: String) -> void:
+	state = STATES.WALKING
+
 	target_name = _name
 	nav_agent.target_position = Util.get_npc_spot(_name)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		
-	if nav_agent.is_navigation_finished(): return
-	
-	var next = nav_agent.get_next_path_position()
-	var direction = (next - global_position).normalized()
-	velocity = direction * speed
-	
-	if velocity.length() > 0.1:
-		moving = true
-	else:
-		moving = false
-		
-	if moving:
-		look_target = Vector3(velocity.x, 0, velocity.z)
-		
+
+	if not nav_agent.is_navigation_finished():
+		var next = nav_agent.get_next_path_position()
+		var direction = (next - global_position).normalized()
+		velocity = direction * speed
+
+		if velocity.length() > 0.1:
+			moving = true
+		else:
+			moving = false
+
+		move_and_slide()
+
+	if state == STATES.WALKING:
+		if moving:
+			look_target = Vector3(velocity.x, 0, velocity.z)
+		else:
+			look_at_target(Util.get_npc_spot("waiting"))
 		if not animation.is_playing():
 			animation.play("walk")
-	
-	rotation.y = lerp_angle(rotation.y, atan2(-look_target.x, -look_target.z), .1) 
-	move_and_slide()
+
+
+	rotation.y = lerp_angle(rotation.y, atan2(-look_target.x, -look_target.z), .1)
 
 func _process(_delta: float) -> void:
 	if state == STATES.GUIDING_TO_WARD and target_name != "follow_patient":
 		if global_position.distance_to(patient.global_position) < 1: return
-		
+
 		nav_agent.target_position = patient.global_position
 		target_name = "follow_patient"
 	elif state == STATES.GUIDING_OUT_OF_WARD:
@@ -82,23 +88,30 @@ func _process(_delta: float) -> void:
 func interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
-	
+
 	if player.held_item_id == ITEMS.IDS.baby:
 		var baby: Baby = player.held_item
-		
+
 		if baby.patient_id == patient_id and ready_to_recieve_baby and baby.is_cured:
 			player.remove_held_item()
 			ready_to_leave = true
-			
+
 			move_to("ward_%d" % patient.ward_index)
 			state = STATES.GUIDING_OUT_OF_WARD
+
+func look_at_target(target: Vector3) -> void:
+	look_target = target - global_position
+
+	look_target.y = 0
+	look_target = look_target.normalized()
 
 func target_reached() -> void:
 	if target_name.begins_with("seat_"):
 		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""
-		
+
 		state = STATES.WAITING
+		look_at_target(Util.get_npc_spot("waiting"))
 	elif target_name.begins_with("watch_baby_"):
 		ready_to_recieve_baby = true
 		global_position = Util.get_npc_spot(target_name)
@@ -108,16 +121,16 @@ func target_reached() -> void:
 
 func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return
-	
+
 	var available_spots: Array = []
 	for i in GameManager.watch_baby.size():
 		if not GameManager.watch_baby[i]:
 			available_spots.append(i)
-	
+
 	if available_spots.is_empty():
 		print("no available spots")
 		return
-	
+
 	var spot_index: int = available_spots[randi() % available_spots.size()]
 	move_to("watch_baby_%d" % spot_index)
 
@@ -126,6 +139,5 @@ func leaving_checkup() -> void:
 
 func escort_patient(id: int) -> void:
 	if id != patient_id: return
-	
+
 	state = STATES.GUIDING_TO_WARD
-	

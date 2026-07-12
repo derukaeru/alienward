@@ -25,6 +25,8 @@ var can_move: bool = true
 var held_item_id: String = ""
 var held_item: Item = null
 
+var hallucinogen: bool = false
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_held_item_sprite("clipboard")
