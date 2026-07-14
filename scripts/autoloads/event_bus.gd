@@ -25,6 +25,9 @@ signal add_entity_to_container(entity: Node)
 signal open_patient_screen
 signal close_patient_screen
 
+signal open_incubator_screen(current_temperature: float, incubator: Incubator)
+signal close_incubator_screen(temperature: float, incubator: Incubator)
+
 signal throw_item
 signal open_curtain(index: int)
 signal close_curtain(index: int)

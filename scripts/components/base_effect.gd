@@ -6,5 +6,6 @@ var effectiveness: float = 1.0
 func activate(baby: Baby) -> void:
 	pass
 
+@warning_ignore("unused_parameter")
 func deactivate(baby: Baby) -> void:
 	pass

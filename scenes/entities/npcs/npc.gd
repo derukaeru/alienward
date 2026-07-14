@@ -32,6 +32,7 @@ var look_target: Vector3
 func _ready() -> void:
 	if waiting_seat_position:
 		move_to("seat_%d" % waiting_seat_position)
+		add_status_bubble("waiting")
 
 	EventBus.incubated_child.connect(look_at_child)
 	EventBus.patient_to_ward.connect(escort_patient)
@@ -40,13 +41,13 @@ func _ready() -> void:
 			if patient_id == id:
 				move_to("seat_%d" % waiting_seat_position)
 				state = STATES.WAITING
+				add_status_bubble("waiting")
 	)
 
 	patient = Util.get_patient_with_id(patient_id)
 
 func move_to(_name: String) -> void:
 	state = STATES.WALKING
-	add_status_bubble("walking")
 
 	target_name = _name
 	nav_agent.target_position = Util.get_npc_spot(_name)
@@ -109,12 +110,12 @@ func look_at_target(target: Vector3) -> void:
 	look_target = look_target.normalized()
 
 func remove_status_bubble() -> void:
-	for entry in status_bubble.get_children():
+	for entry in bubble_container.get_children():
 		entry.free()
 
 func add_status_bubble(type: String) -> void:
 	var bubble: StatusBubble = load(Registry.UID.status_bubble_instance).instantiate()
-	bubble.status_type = type
+	bubble.status_type = "status_" + type
 
 	bubble_container.add_child(bubble)
 
@@ -127,7 +128,6 @@ func target_reached() -> void:
 
 		state = STATES.WAITING
 		look_at_target(Util.get_npc_spot("waiting"))
-		add_status_bubble("waiting")
 	elif target_name.begins_with("watch_baby_"):
 		ready_to_recieve_baby = true
 		global_position = Util.get_npc_spot(target_name)
@@ -135,8 +135,7 @@ func target_reached() -> void:
 		add_status_bubble("watching_baby")
 	elif target_name == "follow_patient":
 		target_name = ""
-		state = STATES.FOLLOWING_PATIENT
-		add_status_bubble("following_patient")
+		state = STATES.WALKING
 
 func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return

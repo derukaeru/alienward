@@ -2,5 +2,5 @@ extends Node
 
 var dialogue_box
 
-func say(text, to = dialogue_box) -> void:
+func say(_text, _to = dialogue_box) -> void:
 	pass

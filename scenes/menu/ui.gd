@@ -10,6 +10,8 @@ extends CanvasLayer
 @onready var checkup: ColorRect = $checkup
 @onready var no_ward_label: Label = $guide_patient/no_ward
 
+@onready var incubator_screen: Control = $incubator_screen
+
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item
 @onready var hand: Control = $body/hand
@@ -30,10 +32,14 @@ var showing_warning: bool = false
 var warning_timer: Timer
 var warning_timer_speed: float = 3.0
 
+var incubator_open: bool = false
+var temperature: float = 1.0
+
 func _ready() -> void:
 	EventBus.open_shop.connect(open_shop_screen)
 	EventBus.open_antidote_stand.connect(open_antidote_screen)
 	EventBus.open_microscope.connect(open_microscope_screen)
+	EventBus.open_incubator_screen.connect(open_incubator_screen)
 
 	EventBus.close_antidote_stand.connect(close_antidote_screen)
 	EventBus.close_microscope.connect(close_microscope_screen)
@@ -44,7 +50,7 @@ func _ready() -> void:
 
 	EventBus.add_subtitle.connect(add_subtitle)
 
-func _input(event) -> void:
+func _input(event: InputEvent) -> void:
 	if guide_patient.visible:
 		for entry in patient_wards:
 			entry.hide()
@@ -61,6 +67,13 @@ func _input(event) -> void:
 				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, -1)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, 1)
+	
+	if incubator_open:
+		if event is InputEventMouseButton and event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				temperature -= 0.1
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				temperature += 0.1
 
 func open_patient_screen(reason: GameManager.REASONS) -> void:
 	if patient_open: return
@@ -137,6 +150,25 @@ func close_antidote_screen() -> void:
 	if not player: return
 
 	antidote_open = false
+	player.can_move = true
+
+func open_incubator_screen(temp: float) -> void:
+	if incubator_open: return
+	temperature = temp
+
+	incubator_open = true
+	incubator_screen.show()
+
+	var player: Player = Util.get_player()
+	if not player: return
+
+	player.can_move = false
+	player.velocity = Vector3.ZERO
+func close_incubator_screen() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	incubator_open = false
 	player.can_move = true
 
 func set_tooltip_text(text: String) -> void:

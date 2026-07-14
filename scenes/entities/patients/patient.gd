@@ -55,6 +55,7 @@ func _ready() -> void:
 
 	if waiting_seat_position == GameManager.UNASSIGNED: return
 	move_to("seat_%d" % waiting_seat_position)
+	add_status_bubble("waiting")
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -115,7 +116,9 @@ func _process(_delta) -> void:
 			if GameManager.clinic_open:
 				move_to("checkup")
 				GameManager.clinic_open = false
+
 				Util.add_subtitle(Lang.subtitles.guide_patient)
+				add_status_bubble("checkup")
 		elif reason == GameManager.REASONS.LABOR:
 			player.ui_layer.guide_patient.hide()
 			player.ui_layer.patient_open = false
@@ -128,6 +131,7 @@ func _process(_delta) -> void:
 				EventBus.patient_to_ward.emit(id)
 
 				Util.add_subtitle(Lang.subtitles.guide_patient)
+				add_status_bubble("labor")
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -144,7 +148,6 @@ func set_stage() -> void:
 
 func move_to(_name: String) -> void:
 	state = STATES.WALKING
-	add_status_bubble("walking")
 
 	target_name = _name
 	nav_agent.target_position = Util.get_patient_spot(_name)
@@ -221,17 +224,13 @@ func target_reached() -> void:
 	elif target_name.begins_with("seat_"):
 		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
 		state = STATES.WAITING
-
 		look_at_target(Util.get_patient_spot("waiting"))
-		add_status_bubble("waiting")
 	elif target_name == "checkup":
 		global_position = Util.get_patient_spot("checkup_seat")
 		state = STATES.CHECKUP
-
-		add_status_bubble("checkup")
 		EventBus.patient_reached_clinic.emit(id)
-	# left the ward
 	elif target_name == "patient_enter":
+		# left the ward
 		queue_free()
 		EventBus.left.emit(id)
 

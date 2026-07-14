@@ -106,7 +106,7 @@ func spawn_patient() -> void:
 func start() -> void:
 	pass
 
-func start_day(day: int = current_day) -> void:
+func start_day(_day: int = current_day) -> void:
 	if current_day >= 7: return
 	day_going = true
 

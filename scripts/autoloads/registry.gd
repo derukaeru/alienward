@@ -31,6 +31,11 @@ var UID: Dictionary[String, String] = {
 	"status_walking": DEFAULT_STATUS_BUBBLE,
 	"status_checkup": DEFAULT_STATUS_BUBBLE,
 	"status_waiting": DEFAULT_STATUS_BUBBLE,
+	"status_following_patient": DEFAULT_STATUS_BUBBLE,
+	"status_labor": DEFAULT_STATUS_BUBBLE,
+
+	"status_too_hot": DEFAULT_STATUS_BUBBLE,
+	"status_too_cold": DEFAULT_STATUS_BUBBLE,
 
 	"dirt": "uid://yhp2sprkwy51",
 	"water_spill": "uid://cjod10hvj1g0s",
