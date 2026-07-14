@@ -91,7 +91,7 @@ func _process(_delta) -> void:
 		var player_collider: Node = player.raycast.get_collider()
 		if not player_collider == interactable_component:
 			scanning = false
-			print("stopped scanning")
+			add_status_bubble("scanning")
 
 			scanning_timer.stop()
 			scanning_timer.queue_free()
@@ -144,6 +144,7 @@ func set_stage() -> void:
 
 func move_to(_name: String) -> void:
 	state = STATES.WALKING
+	add_status_bubble("walking")
 
 	target_name = _name
 	nav_agent.target_position = Util.get_patient_spot(_name)
@@ -192,15 +193,19 @@ func look_at_target(target: Vector3) -> void:
 	look_target.y = 0
 	look_target = look_target.normalized()
 
-func remove_bubble() -> void:
+func remove_status_bubble() -> void:
 	for entry in bubble_container.get_children():
 		entry.queue_free()
 
-func add_bubble() -> void:
-	var bubble = Registry.status_bubble.instantiate()
+func add_status_bubble(type: String) -> void:
+	remove_status_bubble()
+	var bubble: StatusBubble = load(Registry.UID.status_bubble_instance).instantiate()
+	bubble.status_type = "status_" + type
+
 	bubble_container.add_child(bubble)
 
 func target_reached() -> void:
+	remove_status_bubble()
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
@@ -211,19 +216,25 @@ func target_reached() -> void:
 		EventBus.close_curtain.emit(ward_index)
 		EventBus.patient_reached_ward.emit(id)
 
+		add_status_bubble("labor")
 		state = STATES.LABOR
 	elif target_name.begins_with("seat_"):
 		global_position = Util.get_patient_spot("seat_%d" % waiting_seat_position)
 		state = STATES.WAITING
 
 		look_at_target(Util.get_patient_spot("waiting"))
+		add_status_bubble("waiting")
 	elif target_name == "checkup":
 		global_position = Util.get_patient_spot("checkup_seat")
 		state = STATES.CHECKUP
+
+		add_status_bubble("checkup")
 		EventBus.patient_reached_clinic.emit(id)
+	# left the ward
 	elif target_name == "patient_enter":
 		queue_free()
 		EventBus.left.emit(id)
+
 
 func birth_child() -> void:
 	if state != STATES.LABOR: return

@@ -1,6 +1,7 @@
 extends Node
 
 var NULL_SPRITE: String = "uid://cnely2yvr8exu"
+var DEFAULT_STATUS_BUBBLE: String = "uid://bb5lto8ig5u4g"
 
 var UID: Dictionary[String, String] = {
 	"npc": "uid://cwhgebq7q0h5y",
@@ -24,8 +25,12 @@ var UID: Dictionary[String, String] = {
 	"settings_screen": "uid://5186ghdvrog8",
 
 	"dialogue_box": "uid://6cae11kpahyv",
-	"status_bubble": "uid://dafcp1h7ayfne",
-	"action_bubble": "uid://bb5o3rqa28jhl",
+	"status_bubble_instance": "uid://dafcp1h7ayfne",
+
+	# statuses
+	"status_walking": DEFAULT_STATUS_BUBBLE,
+	"status_checkup": DEFAULT_STATUS_BUBBLE,
+	"status_waiting": DEFAULT_STATUS_BUBBLE,
 
 	"dirt": "uid://yhp2sprkwy51",
 	"water_spill": "uid://cjod10hvj1g0s",

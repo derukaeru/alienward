@@ -143,5 +143,8 @@ mesh = ExtResource("4_kcbfn")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=82076134]
 libraries/ = SubResource("AnimationLibrary_dgdeb")
 
+[node name="bubble_container" type="Node3D" parent="." unique_id=1339094573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2547007, 0)
+
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

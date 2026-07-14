@@ -4,4 +4,4 @@ func activate(baby: Baby) -> void:
 	pass
 
 func deactivate(baby: Baby) -> void:
-	pass
+	baby.state = Baby.STATES.SLEEPING

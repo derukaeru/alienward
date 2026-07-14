@@ -9,34 +9,35 @@ var spawn_radius: float = 1.0
 func activate(baby: Baby) -> void:
 	if spawning_water: return
 	spawning_water = true
-	
+
 	spawn_timer = Timer.new()
 	spawn_timer.timeout.connect(spawn_water.bind(baby))
-	
+
 	Util.add_entity_to_container(spawn_timer)
 	spawn_timer.start(0.3)
-	
+
 	stop_spawn_timer = Timer.new()
 	stop_spawn_timer.timeout.connect(deactivate.bind(baby))
-	
+
 	Util.add_entity_to_container(stop_spawn_timer)
 	stop_spawn_timer.start(baby.effect.duration)
 
-func deactivate(_baby: Baby) -> void:
+func deactivate(baby: Baby) -> void:
 	spawn_timer.stop()
-	
+
 	spawn_timer.queue_free()
 	stop_spawn_timer.queue_free()
-	
+
 	spawning_water = false
+	baby.state = Baby.STATES.SLEEPING
 
 func spawn_water(baby: Baby) -> void:
 	var water_spill: WaterSpill = load(Registry.UID["water_spill"]).instantiate()
 	Util.add_entity_to_container(water_spill)
-	
+
 	var nav_map: RID = Util.get_nav_reg().get_navigation_map()
 	var pos: Vector3 = get_random_navmesh_point_near(baby.global_position, spawn_radius, nav_map)
-	
+
 	water_spill.global_position = baby.global_position + Vector3(pos.x, 0.0, pos.y)
 	water_spill.global_position.y = 0.1
 

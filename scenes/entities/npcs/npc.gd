@@ -1,7 +1,8 @@
 class_name NPC extends CharacterBody3D
 
-@onready var nav_agent = $NavigationAgent3D
-@onready var animation = $AnimationPlayer
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var bubble_container: Node3D = $bubble_container
 
 var speed: float = 2.4
 var patient_id: int = GameManager.UNASSIGNED
@@ -45,6 +46,7 @@ func _ready() -> void:
 
 func move_to(_name: String) -> void:
 	state = STATES.WALKING
+	add_status_bubble("walking")
 
 	target_name = _name
 	nav_agent.target_position = Util.get_npc_spot(_name)
@@ -65,10 +67,10 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 
-	if state == STATES.WALKING:
+	if state == STATES.WALKING or state == STATES.GUIDING_TO_WARD or state == STATES.GUIDING_OUT_OF_WARD:
 		if moving:
 			look_target = Vector3(velocity.x, 0, velocity.z)
-		else:
+		elif state == STATES.WALKING:
 			look_at_target(Util.get_npc_spot("waiting"))
 		if not animation.is_playing():
 			animation.play("walk")
@@ -98,6 +100,7 @@ func interacted() -> void:
 
 			move_to("ward_%d" % patient.ward_index)
 			state = STATES.GUIDING_OUT_OF_WARD
+			add_status_bubble("guiding_out_of_ward")
 
 func look_at_target(target: Vector3) -> void:
 	look_target = target - global_position
@@ -105,19 +108,35 @@ func look_at_target(target: Vector3) -> void:
 	look_target.y = 0
 	look_target = look_target.normalized()
 
+func remove_status_bubble() -> void:
+	for entry in status_bubble.get_children():
+		entry.free()
+
+func add_status_bubble(type: String) -> void:
+	var bubble: StatusBubble = load(Registry.UID.status_bubble_instance).instantiate()
+	bubble.status_type = type
+
+	bubble_container.add_child(bubble)
+
 func target_reached() -> void:
+	remove_status_bubble()
+
 	if target_name.begins_with("seat_"):
 		global_position = Util.get_npc_spot("seat_%d" % waiting_seat_position)
 		target_name = ""
 
 		state = STATES.WAITING
 		look_at_target(Util.get_npc_spot("waiting"))
+		add_status_bubble("waiting")
 	elif target_name.begins_with("watch_baby_"):
 		ready_to_recieve_baby = true
 		global_position = Util.get_npc_spot(target_name)
 		state = STATES.WATCHING_BABY
+		add_status_bubble("watching_baby")
 	elif target_name == "follow_patient":
 		target_name = ""
+		state = STATES.FOLLOWING_PATIENT
+		add_status_bubble("following_patient")
 
 func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return
