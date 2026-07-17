@@ -109,6 +109,9 @@ shader = ExtResource("3_5y2ix")
 font = ExtResource("2_vxc86")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
+font_size = 40
+
 [node name="ui" type="CanvasLayer" unique_id=687749877]
 layer = 0
 script = ExtResource("1_n7q4b")
@@ -348,11 +351,38 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "no available ward"
 
-[node name="incubator_screen" type="Control" parent="." unique_id=2073103025]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
+[node name="incubator_screen" type="ColorRect" parent="." unique_id=1842266120]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -40.0
+offset_right = 104.0
 offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.13, 0.13, 0.13, 0.83137256)
+
+[node name="temperature" type="Label" parent="incubator_screen" unique_id=2131492597]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_dlyu0")
+horizontal_alignment = 1
 
 [node name="microscope_screen" parent="." unique_id=1116009674 instance=ExtResource("4_5y2ix")]
 visible = false

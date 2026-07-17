@@ -10,8 +10,6 @@ var temperature: float = 1.0
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.incubator
 
-	EventBus.close_incubator_screen.connect(change_temperature)
-
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
@@ -23,21 +21,18 @@ func _process(_delta) -> void:
 			tooltip_text = Lang.TOOLTIPS.incubator
 	else:
 		tooltip_text = Lang.TOOLTIPS.incubator_normal
-	
-	if changing_temp and not Input.is_action_just_pressed("interact") and temperature != incubated_baby.current_temperature:
-		var ui: CanvasLayer = player.ui_layer
-		ui.close_incubator_screen()
-		
 
 func interact() -> void:
-	if incubated_baby:
-		if incubated_baby.current_temperature == temperature:
-			EventBus.open_incubator_screen.emit(temperature)
-		else:
-			incubate_baby()
-	else:
-		incubate_baby()
-	
+	EventBus.open_incubator_screen.emit(self)
+
+	# if incubated_baby:
+	# 	if incubated_baby.current_temperature == temperature:
+	# 		EventBus.open_incubator_screen.emit(temperature)
+	# 	else:
+	# 		incubate_baby()
+	# else:
+	# 	incubate_baby()
+
 
 func incubate_baby(baby: Baby = null) -> void:
 	if not baby:
@@ -70,7 +65,7 @@ func incubate_baby(baby: Baby = null) -> void:
 		baby.Vector3(0.0, 0.8, 0.0)
 		baby.show()
 		incubated_baby = baby
-		
+
 		baby.incubator = self
 		baby.is_in_incubator = true
 

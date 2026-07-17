@@ -40,8 +40,7 @@ func _ready() -> void:
 		func(id: int) -> void:
 			if patient_id == id:
 				move_to("seat_%d" % waiting_seat_position)
-				state = STATES.WAITING
-				add_status_bubble("waiting")
+				#add_status_bubble("waiting")
 	)
 
 	patient = Util.get_patient_with_id(patient_id)
@@ -69,22 +68,20 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 	if state == STATES.WALKING or state == STATES.GUIDING_TO_WARD or state == STATES.GUIDING_OUT_OF_WARD:
-		if moving:
-			look_target = Vector3(velocity.x, 0, velocity.z)
-		elif state == STATES.WALKING:
-			look_at_target(Util.get_npc_spot("waiting"))
+		look_target = Vector3(velocity.x, 0, velocity.z)
+		
 		if not animation.is_playing():
 			animation.play("walk")
-
-
+	
 	rotation.y = lerp_angle(rotation.y, atan2(-look_target.x, -look_target.z), .1)
 
 func _process(_delta: float) -> void:
 	if state == STATES.GUIDING_TO_WARD and target_name != "follow_patient":
 		if global_position.distance_to(patient.global_position) < 1: return
-
+		
 		nav_agent.target_position = patient.global_position
 		target_name = "follow_patient"
+		add_status_bubble("following_patient")
 	elif state == STATES.GUIDING_OUT_OF_WARD:
 		pass
 
@@ -134,8 +131,8 @@ func target_reached() -> void:
 		state = STATES.WATCHING_BABY
 		add_status_bubble("watching_baby")
 	elif target_name == "follow_patient":
+		nav_agent.target_position = patient.global_position
 		target_name = ""
-		state = STATES.WALKING
 
 func look_at_child(child_id: int) -> void:
 	if child_id != patient_id: return

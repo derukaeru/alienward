@@ -22,11 +22,8 @@ signal done_cleaning
 signal pick_up_baby_from_delivery_table(baby: Baby)
 signal add_entity_to_container(entity: Node)
 
-signal open_patient_screen
-signal close_patient_screen
-
-signal open_incubator_screen(current_temperature: float, incubator: Incubator)
-signal close_incubator_screen(temperature: float, incubator: Incubator)
+signal open_patient_screen(patient: Patient)
+signal open_incubator_screen(incubator: Incubator)
 
 signal throw_item
 signal open_curtain(index: int)
@@ -48,3 +45,5 @@ signal patient_leaving_clinic(id: int)
 signal left(id: int)
 
 signal add_subtitle(text: String)
+signal stop_player_movement
+signal player_can_move

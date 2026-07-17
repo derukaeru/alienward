@@ -106,33 +106,6 @@ func _process(_delta) -> void:
 
 			scanning_sprite.global_position = scanning_sprite_pivot.global_position + to_player * scan_sprite_offset
 
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and guided and STATES.WAITING:
-		guided = false
-
-		if reason == GameManager.REASONS.CHECKUP:
-			player.ui_layer.checkup.hide()
-			player.ui_layer.patient_open = false
-
-			if GameManager.clinic_open:
-				move_to("checkup")
-				GameManager.clinic_open = false
-
-				Util.add_subtitle(Lang.subtitles.guide_patient)
-				add_status_bubble("checkup")
-		elif reason == GameManager.REASONS.LABOR:
-			player.ui_layer.guide_patient.hide()
-			player.ui_layer.patient_open = false
-
-			if GameManager.selected_ward_on_ui >= 0:
-				ward_index = GameManager.selected_ward_on_ui
-
-				move_to("ward_%d" % ward_index)
-				GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
-				EventBus.patient_to_ward.emit(id)
-
-				Util.add_subtitle(Lang.subtitles.guide_patient)
-				add_status_bubble("labor")
-
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
 
@@ -160,7 +133,7 @@ func interacted() -> void:
 	if not player: return
 
 	if state == STATES.WAITING and player.held_item_id == ITEMS.IDS.clipboard:
-		EventBus.open_patient_screen.emit(reason)
+		EventBus.open_patient_screen.emit(self)
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
@@ -253,3 +226,25 @@ func birth_child() -> void:
 		func() -> void:
 			state = STATES.READY_TO_LEAVE
 	)
+
+func guide() -> void:
+	if not guided or not state == STATES.WAITING: return
+	guided = false
+
+	if reason == GameManager.REASONS.CHECKUP:
+		if GameManager.clinic_open:
+			move_to("checkup")
+			GameManager.clinic_open = false
+
+			Util.add_subtitle(Lang.subtitles.guide_patient)
+			add_status_bubble("checkup")
+	elif reason == GameManager.REASONS.LABOR:
+		if GameManager.selected_ward_on_ui >= 0:
+			ward_index = GameManager.selected_ward_on_ui
+
+			move_to("ward_%d" % ward_index)
+			GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
+			EventBus.patient_to_ward.emit(id)
+
+			Util.add_subtitle(Lang.subtitles.guide_patient)
+			add_status_bubble("labor")

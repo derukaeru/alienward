@@ -22,17 +22,21 @@ extends CanvasLayer
 
 @onready var cleaning_progress: ProgressBar = $cleaning_progress
 @onready var subtitle_container: Control = $subtitle_container
+@onready var temperature_label: Label = $incubator_screen/temperature
 
 var microscope_open: bool = false
 var shop_open: bool = false
-var patient_open: bool = false
 var antidote_open: bool = false
+
+var patient_open: bool = false
+var patient: Patient
 
 var showing_warning: bool = false
 var warning_timer: Timer
 var warning_timer_speed: float = 3.0
 
 var incubator_open: bool = false
+var incubator: Incubator
 var temperature: float = 1.0
 
 func _ready() -> void:
@@ -62,23 +66,46 @@ func _input(event: InputEvent) -> void:
 			no_ward_label.show()
 			return
 
-		if event is InputEventMouseButton and event.is_pressed():
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, -1)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, 1)
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+					GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, -1)
+				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+					GameManager.selected_ward_on_ui = Util.get_next_available_ward(GameManager.selected_ward_on_ui, 1)
+			elif not event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+				guide_patient.hide()
+				
+				patient_open = false
+				patient.guide()
+				
+				patient = null
+	
+	if checkup.visible:
+		if event is InputEventMouseButton:
+			if not event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+				checkup.hide()
+				
+				patient_open = false
+				patient.guide()
+				
+				patient = null
 	
 	if incubator_open:
-		if event is InputEventMouseButton and event.is_pressed():
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				temperature -= 0.1
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				temperature += 0.1
+		temperature_label.text = str(temperature)
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+					temperature -= 0.1
+				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+					temperature += 0.1
+			elif not event.is_pressed():
+				close_incubator_screen()
 
-func open_patient_screen(reason: GameManager.REASONS) -> void:
-	if patient_open: return
+func open_patient_screen(p: Patient) -> void:
+	if patient_open or not p: return
+	patient = p
 
-	match reason:
+	match patient.reason:
 		GameManager.REASONS.LABOR: guide_patient.show()
 		GameManager.REASONS.CHECKUP: checkup.show()
 
@@ -93,18 +120,11 @@ func open_shop_screen() -> void:
 	shop_screen.animation.play("pop")
 	await shop_screen.animation.animation_finished
 
-	var player = Util.get_player()
-	if not player: return
-
-	player.can_move = false
-	player.velocity = Vector3.ZERO
+	EventBus.stop_player_movement.emit()
 	Util.mouse_visible()
 func close_shop_screen() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-
 	shop_open = false
-	player.can_move = true
+	EventBus.player_can_move.emit()
 
 func open_microscope_screen() -> void:
 	if microscope_open: return
@@ -115,18 +135,11 @@ func open_microscope_screen() -> void:
 	microscope_screen.animation.play("pop")
 	await microscope_screen.animation.animation_finished
 
-	var player = Util.get_player()
-	if not player: return
-
-	player.can_move = false
-	player.velocity = Vector3.ZERO
+	EventBus.stop_player_movement.emit()
 	Util.mouse_visible()
 func close_microscope_screen() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-
 	microscope_open = false
-	player.can_move = true
+	EventBus.player_can_move.emit()
 
 func open_antidote_screen() -> void:
 	if antidote_open: return
@@ -139,37 +152,32 @@ func open_antidote_screen() -> void:
 	antidote_screen.animation.play("pop")
 	await antidote_screen.animation.animation_finished
 
-	var player: Player = Util.get_player()
-	if not player: return
-
-	player.can_move = false
-	player.velocity = Vector3.ZERO
+	EventBus.stop_player_movement.emit()
 	Util.mouse_visible()
 func close_antidote_screen() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-
 	antidote_open = false
-	player.can_move = true
+	EventBus.player_can_move.emit()
 
-func open_incubator_screen(temp: float) -> void:
-	if incubator_open: return
-	temperature = temp
+func open_incubator_screen(inc: Incubator) -> void:
+	if incubator_open or not inc: return
+	incubator = inc
+	temperature = incubator.temp
 
 	incubator_open = true
 	incubator_screen.show()
 
-	var player: Player = Util.get_player()
-	if not player: return
+	EventBus.stop_player_movement.emit()
 
-	player.can_move = false
-	player.velocity = Vector3.ZERO
 func close_incubator_screen() -> void:
-	var player: Player = Util.get_player()
-	if not player: return
-	
 	incubator_open = false
-	player.can_move = true
+	
+	incubator.temperature = temperature
+	temperature = 1.0
+	
+	incubator = null
+	incubator_screen.hide()
+	
+	EventBus.stop_player_movement.emit()
 
 func set_tooltip_text(text: String) -> void:
 	tooltip.text = text

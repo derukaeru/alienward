@@ -51,6 +51,9 @@ func _ready() -> void:
 
 	EventBus.pick_up_baby_from_delivery_table.connect(pick_up)
 	EventBus.throw_item.connect(throw_item)
+	
+	EventBus.stop_player_movement.connect(stop_movement)
+	EventBus.player_can_move.connect(set_movement)
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -219,3 +222,10 @@ func throw_item() -> void:
 		remove_held_item()
 	elif held_item_id != ITEMS.IDS.clipboard:
 		ui_layer.show_warning(Lang.WARNINGS.throw_item)
+
+func stop_movement() -> void:
+	can_move = false
+	velocity = Vector3.ZERO
+
+func set_movement() -> void:
+	can_move = true
