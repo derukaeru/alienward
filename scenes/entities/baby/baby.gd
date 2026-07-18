@@ -17,6 +17,7 @@ var incubator: Incubator
 
 var showing_symptoms: bool = false
 var time_to_show_symptoms: float = 10.0
+var held: bool = false
 
 enum LETTER_TO_VAL {A, C, G, T}
 var effect: Dictionary = {
@@ -26,9 +27,7 @@ var effect: Dictionary = {
 	duration = 1.0,
 }
 var is_cured: bool = true
-var held: bool = false
-
-var sustenance: float = 1.0
+var incubate_timer: float = 120.0
 
 var demanded_temperature: float = 1.0
 var current_temperature: float = demanded_temperature
@@ -59,11 +58,14 @@ func _ready() -> void:
 	effect_timer.timeout.connect(activate_effect)
 	effect_timer.start()
 
-func _process(_delta) -> void:
+func _process(delta) -> void:
 	if is_in_delivery_table:
 		held = false
 	elif is_in_incubator:
 		held = false
+		
+		if state == STATES.SLEEPING:
+			incubate_timer -= delta
 	elif held:
 		var player: Player = Util.get_player()
 		if not player: return

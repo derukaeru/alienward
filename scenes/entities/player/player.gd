@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
-@export var speed: float = 6.8
+var default_speed: float = 6.8
+var speed: float = default_speed
 @export var gravity: float = 9.8
 
 @onready var camera_mount: Node3D = $CameraMount
@@ -26,6 +27,7 @@ var held_item_id: String = ""
 var held_item: Item = null
 
 var hallucinogen: bool = false
+var hypothermia: bool = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -66,30 +68,35 @@ func _physics_process(delta) -> void:
 	if can_move:
 		var direction = (camera.global_transform.basis * Vector3(input.x, 0, input.y)).normalized()
 		direction.y = 0
-
+		
+		if hypothermia:
+			speed = default_speed * 0.67
+		else:
+			speed = default_speed
+		
 		if direction.length() > 0.1:
 			direction = direction.normalized()
-
+			
 			var speed_debuff: float = 1.0
 			if held_item_id == ITEMS.IDS.baby:
 				speed_debuff = 0.84
-
+			
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
-
+			
 			ui_layer.held_item.get_node("AnimationPlayer").play("bob")
 			ui_layer.hand.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
-
+	
 	move_and_slide()
-
+	
 	tilt_target += -input.x * TILT_STRAFE_AMOUNT * delta * 10
-
+	
 	tilt_target = clamp(tilt_target, -TILT_STRAFE_AMOUNT - TILT_LOOK_AMOUNT, TILT_STRAFE_AMOUNT + TILT_LOOK_AMOUNT)
 	tilt_target = lerp(tilt_target, 0.0, TILT_RETURN_SPEED * delta)
-
+	
 	camera.rotation_degrees.z = tilt_target
 
 func _process(delta) -> void:
