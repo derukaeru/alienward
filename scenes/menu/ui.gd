@@ -161,7 +161,7 @@ func close_antidote_screen() -> void:
 func open_incubator_screen(inc: Incubator) -> void:
 	if incubator_open or not inc: return
 	incubator = inc
-	temperature = incubator.temp
+	temperature = incubator.temperature
 
 	incubator_open = true
 	incubator_screen.show()

@@ -23,16 +23,13 @@ func _process(_delta) -> void:
 		tooltip_text = Lang.TOOLTIPS.incubator_normal
 
 func interact() -> void:
-	EventBus.open_incubator_screen.emit(self)
-
-	# if incubated_baby:
-	# 	if incubated_baby.current_temperature == temperature:
-	# 		EventBus.open_incubator_screen.emit(temperature)
-	# 	else:
-	# 		incubate_baby()
-	# else:
-	# 	incubate_baby()
-
+	if incubated_baby:
+		if incubated_baby.current_temperature == temperature:
+			EventBus.open_incubator_screen.emit(temperature)
+		else:
+			incubate_baby()
+	else:
+		incubate_baby()
 
 func incubate_baby(baby: Baby = null) -> void:
 	if not baby:
