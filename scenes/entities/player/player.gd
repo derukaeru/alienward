@@ -27,6 +27,8 @@ var held_item_id: String = ""
 var held_item: Item = null
 
 var hallucinogen: bool = false
+var hallucinogen_timer: float = 0.0
+
 var hypothermia: bool = false
 
 func _ready() -> void:
@@ -69,17 +71,15 @@ func _physics_process(delta) -> void:
 		var direction = (camera.global_transform.basis * Vector3(input.x, 0, input.y)).normalized()
 		direction.y = 0
 		
-		if hypothermia:
-			speed = default_speed * 0.67
-		else:
-			speed = default_speed
-		
 		if direction.length() > 0.1:
 			direction = direction.normalized()
 			
 			var speed_debuff: float = 1.0
 			if held_item_id == ITEMS.IDS.baby:
 				speed_debuff = 0.84
+			
+			if hypothermia:
+				speed_debuff = 0.65
 			
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
@@ -108,6 +108,11 @@ func _process(delta) -> void:
 
 	ui_layer.fps.text = "%d" % Engine.get_frames_per_second()
 	ui_layer.dirtiness.text = "Dirt: %d" % GameManager.dirtiness
+	
+	hallucinogen_timer -= delta
+	if hallucinogen_timer <= 0:
+		hallucinogen_timer = 0.0
+		hallucinogen = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
