@@ -12,7 +12,7 @@ var target_name: String = ""
 var waiting_seat_position: int = GameManager.UNASSIGNED
 
 var ready_to_recieve_baby: bool = false
-var ready_to_leave: bool = false
+var has_baby: bool = false
 var patient: Patient
 
 var moving: bool = false
@@ -22,9 +22,10 @@ enum STATES {
 	WAITING,
 	WALKING,
 	GUIDING_TO_WARD,
-	WAITING_FOR_PATIENT,
 	WATCHING_BABY,
-	GUIDING_OUT_OF_WARD
+	WAITING_FOR_PATIENT,
+	GUIDING_OUT_OF_WARD,
+	GUIDING_OUTSIDE
 }
 var state: STATES = STATES.IDLE
 var look_target: Vector3
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 
-	if state == STATES.WALKING or state == STATES.GUIDING_TO_WARD or state == STATES.GUIDING_OUT_OF_WARD:
+	if state == STATES.WALKING or state == STATES.GUIDING_TO_WARD or state == STATES.GUIDING_OUT_OF_WARD or state == STATES.GUIDING_OUTSIDE:
 		look_target = Vector3(velocity.x, 0, velocity.z)
 		
 		if not animation.is_playing():
@@ -77,13 +78,21 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	if state == STATES.GUIDING_TO_WARD and target_name != "follow_patient":
-		if global_position.distance_to(patient.global_position) < 1: return
-		
+		if global_position.distance_to(patient.global_position) < 1.2: return
 		nav_agent.target_position = patient.global_position
 		target_name = "follow_patient"
 		add_status_bubble("following_patient")
-	elif state == STATES.GUIDING_OUT_OF_WARD:
-		pass
+	elif state == STATES.WAITING_FOR_PATIENT:
+		if has_baby and patient.state == patient.STATES.RESTED:
+			move_to("ward_%d" % patient.ward_index)
+			state = STATES.GUIDING_OUT_OF_WARD
+			add_status_bubble("guiding_out_of_ward")
+	elif state == STATES.GUIDING_OUTSIDE and target_name != "leaving_with_patient":
+		if global_position.distance_to(patient.global_position) < 1.2: return
+		
+		nav_agent.target_position = patient.global_position
+		target_name = "leaving_with_patient"
+		add_status_bubble("following_patient")
 
 func interacted() -> void:
 	var player: Player = Util.get_player()
@@ -94,11 +103,8 @@ func interacted() -> void:
 
 		if baby.patient_id == patient_id and ready_to_recieve_baby and baby.is_cured:
 			player.remove_held_item()
-			ready_to_leave = true
-
-			move_to("ward_%d" % patient.ward_index)
-			state = STATES.GUIDING_OUT_OF_WARD
-			add_status_bubble("guiding_out_of_ward")
+			has_baby = true
+			state = STATES.WAITING_FOR_PATIENT
 
 func look_at_target(target: Vector3) -> void:
 	look_target = target - global_position
@@ -131,7 +137,11 @@ func target_reached() -> void:
 		state = STATES.WATCHING_BABY
 		add_status_bubble("watching_baby")
 	elif target_name == "follow_patient":
-		nav_agent.target_position = patient.global_position
+		target_name = ""
+	elif target_name.begins_with("ward_"):
+		patient.leave_ward()
+		state = STATES.GUIDING_OUTSIDE
+	elif target_name == "leaving_with_patient":
 		target_name = ""
 
 func look_at_child(child_id: int) -> void:

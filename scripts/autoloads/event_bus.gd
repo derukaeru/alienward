@@ -47,3 +47,5 @@ signal left(id: int)
 signal add_subtitle(text: String)
 signal stop_player_movement
 signal player_can_move
+
+signal npc_reached_ward(id: int)

@@ -20,7 +20,9 @@ enum STATES {
 	IDLE,
 	WAITING,
 	CHECKUP,
-	READY_TO_LEAVE
+	RESTED,
+	READY_TO_LEAVE,
+	LEAVING
 }
 var state: STATES = STATES.IDLE
 
@@ -185,10 +187,10 @@ func target_reached() -> void:
 	if target_name.begins_with("ward_"):
 		target_name = "inside_ward_%d" % ward_index
 		global_position = Util.get_patient_spot(target_name)
-
+		
 		labor_timer = get_tree().create_timer(labor_speed)
 		labor_timer.timeout.connect(birth_child)
-
+		
 		EventBus.close_curtain.emit(ward_index)
 		EventBus.patient_reached_ward.emit(id)
 
@@ -224,7 +226,7 @@ func birth_child() -> void:
 	rest_timer = get_tree().create_timer(rest_speed)
 	rest_timer.timeout.connect(
 		func() -> void:
-			state = STATES.READY_TO_LEAVE
+			state = STATES.RESTED
 	)
 
 func guide() -> void:
@@ -248,3 +250,9 @@ func guide() -> void:
 
 			Util.add_subtitle(Lang.subtitles.guide_patient)
 			add_status_bubble("labor")
+
+func leave_ward() -> void:
+	global_position = Util.get_patient_spot("ward_%d" % ward_index)
+	state = STATES.LEAVING
+	print("leaving")
+	move_to("patient_enter")

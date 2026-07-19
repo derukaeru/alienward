@@ -8,7 +8,7 @@ func _ready() -> void:
 func generate_item(item_id: String) -> void:
 	var id: String = ITEMS.IDS[item_id] + "_instance"
 	var instance: String = Registry.UID[id]
-	print(id)
+	
 	var item: Item = load(instance).instantiate()
 	Util.add_entity_to_container(item)
 	

@@ -33,6 +33,9 @@ var UID: Dictionary[String, String] = {
 	"status_waiting": DEFAULT_STATUS_BUBBLE,
 	"status_following_patient": DEFAULT_STATUS_BUBBLE,
 	"status_labor": DEFAULT_STATUS_BUBBLE,
+	"status_watching_baby": DEFAULT_STATUS_BUBBLE,
+	"status_guiding_out_of_ward": DEFAULT_STATUS_BUBBLE,
+	"status_leaving_with_patient": DEFAULT_STATUS_BUBBLE,
 
 	"status_too_hot": DEFAULT_STATUS_BUBBLE,
 	"status_too_cold": DEFAULT_STATUS_BUBBLE,

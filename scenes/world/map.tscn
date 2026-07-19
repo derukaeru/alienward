@@ -367,6 +367,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.757372, 0, -6.1365438)
 [node name="watch_baby_7" type="Marker3D" parent="npc_spots" unique_id=654177123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.798271, 0, -6.1365438)
 
+[node name="ward_3" type="Marker3D" parent="npc_spots" unique_id=435340329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.298963, 0, 5.060153)
+
+[node name="ward_2" type="Marker3D" parent="npc_spots" unique_id=1341379849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.689645, 0, 5.060153)
+
+[node name="ward_1" type="Marker3D" parent="npc_spots" unique_id=469400435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6467123, 0, 5.060153)
+
+[node name="ward_0" type="Marker3D" parent="npc_spots" unique_id=651310910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5471406, 0, 5.060153)
+
 [node name="patient_spots" type="Node3D" parent="." unique_id=1516039066]
 
 [node name="patient_enter" type="Marker3D" parent="patient_spots" unique_id=1310960241]
