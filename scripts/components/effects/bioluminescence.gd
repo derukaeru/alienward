@@ -12,3 +12,5 @@ func activate(baby: Baby) -> void:
 func deactivate(baby: Baby) -> void:
 	baby.sprite.material = null
 	baby.state = Baby.STATES.SLEEPING
+	
+	baby.set_effect_activation()

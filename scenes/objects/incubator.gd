@@ -9,6 +9,7 @@ var temperature: float = 1.0
 
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.incubator
+	
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
@@ -24,7 +25,7 @@ func _process(_delta) -> void:
 
 func interact() -> void:
 	if incubated_baby:
-		if incubated_baby.current_temperature != temperature:
+		if incubated_baby.demanded_temperature != temperature:
 			EventBus.open_incubator_screen.emit(self)
 		else:
 			incubate_baby()
@@ -65,13 +66,3 @@ func incubate_baby(baby: Baby = null) -> void:
 
 		baby.incubator = self
 		baby.is_in_incubator = true
-
-func baby_temperature_changed(temp: float) -> void:
-	if not incubated_baby: return
-
-	temperature = temp
-	# TODO:change the temperature display
-
-func change_temperature(temp: float, incubator: Incubator) -> void:
-	if not incubator == self: return
-	temperature = temp

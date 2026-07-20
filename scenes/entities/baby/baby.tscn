@@ -34,6 +34,4 @@ billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3nmci")
 
-[node name="EffectTimer" type="Timer" parent="." unique_id=335054847]
-
 [connection signal="picked_up" from="." to="." method="pick_up"]

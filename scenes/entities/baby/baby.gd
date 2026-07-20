@@ -1,13 +1,9 @@
 class_name Baby extends Item
-
 @onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
-@onready var effect_timer: Timer = $EffectTimer
 
 var dna: String = ""
 var split_dna: Array = []
-
 var id: int = GameManager.UNASSIGNED
-var patient_id: int = GameManager.UNASSIGNED
 
 var is_in_delivery_table: bool = false
 var delivery_table: DeliveryTable
@@ -15,22 +11,29 @@ var delivery_table: DeliveryTable
 var is_in_incubator: bool = false
 var incubator: Incubator
 
-var showing_symptoms: bool = false
-var time_to_show_symptoms: float = 10.0
 var held: bool = false
 
 enum LETTER_TO_VAL {A, C, G, T}
+var is_cured: bool = false
 var effect: Dictionary = {
 	effect_index = 1,
 	intensity = 1.0,
 	frequency = 1.0,
 	duration = 1.0,
 }
-var is_cured: bool = true
-var incubate_timer: float = 120.0
+var is_incubated: bool = false
+var default_incubate_timer: float = 120.0
+var incubate_timer: float = default_incubate_timer
+
+var minimum_effect_timer: float = 14.0
+var effect_timer: float = minimum_effect_timer
+var can_activate_effect: bool = true
+
+var default_uncomfy_timer: float = 28.0
+var uncomfy_timer: float = default_uncomfy_timer
+var uncomfy: bool = false
 
 var demanded_temperature: float = 1.0
-var current_temperature: float = demanded_temperature
 enum STATES {
 	SLEEPING,
 	RUCKUS, # baby is activating the effect
@@ -46,17 +49,9 @@ func _ready() -> void:
 
 	generate_dna()
 
-	get_tree().create_timer(time_to_show_symptoms).timeout.connect(
-		func() -> void:
-			showing_symptoms = true
-			get_tree().create_timer(effect.duration).timeout.connect(activate_effect)
-	)
-
-	# the lowest the frequency can go is once every 20s
+	# the lowest the frequency can go is once every 14s
 	# 2.0 in effect.frequency means most frequent and 0.1 is least frequent
-	effect_timer.wait_time = 100 * (2.0 - effect.frequency) + 20
-	effect_timer.timeout.connect(activate_effect)
-	effect_timer.start()
+	effect_timer = 10 * (2.0 - effect.frequency) + minimum_effect_timer
 
 func _process(delta) -> void:
 	if is_in_delivery_table:
@@ -65,12 +60,38 @@ func _process(delta) -> void:
 		held = false
 		
 		if state == STATES.SLEEPING:
-			incubate_timer -= delta
+			if !is_incubated and !uncomfy:
+				incubate_timer -= delta
+				
+				if incubate_timer <= 0:
+					is_incubated = true
+			
+			if uncomfy:
+				if incubator.temperature == demanded_temperature:
+					uncomfy = false
+					uncomfy_timer = default_uncomfy_timer
 	elif held:
 		var player: Player = Util.get_player()
 		if not player: return
-
 		global_position = player.global_position
+	
+	if can_activate_effect:
+		if effect_timer > -1:
+			effect_timer -= delta
+	
+	if effect_timer <= 0:
+		can_activate_effect = false
+		effect_timer = 0
+		
+		activate_effect()
+	
+	if not uncomfy:
+		uncomfy_timer -= delta
+		
+		if uncomfy_timer <= 0:
+			demanded_temperature = randf_range(0.1, 1.9)
+			uncomfy = true
+	
 
 func activate_effect() -> void:
 	EffectsManager.apply_effect(self)
@@ -92,23 +113,26 @@ func pick_up() -> void:
 	held = true
 
 func give_antidote(antidote: BaseAntidoteItem) -> void:
-	# either this method
-	# or check if its the antidote.data is the same as effect
-	# then mutate or cure based on the answer
+	if is_cured: return
+	
+	if antidote.data.duration != effect.duration or antidote.data.frequency != effect.frequency or antidote.data.intensity != effect.intensity: 
+		wrong_antidote()
+		return
+	
+	if effect.type == antidote.data.type:
+		effect.type = -1
+		is_cured = true
+		right_antidote()
 
-	if antidote.data.duration == effect.duration:
-		effect.duration = 0.0
+func right_antidote() -> void:
+	pass
 
-	if antidote.data.frequency == effect.frequency:
-		effect.frequency = 0.0
+func wrong_antidote() -> void:
+	pass
 
-	if antidote.data.intensity == effect.intensity:
-		effect.intensity = 0.0
-
-	if effect.intensity == 0 and effect.frequency == 0.0 and effect.duration == 0.0:
-		if effect.type == antidote.data.type:
-			effect.type = -1
-			is_cured = true
+func set_effect_activation() -> void:
+	can_activate_effect = true
+	effect_timer = 100 - (2.0 - effect.frequency) + minimum_effect_timer
 
 func generate_dna() -> void:
 	var choices: String = "ACGT"
@@ -121,11 +145,12 @@ func generate_dna() -> void:
 
 func get_split_dna(full_dna: String = dna) -> Array:
 	var chunk_array: Array = []
-
+	
 	for i in range(4):
 		chunk_array.append(full_dna.substr(i * 4, 4))
-
+	
 	return chunk_array
+
 func generate_effect() -> void:
 	split_dna = get_split_dna()
 	# effect type

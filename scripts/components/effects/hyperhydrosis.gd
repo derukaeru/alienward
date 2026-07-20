@@ -30,6 +30,7 @@ func deactivate(baby: Baby) -> void:
 
 	spawning_water = false
 	baby.state = Baby.STATES.SLEEPING
+	baby.set_effect_activation()
 
 func spawn_water(baby: Baby) -> void:
 	var water_spill: WaterSpill = load(Registry.UID["water_spill"]).instantiate()
