@@ -11,7 +11,7 @@ func activate(baby: Baby) -> void:
 	timer.wait_time = baby.effect.duration
 	timer.one_shot = true
 	
-	Util.add_entity_to_container(timer)
+	baby.add_child(timer)
 	
 	baby.sprite.enable_outline(true)
 	timer.timeout.connect(deactivate.bind(baby))

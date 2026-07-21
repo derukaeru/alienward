@@ -2,10 +2,10 @@ extends Area3D
 
 var duration: float = 20.0
 var bodies: Array = []
+var baby: Baby
 
 func _ready() -> void:
-	get_tree().create_timer(duration).timeout.connect(queue_free)
-	pass
+	get_tree().create_timer(duration).timeout.connect(end)
 
 func _on_body_entered(body) -> void:
 	if body is Player:
@@ -24,3 +24,9 @@ func _physics_process(_delta: float) -> void:
 func give_effect(body: Player) -> void:
 	body.hallucinogen_timer = 8.0
 	body.hallucinogen = true
+
+func end() -> void:
+	baby.state = Baby.STATES.SLEEPING
+	baby.set_effect_activation()
+	
+	queue_free()
