@@ -1,5 +1,6 @@
 class_name HyperhydrosisEffect extends BaseEffect
 
+
 var spawning_water: bool = false
 var spawn_timer: Timer
 var stop_spawn_timer: Timer
@@ -7,6 +8,7 @@ var stop_spawn_timer: Timer
 var spawn_radius: float = 1.0
 
 func activate(baby: Baby) -> void:
+	
 	if spawning_water: return
 	spawning_water = true
 

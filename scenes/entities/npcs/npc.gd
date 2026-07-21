@@ -97,18 +97,18 @@ func _process(_delta: float) -> void:
 func interacted() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
-
+	
 	if player.held_item_id == ITEMS.IDS.baby:
 		var baby: Baby = player.held_item
-
-		if baby.patient_id == patient_id and ready_to_recieve_baby and baby.is_cured:
+	
+		if baby.patient_id == patient_id and ready_to_recieve_baby and baby.is_cured and baby.is_incubated:
 			player.remove_held_item()
 			has_baby = true
 			state = STATES.WAITING_FOR_PATIENT
 
 func look_at_target(target: Vector3) -> void:
 	look_target = target - global_position
-
+	
 	look_target.y = 0
 	look_target = look_target.normalized()
 

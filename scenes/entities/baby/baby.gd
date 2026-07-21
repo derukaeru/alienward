@@ -1,9 +1,10 @@
 class_name Baby extends Item
-@onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
+@onready var sprite: Sprite3D = $Sprite3D
 
 var dna: String = ""
 var split_dna: Array = []
 var id: int = GameManager.UNASSIGNED
+var patient_id: int = GameManager.UNASSIGNED
 
 var is_in_delivery_table: bool = false
 var delivery_table: DeliveryTable
@@ -78,12 +79,12 @@ func _process(delta) -> void:
 	if can_activate_effect:
 		if effect_timer > -1:
 			effect_timer -= delta
-	
-	if effect_timer <= 0:
-		can_activate_effect = false
-		effect_timer = 0
-		
-		activate_effect()
+			
+		if effect_timer <= 0:
+			can_activate_effect = false
+			effect_timer = 0
+			
+			activate_effect()
 	
 	if not uncomfy:
 		uncomfy_timer -= delta
@@ -132,7 +133,7 @@ func wrong_antidote() -> void:
 
 func set_effect_activation() -> void:
 	can_activate_effect = true
-	effect_timer = 100 - (2.0 - effect.frequency) + minimum_effect_timer
+	effect_timer = 10 - (2.0 - effect.frequency) + minimum_effect_timer
 
 func generate_dna() -> void:
 	var choices: String = "ACGT"

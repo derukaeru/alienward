@@ -2,22 +2,25 @@
 
 [ext_resource type="Script" uid="uid://b6jlalr66mhdu" path="res://scenes/entities/baby/baby.gd" id="1_712cb"]
 [ext_resource type="Texture2D" uid="uid://ddavebcvrlptn" path="res://assets/sprites/entities/baby/baby_placeholder.png" id="2_40flv"]
+[ext_resource type="Shader" uid="uid://bq3ftskm2jcot" path="res://assets/shaders/outline_3d.gdshader" id="2_fdf43"]
+[ext_resource type="Script" uid="uid://boj7e2cs63sld" path="res://scripts/sprite_outline.gd" id="3_ogfyd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s51qe"]
 size = Vector3(0.8, 0.8, 0.8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfd33"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3nmci"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_40flv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdf43"]
+render_priority = 0
+shader = ExtResource("2_fdf43")
+shader_parameter/sprite_texture = ExtResource("2_40flv")
+shader_parameter/enable_billboard = true
+shader_parameter/enable_outline = false
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/glowSize = 0.90000004275
+shader_parameter/glowDensity = 3
+shader_parameter/glowRadialCoverage = 4
+shader_parameter/glowAngle = 1.57
+shader_parameter/glowSharpness = 0.0
+shader_parameter/alphaThreshold = 0.2
 
 [node name="baby" type="Area3D" unique_id=1860904262 groups=["baby"]]
 script = ExtResource("1_712cb")
@@ -27,11 +30,12 @@ metadata/_custom_type_script = "uid://b16ru0358s8jd"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=791688665]
 shape = SubResource("BoxShape3D_s51qe")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1583109298]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_xfd33")
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=874808805]
+transform = Transform3D(1.23, 0, 0, 0, 1.23, 0, 0, 0, 1.23, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_fdf43")
 billboard = 1
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_3nmci")
+texture = ExtResource("2_40flv")
+script = ExtResource("3_ogfyd")
 
 [connection signal="picked_up" from="." to="." method="pick_up"]
