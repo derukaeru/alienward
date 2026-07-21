@@ -12,6 +12,7 @@ var target_name: String = ""
 var waiting_seat_position: int = GameManager.UNASSIGNED
 
 var ready_to_recieve_baby: bool = false
+var is_leaving_checkup: bool = false
 var has_baby: bool = false
 var patient: Patient
 
@@ -37,13 +38,12 @@ func _ready() -> void:
 
 	EventBus.incubated_child.connect(look_at_child)
 	EventBus.patient_to_ward.connect(escort_patient)
+	EventBus.patient_leaving_checkup.connect(leaving_checkup)
+	EventBus.left.connect(left)
 	EventBus.patient_reached_ward.connect(
-		func(id: int) -> void:
-			if patient_id == id:
-				move_to("seat_%d" % waiting_seat_position)
-				#add_status_bubble("waiting")
+		func(id: int) -> void: if patient_id == id: move_to("seat_%d" % waiting_seat_position)
 	)
-
+	
 	patient = Util.get_patient_with_id(patient_id)
 
 func move_to(_name: String) -> void:
@@ -89,10 +89,13 @@ func _process(_delta: float) -> void:
 			add_status_bubble("guiding_out_of_ward")
 	elif state == STATES.GUIDING_OUTSIDE and target_name != "leaving_with_patient":
 		if global_position.distance_to(patient.global_position) < 1.2: return
-		
 		nav_agent.target_position = patient.global_position
-		target_name = "leaving_with_patient"
 		add_status_bubble("following_patient")
+		
+		if is_leaving_checkup:
+			target_name = ""
+		else:
+			target_name = "leaving_with_patient"
 
 func interacted() -> void:
 	var player: Player = Util.get_player()
@@ -159,10 +162,16 @@ func look_at_child(child_id: int) -> void:
 	var spot_index: int = available_spots[randi() % available_spots.size()]
 	move_to("watch_baby_%d" % spot_index)
 
-func leaving_checkup() -> void:
-	pass
+func leaving_checkup(id: int) -> void:
+	if id != patient_id: return
+	state = STATES.GUIDING_OUTSIDE
+	is_leaving_checkup = true
 
 func escort_patient(id: int) -> void:
 	if id != patient_id: return
 
 	state = STATES.GUIDING_TO_WARD
+
+func left(id: int) -> void:
+	if id == patient_id:
+		queue_free()

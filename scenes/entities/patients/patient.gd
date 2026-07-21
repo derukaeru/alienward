@@ -153,9 +153,9 @@ func interacted() -> void:
 				player.remove_held_item()
 
 				state = STATES.READY_TO_LEAVE
-				EventBus.patient_leaving_clinic.emit(id)
-
-				# TODO: leave
+				EventBus.patient_leaving_checkup.emit(id)
+				
+				move_to("patient_enter")
 
 func scan_done() -> void:
 	scanned = true
