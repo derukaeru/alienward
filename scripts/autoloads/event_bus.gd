@@ -49,3 +49,5 @@ signal stop_player_movement
 signal player_can_move
 
 signal npc_reached_ward(id: int)
+
+signal add_end_screen_details(served_patients: int, dirtiness: float, patient_satisfaction: float, money_earned: int)

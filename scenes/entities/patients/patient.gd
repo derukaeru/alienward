@@ -209,7 +209,6 @@ func target_reached() -> void:
 		queue_free()
 		EventBus.left.emit(id)
 
-
 func birth_child() -> void:
 	if state != STATES.LABOR: return
 
@@ -254,5 +253,6 @@ func guide() -> void:
 func leave_ward() -> void:
 	global_position = Util.get_patient_spot("ward_%d" % ward_index)
 	state = STATES.LEAVING
-	print("leaving")
+	
+	EventBus.open_curtain.emit(ward_index)
 	move_to("patient_enter")

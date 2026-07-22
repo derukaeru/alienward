@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://c6iypwpn1pyhr"]
+
+[ext_resource type="Script" uid="uid://dyrrt8tjndmkg" path="res://scenes/menu/end_day_screen.gd" id="1_x714m"]
+[ext_resource type="Shader" uid="uid://dwp8c34320vgs" path="res://assets/shaders/background_scroll.gdshader" id="2_058xm"]
+[ext_resource type="Texture2D" uid="uid://cknc8wesm2aum" path="res://assets/sprites/ui/repeating_background_1.png" id="3_54jbx"]
+[ext_resource type="Texture2D" uid="uid://cjvja0eq8m36r" path="res://assets/sprites/ui/end_day_label.png" id="4_54jbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwikx"]
+shader = ExtResource("2_058xm")
+shader_parameter/speed_x = -0.3
+shader_parameter/speed_y = -0.3
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwikx"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_4icbj"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6ldi"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_h788s"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_54jbx"]
+resource_name = "show"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwikx"]
+_data = {
+&"show": SubResource("Animation_54jbx")
+}
+
+[node name="end_day_screen" type="Control" unique_id=2096003163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x714m")
+
+[node name="background" type="ColorRect" parent="." unique_id=902454670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.370489, 0.5864558, 0.6559822, 1)
+
+[node name="scrolling_background" type="TextureRect" parent="." unique_id=241887705]
+modulate = Color(1, 1, 1, 0.5647059)
+material = SubResource("ShaderMaterial_pwikx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -177.23071
+offset_bottom = -132.92303
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("3_54jbx")
+stretch_mode = 1
+
+[node name="translucent_background" type="ColorRect" parent="." unique_id=31080454]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -232.0
+offset_right = 224.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.09, 0.09, 0.8509804)
+
+[node name="served_patients" type="Label" parent="." unique_id=1844334852]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -104.0
+offset_right = 160.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Served Patients: 0000"
+label_settings = SubResource("LabelSettings_pwikx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dirtiness" type="Label" parent="." unique_id=449749028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -56.0
+offset_right = 112.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dirtiness: 0000"
+label_settings = SubResource("LabelSettings_4icbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="patient_satisfaction" type="Label" parent="." unique_id=1287849920]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 15.0
+label_settings = SubResource("LabelSettings_u6ldi")
+
+[node name="money_earned" type="Label" parent="." unique_id=1255482956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -8.0
+offset_right = 152.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Money Earned: 0000"
+label_settings = SubResource("LabelSettings_h788s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="end_day_label" type="TextureRect" parent="." unique_id=875010601]
+modulate = Color(0.6584541, 0.74728984, 0.85425824, 1)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 608.0
+offset_bottom = 152.0
+texture = ExtResource("4_54jbx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1857860097]
+libraries/ = SubResource("AnimationLibrary_pwikx")
+
+[node name="menu" type="Button" parent="." unique_id=389625821]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -144.0
+offset_right = -192.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "menu"
+
+[node name="continue" type="Button" parent="." unique_id=251140937]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = -144.0
+offset_right = 352.0
+offset_bottom = -80.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "next day"
+
+[connection signal="pressed" from="menu" to="." method="menu"]
+[connection signal="pressed" from="continue" to="." method="_continue"]

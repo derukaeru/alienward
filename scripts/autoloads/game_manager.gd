@@ -103,7 +103,7 @@ func spawn_patient() -> void:
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn
 
-func start() -> void:
+func start_game() -> void:
 	pass
 
 func start_day(_day: int = current_day) -> void:
