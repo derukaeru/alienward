@@ -244,6 +244,14 @@ label_settings = SubResource("LabelSettings_j70yl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="notification_container" type="Control" parent="." unique_id=905329526]
+anchors_preset = 0
+offset_left = 384.0
+offset_top = 520.0
+offset_right = 384.0
+offset_bottom = 520.0
+mouse_filter = 2
+
 [connection signal="pressed" from="leave" to="." method="leave"]
 [connection signal="pressed" from="shop_container/items/ginger/buy" to="." method="buy_base_item" binds= ["ginger"]]
 [connection signal="pressed" from="shop_container/items/ink_sac/buy" to="." method="buy_base_item" binds= ["ink_sac"]]

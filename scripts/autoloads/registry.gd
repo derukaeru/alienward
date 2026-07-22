@@ -17,6 +17,7 @@ var UID: Dictionary[String, String] = {
 	"microscope_screen": "uid://d2wp275ru8mkw",
 
 	"subtitle_instance": "uid://2k1clpfoqeso",
+	"shop_notification": "uid://c3ma7nqekq2yl",
 
 	"loading_screen": "uid://tetiuyj7kfoe",
 	"splash_screen": "uid://b4ggbq71lpwo4",

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var notification_container: Control = $notification_container
 
 func _process(_delta) -> void:
 	var player: Player = Util.get_player()
@@ -19,3 +20,8 @@ func leave() -> void:
 
 func buy_base_item(item_name: String) -> void:
 	EventBus.shop_buy_item.emit(item_name)
+	new_notification()
+
+func new_notification() -> void:
+	var buy_notification: Control = load(Registry.UID.shop_notification).instantiate()
+	notification_container.add_child(buy_notification)
