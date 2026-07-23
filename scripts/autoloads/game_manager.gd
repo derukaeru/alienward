@@ -42,9 +42,12 @@ func _ready() -> void:
 	
 	canvas_layer.add_child(ui)
 	canvas_layer.add_child(pause_screen)
+	
+	ui.hide()
 	pause_screen.hide()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	EventBus.add_money.connect(add_money)
 
 func _process(delta: float) -> void:
 	if day_going:

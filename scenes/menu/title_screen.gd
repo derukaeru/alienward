@@ -1,5 +1,8 @@
 extends Control
 
+@onready var main_menu: Control = $main_menu
+@onready var start_menu: Control = $start_menu
+
 var button_scale: float = 1.25
 
 func mouse_entered(source) -> void:
@@ -16,12 +19,23 @@ func mouse_pressed(source) -> void:
 	tw.tween_property(source, "scale", Vector2(button_scale, button_scale), 0.04)
 
 func _on_start_pressed() -> void:
-	GameManager.day_going = true
-	SceneChanger.change_scene("world")
-	pass
+	main_menu.hide()
+	start_menu.show()
 
 func _on_settings_pressed() -> void:
 	pass 
 
 func _on_exit_pressed() -> void:
 	pass 
+
+
+func _on_new_pressed() -> void:
+	GameManager.day_going = true
+	SceneChanger.change_scene("world")
+
+func _on_continue_pressed() -> void:
+	pass
+
+func _on_return_pressed() -> void:
+	main_menu.show()
+	start_menu.hide()

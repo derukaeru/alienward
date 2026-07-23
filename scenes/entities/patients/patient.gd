@@ -207,6 +207,8 @@ func target_reached() -> void:
 	elif target_name == "patient_enter":
 		# left the ward
 		queue_free()
+		
+		EventBus.add_money.emit(randi_range(100, 130))
 		EventBus.left.emit(id)
 
 func birth_child() -> void:
