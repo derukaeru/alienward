@@ -32,7 +32,7 @@ func _process(_delta) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if Input.is_action_just_pressed("ui_cancel") and player.ui_layer.antidote_open:
+	if Input.is_action_just_pressed("ui_cancel") and player.ui.antidote_open:
 		leave()
 
 func opened() -> void:

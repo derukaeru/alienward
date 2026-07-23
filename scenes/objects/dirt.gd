@@ -12,8 +12,8 @@ func _ready() -> void:
 	sprite.rotation.y = randf_range(0, 360)
 
 func clean(player: Player) -> void:
-	player.ui_layer.cleaning_progress.max_value = cleaning_speed
-	player.ui_layer.cleaning_progress.show()
+	player.ui.cleaning_progress.max_value = cleaning_speed
+	player.ui.cleaning_progress.show()
 	
 	cleaning = true
 	cleaning_timer = Timer.new()
@@ -35,10 +35,10 @@ func _process(_delta) -> void:
 		var player: Player = Util.get_player()
 		if not player: return
 		
-		player.ui_layer.cleaning_progress.value = cleaning_speed - cleaning_timer.time_left
+		player.ui.cleaning_progress.value = cleaning_speed - cleaning_timer.time_left
 		
 		if player.raycast.get_collider() != self:
-			player.ui_layer.cleaning_progress.hide()
+			player.ui.cleaning_progress.hide()
 			cleaning = false
 			
 			cleaning_timer.stop()

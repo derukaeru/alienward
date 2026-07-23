@@ -8,7 +8,7 @@ var speed: float = default_speed
 @onready var camera: Camera3D = $CameraMount/Camera3D
 @onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
 
-@onready var ui_layer: CanvasLayer = $CameraMount/Camera3D/ui
+var ui: CanvasLayer
 
 var ui_lag_offset: Vector2 = Vector2.ZERO
 var ui_lag_target: Vector2 = Vector2.ZERO
@@ -32,17 +32,26 @@ var hallucinogen_timer: float = 0.0
 var hypothermia: bool = false
 
 func _ready() -> void:
+	var ui_layer: CanvasLayer = GameManager.get_ui()
+	ui = ui_layer
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	set_held_item_sprite("clipboard")
-
-	ui_layer.held_item.get_node("AnimationPlayer").animation_finished.connect(
+	
+	EventBus.pick_up_baby_from_delivery_table.connect(pick_up)
+	EventBus.throw_item.connect(throw_item)
+	
+	EventBus.stop_player_movement.connect(stop_movement)
+	EventBus.player_can_move.connect(set_movement)
+	
+	ui.held_item.get_node("AnimationPlayer").animation_finished.connect(
 		func(_a) -> void:
-			ui_layer.held_item.get_node("AnimationPlayer").play("RESET"),
+			ui.held_item.get_node("AnimationPlayer").play("RESET"),
 			CONNECT_ONE_SHOT
 	)
-	ui_layer.hand.get_node("AnimationPlayer").animation_finished.connect(
+	ui.hand.get_node("AnimationPlayer").animation_finished.connect(
 		func(_a) -> void:
-			ui_layer.hand.get_node("AnimationPlayer").play("RESET"),
+			ui.hand.get_node("AnimationPlayer").play("RESET"),
 			CONNECT_ONE_SHOT
 	)
 
@@ -53,11 +62,6 @@ func _ready() -> void:
 				Util.add_subtitle(Lang.subtitles.cleaned_mop)
 	)
 
-	EventBus.pick_up_baby_from_delivery_table.connect(pick_up)
-	EventBus.throw_item.connect(throw_item)
-	
-	EventBus.stop_player_movement.connect(stop_movement)
-	EventBus.player_can_move.connect(set_movement)
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -84,8 +88,8 @@ func _physics_process(delta) -> void:
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
 			
-			ui_layer.held_item.get_node("AnimationPlayer").play("bob")
-			ui_layer.hand.get_node("AnimationPlayer").play("bob")
+			ui.held_item.get_node("AnimationPlayer").play("bob")
+			ui.hand.get_node("AnimationPlayer").play("bob")
 		else:
 			velocity.x = 0
 			velocity.z = 0
@@ -104,10 +108,10 @@ func _process(delta) -> void:
 	ui_lag_offset = ui_lag_offset.lerp(ui_lag_target, UI_LAG_SPEED * delta)
 
 	ui_lag_offset = ui_lag_offset.clamp(Vector2(-30, -20), Vector2(30, 20))
-	ui_layer.body.position = ui_lag_offset
+	ui.body.position = ui_lag_offset
 
-	ui_layer.fps.text = "%d" % Engine.get_frames_per_second()
-	ui_layer.dirtiness.text = "Dirt: %d" % GameManager.dirtiness
+	ui.fps.text = "%d" % Engine.get_frames_per_second()
+	ui.dirtiness.text = "Dirt: %d" % GameManager.dirtiness
 	
 	hallucinogen_timer -= delta
 	if hallucinogen_timer <= 0:
@@ -135,9 +139,9 @@ func _input(event) -> void:
 		var collider: Node = raycast.get_collider()
 		if collider is InteractableComponent or collider is Item:
 			if collider.show_tooltip_text:
-				ui_layer.show_tooltip(raycast.get_collider().tooltip_text)
+				ui.show_tooltip(raycast.get_collider().tooltip_text)
 	else:
-		ui_layer.hide_tooltip()
+		ui.hide_tooltip()
 
 	if Input.is_action_just_pressed("drop"):
 		drop_item(null)
@@ -158,7 +162,7 @@ func _interact() -> void:
 
 				Util.add_subtitle(Lang.subtitles.gave_antidote)
 			ITEMS.IDS.baby:
-				ui_layer.show_warning(Lang.WARNINGS.pick_up_baby)
+				ui.show_warning(Lang.WARNINGS.pick_up_baby)
 			_:
 				pick_up(hit)
 	elif hit is Item:
@@ -191,12 +195,12 @@ func pick_up(item: Item) -> void:
 		item.global_position = Vector3.ZERO
 
 	item.set_collision_layer_value(1, false)
-	ui_layer.set_hand_sprite()
+	ui.set_hand_sprite()
 
 func drop_item(hit: Node) -> void:
 	if held_item == null or ITEMS.undroppable.has(held_item_id):
 		if held_item_id == ITEMS.IDS.baby:
-			ui_layer.show_warning(Lang.WARNINGS.drop_baby)
+			ui.show_warning(Lang.WARNINGS.drop_baby)
 		return
 
 	if hit == null:
@@ -216,12 +220,12 @@ func set_held_item_sprite(sprite_name: String) -> void:
 	var held_item_sprite: TextureRect = TextureRect.new()
 	held_item_sprite.texture = load(Registry.UID[sprite_name])
 
-	for entry in ui_layer.held_item.get_children():
+	for entry in ui.held_item.get_children():
 		if entry is not AnimationPlayer:
 			entry.queue_free()
 
-	ui_layer.held_item.add_child(held_item_sprite)
-	ui_layer.held_item.get_node("AnimationPlayer").play("get_item")
+	ui.held_item.add_child(held_item_sprite)
+	ui.held_item.get_node("AnimationPlayer").play("get_item")
 
 func remove_held_item() -> void:
 	held_item.queue_free()
@@ -233,7 +237,7 @@ func throw_item() -> void:
 	if not ITEMS.nonthrowable.has(held_item_id):
 		remove_held_item()
 	elif held_item_id != ITEMS.IDS.clipboard:
-		ui_layer.show_warning(Lang.WARNINGS.throw_item)
+		ui.show_warning(Lang.WARNINGS.throw_item)
 
 func stop_movement() -> void:
 	can_move = false

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c70or3by631ck" path="res://scenes/menu/subtitle.gd" id="1_08v3k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
-font_size = 24
+font_size = 32
 
 [sub_resource type="Animation" id="Animation_g5ues"]
 length = 0.001
@@ -48,7 +48,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -576.0
 offset_right = 256.0
-offset_bottom = -553.0
+offset_bottom = -544.0
 grow_vertical = 0
 text = "creating shi"
 label_settings = SubResource("LabelSettings_dlyu0")

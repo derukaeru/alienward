@@ -39,7 +39,7 @@ func incubate_baby(baby: Baby = null) -> void:
 
 		if not player.held_item_id == ITEMS.IDS.baby: return
 		if incubated_baby:
-			player.ui_layer.show_warning(Lang.WARNINGS.incubator_occupied)
+			player.ui.show_warning(Lang.WARNINGS.incubator_occupied)
 			return
 
 		anim.play("bob")

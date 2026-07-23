@@ -112,7 +112,7 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
 font_size = 40
 
-[node name="ui" type="CanvasLayer" unique_id=687749877]
+[node name="ui" type="CanvasLayer" unique_id=687749877 groups=["ui"]]
 layer = 0
 script = ExtResource("1_n7q4b")
 

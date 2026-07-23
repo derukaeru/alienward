@@ -1,7 +1,8 @@
 extends Node
 
-@onready var pause_screen: Node = load(Registry.UID["pause_screen"]).instantiate()
-@onready var settings_screen: Node = load(Registry.UID["settings_screen"]).instantiate()
+@onready var pause_screen: Node = load(Registry.UID.pause_screen).instantiate()
+@onready var settings_screen: Node = load(Registry.UID.settings_screen).instantiate()
+@onready var ui: CanvasLayer = load(Registry.UID.ui).instantiate()
 
 var SEED: int = 232421
 const UNASSIGNED: int = -1
@@ -10,7 +11,8 @@ var current_day: int = 0
 var day_going: bool = false
 var processed_patient_this_day: int = 0
 
-var time: float = 0.0 
+var DEFAULT_TIME_LENGTH: float = 60 * 10 # 10 minutes
+var time: float = DEFAULT_TIME_LENGTH
 var money: int = 0
 
 var canvas_layer: CanvasLayer = CanvasLayer.new()
@@ -39,6 +41,7 @@ func _ready() -> void:
 	add_child(canvas_layer)
 	
 	canvas_layer.add_child(pause_screen)
+	canvas_layer.add_child(ui)
 	pause_screen.hide()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -52,7 +55,7 @@ func _process(_d) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if player.ui_layer.shop_open or player.ui_layer.microscope_open: return
+	if player.ui.shop_open or player.ui.microscope_open: return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
@@ -113,7 +116,7 @@ func start_day(_day: int = current_day) -> void:
 func end_day() -> void:
 	pass
 
-func reset_for_day() -> void:
+func reset_day() -> void:
 	# clear baby, patient, items
 	# open all curtains
 	# remove ultrasound
@@ -122,3 +125,6 @@ func reset_for_day() -> void:
 	# clear microscope
 	
 	pass
+
+func get_ui() -> CanvasLayer:
+	return ui

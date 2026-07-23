@@ -115,7 +115,7 @@ func _process(_delta) -> void:
 	if not identifying_timer.is_stopped():
 		identifying_bacteria_bar.value = identifying_bacteria_bar.max_value - identifying_timer.time_left
 
-	if Input.is_action_just_pressed("ui_cancel") and player.ui_layer.microscope_open:
+	if Input.is_action_just_pressed("ui_cancel") and player.ui.microscope_open:
 		_on_leave_pressed()
 
 func dna_hovered() -> void:

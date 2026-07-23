@@ -27,7 +27,9 @@ var UID: Dictionary[String, String] = {
 
 	"dialogue_box": "uid://6cae11kpahyv",
 	"status_bubble_instance": "uid://dafcp1h7ayfne",
-
+	
+	"ui": "uid://b3rfrcxq10bx7",
+	
 	# statuses
 	"status_walking": DEFAULT_STATUS_BUBBLE,
 	"status_checkup": DEFAULT_STATUS_BUBBLE,

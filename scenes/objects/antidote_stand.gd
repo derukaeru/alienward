@@ -21,7 +21,7 @@ func interact() -> void:
 		player.remove_held_item()
 		animation.play("pop")
 	else:
-		if player.ui_layer.antidote_open: return
+		if player.ui.antidote_open: return
 
 		animation.play("pop")
 		EventBus.open_antidote_stand.emit()

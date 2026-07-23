@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dkc3c580pnp20"]
 
 [ext_resource type="Script" uid="uid://c2yp5cja56jyt" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
-[ext_resource type="PackedScene" uid="uid://b3rfrcxq10bx7" path="res://scenes/menu/ui.tscn" id="2_nh4ur"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
 
@@ -15,6 +14,7 @@ albedo_color = Color(0.99006027, 0.45059937, 0.58491653, 1)
 collision_layer = 129
 collision_mask = 129
 script = ExtResource("1_1hmtu")
+gravity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=902878420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -29,8 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7613211, 0)
 target_position = Vector3(0, 0, -2.5)
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="ui" parent="CameraMount/Camera3D" unique_id=687749877 instance=ExtResource("2_nh4ur")]
 
 [node name="ModelContainer" type="Node3D" parent="." unique_id=1155144846]
 
