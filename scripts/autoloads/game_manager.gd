@@ -4,6 +4,8 @@ extends Node
 @onready var settings_screen: Node = load(Registry.UID.settings_screen).instantiate()
 @onready var ui: CanvasLayer = load(Registry.UID.ui).instantiate()
 
+var canvas_layer: CanvasLayer = CanvasLayer.new()
+
 var SEED: int = 232421
 const UNASSIGNED: int = -1
 
@@ -14,8 +16,6 @@ var processed_patient_this_day: int = 0
 var DEFAULT_TIME_LENGTH: float = 60 * 10 # 10 minutes
 var time: float = DEFAULT_TIME_LENGTH
 var money: int = 0
-
-var canvas_layer: CanvasLayer = CanvasLayer.new()
 
 var latest_patient_id: int = 1
 var latest_baby_id: int = 1
@@ -40,17 +40,18 @@ func _ready() -> void:
 	seed(SEED)
 	add_child(canvas_layer)
 	
-	canvas_layer.add_child(pause_screen)
 	canvas_layer.add_child(ui)
+	canvas_layer.add_child(pause_screen)
 	pause_screen.hide()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func _process(_d) -> void:
+func _process(delta: float) -> void:
 	if day_going:
-		var patient_amount: int = Util.get_group_nodes("patient").size()
-		if patient_amount <= 0:
-			spawn_patient()
+		time -= delta
+		
+		if time <= 0:
+			end_day()
 	
 	var player: Player = Util.get_player()
 	if not player: return
@@ -111,10 +112,13 @@ func start_game() -> void:
 
 func start_day(_day: int = current_day) -> void:
 	if current_day >= 7: return
+	
+	time = DEFAULT_TIME_LENGTH
 	day_going = true
 
 func end_day() -> void:
-	pass
+	day_going = false
+	time = 0
 
 func reset_day() -> void:
 	# clear baby, patient, items
