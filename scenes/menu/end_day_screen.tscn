@@ -115,9 +115,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="patient_satisfaction" type="Label" parent="." unique_id=1287849920]
-layout_mode = 0
-offset_right = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -15.0
+offset_right = 125.0
 offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Satisfaction: 5/5"
 label_settings = SubResource("LabelSettings_u6ldi")
 
 [node name="money_earned" type="Label" parent="." unique_id=1255482956]
@@ -128,9 +138,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -152.0
-offset_top = -8.0
+offset_top = 24.0
 offset_right = 152.0
-offset_bottom = 24.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Money Earned: 0000"
@@ -163,7 +173,7 @@ offset_right = -192.0
 offset_bottom = -80.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "menu"
 
 [node name="continue" type="Button" parent="." unique_id=251140937]
@@ -176,7 +186,7 @@ offset_top = -144.0
 offset_right = 352.0
 offset_bottom = -80.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "next day"
 
 [connection signal="pressed" from="menu" to="." method="menu"]

@@ -30,11 +30,12 @@ func _on_exit_pressed() -> void:
 
 
 func _on_new_pressed() -> void:
-	GameManager.day_going = true
+	GameManager.start_day(0)
 	SceneChanger.change_scene("world")
 
 func _on_continue_pressed() -> void:
-	pass
+	GameManager.start_day()
+	SceneChanger.change_scene("world")
 
 func _on_return_pressed() -> void:
 	main_menu.show()

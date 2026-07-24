@@ -44,6 +44,11 @@ func _ready() -> void:
 	EventBus.stop_player_movement.connect(stop_movement)
 	EventBus.player_can_move.connect(set_movement)
 	
+	EventBus.day_ended.connect(func() -> void:
+		can_move = false
+		velocity = Vector3.ZERO
+	)
+	
 	ui.held_item.get_node("AnimationPlayer").animation_finished.connect(
 		func(_a) -> void:
 			ui.held_item.get_node("AnimationPlayer").play("RESET"),
@@ -61,7 +66,6 @@ func _ready() -> void:
 				held_item.dirtiness = 0.0
 				Util.add_subtitle(Lang.subtitles.cleaned_mop)
 	)
-
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():

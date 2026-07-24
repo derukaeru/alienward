@@ -24,6 +24,7 @@ var UID: Dictionary[String, String] = {
 	"title_screen": "uid://dix67ojrdr6ht",
 	"pause_screen": "uid://7jemke30bxqq",
 	"settings_screen": "uid://5186ghdvrog8",
+	"end_day_screen": "uid://c6iypwpn1pyhr",
 
 	"dialogue_box": "uid://6cae11kpahyv",
 	"status_bubble_instance": "uid://dafcp1h7ayfne",

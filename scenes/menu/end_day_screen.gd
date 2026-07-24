@@ -8,6 +8,10 @@ extends Control
 
 func _ready() -> void:
 	EventBus.add_end_screen_details.connect(add_details)
+	
+	Util.mouse_visible()
+	GameManager.reset_day()
+	GameManager.ui.hide()
 
 func add_details(served_patients: int, dirtiness: float, patient_satisfaction: float, money_earned: int) -> void:
 	served_patients_label.text = "Served Patients: " + str(served_patients)

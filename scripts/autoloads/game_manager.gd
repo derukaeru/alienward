@@ -15,6 +15,8 @@ var processed_patient_this_day: int = 0
 
 var DEFAULT_TIME_LENGTH: float = 60 * 10 # 10 minutes
 var time: float = DEFAULT_TIME_LENGTH
+
+var money_earned: int = 0
 var money: int = 0
 
 var latest_patient_id: int = 1
@@ -76,6 +78,7 @@ func _process(delta: float) -> void:
 
 func add_money(amount: int) -> void:
 	money += amount
+	money_earned += amount
 
 func spawn_patient() -> void:
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()
@@ -118,12 +121,20 @@ func start_day(_day: int = current_day) -> void:
 	
 	time = DEFAULT_TIME_LENGTH
 	day_going = true
+	
+	EventBus.day_started.emit()
 
 func end_day() -> void:
 	day_going = false
 	time = 0
+	
+	EventBus.day_ended.emit()
+	get_tree().create_timer(2.0).timeout.connect(func() -> void:
+		SceneChanger.change_scene("end_day_screen")
+	)
 
 func reset_day() -> void:
+	money_earned = 0
 	# clear baby, patient, items
 	# open all curtains
 	# remove ultrasound
