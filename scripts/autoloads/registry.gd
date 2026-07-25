@@ -46,6 +46,9 @@ var UID: Dictionary[String, String] = {
 
 	"dirt": "uid://yhp2sprkwy51",
 	"water_spill": "uid://cjod10hvj1g0s",
+	"bioluminescence_shader": "uid://c3ov2tp76hj31",
+	"fumes_instance": "uid://djhx67h6d4tv8",
+	"freeze_puddle_instance": "uid://mtpjyex45pld",
 
 	# item instances
 	"ultrasound_print_instance": "uid://dl7ni1qig34fo",
@@ -72,7 +75,4 @@ var UID: Dictionary[String, String] = {
 
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt",
-
-	"bioluminescence_shader": "uid://c3ov2tp76hj31",
-	"fumes_instance": "uid://djhx67h6d4tv8",
 }

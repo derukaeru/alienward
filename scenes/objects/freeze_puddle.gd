@@ -1,4 +1,4 @@
-class_name Fumes extends Area3D
+class_name FreezePuddle extends Area3D
 
 var duration: float = 20.0
 var bodies: Array = []
@@ -6,6 +6,7 @@ var baby: Baby
 
 func _ready() -> void:
 	get_tree().create_timer(duration).timeout.connect(end)
+	global_position.y = 0.0
 
 func _on_body_entered(body) -> void:
 	if body is Player:
@@ -22,8 +23,8 @@ func _physics_process(_delta: float) -> void:
 			give_effect(body)
 
 func give_effect(body: Player) -> void:
-	body.hallucinogen_timer = 8.0
-	body.hallucinogen = true
+	body.hypothermia_timer = 8.0
+	body.hypothermia = true
 
 func end() -> void:
 	baby.state = Baby.STATES.SLEEPING

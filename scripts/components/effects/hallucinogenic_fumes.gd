@@ -1,7 +1,7 @@
 class_name HallucinogenicFumesEffect extends BaseEffect
 
 func activate(baby: Baby) -> void:
-	var fumes: Area3D = load(Registry.UID["fumes"]).instantiate()
+	var fumes: Fumes = load(Registry.UID["fumes"]).instantiate()
 	fumes.global_position = baby.global_position
 	fumes.duration = baby.effect.duration
 	fumes.baby = baby
@@ -9,4 +9,5 @@ func activate(baby: Baby) -> void:
 	Util.add_entity_to_container(fumes)
 
 func deactivate(baby: Baby) -> void:
-	pass
+	baby.state = Baby.STATES.SLEEPING
+	baby.set_effect_activation()

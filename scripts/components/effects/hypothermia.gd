@@ -1,7 +1,12 @@
 class_name HypothermiaEffect extends BaseEffect
 
 func activate(baby: Baby) -> void:
-	pass
+	var freeze_puddle: FreezePuddle = load(Registry.UID.freeze_puddle_instance).instantiate()
+	freeze_puddle.global_position = baby.global_position
+	freeze_puddle.duration = baby.effect.duration
+	freeze_puddle.baby = baby
+	
+	Util.add_entity_to_container(freeze_puddle)
 
 func deactivate(baby: Baby) -> void:
 	baby.state = Baby.STATES.SLEEPING

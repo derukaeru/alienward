@@ -30,6 +30,7 @@ var hallucinogen: bool = false
 var hallucinogen_timer: float = 0.0
 
 var hypothermia: bool = false
+var hypothermia_timer: float = 0.0
 
 func _ready() -> void:
 	var ui_layer: CanvasLayer = GameManager.get_ui()
@@ -87,7 +88,7 @@ func _physics_process(delta) -> void:
 				speed_debuff = 0.84
 			
 			if hypothermia:
-				speed_debuff = 0.65
+				speed_debuff = 0.45
 			
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
@@ -117,10 +118,19 @@ func _process(delta) -> void:
 	ui.fps.text = "%d" % Engine.get_frames_per_second()
 	ui.dirtiness.text = "Dirt: %d" % GameManager.dirtiness
 	
-	hallucinogen_timer -= delta
-	if hallucinogen_timer <= 0:
-		hallucinogen_timer = 0.0
-		hallucinogen = false
+	if hallucinogen:
+		hallucinogen_timer -= delta
+		
+		if hallucinogen_timer <= 0:
+			hallucinogen_timer = 0.0
+			hallucinogen = false
+	
+	if hypothermia:
+		hypothermia_timer -= delta
+		
+		if hypothermia_timer <= 0:
+			hypothermia_timer = 0.0
+			hypothermia = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
