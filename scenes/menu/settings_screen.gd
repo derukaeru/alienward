@@ -14,3 +14,6 @@ func change_sensitivity(value: float) -> void:
 
 func change_fullscreen(value: bool) -> void:
 	SettingsManager.FULLSCREEN = value
+
+func _on_exit_pressed() -> void:
+	hide()

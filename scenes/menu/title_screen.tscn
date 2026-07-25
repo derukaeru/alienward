@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="5_lh61k"]
 [ext_resource type="Texture2D" uid="uid://cacgw3lk2dis" path="res://assets/sprites/ui/buttons/continue.png" id="6_lh61k"]
 [ext_resource type="Texture2D" uid="uid://dnv4tlehcp3nl" path="res://assets/sprites/ui/buttons/return.png" id="7_1hsha"]
+[ext_resource type="PackedScene" uid="uid://5186ghdvrog8" path="res://scenes/menu/settings_screen.tscn" id="8_1hsha"]
 
 [sub_resource type="Shader" id="Shader_7rd1m"]
 code = "shader_type canvas_item;
@@ -161,26 +162,30 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_28w6f")
 
+[node name="settings_screen" parent="." unique_id=558026876 instance=ExtResource("8_1hsha")]
+visible = false
+layout_mode = 1
+
 [connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/start" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="main_menu/start" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/settings" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="main_menu/exit" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/new" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/continue" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
 [connection signal="mouse_entered" from="start_menu/return" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/return" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="mouse_pressed" flags=18]

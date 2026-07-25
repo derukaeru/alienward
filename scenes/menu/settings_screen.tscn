@@ -7,6 +7,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5xb6v")
@@ -83,8 +87,21 @@ offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="exit" type="Button" parent="." unique_id=1020742308]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+text = "exit"
+
 [connection signal="value_changed" from="main_volume_slider" to="." method="change_main_volume"]
 [connection signal="value_changed" from="sound_effect_volume_slider" to="." method="change_sound_effect_volume"]
 [connection signal="value_changed" from="music_slider" to="." method="change_music_volume"]
 [connection signal="toggled" from="fullscreen_button" to="." method="change_fullscreen"]
 [connection signal="value_changed" from="sensitivity_slider" to="." method="change_sensitivity"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

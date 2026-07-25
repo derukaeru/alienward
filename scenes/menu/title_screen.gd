@@ -3,6 +3,8 @@ extends Control
 @onready var main_menu: Control = $main_menu
 @onready var start_menu: Control = $start_menu
 
+@onready var settings_screen: Control = $settings_screen
+
 var button_scale: float = 1.25
 
 func mouse_entered(source) -> void:
@@ -23,7 +25,7 @@ func _on_start_pressed() -> void:
 	start_menu.show()
 
 func _on_settings_pressed() -> void:
-	pass 
+	settings_screen.show()
 
 func _on_exit_pressed() -> void:
 	pass 
