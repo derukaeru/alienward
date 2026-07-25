@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://t1t41pt05row"]
 
-[ext_resource type="Script" uid="uid://c7kc5tw7l1qlm" path="res://scenes/objects/delivery_table.gd" id="1_5xry3"]
+[ext_resource type="Script" uid="uid://c7kc5tw7l1qlm" path="res://scenes/objects/world/ward/delivery_table.gd" id="1_5xry3"]
 [ext_resource type="Texture2D" uid="uid://b6iog2w6xx236" path="res://assets/models/objects/delivery_table.png" id="2_p3h37"]
 [ext_resource type="ArrayMesh" uid="uid://ciqxrmf30lgo" path="res://assets/models/objects/delivery_table.obj" id="3_sm3pv"]
 

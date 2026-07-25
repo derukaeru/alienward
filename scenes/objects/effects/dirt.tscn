@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yhp2sprkwy51"]
 
-[ext_resource type="Script" uid="uid://dpoxu3ow7nfks" path="res://scenes/objects/dirt.gd" id="1_0lgw5"]
+[ext_resource type="Script" uid="uid://dpoxu3ow7nfks" path="res://scenes/objects/effects/dirt.gd" id="1_0lgw5"]
 [ext_resource type="Texture2D" uid="uid://cl3pv3wwwvb01" path="res://assets/sprites/objects/dirt.png" id="1_cmwh6"]
 
 [sub_resource type="Animation" id="Animation_cmwh6"]

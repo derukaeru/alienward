@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h5rq04urcrl"]
 
-[ext_resource type="Script" uid="uid://cay0ggr7b2l0h" path="res://scenes/objects/curtain.gd" id="1_jg4hh"]
+[ext_resource type="Script" uid="uid://cay0ggr7b2l0h" path="res://scenes/objects/world/ward/curtain.gd" id="1_jg4hh"]
 [ext_resource type="Texture2D" uid="uid://ppunfpx1njvm" path="res://assets/models/objects/curtain.png" id="1_qh5wq"]
 [ext_resource type="ArrayMesh" uid="uid://diy1hbc31kp3j" path="res://assets/models/objects/curtain.obj" id="2_jg4hh"]
 [ext_resource type="ArrayMesh" uid="uid://blsk7bev0avq8" path="res://assets/models/objects/curtain_bar.obj" id="4_0ft1r"]

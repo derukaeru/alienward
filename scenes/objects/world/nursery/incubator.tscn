@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cybiwybojnpur"]
 
-[ext_resource type="Script" uid="uid://bkukd85jw6j78" path="res://scenes/objects/incubator.gd" id="1_vbmuw"]
+[ext_resource type="Script" uid="uid://bkukd85jw6j78" path="res://scenes/objects/world/nursery/incubator.gd" id="1_vbmuw"]
 [ext_resource type="Texture2D" uid="uid://bjqyubu3uhtq" path="res://assets/models/objects/incubator.png" id="2_nhj0s"]
 [ext_resource type="ArrayMesh" uid="uid://b36bcn4mmw4mc" path="res://assets/models/objects/incubator.obj" id="3_1uvbq"]
 

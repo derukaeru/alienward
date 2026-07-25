@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bxdci4360g1on"]
 
-[ext_resource type="Script" uid="uid://cr5lfpknwj81d" path="res://scenes/objects/printer.gd" id="1_pa7e3"]
+[ext_resource type="Script" uid="uid://cr5lfpknwj81d" path="res://scenes/objects/world/clinic/printer.gd" id="1_pa7e3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hn7fk"]
 size = Vector3(0.75, 0.2, 0.75)

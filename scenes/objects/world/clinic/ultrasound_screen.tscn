@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byfj2coscs1u0"]
 
-[ext_resource type="Script" uid="uid://cyvnewtgjn67i" path="res://scenes/objects/ultrasound_screen.gd" id="1_b7kio"]
+[ext_resource type="Script" uid="uid://cyvnewtgjn67i" path="res://scenes/objects/world/clinic/ultrasound_screen.gd" id="1_b7kio"]
 [ext_resource type="ArrayMesh" uid="uid://bcl4kb2x2d2li" path="res://assets/models/objects/crt_tv.obj" id="2_oppel"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7vd4x"]

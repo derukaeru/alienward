@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgrqw4ijysn4j"]
 
-[ext_resource type="Script" uid="uid://x4mrqamaf3tn" path="res://scenes/objects/door.gd" id="1_yar34"]
+[ext_resource type="Script" uid="uid://x4mrqamaf3tn" path="res://scenes/objects/world/misc/door.gd" id="1_yar34"]
 
 [sub_resource type="Animation" id="Animation_ofk05"]
 length = 0.001

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mtpjyex45pld"]
 
-[ext_resource type="Script" uid="uid://dw8c7dp1jurkq" path="res://scenes/objects/freeze_puddle.gd" id="1_cbm1f"]
+[ext_resource type="Script" uid="uid://dw8c7dp1jurkq" path="res://scenes/objects/effects/freeze_puddle.gd" id="1_cbm1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e0m7"]
 size = Vector3(2, 0.2, 2)

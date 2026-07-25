@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb5o3rqa28jhl"]
 
-[ext_resource type="Script" uid="uid://byu31thho3qe7" path="res://scenes/objects/action_bubble.gd" id="1_1bswy"]
+[ext_resource type="Script" uid="uid://byu31thho3qe7" path="res://scenes/objects/world/misc/action_bubble.gd" id="1_1bswy"]
 [ext_resource type="Texture2D" uid="uid://bb5lto8ig5u4g" path="res://assets/sprites/objects/action_bubble_template.png" id="2_5j0ku"]
 
 [node name="action_bubble" type="Node3D" unique_id=85213999]

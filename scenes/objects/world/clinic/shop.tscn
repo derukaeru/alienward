@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi6j5bhwkln6q"]
 
-[ext_resource type="Script" uid="uid://byc3n7ldk1ehr" path="res://scenes/objects/shop.gd" id="1_suugs"]
+[ext_resource type="Script" uid="uid://byc3n7ldk1ehr" path="res://scenes/objects/world/clinic/shop.gd" id="1_suugs"]
 [ext_resource type="ArrayMesh" uid="uid://bcl4kb2x2d2li" path="res://assets/models/objects/crt_tv.obj" id="2_o2dy8"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="2_xfthh"]
 [ext_resource type="Texture2D" uid="uid://dauef0aqf0pmj" path="res://assets/models/objects/crt_tv.png" id="2_y5y2e"]

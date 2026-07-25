@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bq1xk1af7n2s0"]
 
-[ext_resource type="Script" uid="uid://d3xwqaucr6ne0" path="res://scenes/objects/antidote_stand.gd" id="1_s18v0"]
+[ext_resource type="Script" uid="uid://d3xwqaucr6ne0" path="res://scenes/objects/world/clinic/antidote_stand.gd" id="1_s18v0"]
 [ext_resource type="Texture2D" uid="uid://stvbrfflvt18" path="res://assets/models/objects/antidote_stand.png" id="2_6wtr0"]
 [ext_resource type="ArrayMesh" uid="uid://dxmqqg60ax31j" path="res://assets/models/objects/antidote_stand.obj" id="2_gfddq"]
 

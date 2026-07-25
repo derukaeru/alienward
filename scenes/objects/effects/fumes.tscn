@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djhx67h6d4tv8"]
 
-[ext_resource type="Script" uid="uid://hgi5lcla6va6" path="res://scenes/objects/fumes.gd" id="1_23xk2"]
+[ext_resource type="Script" uid="uid://hgi5lcla6va6" path="res://scenes/objects/effects/fumes.gd" id="1_23xk2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcw6k"]
 size = Vector3(4.031498, 3.8632813, 3.6038094)

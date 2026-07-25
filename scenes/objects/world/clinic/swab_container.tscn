@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://of2kbq8uj4ok"]
 
-[ext_resource type="Script" uid="uid://dsls7o86kiveu" path="res://scenes/objects/swab_container.gd" id="1_3gl7h"]
+[ext_resource type="Script" uid="uid://dsls7o86kiveu" path="res://scenes/objects/world/clinic/swab_container.gd" id="1_3gl7h"]
 [ext_resource type="Texture2D" uid="uid://mt0pd76gfn8a" path="res://assets/models/objects/swab_container.png" id="2_w5w5j"]
 [ext_resource type="ArrayMesh" uid="uid://cak5v3hjfcvt8" path="res://assets/models/objects/swab_container.obj" id="3_jdwra"]
 

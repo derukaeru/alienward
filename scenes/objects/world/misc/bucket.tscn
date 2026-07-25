@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m6fnjdy75w33"]
 
-[ext_resource type="Script" uid="uid://dvpiw7ywpjv8y" path="res://scenes/objects/bucket.gd" id="1_v1wl4"]
+[ext_resource type="Script" uid="uid://dvpiw7ywpjv8y" path="res://scenes/objects/world/misc/bucket.gd" id="1_v1wl4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w4705"]
 

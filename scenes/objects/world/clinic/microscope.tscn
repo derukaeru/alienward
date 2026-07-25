@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://476kbecnw00m"]
 
-[ext_resource type="Script" uid="uid://dnxjoqdirwa8v" path="res://scenes/objects/microscope.gd" id="1_lqit0"]
+[ext_resource type="Script" uid="uid://dnxjoqdirwa8v" path="res://scenes/objects/world/clinic/microscope.gd" id="1_lqit0"]
 [ext_resource type="Texture2D" uid="uid://dijk4rwko08mo" path="res://assets/models/objects/microscope.png" id="2_qo7xn"]
 [ext_resource type="ArrayMesh" uid="uid://mdo4cmi6fu07" path="res://assets/models/objects/microscope.obj" id="2_td1ok"]
 

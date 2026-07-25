@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yf5on8mxpa55"]
 
-[ext_resource type="Script" uid="uid://bmnsslwywvw2x" path="res://scenes/objects/item_chute.gd" id="1_bq1k7"]
+[ext_resource type="Script" uid="uid://bmnsslwywvw2x" path="res://scenes/objects/world/clinic/item_chute.gd" id="1_bq1k7"]
 
 [sub_resource type="Animation" id="Animation_bq1k7"]
 length = 0.001

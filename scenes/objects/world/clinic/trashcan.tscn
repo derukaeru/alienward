@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dv3k8crc5eb37"]
 
-[ext_resource type="Script" uid="uid://c60f805vd7ibg" path="res://scenes/objects/trashcan.gd" id="1_f6caq"]
+[ext_resource type="Script" uid="uid://c60f805vd7ibg" path="res://scenes/objects/world/clinic/trashcan.gd" id="1_f6caq"]
 [ext_resource type="Texture2D" uid="uid://cmn4ds5ipskqx" path="res://assets/models/objects/trashcan.png" id="2_ifsy5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3uytl"]
