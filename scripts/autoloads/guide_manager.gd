@@ -7,3 +7,6 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	pass
+
+func activate_guide() -> void:
+	pass

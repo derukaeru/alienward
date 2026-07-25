@@ -13,7 +13,6 @@ filter = false
 sky_material = SubResource("PanoramaSkyMaterial_v5dby")
 
 [sub_resource type="Environment" id="Environment_sl2e5"]
-background_mode = 2
 background_color = Color(0.32156864, 0.36862746, 0.7372549, 1)
 sky = SubResource("Sky_t5ptc")
 ambient_light_source = 3
@@ -41,3 +40,4 @@ shadow_enabled = true
 
 [node name="player" parent="." unique_id=1554846954 groups=["player"] instance=ExtResource("2_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7140511, 0, -7.4180455)
+gravity = 9.8

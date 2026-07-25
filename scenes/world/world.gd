@@ -11,7 +11,14 @@ func _ready() -> void:
 	GameManager.spawn_patient()
 	await get_tree().create_timer(1.0).timeout
 	GameManager.spawn_patient()
-	
 
 func add_entity(node: Node) -> void:
 	entities.add_child(node)
+
+func _process(_delta) -> void:
+	if GameManager.day_going:
+		if GameManager.patient_queue > 0:
+			for i in range(GameManager.patient_queue):
+				GameManager.spawn_patient()
+	
+	

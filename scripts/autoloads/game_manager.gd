@@ -13,7 +13,7 @@ var current_day: int = 0
 var day_going: bool = false
 var processed_patient_this_day: int = 0
 
-var DEFAULT_TIME_LENGTH: float = 60 * 10 # 10 minutes
+var DEFAULT_TIME_LENGTH: float = 60 * 8 # 10 minutes
 var time: float = DEFAULT_TIME_LENGTH
 
 var money_earned: int = 0
@@ -37,6 +37,8 @@ enum REASONS {
 	CHECKUP,
 	LABOR
 }
+
+var patient_queue: int = 0
 
 func _ready() -> void:
 	seed(SEED)
@@ -81,6 +83,18 @@ func add_money(amount: int) -> void:
 	money_earned += amount
 
 func spawn_patient() -> void:
+	var available_seats: Array = []
+	for i in len(waiting_seats_occupation):
+		if waiting_seats_occupation[i] == false:
+			available_seats.append(i)
+	
+	if available_seats.is_empty(): 
+		print("no available seat")
+		patient_queue += 1
+		return
+	else:
+		if patient_queue > 0: patient_queue -= 1
+	
 	var patient: Patient = load(Registry.UID["patient"]).instantiate()
 	var npc: NPC = load(Registry.UID["npc"]).instantiate()
 	
@@ -90,19 +104,11 @@ func spawn_patient() -> void:
 	latest_patient_id += 1
 	npc.patient = patient
 	
-	var available_seats: Array = []
-	for i in len(waiting_seats_occupation):
-		if waiting_seats_occupation[i] == false:
-			available_seats.append(i)
+	var seat_index: int = available_seats[randi() % available_seats.size()]
+	patient.waiting_seat_position = seat_index
+	npc.waiting_seat_position = seat_index
 	
-	if available_seats.is_empty(): 
-		print("no available seat")
-	else:
-		var seat_index: int = available_seats[randi() % available_seats.size()]
-		patient.waiting_seat_position = seat_index
-		npc.waiting_seat_position = seat_index
-		
-		waiting_seats_occupation[seat_index] = true
+	waiting_seats_occupation[seat_index] = true
 	
 	Util.add_entity_to_container(patient)
 	Util.add_entity_to_container(npc)

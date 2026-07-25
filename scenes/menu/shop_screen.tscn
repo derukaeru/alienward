@@ -46,7 +46,7 @@ _data = {
 [sub_resource type="Theme" id="Theme_woskx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j70yl"]
-font_size = 24
+font_size = 32
 
 [node name="shop_screen" type="Control" unique_id=2077115726]
 layout_mode = 3

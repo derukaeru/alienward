@@ -204,6 +204,7 @@ func target_reached() -> void:
 		global_position = Util.get_patient_spot("checkup_seat")
 		state = STATES.CHECKUP
 		EventBus.patient_reached_clinic.emit(id)
+		look_at_target(Util.get_patient_spot("checkup"))
 	elif target_name == "patient_enter":
 		# left the ward
 		queue_free()

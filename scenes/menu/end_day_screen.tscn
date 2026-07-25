@@ -22,14 +22,6 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_h788s"]
 font_size = 32
 
-[sub_resource type="Animation" id="Animation_54jbx"]
-resource_name = "show"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwikx"]
-_data = {
-&"show": SubResource("Animation_54jbx")
-}
-
 [node name="end_day_screen" type="Control" unique_id=2096003163]
 layout_mode = 3
 anchors_preset = 15
@@ -78,7 +70,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09, 0.09, 0.09, 0.8509804)
 
+[node name="end_day_label" type="TextureRect" parent="." unique_id=875010601]
+modulate = Color(0.6584541, 0.74728984, 0.85425824, 1)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 608.0
+offset_bottom = 152.0
+texture = ExtResource("4_54jbx")
+
 [node name="served_patients" type="Label" parent="." unique_id=1844334852]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,6 +99,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="dirtiness" type="Label" parent="." unique_id=449749028]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,6 +118,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="patient_satisfaction" type="Label" parent="." unique_id=1287849920]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -131,6 +135,7 @@ text = "Satisfaction: 5/5"
 label_settings = SubResource("LabelSettings_u6ldi")
 
 [node name="money_earned" type="Label" parent="." unique_id=1255482956]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,19 +153,8 @@ label_settings = SubResource("LabelSettings_h788s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="end_day_label" type="TextureRect" parent="." unique_id=875010601]
-modulate = Color(0.6584541, 0.74728984, 0.85425824, 1)
-layout_mode = 0
-offset_left = 160.0
-offset_top = 56.0
-offset_right = 608.0
-offset_bottom = 152.0
-texture = ExtResource("4_54jbx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1857860097]
-libraries/ = SubResource("AnimationLibrary_pwikx")
-
 [node name="menu" type="Button" parent="." unique_id=389625821]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -177,6 +171,7 @@ theme_override_font_sizes/font_size = 32
 text = "menu"
 
 [node name="continue" type="Button" parent="." unique_id=251140937]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
