@@ -27,10 +27,11 @@ func add_details(sp: int, d: float, ps: float, m: int) -> void:
 	money_earned = m
 
 func _continue() -> void:
-	pass 
+	GameManager.current_day += 1
+	SceneChanger.change_scene("world")
 
 func menu() -> void:
-	pass
+	SceneChanger.change_scene("title_screen")
 
 func show_details() -> void:
 	await get_tree().create_timer(1.5).timeout

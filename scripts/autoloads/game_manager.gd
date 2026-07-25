@@ -122,10 +122,11 @@ func spawn_patient() -> void:
 func start_game() -> void:
 	pass
 
-func start_day(_day: int = current_day) -> void:
+func start_day(day: int = current_day) -> void:
 	if current_day >= 7: return
 	
 	time = DEFAULT_TIME_LENGTH
+	current_day = day
 	day_going = true
 	
 	EventBus.day_started.emit()
