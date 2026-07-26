@@ -33,9 +33,11 @@ func _on_exit_pressed() -> void:
 
 func _on_new_pressed() -> void:
 	GameManager.start_day(0)
-	SceneChanger.change_scene("world")
+	SceneChanger.change_scene("intro_screen")
 
 func _on_continue_pressed() -> void:
+	SaveManager.load_progress()
+	
 	GameManager.start_day()
 	SceneChanger.change_scene("world")
 

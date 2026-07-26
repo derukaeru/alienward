@@ -24,6 +24,7 @@ extends CanvasLayer
 @onready var subtitle_container: Control = $subtitle_container
 @onready var temperature_label: Label = $incubator_screen/temperature
 
+@onready var guide_container: ColorRect = $guide
 @onready var guide_text_label: Label = $guide/text
 
 var microscope_open: bool = false
@@ -253,12 +254,16 @@ func add_guide_text_letter(letter: String) -> void:
 
 func add_guide_text(text: String) -> void:
 	guide_text = text
-	guide_text_label.show()
-	guide_text_active = true
 	
+	guide_text_label.show()
+	guide_container.show()
+	
+	guide_text_active = true
 	add_guide_text(guide_text[guide_text_index])
 
 func hide_guide() -> void:
 	guide_text_label.hide()
+	guide_container.hide()
+	
 	guide_text_label.text = ""
 	guide_text_active = false

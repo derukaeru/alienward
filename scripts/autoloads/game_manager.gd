@@ -40,6 +40,8 @@ enum REASONS {
 
 var patient_queue: int = 0
 
+var save_timer: float = 60 * 5 # 5 minutes
+
 func _ready() -> void:
 	seed(SEED)
 	add_child(canvas_layer)
@@ -54,6 +56,13 @@ func _ready() -> void:
 	EventBus.add_money.connect(add_money)
 
 func _process(delta: float) -> void:
+	if save_timer > 0:
+		save_timer -= delta
+	
+	if save_timer <= 0:
+		save_timer = 60 * 5
+		SaveManager.save_progress()
+	
 	if day_going:
 		time -= delta
 		

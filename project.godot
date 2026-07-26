@@ -32,6 +32,7 @@ ITEMS="*uid://cnekjpbjsqp6w"
 EventBus="*uid://b4kouysqf85wd"
 GuideManager="*uid://cc0j6cf1wfgwe"
 SaveManager="*uid://omvj31b47ysh"
+SoundManager="*uid://bofw6v7lwflfd"
 
 [debug]
 
