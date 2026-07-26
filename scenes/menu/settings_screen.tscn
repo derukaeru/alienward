@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cle2mxx83qwgk" path="res://scenes/menu/settings_screen.gd" id="1_5xb6v"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_5xb6v"]
+font_size = 32
+
 [node name="settings_screen" type="Control" unique_id=558026876]
 layout_mode = 3
 anchors_preset = 15
@@ -20,37 +23,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_right = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+color = Color(0.5689727, 0.56897277, 0.5689727, 1)
 
 [node name="main_volume_slider" type="HSlider" parent="." unique_id=1262567593]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -152.0
 offset_top = -128.0
 offset_right = 152.0
 offset_bottom = -80.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
 
 [node name="sound_effect_volume_slider" type="HSlider" parent="." unique_id=1404800242]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -320.0
-offset_right = 160.0
-offset_bottom = -256.0
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -32.0
+offset_right = 152.0
+offset_bottom = 32.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+max_value = 1.0
+step = 0.05
 
 [node name="music_slider" type="HSlider" parent="." unique_id=829614814]
 layout_mode = 1
@@ -59,49 +68,108 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 96.0
+offset_left = -152.0
+offset_top = -80.0
+offset_right = 152.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="fullscreen_button" type="CheckButton" parent="." unique_id=516917409]
-layout_mode = 0
-offset_left = 616.0
-offset_top = 136.0
-offset_right = 680.0
-offset_bottom = 200.0
+max_value = 1.0
+step = 0.05
 
 [node name="sensitivity_slider" type="HSlider" parent="." unique_id=433960799]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -176.0
-offset_top = -176.0
-offset_right = 176.0
-offset_bottom = -136.0
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 32.0
+offset_right = 152.0
+offset_bottom = 80.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+max_value = 2.0
+step = 0.01
+
+[node name="fullscreen_button" type="CheckBox" parent="." unique_id=1045811363]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 336.0
+offset_right = 224.0
+offset_bottom = 360.0
 
 [node name="exit" type="Button" parent="." unique_id=1020742308]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -96.0
+offset_left = -112.0
 offset_top = 16.0
-offset_right = -16.0
+offset_right = -32.0
 offset_bottom = 56.0
 grow_horizontal = 0
 text = "exit"
 
+[node name="main_volume" type="Label" parent="." unique_id=1936509883]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 96.0
+offset_right = 368.0
+offset_bottom = 111.0
+text = "Main Volume"
+
+[node name="sound_effect" type="Label" parent="." unique_id=43084482]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 200.0
+offset_right = 376.0
+offset_bottom = 215.0
+text = "Sound Effect"
+
+[node name="music" type="Label" parent="." unique_id=390437621]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 152.0
+offset_right = 344.0
+offset_bottom = 167.0
+text = "Music"
+
+[node name="settings" type="Label" parent="." unique_id=1963906964]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_5xb6v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sensitivity" type="Label" parent="." unique_id=901722982]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 256.0
+offset_right = 360.0
+offset_bottom = 271.0
+text = "Sensitivity"
+
+[node name="fullscreen" type="Label" parent="." unique_id=1993660918]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 320.0
+offset_right = 253.0
+offset_bottom = 335.0
+text = "fullscreen"
+
 [connection signal="value_changed" from="main_volume_slider" to="." method="change_main_volume"]
 [connection signal="value_changed" from="sound_effect_volume_slider" to="." method="change_sound_effect_volume"]
 [connection signal="value_changed" from="music_slider" to="." method="change_music_volume"]
-[connection signal="toggled" from="fullscreen_button" to="." method="change_fullscreen"]
 [connection signal="value_changed" from="sensitivity_slider" to="." method="change_sensitivity"]
+[connection signal="toggled" from="fullscreen_button" to="." method="change_fullscreen"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

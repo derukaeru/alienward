@@ -1,5 +1,14 @@
 extends Control
 
+func _ready() -> void:
+	$main_volume_slider.value = SettingsManager.MAIN_VOLUME
+	$music_slider.value = SettingsManager.MUSIC_VOLUME
+	$sound_effect_volume_slider.value = SettingsManager.SOUND_EFFECT_VOLUME
+	
+	
+	$sensitivity_slider.value = SettingsManager.MOUSE_SENSITIVITY
+	$fullscreen_button.button_pressed = SettingsManager.FULLSCREEN
+
 func change_main_volume(value: float) -> void:
 	SettingsManager.MAIN_VOLUME = value
 
