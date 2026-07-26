@@ -153,3 +153,5 @@ func reset_day() -> void:
 
 func get_ui() -> CanvasLayer:
 	return ui
+
+	

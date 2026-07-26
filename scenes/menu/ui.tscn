@@ -112,6 +112,9 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_blul6"]
+font_size = 32
+
 [node name="ui" type="CanvasLayer" unique_id=687749877 groups=["ui"]]
 layer = 0
 script = ExtResource("1_n7q4b")
@@ -392,3 +395,26 @@ visible = false
 
 [node name="antidote_screen" parent="." unique_id=281006036 instance=ExtResource("7_dlyu0")]
 visible = false
+
+[node name="guide" type="ColorRect" parent="." unique_id=224180980]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -112.0
+offset_right = 368.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.10747974, 0.10747974, 0.10747967, 0.6)
+
+[node name="text" type="Label" parent="guide" unique_id=1276347097]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 728.0
+offset_bottom = 88.0
+text = "lorem ipsum"
+label_settings = SubResource("LabelSettings_blul6")

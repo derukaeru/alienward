@@ -24,6 +24,8 @@ extends CanvasLayer
 @onready var subtitle_container: Control = $subtitle_container
 @onready var temperature_label: Label = $incubator_screen/temperature
 
+@onready var guide_text_label: Label = $guide/text
+
 var microscope_open: bool = false
 var shop_open: bool = false
 var antidote_open: bool = false
@@ -38,6 +40,11 @@ var warning_timer_speed: float = 3.0
 var incubator_open: bool = false
 var incubator: Incubator
 var temperature: float = 1.0
+
+var guide_text: String = ""
+var guide_text_index: int = 0
+var guide_text_active: bool = false
+var guide_text_speed: float = 0.2
 
 func _ready() -> void:
 	EventBus.open_shop.connect(open_shop_screen)
@@ -234,3 +241,24 @@ func add_subtitle(text: String) -> void:
 
 	if text:
 		subtitle.text = text
+
+func add_guide_text_letter(letter: String) -> void:
+	if guide_text_index >= guide_text.length() or not guide_text_active: return
+	
+	guide_text_label.text = letter
+	guide_text_index += 1
+	
+	await get_tree().create_timer(guide_text_speed).timeout
+	add_guide_text_letter(guide_text[guide_text_index])
+
+func add_guide_text(text: String) -> void:
+	guide_text = text
+	guide_text_label.show()
+	guide_text_active = true
+	
+	add_guide_text(guide_text[guide_text_index])
+
+func hide_guide() -> void:
+	guide_text_label.hide()
+	guide_text_label.text = ""
+	guide_text_active = false

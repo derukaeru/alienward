@@ -31,6 +31,7 @@ SettingsManager="*uid://plbwc0ehkvel"
 ITEMS="*uid://cnekjpbjsqp6w"
 EventBus="*uid://b4kouysqf85wd"
 GuideManager="*uid://cc0j6cf1wfgwe"
+SaveManager="*uid://omvj31b47ysh"
 
 [debug]
 

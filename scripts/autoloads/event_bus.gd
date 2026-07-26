@@ -55,3 +55,6 @@ signal add_money(amount: int)
 
 signal day_started
 signal day_ended
+
+signal activated_guide
+signal set_guide_text(text: String)
