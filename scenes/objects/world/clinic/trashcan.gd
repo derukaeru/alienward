@@ -5,7 +5,7 @@ class_name Trashcan extends InteractableComponent
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.trashcan
 
-func _process(_delta) -> void:
+func _process(_delta: float) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
@@ -15,5 +15,10 @@ func _process(_delta) -> void:
 		tooltip_text = Lang.TOOLTIPS.trashcan_throw
 
 func _on_interacted() -> void:
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if player.held_item_id == "clipboard": return
+	
 	EventBus.throw_item.emit()
 	animation.play("pop")

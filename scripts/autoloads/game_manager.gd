@@ -24,6 +24,7 @@ var latest_baby_id: int = 1
 
 var microscope_dna: String = ""
 var dirtiness: float = 0.0
+var patient_satisfaction: float = 0.0
 
 var has_interacted: bool = false
 var selected_ward_on_ui: int = UNASSIGNED
@@ -39,7 +40,6 @@ enum REASONS {
 }
 
 var patient_queue: int = 0
-
 var save_timer: float = 60 * 5 # 5 minutes
 
 func _ready() -> void:
@@ -65,15 +65,12 @@ func _process(delta: float) -> void:
 	
 	if day_going:
 		time -= delta
+		day_running()
 		
 		if time <= 0:
 			end_day()
 	
-	var player: Player = Util.get_player()
-	if not player: return
-	
-	if player.ui.shop_open or player.ui.microscope_open: return
-	
+	if ui.shop_open or ui.microscope_open: return
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
 			get_tree().paused = false
@@ -83,7 +80,6 @@ func _process(delta: float) -> void:
 			get_tree().paused = true
 			pause_screen.show()
 			Util.mouse_visible()
-	
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		has_interacted = false
 
@@ -139,7 +135,6 @@ func start_day(day: int = current_day) -> void:
 	day_going = true
 	
 	EventBus.day_started.emit()
-
 func end_day() -> void:
 	day_going = false
 	time = 0
@@ -150,17 +145,31 @@ func end_day() -> void:
 	)
 
 func reset_day() -> void:
+	EventBus.add_end_screen_details.emit(processed_patient_this_day, dirtiness, patient_satisfaction, money_earned)
+	
+	day_going = false
+	time = DEFAULT_TIME_LENGTH
+	
+	processed_patient_this_day = 0
 	money_earned = 0
-	# clear baby, patient, items
+	
+	latest_baby_id = 1
+	latest_patient_id = 1
+	
+	microscope_dna = ""
+	dirtiness = 0
+	
+	has_interacted = false
+	selected_ward_on_ui = UNASSIGNED
+	clinic_open = true
+	
+	waiting_seats_occupation = [false, false, false, false, false, false]
+	watch_baby = [false, false, false, false, false, false, false]
+	ward_occupation = [false, false, false, false]
+	
+	patient_queue = 0
 	# open all curtains
-	# remove ultrasound
-	# remove antidote base
-	# remove all effects
-	# clear microscope
-	
+
+func day_running() -> void:
 	pass
-
-func get_ui() -> CanvasLayer:
-	return ui
-
-	
+		

@@ -11,7 +11,7 @@ func _ready() -> void:
 func _on_progress_changed(_value) -> void:
 	pass
 
-func _on_loading_finished() -> void:
+func _on_loading_finished(_loaded_scene_name: String) -> void:
 	animation.play_backwards("fade")
 	await animation.animation_finished
 	

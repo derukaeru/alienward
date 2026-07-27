@@ -6,14 +6,17 @@ var scene_path: String
 var progress: Array = []
 var use_sub_thread: bool = true
 
-signal progress_changed(progress)
-signal loading_finished
+var scene_name: String = ""
+
+signal progress_changed(progress: float)
+signal loading_finished(loaded_scene_name: String)
 
 func _ready() -> void:
 	set_process(false)
 	
-func change_scene(scene_name: String) -> void:
-	scene_path = Registry.UID[scene_name]
+func change_scene(to_scene_name: String) -> void:
+	scene_path = Registry.UID[to_scene_name]
+	scene_name = to_scene_name
 	
 	var new_load_screen = loading_screen.instantiate()
 	add_child(new_load_screen)
@@ -39,4 +42,5 @@ func _process(_delta) -> void:
 			loaded_resource = ResourceLoader.load_threaded_get(scene_path)
 			
 			get_tree().change_scene_to_packed(loaded_resource)
-			loading_finished.emit()
+			loading_finished.emit(scene_name)
+			scene_name = ""
