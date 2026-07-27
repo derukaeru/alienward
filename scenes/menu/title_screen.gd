@@ -4,6 +4,7 @@ extends Control
 @onready var start_menu: Control = $start_menu
 
 @onready var settings_screen: Control = $settings_screen
+@onready var seed: LineEdit = $start_menu/seed
 
 var button_scale: float = 1.25
 
@@ -32,7 +33,7 @@ func _on_exit_pressed() -> void:
 
 
 func _on_new_pressed() -> void:
-	GameManager.start_day(0)
+	GameManager.SEED = int(seed.text) if int(seed.text.length() >= 0) else 232421
 	SceneChanger.change_scene("intro_screen")
 
 func _on_continue_pressed() -> void:

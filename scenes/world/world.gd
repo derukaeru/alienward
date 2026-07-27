@@ -4,7 +4,6 @@ extends Node3D
 
 func _ready() -> void:
 	EventBus.add_entity_to_container.connect(add_entity)
-	
 	GameManager.ui.show()
 	GameManager.start_day()
 	

@@ -46,6 +46,9 @@ texture = ExtResource("6_lh61k")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_28w6f"]
 texture = ExtResource("7_1hsha")
 
+[sub_resource type="LabelSettings" id="LabelSettings_1hsha"]
+font_size = 32
+
 [node name="title_screen" type="Control" unique_id=198211424]
 layout_mode = 3
 anchors_preset = 15
@@ -163,6 +166,32 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_28w6f")
 
+[node name="seed" type="LineEdit" parent="start_menu" unique_id=1401536924]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 432.0
+offset_right = 176.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "232421"
+alignment = 1
+virtual_keyboard_type = 2
+
+[node name="seed_label" type="Label" parent="start_menu" unique_id=400511426]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 352.0
+offset_right = 128.0
+offset_bottom = 382.0
+grow_vertical = 0
+text = "seed"
+label_settings = SubResource("LabelSettings_1hsha")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="settings_screen" parent="." unique_id=558026876 instance=ExtResource("8_1hsha")]
 visible = false
 layout_mode = 1
@@ -183,24 +212,24 @@ grow_vertical = 2
 
 [connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/start" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="main_menu/start" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/settings" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="main_menu/exit" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/new" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/continue" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
 [connection signal="mouse_entered" from="start_menu/return" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/return" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="mouse_pressed" flags=18]

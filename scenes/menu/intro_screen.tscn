@@ -21,9 +21,13 @@ grow_vertical = 2
 script = ExtResource("1_gcn0r")
 
 [node name="background" type="ColorRect" parent="." unique_id=600444665]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.033853278, 0.033853278, 0.033853274, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=550936632]
 libraries/ = SubResource("AnimationLibrary_gsge0")

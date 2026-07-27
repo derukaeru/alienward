@@ -124,11 +124,6 @@ func spawn_patient() -> void:
 	patient.global_position = patient_spawn
 	npc.global_position = npc_spawn
 
-func start_game() -> void:
-	start_day(0)
-	
-	GuideManager.guide_active = true
-
 func start_day(day: int = current_day) -> void:
 	if current_day >= 7: return
 	
@@ -145,7 +140,6 @@ func end_day() -> void:
 	get_tree().create_timer(2.0).timeout.connect(func() -> void:
 		SceneChanger.change_scene("end_day_screen")
 	)
-
 func reset_day() -> void:
 	EventBus.add_end_screen_details.emit(processed_patient_this_day, dirtiness, patient_satisfaction, money_earned)
 	
@@ -170,8 +164,9 @@ func reset_day() -> void:
 	ward_occupation = [false, false, false, false]
 	
 	patient_queue = 0
-	# open all curtains
-
 func day_running() -> void:
-	pass
-		
+	var player: Player = Util.get_player()
+	if not player: return
+	
+	if get_tree().get_nodes_in_group("patient").size() <= 0:
+		spawn_patient()
