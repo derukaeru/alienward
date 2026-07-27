@@ -36,29 +36,31 @@ func incubate_baby(baby: Baby = null) -> void:
 	if not baby:
 		var player: Player = Util.get_player()
 		if not player: return
-
-		if not player.held_item_id == ITEMS.IDS.baby: return
-		if incubated_baby:
-			player.ui.show_warning(Lang.WARNINGS.incubator_occupied)
-			return
-
-		anim.play("bob")
-
-		player.held_item.held = false
-		player.held_item.show()
-		incubated_baby = player.held_item
-
-		incubated_baby.global_position = global_position + Vector3(0.0, 0.7, 0.0)
-		incubated_baby.set_collision_layer_value(1, true)
-
+		
+		if player.held_item_id == ITEMS.IDS.baby:
+			if incubated_baby:
+				player.ui.show_warning(Lang.WARNINGS.incubator_occupied)
+				return
+			
+			anim.play("bob")
+			
+			player.held_item.held = false
+			player.held_item.show()
+			incubated_baby = player.held_item
+			
+			incubated_baby.global_position = global_position + Vector3(0.0, 0.7, 0.0)
+			incubated_baby.set_collision_layer_value(1, true)
+		else:
+			player.pick_up(incubated_baby)
+		
 		player.held_item.incubator = self
 		player.held_item = null
-
+		
 		player.set_held_item_sprite("clipboard")
 		EventBus.incubated_child.emit(incubated_baby.patient_id)
 	else:
 		if incubated_baby: return
-
+		
 		baby.set_collision_layer_value(1, true)
 		baby.Vector3(0.0, 0.8, 0.0)
 		baby.show()

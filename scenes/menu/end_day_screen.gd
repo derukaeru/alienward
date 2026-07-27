@@ -13,7 +13,6 @@ var money_earned: int = 0
 
 func _ready() -> void:
 	EventBus.add_end_screen_details.connect(add_details)
-	
 	Util.mouse_visible()
 	
 	GameManager.reset_day()

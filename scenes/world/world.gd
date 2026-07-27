@@ -4,12 +4,19 @@ extends Node3D
 
 func _ready() -> void:
 	EventBus.add_entity_to_container.connect(add_entity)
+	
 	GameManager.ui.show()
 	GameManager.start_day()
 	
 	#GameManager.spawn_patient()
 	#await get_tree().create_timer(1.0).timeout
 	#GameManager.spawn_patient()
+	
+	get_tree().create_timer(0.0).timeout.connect(
+		func() -> void:
+			EventBus.player_spawned.emit()
+			EventBus.player_can_move.emit()
+	)
 
 func add_entity(node: Node) -> void:
 	entities.add_child(node)

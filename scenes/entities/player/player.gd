@@ -21,7 +21,7 @@ const TILT_RETURN_SPEED: float = 4.0
 
 var tilt_target: float = 0.0
 var mouse_sensitivity: float = 0.006
-var can_move: bool = true
+var can_move: bool = false
 
 var held_item_id: String = ""
 var held_item: Item = null
@@ -33,7 +33,7 @@ var hypothermia: bool = false
 var hypothermia_timer: float = 0.0
 
 func _ready() -> void:
-	var ui_layer: CanvasLayer = GameManager.get_ui()
+	var ui_layer: CanvasLayer = GameManager.ui
 	ui = ui_layer
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

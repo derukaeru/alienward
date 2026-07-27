@@ -125,7 +125,9 @@ func spawn_patient() -> void:
 	npc.global_position = npc_spawn
 
 func start_game() -> void:
-	pass
+	start_day(0)
+	
+	GuideManager.guide_active = true
 
 func start_day(day: int = current_day) -> void:
 	if current_day >= 7: return
