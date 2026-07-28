@@ -50,6 +50,8 @@ func incubate_baby(baby: Baby = null) -> void:
 			
 			incubated_baby.global_position = global_position + Vector3(0.0, 0.7, 0.0)
 			incubated_baby.set_collision_layer_value(1, true)
+			
+			EventBus.incubated_child.emit(incubated_baby.patient_id)
 		else:
 			player.pick_up(incubated_baby)
 		
@@ -57,7 +59,6 @@ func incubate_baby(baby: Baby = null) -> void:
 		player.held_item = null
 		
 		player.set_held_item_sprite("clipboard")
-		EventBus.incubated_child.emit(incubated_baby.patient_id)
 	else:
 		if incubated_baby: return
 		

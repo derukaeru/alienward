@@ -98,15 +98,18 @@ func _process(_delta) -> void:
 
 			scanning_timer.stop()
 			scanning_timer.queue_free()
-
+			
 			scanning_sprite.hide()
 		else:
 			scanning_sprite.show()
 			var to_player: Vector3 = (player.global_position - scanning_sprite_pivot.global_position)
 			to_player.y = 0.0
 			to_player.normalized()
-
+			
 			scanning_sprite.global_position = scanning_sprite_pivot.global_position + to_player * scan_sprite_offset
+	
+	if state == STATES.LABOR:
+		EventBus.set_ward_timer.emit(ward_index, labor_timer.time_left)
 
 func set_stage() -> void:
 	var chance: float = randf_range(0.0, 1.0)
@@ -115,8 +118,8 @@ func set_stage() -> void:
 		maternity_stage = 4
 		reason = GameManager.REASONS.LABOR
 
-		#labor_speed = randf_range(25.0, 45.0)
-		#rest_speed = randf_range(55.0, 75.0)
+		labor_speed = randf_range(25.0, 45.0)
+		rest_speed = randf_range(55.0, 75.0)
 	else:
 		maternity_stage = randi_range(1, 3)
 		reason = GameManager.REASONS.CHECKUP

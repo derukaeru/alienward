@@ -7,14 +7,22 @@ func _ready() -> void:
 	GameManager.ui.show()
 	GameManager.start_day()
 	
-	#GameManager.spawn_patient()
-	#await get_tree().create_timer(1.0).timeout
-	#GameManager.spawn_patient()
-	
 	get_tree().create_timer(0.0).timeout.connect(
 		func() -> void:
 			EventBus.player_spawned.emit()
 			EventBus.player_can_move.emit()
+	)
+	
+	EventBus.set_ward_timer.connect(
+		func(index: int, time: float) -> void:
+			var displayed_text: String
+			
+			if int(time) <= 0:
+				displayed_text = "resting..."
+			else:
+				displayed_text = str(int(time)) + "s"
+			
+			get_node("ward_timer_" + str(index)).text = displayed_text
 	)
 
 func add_entity(node: Node) -> void:

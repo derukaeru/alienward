@@ -41,7 +41,9 @@ func _ready() -> void:
 	EventBus.patient_leaving_checkup.connect(leaving_checkup)
 	EventBus.left.connect(left)
 	EventBus.patient_reached_ward.connect(
-		func(id: int) -> void: if patient_id == id: move_to("seat_%d" % waiting_seat_position)
+		func(id: int) -> void: 
+			if patient_id == id: move_to("seat_%d" % waiting_seat_position)
+			state = STATES.WAITING
 	)
 	
 	patient = Util.get_patient_with_id(patient_id)
@@ -138,6 +140,11 @@ func target_reached() -> void:
 		ready_to_recieve_baby = true
 		global_position = Util.get_npc_spot(target_name)
 		state = STATES.WATCHING_BABY
+		
+		var baby: Baby = Util.get_baby_with_patient_id(patient_id)
+		var incubator: Vector3 = baby.incubator.global_position
+		
+		look_at_target(incubator)
 		add_status_bubble("watching_baby")
 	elif target_name == "follow_patient":
 		target_name = ""
@@ -148,6 +155,7 @@ func target_reached() -> void:
 		target_name = ""
 
 func look_at_child(child_id: int) -> void:
+	if state != STATES.WAITING: return
 	if child_id != patient_id: return
 
 	var available_spots: Array = []

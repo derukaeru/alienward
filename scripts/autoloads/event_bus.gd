@@ -61,3 +61,4 @@ signal set_guide_text(text: String)
 signal canceled_guide
 
 signal player_spawned
+signal set_ward_timer(index: int, time: float)

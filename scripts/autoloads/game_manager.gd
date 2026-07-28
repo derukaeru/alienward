@@ -164,7 +164,10 @@ func reset_day() -> void:
 	ward_occupation = [false, false, false, false]
 	
 	patient_queue = 0
+
 func day_running() -> void:
+	if not day_going: return
+	
 	var player: Player = Util.get_player()
 	if not player: return
 	
