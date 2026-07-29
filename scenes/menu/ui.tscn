@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d2wp275ru8mkw" path="res://scenes/menu/microscope_screen.tscn" id="4_5y2ix"]
 [ext_resource type="PackedScene" uid="uid://b4sil7n400wmm" path="res://scenes/menu/shop_screen.tscn" id="5_wfysg"]
 [ext_resource type="PackedScene" uid="uid://5kj01o53rvfd" path="res://scenes/menu/antidote_screen.tscn" id="7_dlyu0"]
+[ext_resource type="Texture2D" uid="uid://laftbbw8wgml" path="res://assets/sprites/ui/clock_background.png" id="8_cdbp7"]
+[ext_resource type="Texture2D" uid="uid://bub6eyq10qxah" path="res://assets/sprites/ui/clock_hand_big.png" id="9_5r0o6"]
 
 [sub_resource type="Animation" id="Animation_wfysg"]
 resource_name = "RESET"
@@ -165,15 +167,13 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 libraries/ = SubResource("AnimationLibrary_5y2ix")
 
 [node name="fps" type="Label" parent="." unique_id=1602008550]
-anchors_preset = -1
-anchor_left = 0.021000002
-anchor_top = 0.028
-anchor_right = 0.177
-anchor_bottom = 0.083000004
-offset_left = -8.128002
-offset_top = -8.128
-offset_right = -7.9360046
-offset_bottom = -7.8080025
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_horizontal = 2
 mouse_filter = 1
 text = "test: fps"
 label_settings = SubResource("LabelSettings_n7q4b")
@@ -428,3 +428,20 @@ offset_top = 8.0
 offset_right = 728.0
 offset_bottom = 88.0
 label_settings = SubResource("LabelSettings_blul6")
+
+[node name="clock" type="TextureRect" parent="." unique_id=778287159]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 136.0
+texture = ExtResource("8_cdbp7")
+
+[node name="hand" type="TextureRect" parent="clock" unique_id=928759788]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 60.0
+offset_right = 126.0
+offset_bottom = 68.0
+rotation = -4.712389
+pivot_offset = Vector2(2, 4)
+texture = ExtResource("9_5r0o6")

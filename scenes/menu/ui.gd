@@ -27,6 +27,8 @@ extends CanvasLayer
 @onready var guide_container: ColorRect = $guide
 @onready var guide_text_label: Label = $guide/text
 
+@onready var clock_hand: TextureRect = $clock/hand
+
 var microscope_open: bool = false
 var shop_open: bool = false
 var antidote_open: bool = false
@@ -61,6 +63,11 @@ func _ready() -> void:
 	EventBus.open_patient_screen.connect(open_patient_screen)
 
 	EventBus.add_subtitle.connect(add_subtitle)
+
+func _process(_delta):
+	if GameManager.day_going:
+		var degrees = remap(GameManager.time, 0, GameManager.DEFAULT_TIME_LENGTH, 90, -270)
+		clock_hand.rotation_degrees = degrees
 
 func _input(event: InputEvent) -> void:
 	if guide_patient.visible:
