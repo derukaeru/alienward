@@ -28,6 +28,7 @@ extends CanvasLayer
 @onready var guide_text_label: Label = $guide/text
 
 @onready var clock_hand: TextureRect = $clock/hand
+@onready var interact_icon: TextureRect = $interact_icon
 
 var microscope_open: bool = false
 var shop_open: bool = false
@@ -48,6 +49,8 @@ var guide_text: String = ""
 var guide_text_index: int = 0
 var guide_text_active: bool = false
 var guide_text_speed: float = 0.2
+
+var poster_open: bool = false
 
 func _ready() -> void:
 	EventBus.open_shop.connect(open_shop_screen)
@@ -119,7 +122,8 @@ func _input(event: InputEvent) -> void:
 func open_patient_screen(p: Patient) -> void:
 	if patient_open or not p: return
 	patient = p
-
+	interact_icon.hide()
+	
 	match patient.reason:
 		GameManager.REASONS.LABOR: guide_patient.show()
 		GameManager.REASONS.CHECKUP: checkup.show()
@@ -198,9 +202,12 @@ func set_tooltip_text(text: String) -> void:
 	tooltip.text = text
 func show_tooltip(text: String) -> void:
 	if showing_warning: return
-
+	
 	tooltip.text = text
 	set_hand_sprite()
+	
+	if not patient_open:
+		interact_icon.show()
 func show_warning(text: String) -> void:
 	if showing_warning:
 		warning_timer.stop()
@@ -232,6 +239,7 @@ func hide_tooltip() -> void:
 	if not player: return
 
 	set_hand_sprite()
+	interact_icon.hide()
 
 func set_hand_sprite() -> void:
 	var player: Player = Util.get_player()

@@ -148,9 +148,10 @@ func _input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not GameManager.has_interacted:
 			GameManager.has_interacted = true
 			_interact()
-
+	
 	if raycast.is_colliding():
 		var collider: Node = raycast.get_collider()
+		
 		if collider is InteractableComponent or collider is Item:
 			if collider.show_tooltip_text:
 				ui.show_tooltip(raycast.get_collider().tooltip_text)

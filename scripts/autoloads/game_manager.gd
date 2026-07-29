@@ -13,7 +13,7 @@ var current_day: int = 0
 var day_going: bool = false
 var processed_patient_this_day: int = 0
 
-var DEFAULT_TIME_LENGTH: float = 60 * 8 # 10 minutes
+var DEFAULT_TIME_LENGTH: float = 60 * 8 # 8 minutes
 var time: float = DEFAULT_TIME_LENGTH
 
 var money_earned: int = 0
@@ -56,19 +56,20 @@ func _ready() -> void:
 	EventBus.add_money.connect(add_money)
 
 func _process(delta: float) -> void:
-	if save_timer > 0:
-		save_timer -= delta
-	
-	if save_timer <= 0:
-		save_timer = 60 * 5
-		SaveManager.save_progress()
-	
-	if day_going:
-		time -= delta
-		day_running()
+	if not get_tree().paused:
+		if save_timer > 0:
+			save_timer -= delta
 		
-		if time <= 0:
-			end_day()
+		if save_timer <= 0:
+			save_timer = 60 * 5
+			SaveManager.save_progress()
+		
+		if day_going:
+			time -= delta
+			day_running()
+			
+			if time <= 0:
+				end_day()
 	
 	if ui.shop_open or ui.microscope_open: return
 	if Input.is_action_just_pressed("ui_cancel"):
