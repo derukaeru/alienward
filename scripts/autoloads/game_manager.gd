@@ -15,6 +15,8 @@ var processed_patient_this_day: int = 0
 
 var DEFAULT_TIME_LENGTH: float = 60 * 8 # 8 minutes
 var time: float = DEFAULT_TIME_LENGTH
+var time_between_patients: float = 60 * 2 # 2 minutes
+var time_until_next_patient: float = time - 2 # 2 seconds after game starts
 
 var money_earned: int = 0
 var money: int = 0
@@ -172,5 +174,8 @@ func day_running() -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 	
-	if get_tree().get_nodes_in_group("patient").size() <= 0:
+	#if get_tree().get_nodes_in_group("patient").size() <= 0:
+		#spawn_patient()
+	if time <= time_until_next_patient:
+		time_until_next_patient = time - time_between_patients
 		spawn_patient()

@@ -1,7 +1,6 @@
 class_name Poster extends InteractableComponent
 
-func _ready() -> void:
-	pass
+@export var poster_name: String = ""
 
 func _on_interacted() -> void:
-	pass 
+	GameManager.ui.open_poster(poster_name)

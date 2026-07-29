@@ -30,6 +30,8 @@ extends CanvasLayer
 @onready var clock_hand: TextureRect = $clock/hand
 @onready var interact_icon: TextureRect = $interact_icon
 
+@onready var poster_container: Control = $poster_container
+
 var microscope_open: bool = false
 var shop_open: bool = false
 var antidote_open: bool = false
@@ -118,6 +120,14 @@ func _input(event: InputEvent) -> void:
 					temperature += 0.1
 			elif not event.is_pressed():
 				close_incubator_screen()
+	
+	if poster_open:
+		var dir: Vector2 = Vector2(Input.get_axis("backward", "forward"), Input.get_axis("left", "right"))
+		if dir.length() > 0:
+			poster_open = false
+			
+			for entry in poster_container.get_children():
+				entry.queue_free()
 
 func open_patient_screen(p: Patient) -> void:
 	if patient_open or not p: return
@@ -282,3 +292,10 @@ func hide_guide() -> void:
 	
 	guide_text_label.text = ""
 	guide_text_active = false
+
+func open_poster(poster_name: String) -> void:
+	if Registry.UID.has(poster_name):
+		var poster: PosterUI = load(Registry.UID[poster_name]).instantiate()
+		poster_container.add_child(poster)
+		
+		poster_open = true

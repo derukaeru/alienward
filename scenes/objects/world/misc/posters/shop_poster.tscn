@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://xugii6codtpq"]
+
+[ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_jecdd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jecdd"]
+
+[node name="shop_poster" type="Area3D" unique_id=265662158]
+script = ExtResource("1_jecdd")
+poster_name = "shop_poster"
+metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1488479490]
+shape = SubResource("BoxShape3D_jecdd")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

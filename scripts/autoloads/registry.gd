@@ -76,4 +76,8 @@ var UID: Dictionary[String, String] = {
 
 	"hand_hold": "uid://cceairqcr4n0v",
 	"hand_point": "uid://ssnb0c6x2qpt",
+	
+	# poster ui's
+	"shop_poster": "uid://xugii6codtpq",
+	
 }

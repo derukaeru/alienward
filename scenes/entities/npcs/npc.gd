@@ -43,7 +43,6 @@ func _ready() -> void:
 	EventBus.patient_reached_ward.connect(
 		func(id: int) -> void: 
 			if patient_id == id: move_to("seat_%d" % waiting_seat_position)
-			state = STATES.WAITING
 	)
 	
 	patient = Util.get_patient_with_id(patient_id)
@@ -155,7 +154,7 @@ func target_reached() -> void:
 		target_name = ""
 
 func look_at_child(child_id: int) -> void:
-	if state != STATES.WAITING: return
+	if state != STATES.WAITING or state != STATES.WALKING: return
 	if child_id != patient_id: return
 
 	var available_spots: Array = []

@@ -454,3 +454,9 @@ visible = false
 
 [node name="antidote_screen" parent="." unique_id=281006036 instance=ExtResource("7_dlyu0")]
 visible = false
+
+[node name="poster_container" type="Control" parent="." unique_id=524565161]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
