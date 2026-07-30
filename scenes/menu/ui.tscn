@@ -115,6 +115,10 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_6nex0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r0o6"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_blul6"]
 font_size = 32
 
@@ -332,6 +336,15 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0.7411765)
 
+[node name="label" type="Label" parent="checkup" unique_id=478683975]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+text = "clinic available"
+label_settings = SubResource("LabelSettings_6nex0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="guide_patient" type="ColorRect" parent="." unique_id=1760841950]
 visible = false
 anchors_preset = 8
@@ -348,7 +361,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
 [node name="ward_0" type="ColorRect" parent="guide_patient" unique_id=155404966]
-visible = false
+modulate = Color(0.28485027, 0.28485027, 0.28485027, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.036000002
@@ -362,8 +375,17 @@ offset_bottom = -128.0
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
+[node name="label" type="Label" parent="guide_patient/ward_0" unique_id=2076410560]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 33.007996
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ward_1" type="ColorRect" parent="guide_patient" unique_id=626606998]
-visible = false
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -377,8 +399,17 @@ grow_vertical = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
+[node name="label" type="Label" parent="guide_patient/ward_1" unique_id=1872998169]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ward_2" type="ColorRect" parent="guide_patient" unique_id=533588603]
-visible = false
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -392,8 +423,17 @@ grow_vertical = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
 
+[node name="label" type="Label" parent="guide_patient/ward_2" unique_id=94456970]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ward_3" type="ColorRect" parent="guide_patient" unique_id=1233483100]
-visible = false
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -406,6 +446,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="label" type="Label" parent="guide_patient/ward_3" unique_id=1060521328]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="no_ward" type="Label" parent="guide_patient" unique_id=466781825]
 visible = false

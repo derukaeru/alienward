@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var patient_wards: Array = guide_patient.get_children()
 
 @onready var checkup: ColorRect = $checkup
+@onready var checkup_label: Label = $checkup/label
 @onready var no_ward_label: Label = $guide_patient/no_ward
 
 @onready var incubator_screen: Control = $incubator_screen
@@ -77,15 +78,18 @@ func _process(_delta):
 func _input(event: InputEvent) -> void:
 	if guide_patient.visible:
 		for entry in patient_wards:
-			entry.hide()
+			entry.modulate = "#494949"
 
 		if GameManager.selected_ward_on_ui > GameManager.UNASSIGNED:
-			patient_wards[GameManager.selected_ward_on_ui].show()
-
+			patient_wards[GameManager.selected_ward_on_ui].modulate = "#ffffff"
+		
 		if not GameManager.ward_occupation.has(false):
 			no_ward_label.show()
 			return
-
+		
+		for i in range(4):
+				get_node("guide_patient/ward_%d/label" % i).text = Lang.TOOLTIPS.ward_occupied if GameManager.ward_occupation[i] else Lang.TOOLTIPS.ward_available
+			
 		if event is InputEventMouseButton:
 			if event.is_pressed():
 				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
@@ -135,8 +139,21 @@ func open_patient_screen(p: Patient) -> void:
 	interact_icon.hide()
 	
 	match patient.reason:
-		GameManager.REASONS.LABOR: guide_patient.show()
-		GameManager.REASONS.CHECKUP: checkup.show()
+		GameManager.REASONS.LABOR: 
+			for entry in patient_wards:
+				entry.modulate = "#494949"
+			
+			for i in range(4):
+				get_node("guide_patient/ward_%d/label" % i).text = Lang.TOOLTIPS.ward_occupied if GameManager.ward_occupation[i] else Lang.TOOLTIPS.ward_available
+			guide_patient.show()
+		GameManager.REASONS.CHECKUP:
+			if GameManager.clinic_open:
+				checkup_label.text = Lang.TOOLTIPS.clinic_available  
+				checkup.modulate = "#ffffff"
+			else: 
+				checkup_label.text = Lang.TOOLTIPS.clinic_occupied
+				checkup.modulate = "#494949"
+			checkup.show()
 
 	patient_open = true
 

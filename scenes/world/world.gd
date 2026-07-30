@@ -6,12 +6,14 @@ func _ready() -> void:
 	EventBus.add_entity_to_container.connect(add_entity)
 	GameManager.ui.show()
 	GameManager.start_day()
-	
 	get_tree().create_timer(0.0).timeout.connect(
 		func() -> void:
 			EventBus.player_spawned.emit()
 			EventBus.player_can_move.emit()
 	)
+	get_tree().create_timer(1.0).timeout.connect(GameManager.spawn_patient)
+	get_tree().create_timer(1.10).timeout.connect(GameManager.spawn_patient)
+	get_tree().create_timer(1.1).timeout.connect(GameManager.spawn_patient)
 	
 	EventBus.set_ward_timer.connect(
 		func(index: int, time: float) -> void:

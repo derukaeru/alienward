@@ -246,11 +246,12 @@ func guide() -> void:
 			Util.add_subtitle(Lang.subtitles.guide_patient)
 			add_status_bubble("checkup")
 	elif reason == GameManager.REASONS.LABOR:
-		if GameManager.selected_ward_on_ui >= 0:
+		if GameManager.selected_ward_on_ui >= 0 and not GameManager.ward_occupation[GameManager.selected_ward_on_ui]:
 			ward_index = GameManager.selected_ward_on_ui
 
 			move_to("ward_%d" % ward_index)
 			GameManager.selected_ward_on_ui = GameManager.UNASSIGNED
+			GameManager.ward_occupation[ward_index] = true
 			EventBus.patient_to_ward.emit(id)
 
 			Util.add_subtitle(Lang.subtitles.guide_patient)
@@ -260,5 +261,6 @@ func leave_ward() -> void:
 	global_position = Util.get_patient_spot("ward_%d" % ward_index)
 	state = STATES.LEAVING
 	
+	GameManager.ward_occupation[ward_index] = false
 	EventBus.open_curtain.emit(ward_index)
 	move_to("patient_enter")

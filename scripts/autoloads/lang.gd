@@ -35,7 +35,12 @@ const TOOLTIPS: Dictionary = {
 	delivery_table = "delivery table",
 	delivery_table_baby = "pick up baby",
 	
-	patient = ""
+	patient = "",
+	ward_available = "ward available",
+	ward_occupied = "ward occupied",
+	
+	clinic_available = "clinic available",
+	clinic_occupied = "clinic occupied"
 }
 
 const WARNINGS: Dictionary = {

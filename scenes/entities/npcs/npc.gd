@@ -154,7 +154,7 @@ func target_reached() -> void:
 		target_name = ""
 
 func look_at_child(child_id: int) -> void:
-	if state != STATES.WAITING or state != STATES.WALKING: return
+	if state != STATES.WAITING: return
 	if child_id != patient_id: return
 
 	var available_spots: Array = []
