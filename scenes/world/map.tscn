@@ -35,6 +35,10 @@ shading_mode = 0
 albedo_texture = ExtResource("5_bmcht")
 texture_filter = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkv7c"]
+shading_mode = 0
+albedo_color = Color(0.88235295, 0.8745098, 0.79607844, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_hjj48"]
 size = Vector3(0.2, 5, 7)
 
@@ -124,14 +128,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bj7kg")
 
 [node name="ward_wall" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1522074427]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.267765, 1.8498979, 10.632329)
+material_override = SubResource("StandardMaterial3D_gkv7c")
 mesh = SubResource("BoxMesh_hjj48")
 
 [node name="ward_wall2" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=30416621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.373727, 1.8498979, 10.632329)
+material_override = SubResource("StandardMaterial3D_gkv7c")
 mesh = SubResource("BoxMesh_hjj48")
 
 [node name="ward_wall3" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=558218716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.710361, 1.8498979, 10.632329)
+material_override = SubResource("StandardMaterial3D_gkv7c")
 mesh = SubResource("BoxMesh_hjj48")
 
 [node name="floor_collision" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1610236631]
