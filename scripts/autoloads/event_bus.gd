@@ -42,6 +42,7 @@ signal patient_reached_clinic(id: int)
 
 signal patient_leaving_ward(id: int)
 signal patient_leaving_checkup(id: int)
+signal patient_rested(id: int, ward_index: int)
 signal left(id: int)
 
 signal add_subtitle(text: String)

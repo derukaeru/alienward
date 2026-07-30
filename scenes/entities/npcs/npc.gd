@@ -1,5 +1,7 @@
 class_name NPC extends CharacterBody3D
 
+# TODO: fix the collision layer and masks
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var bubble_container: Node3D = $bubble_container

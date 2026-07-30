@@ -11,9 +11,6 @@ func _ready() -> void:
 			EventBus.player_spawned.emit()
 			EventBus.player_can_move.emit()
 	)
-	get_tree().create_timer(1.0).timeout.connect(GameManager.spawn_patient)
-	get_tree().create_timer(1.10).timeout.connect(GameManager.spawn_patient)
-	get_tree().create_timer(1.1).timeout.connect(GameManager.spawn_patient)
 	
 	EventBus.set_ward_timer.connect(
 		func(index: int, time: float) -> void:
@@ -23,8 +20,17 @@ func _ready() -> void:
 				displayed_text = "resting..."
 			else:
 				displayed_text = str(int(time)) + "s"
-			
 			get_node("ward_timer_" + str(index)).text = displayed_text
+	)
+	
+	EventBus.open_curtain.connect(
+		func(index: int) -> void:
+			get_node("ward_timer_" + str(index)).text = "empty"
+	)
+	
+	EventBus.patient_rested.connect(
+		func(_pid: int, index: int) -> void:
+			get_node("ward_timer_" + str(index)).text = "ready to leave"
 	)
 
 func add_entity(node: Node) -> void:

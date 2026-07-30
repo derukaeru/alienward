@@ -1,5 +1,7 @@
 class_name Patient extends CharacterBody3D
 
+# TODO: fix the collision layer and masks
+
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var nav_agent = $NavigationAgent3D
 
@@ -232,6 +234,7 @@ func birth_child() -> void:
 	rest_timer.timeout.connect(
 		func() -> void:
 			state = STATES.RESTED
+			EventBus.patient_rested.emit(id, ward_index)
 	)
 
 func guide() -> void:
