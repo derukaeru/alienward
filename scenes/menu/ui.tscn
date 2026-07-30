@@ -119,6 +119,11 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_5r0o6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_uo807"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xycyl"]
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_blul6"]
 font_size = 32
 
@@ -175,13 +180,16 @@ libraries/ = SubResource("AnimationLibrary_5y2ix")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.0
-offset_right = 60.0
-offset_bottom = 30.0
+offset_left = -64.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 40.0
 grow_horizontal = 2
 mouse_filter = 1
 text = "test: fps"
 label_settings = SubResource("LabelSettings_n7q4b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="crosshair" type="ColorRect" parent="." unique_id=306745436]
 material = SubResource("ShaderMaterial_bj7e2")
@@ -204,14 +212,16 @@ anchor_left = 0.81200004
 anchor_top = 0.028
 anchor_right = 0.99000007
 anchor_bottom = 0.083000004
-offset_left = 88.38397
-offset_top = -0.12800026
-offset_right = -6.3200684
+offset_left = -7.616028
+offset_top = -8.128
+offset_right = -0.32006836
 offset_bottom = 0.19199753
 grow_horizontal = 0
 mouse_filter = 1
 text = "0%"
 label_settings = SubResource("LabelSettings_vxc86")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="tooltip" type="RichTextLabel" parent="." unique_id=148292367]
 anchors_preset = -1
@@ -457,20 +467,37 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="no_ward" type="Label" parent="guide_patient" unique_id=466781825]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -7.5
-offset_right = 65.0
-offset_bottom = 7.5
+offset_left = -104.0
+offset_top = -24.0
+offset_right = 104.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "no available ward"
+label_settings = SubResource("LabelSettings_uo807")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ward_label" type="Label" parent="guide_patient" unique_id=1829297849]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = -36.0
+offset_right = 112.0
+offset_bottom = -4.0
+grow_horizontal = 2
+text = "choose a ward"
+label_settings = SubResource("LabelSettings_xycyl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="guide" type="ColorRect" parent="." unique_id=224180980]
 visible = false

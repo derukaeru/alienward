@@ -114,9 +114,6 @@ func _process(delta) -> void:
 
 	ui_lag_offset = ui_lag_offset.clamp(Vector2(-30, -20), Vector2(30, 20))
 	ui.body.position = ui_lag_offset
-
-	ui.fps.text = "%d" % Engine.get_frames_per_second()
-	ui.dirtiness.text = "Dirt: %d" % GameManager.dirtiness
 	
 	if hallucinogen:
 		hallucinogen_timer -= delta

@@ -4,5 +4,5 @@ extends Control
 
 func _ready() -> void:
 	animation.play("play_intro")
-	#await animation.animation_finished
+	await animation.animation_finished
 	SceneChanger.change_scene("world")

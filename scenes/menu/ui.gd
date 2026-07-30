@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var tooltip: RichTextLabel = $tooltip
 
 @onready var guide_patient: ColorRect = $guide_patient
-@onready var patient_wards: Array = guide_patient.get_children()
+@onready var patient_wards: Array = guide_patient.get_children().filter(func(a): return a is ColorRect)
 
 @onready var checkup: ColorRect = $checkup
 @onready var checkup_label: Label = $checkup/label
@@ -74,6 +74,10 @@ func _process(_delta):
 	if GameManager.day_going:
 		var degrees = remap(GameManager.time, 0, GameManager.DEFAULT_TIME_LENGTH, 90, -270)
 		clock_hand.rotation_degrees = degrees
+	
+	
+	fps.text = "FPS: %d" % Engine.get_frames_per_second()
+	dirtiness.text = "Dirt: %d" % GameManager.dirtiness
 
 func _input(event: InputEvent) -> void:
 	if guide_patient.visible:
