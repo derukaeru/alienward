@@ -75,7 +75,6 @@ func _process(_delta):
 		var degrees = remap(GameManager.time, 0, GameManager.DEFAULT_TIME_LENGTH, 90, -270)
 		clock_hand.rotation_degrees = degrees
 	
-	
 	fps.text = "FPS: %d" % Engine.get_frames_per_second()
 	dirtiness.text = "Dirt: %d" % GameManager.dirtiness
 
@@ -107,7 +106,6 @@ func _input(event: InputEvent) -> void:
 				patient.guide()
 				
 				patient = null
-	
 	if checkup.visible:
 		if event is InputEventMouseButton:
 			if not event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
@@ -118,16 +116,21 @@ func _input(event: InputEvent) -> void:
 				
 				patient = null
 	
-	if incubator_open:
-		temperature_label.text = str(temperature)
+	if incubator_screen.visible:
+		var temp_in_celsius: float = remap(temperature, 0.0, 2.0, 0, 20)
+		temperature_label.text = str(int(temp_in_celsius)) + "°C"
+		
 		if event is InputEventMouseButton:
 			if event.is_pressed():
 				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 					temperature -= 0.1
 				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 					temperature += 0.1
-			elif not event.is_pressed():
+			
+			if not event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 				close_incubator_screen()
+		
+		temperature = clamp(temperature, 0.0, 2.0)
 	
 	if poster_open:
 		var dir: Vector2 = Vector2(Input.get_axis("backward", "forward"), Input.get_axis("left", "right"))
@@ -219,15 +222,14 @@ func open_incubator_screen(inc: Incubator) -> void:
 	EventBus.stop_player_movement.emit()
 
 func close_incubator_screen() -> void:
+	incubator_screen.hide()
 	incubator_open = false
 	
 	incubator.temperature = temperature
 	temperature = 1.0
 	
 	incubator = null
-	incubator_screen.hide()
-	
-	EventBus.stop_player_movement.emit()
+	EventBus.player_can_move.emit()
 
 func set_tooltip_text(text: String) -> void:
 	tooltip.text = text

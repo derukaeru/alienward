@@ -82,3 +82,8 @@ mesh = ExtResource("3_1uvbq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=363069986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009185791, 0, 0.0072021484)
 shape = SubResource("BoxShape3D_vbmuw")
+
+[node name="temperature_label" type="Label3D" parent="." unique_id=1122340357]
+transform = Transform3D(1, 0, 0, 0, 0.7321389, 0.68115544, 0, -0.68115544, 0.7321389, 0, 0.16428736, 0.710396)
+texture_filter = 0
+text = "30°C"

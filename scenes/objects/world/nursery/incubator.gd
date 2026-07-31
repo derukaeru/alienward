@@ -2,6 +2,7 @@ class_name Incubator extends InteractableComponent
 signal changed_temperature(temp: float)
 
 @onready var anim: AnimationPlayer = $ModelContainer/AnimationPlayer
+@onready var temperature_label: Label3D = $temperature_label
 
 var incubated_baby: Baby
 var changing_temp: bool = false
@@ -22,6 +23,8 @@ func _process(_delta) -> void:
 			tooltip_text = Lang.TOOLTIPS.incubator
 	else:
 		tooltip_text = Lang.TOOLTIPS.incubator_normal
+	
+	temperature_label.text = str(int(remap(temperature, 0.0, 2.0, 0, 20))) + "°C"
 
 func interact() -> void:
 	if incubated_baby:
@@ -52,13 +55,10 @@ func incubate_baby(baby: Baby = null) -> void:
 			incubated_baby.set_collision_layer_value(1, true)
 			
 			EventBus.incubated_child.emit(incubated_baby.patient_id)
-		else:
-			player.pick_up(incubated_baby)
 		
-		player.held_item.incubator = self
-		player.held_item = null
-		
-		player.set_held_item_sprite("clipboard")
+			player.held_item.incubator = self
+			player.held_item = null
+			player.set_held_item_sprite("clipboard")
 	else:
 		if incubated_baby: return
 		
