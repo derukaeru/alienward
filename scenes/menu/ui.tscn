@@ -262,10 +262,10 @@ texture = ExtResource("8_cdbp7")
 
 [node name="hand" type="TextureRect" parent="clock" unique_id=928759788]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 60.0
-offset_right = 126.0
-offset_bottom = 68.0
+offset_left = 84.0
+offset_top = 92.0
+offset_right = 148.0
+offset_bottom = 100.0
 rotation = -4.712389
 pivot_offset = Vector2(2, 4)
 texture = ExtResource("9_5r0o6")

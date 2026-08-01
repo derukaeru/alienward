@@ -78,6 +78,10 @@ var UID: Dictionary[String, String] = {
 	"hand_point": "uid://ssnb0c6x2qpt",
 	
 	# poster ui's
-	"shop_poster": "uid://xugii6codtpq",
-	
+	"shop_poster": "uid://ffj4lbssj51g",
+	"antidote_stand_poster": "uid://cmpu3q7b4lbfd",
+	"delivery_table_poster": "uid://uyh3ngha1ght",
+	"incubator_poster": "uid://bqtswdiq7wp4x",
+	"microscope_poster": "uid://beqre8hdl254b",
+	"scanner_poster": "uid://djyxfkfc40w2x",
 }

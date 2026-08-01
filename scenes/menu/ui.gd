@@ -320,5 +320,6 @@ func open_poster(poster_name: String) -> void:
 	if Registry.UID.has(poster_name):
 		var poster: PosterUI = load(Registry.UID[poster_name]).instantiate()
 		poster_container.add_child(poster)
+		poster_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		
 		poster_open = true

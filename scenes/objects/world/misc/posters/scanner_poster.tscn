@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bb3jcdtc7p5db"]
+
+[ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_uwtac"]
+[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/shop_poster.png" id="2_0yl6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0yl6c"]
+size = Vector3(0.47837067, 0.6032715, 0.07434082)
+
+[node name="scanner_poster" type="Area3D" unique_id=584013143]
+script = ExtResource("1_uwtac")
+poster_name = "scanner_poster"
+metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1718240084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017967224, 0.00061035156, 0.027893066)
+shape = SubResource("BoxShape3D_0yl6c")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1539860348]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_0yl6c")

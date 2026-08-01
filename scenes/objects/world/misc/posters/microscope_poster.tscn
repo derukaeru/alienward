@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bg2ogrycrb6wt"]
+
+[ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_mgdoi"]
+[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/shop_poster.png" id="2_h3n0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3x5d"]
+size = Vector3(0.48382568, 0.6135521, 0.10446167)
+
+[node name="microscope_poster" type="Area3D" unique_id=999338520]
+script = ExtResource("1_mgdoi")
+poster_name = "microscope_poster"
+metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1850210710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008239746, -0.0003643036, 0.027755737)
+shape = SubResource("BoxShape3D_y3x5d")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=466534648]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_h3n0g")

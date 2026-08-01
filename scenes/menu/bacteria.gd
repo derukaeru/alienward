@@ -1,5 +1,7 @@
 class_name Bacteria extends Control
 
+@onready var image: TextureRect = $container/image
+
 var move_timer: float = 1.2
 var initial_position: Vector2
 

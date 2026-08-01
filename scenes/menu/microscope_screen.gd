@@ -10,6 +10,8 @@ extends Control
 @onready var dna_value_label: Label = $dna_value/value
 @onready var bacteria_type_label: Label = $dna_value/type
 
+@onready var remove_dna_label: TextureRect = $remove_dna_label
+
 enum LETTERS_TO_VAL { A, C, G, T }
 var bacteria_colors: Array = []
 var effect_names: Array = ["effect_index", "intensity", "frequency", "duration"]
@@ -17,7 +19,6 @@ var effect_names: Array = ["effect_index", "intensity", "frequency", "duration"]
 var IDENTIFY_SPEED: float = 4.4
 var identifying_bacteria: Bacteria
 @onready var identifying_timer: Timer = $identifying_timer
-
 
 func _ready() -> void:
 	EventBus.create_new_dna.connect(new_dna)
@@ -40,6 +41,7 @@ func new_dna() -> void:
 		bacteria_colors.append(generate_chunk_colors(split_dna[i]))
 		new_bacteria.modulate = bacteria_colors[i][4]
 		new_bacteria.type = new_bacteria.TYPES[i]
+		new_bacteria.image.rotation_degrees = randi_range(0, 180)
 
 func get_split_dna() -> Array:
 	var split_dna: Array = []
@@ -69,20 +71,20 @@ func set_dna_color(bacteria_index: int) -> void:
 
 func identify_bacteria(_bacteria: Bacteria) -> void:
 	if _bacteria.index == GameManager.UNASSIGNED or _bacteria.identified: return
-
+	
 	if not identifying_timer.is_stopped():
 		identifying_timer.stop()
-
+	
 	identifying_bacteria_bar.max_value = IDENTIFY_SPEED
 	identifying_bacteria_bar.value = identifying_bacteria_bar.max_value - identifying_timer.time_left
-
+	
 	identifying_timer.start(IDENTIFY_SPEED)
 	identifying_bacteria = _bacteria
 
 func identified_bacteria() -> void:
 	identifying_bacteria_bar.value = 0.0
 	set_dna_color(identifying_bacteria.index)
-
+	
 	identifying_bacteria.identified = true
 	identifying_bacteria = null
 
@@ -133,7 +135,15 @@ func remove_dna():
 	bacteria_type_label.text = "no type"
 
 	bacteria_colors = []
+	identifying_timer.stop()
+	identifying_timer = null
 	identifying_bacteria = null
 	identifying_bacteria_bar.value = 0.0
-
+	
 	dna_display.show_dna = false
+
+func _on_remove_dna_mouse_entered() -> void:
+	remove_dna_label.show()
+
+func _on_remove_dna_mouse_exited() -> void:
+	remove_dna_label.hide()

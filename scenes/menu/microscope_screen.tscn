@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://byveqf80sl83v" path="res://assets/shaders/wave.gdshader" id="3_ev5bl"]
 [ext_resource type="Script" uid="uid://dklbi1wpvkbp5" path="res://scenes/menu/dna_display.gd" id="4_e3ha5"]
 [ext_resource type="Texture2D" uid="uid://cxqypwvny0m63" path="res://assets/sprites/ui/dna_value.png" id="5_32uvo"]
+[ext_resource type="Texture2D" uid="uid://p5d0fj7wyyl8" path="res://assets/sprites/ui/remove_dna.png" id="6_h1w5r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e3ha5"]
 shader = ExtResource("3_ev5bl")
@@ -84,6 +85,9 @@ font_size = 32
 font_size = 32
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1w5r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hqnc"]
+font_size = 32
 
 [node name="microscope_screen" type="Control" unique_id=1116009674]
 layout_mode = 3
@@ -194,9 +198,9 @@ label_settings = SubResource("LabelSettings_32uvo")
 [node name="value" type="Label" parent="dna_value" unique_id=1300990257]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 56.0
+offset_top = 48.0
 offset_right = 152.0
-offset_bottom = 119.0
+offset_bottom = 111.0
 text = "no value"
 label_settings = SubResource("LabelSettings_h1w5r")
 vertical_alignment = 1
@@ -222,8 +226,30 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_h1w5r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h1w5r")
 text = "x"
 
+[node name="remove_dna_label" type="TextureRect" parent="." unique_id=1219005758]
+visible = false
+layout_mode = 0
+offset_left = 320.0
+offset_top = 464.0
+offset_right = 520.0
+offset_bottom = 550.0
+texture = ExtResource("6_h1w5r")
+
+[node name="Label" type="Label" parent="remove_dna_label" unique_id=2053909714]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 183.0
+offset_bottom = 39.0
+text = "remove dna"
+label_settings = SubResource("LabelSettings_1hqnc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="dna_display" to="." method="dna_hovered"]
 [connection signal="mouse_exited" from="dna_display" to="." method="dna_unhovered"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
 [connection signal="timeout" from="identifying_timer" to="." method="identified_bacteria"]
+[connection signal="mouse_entered" from="remove_dna" to="." method="_on_remove_dna_mouse_entered"]
+[connection signal="mouse_exited" from="remove_dna" to="." method="_on_remove_dna_mouse_exited"]
 [connection signal="pressed" from="remove_dna" to="." method="remove_dna"]

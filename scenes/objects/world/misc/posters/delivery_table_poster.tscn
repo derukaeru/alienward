@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cuelwdiqqmmf7"]
+
+[ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_l6p8n"]
+[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/shop_poster.png" id="2_tw5im"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25agh"]
+size = Vector3(0.4861145, 0.6002655, 0.08255005)
+
+[node name="delivery_table_poster" type="Area3D" unique_id=1633336685]
+script = ExtResource("1_l6p8n")
+poster_name = "delivery_table_poster"
+metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=500338518]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_tw5im")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1655992195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012969971, 0.0022964478, 0.030349731)
+shape = SubResource("BoxShape3D_25agh")

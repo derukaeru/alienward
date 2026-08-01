@@ -148,10 +148,12 @@ func _input(event) -> void:
 	
 	if raycast.is_colliding():
 		var collider: Node = raycast.get_collider()
+		if not collider is InteractableComponent and not collider is Item: 
+			raycast.add_exception(collider)
+			return
 		
-		if collider is InteractableComponent or collider is Item:
-			if collider.show_tooltip_text:
-				ui.show_tooltip(raycast.get_collider().tooltip_text)
+		if collider.show_tooltip_text:
+			ui.show_tooltip(raycast.get_collider().tooltip_text)
 	else:
 		ui.hide_tooltip()
 
