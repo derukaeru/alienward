@@ -26,6 +26,7 @@ func give_effect(body: Player) -> void:
 	body.hallucinogen = true
 
 func end() -> void:
+	if not baby: return
 	baby.state = Baby.STATES.SLEEPING
 	baby.set_effect_activation()
 	

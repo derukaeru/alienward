@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://djhx67h6d4tv8"]
 
 [ext_resource type="Script" uid="uid://hgi5lcla6va6" path="res://scenes/objects/effects/fumes.gd" id="1_23xk2"]
+[ext_resource type="PackedScene" uid="uid://dxcsbp5hqoh4m" path="res://scenes/particles/hallucinogen.tscn" id="2_qy2vt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcw6k"]
-size = Vector3(4.031498, 3.8632813, 3.6038094)
+size = Vector3(4.6, 3.8, 4.6)
 
 [node name="fumes" type="Area3D" unique_id=419716013]
 script = ExtResource("1_23xk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1112388617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14258003, -0.25, -0.26163673)
 shape = SubResource("BoxShape3D_qcw6k")
 debug_color = Color(0.40595806, 0.8836641, 0.9999998, 1)
+
+[node name="hallucinogen" parent="." unique_id=736448740 instance=ExtResource("2_qy2vt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56845784, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
