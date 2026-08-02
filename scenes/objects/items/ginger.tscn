@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://buekuvxp14xat"]
 
 [ext_resource type="Script" uid="uid://cvyj3aj8iwt6q" path="res://scenes/objects/items/ginger.gd" id="1_ora6x"]
-[ext_resource type="Texture2D" uid="uid://c40w002lqkhxm" path="res://assets/sprites/objects/ginger.png" id="2_3dahs"]
+[ext_resource type="Texture2D" uid="uid://c40w002lqkhxm" path="res://assets/sprites/objects/items/ginger.png" id="2_3dahs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dahs"]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d06ar3qs1prff"]
 
 [ext_resource type="Script" uid="uid://0yuxidfnop36" path="res://scenes/objects/items/coffee_bean.gd" id="1_uxhgg"]
-[ext_resource type="Texture2D" uid="uid://dn7kddm81blbe" path="res://assets/sprites/objects/coffee_bean.png" id="2_agrt7"]
+[ext_resource type="Texture2D" uid="uid://dn7kddm81blbe" path="res://assets/sprites/objects/items/coffee_bean.png" id="2_agrt7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agrt7"]
 

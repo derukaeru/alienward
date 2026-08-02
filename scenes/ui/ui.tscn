@@ -1,0 +1,539 @@
+[gd_scene format=3 uid="uid://b3rfrcxq10bx7"]
+
+[ext_resource type="Script" uid="uid://b6yxatl5vkw5x" path="res://scenes/ui/ui.gd" id="1_n7q4b"]
+[ext_resource type="FontFile" uid="uid://bjfk6l7cvt1vf" path="res://assets/font/alagard.ttf" id="2_vxc86"]
+[ext_resource type="Texture2D" uid="uid://cceairqcr4n0v" path="res://assets/sprites/ui/hand/hand_hold.png" id="2_wfysg"]
+[ext_resource type="Shader" uid="uid://cie80ise51xdw" path="res://assets/shaders/crosshair.gdshader" id="3_5y2ix"]
+[ext_resource type="PackedScene" uid="uid://d2wp275ru8mkw" path="res://scenes/ui/microscope_screen.tscn" id="4_5y2ix"]
+[ext_resource type="PackedScene" uid="uid://b4sil7n400wmm" path="res://scenes/ui/shop_screen.tscn" id="5_wfysg"]
+[ext_resource type="Texture2D" uid="uid://cdtl7q844a4ui" path="res://assets/sprites/ui/menu/components/interact_icon.png" id="7_5r0o6"]
+[ext_resource type="PackedScene" uid="uid://5kj01o53rvfd" path="res://scenes/ui/antidote_screen.tscn" id="7_dlyu0"]
+[ext_resource type="Texture2D" uid="uid://laftbbw8wgml" path="res://assets/sprites/ui/clock/clock_background.png" id="8_cdbp7"]
+[ext_resource type="Texture2D" uid="uid://bub6eyq10qxah" path="res://assets/sprites/ui/clock/clock_hand_big.png" id="9_5r0o6"]
+
+[sub_resource type="Animation" id="Animation_wfysg"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(400, 291)]
+}
+
+[sub_resource type="Animation" id="Animation_dlyu0"]
+resource_name = "bob"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 291), Vector2(400, 331), Vector2(400, 291)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blul6"]
+_data = {
+&"RESET": SubResource("Animation_wfysg"),
+&"bob": SubResource("Animation_dlyu0")
+}
+
+[sub_resource type="Animation" id="Animation_n7q4b"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(400, 230)]
+}
+
+[sub_resource type="Animation" id="Animation_ktne2"]
+resource_name = "bob"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 230), Vector2(400, 270), Vector2(400, 230)]
+}
+
+[sub_resource type="Animation" id="Animation_vxc86"]
+resource_name = "get_item"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 230), Vector2(400, 270), Vector2(400, 230)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y2ix"]
+_data = {
+&"RESET": SubResource("Animation_n7q4b"),
+&"bob": SubResource("Animation_ktne2"),
+&"get_item": SubResource("Animation_vxc86")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7q4b"]
+font_size = 32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bj7e2"]
+shader = ExtResource("3_5y2ix")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxc86"]
+font = ExtResource("2_vxc86")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_6nex0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r0o6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uo807"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xycyl"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_blul6"]
+font_size = 32
+
+[node name="ui" type="CanvasLayer" unique_id=687749877 groups=["ui"]]
+layer = 0
+script = ExtResource("1_n7q4b")
+
+[node name="body" type="Control" parent="." unique_id=290110402]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 768.0
+offset_bottom = 576.0
+mouse_filter = 1
+
+[node name="hand" type="TextureRect" parent="body" unique_id=960191311]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -285.0
+offset_right = -240.0
+offset_bottom = -157.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_wfysg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="body/hand" unique_id=1046571208]
+libraries/ = SubResource("AnimationLibrary_blul6")
+
+[node name="held_item" type="Control" parent="body" unique_id=1691775271]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -58.0
+offset_right = 16.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="body/held_item" unique_id=1440335468]
+libraries/ = SubResource("AnimationLibrary_5y2ix")
+
+[node name="fps" type="Label" parent="." unique_id=1602008550]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 1
+text = "test: fps"
+label_settings = SubResource("LabelSettings_n7q4b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="crosshair" type="ColorRect" parent="." unique_id=306745436]
+material = SubResource("ShaderMaterial_bj7e2")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="dirtiness" type="Label" parent="." unique_id=1185680120]
+anchors_preset = -1
+anchor_left = 0.81200004
+anchor_top = 0.028
+anchor_right = 0.99000007
+anchor_bottom = 0.083000004
+offset_left = -7.616028
+offset_top = -8.128
+offset_right = -0.32006836
+offset_bottom = 0.19199753
+grow_horizontal = 0
+mouse_filter = 1
+text = "0%"
+label_settings = SubResource("LabelSettings_vxc86")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="tooltip" type="RichTextLabel" parent="." unique_id=148292367]
+anchors_preset = -1
+anchor_top = 0.88900006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.06403
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cleaning_progress" type="ProgressBar" parent="." unique_id=721502491]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -272.0
+offset_right = 160.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+
+[node name="clock" type="TextureRect" parent="." unique_id=778287159]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 136.0
+texture = ExtResource("8_cdbp7")
+
+[node name="hand" type="TextureRect" parent="clock" unique_id=928759788]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 92.0
+offset_right = 148.0
+offset_bottom = 100.0
+rotation = -4.712389
+pivot_offset = Vector2(2, 4)
+texture = ExtResource("9_5r0o6")
+
+[node name="interact_icon" type="TextureRect" parent="." unique_id=533193475]
+visible = false
+offset_left = 368.0
+offset_top = 296.0
+offset_right = 400.0
+offset_bottom = 328.0
+mouse_filter = 2
+texture = ExtResource("7_5r0o6")
+
+[node name="subtitle_container" type="Control" parent="." unique_id=857979586]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 256.0
+offset_bottom = -6.1035156e-05
+grow_vertical = 0
+
+[node name="incubator_screen" type="ColorRect" parent="." unique_id=1842266120]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 80.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.13, 0.13, 0.13, 0.83137256)
+
+[node name="temperature" type="Label" parent="incubator_screen" unique_id=2131492597]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_dlyu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="icon" type="TextureRect" parent="incubator_screen" unique_id=980023089]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 64.0
+offset_bottom = 72.0
+
+[node name="checkup" type="ColorRect" parent="." unique_id=144457452]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -24.0
+offset_right = 96.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.7411765)
+
+[node name="label" type="Label" parent="checkup" unique_id=478683975]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+text = "clinic available"
+label_settings = SubResource("LabelSettings_6nex0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="guide_patient" type="ColorRect" parent="." unique_id=1760841950]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -84.0
+offset_right = 112.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="ward_0" type="ColorRect" parent="guide_patient" unique_id=155404966]
+modulate = Color(0.28485027, 0.28485027, 0.28485027, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.036000002
+anchor_top = 0.042000003
+anchor_right = 0.96400005
+anchor_bottom = 1.0
+offset_left = -0.06400013
+offset_top = -0.06400108
+offset_right = 0.06399536
+offset_bottom = -128.0
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="label" type="Label" parent="guide_patient/ward_0" unique_id=2076410560]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 33.007996
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ward_1" type="ColorRect" parent="guide_patient" unique_id=626606998]
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = -8.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="label" type="Label" parent="guide_patient/ward_1" unique_id=1872998169]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ward_2" type="ColorRect" parent="guide_patient" unique_id=533588603]
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = -8.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="label" type="Label" parent="guide_patient/ward_2" unique_id=94456970]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ward_3" type="ColorRect" parent="guide_patient" unique_id=1233483100]
+modulate = Color(0.28627452, 0.28627452, 0.28627452, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0.14509805, 0.14509805, 0.14509805, 0.73333335)
+
+[node name="label" type="Label" parent="guide_patient/ward_3" unique_id=1060521328]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 32.0
+text = "ward available"
+label_settings = SubResource("LabelSettings_5r0o6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="no_ward" type="Label" parent="guide_patient" unique_id=466781825]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -24.0
+offset_right = 104.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "no available ward"
+label_settings = SubResource("LabelSettings_uo807")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ward_label" type="Label" parent="guide_patient" unique_id=1829297849]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = -36.0
+offset_right = 112.0
+offset_bottom = -4.0
+grow_horizontal = 2
+text = "choose a ward"
+label_settings = SubResource("LabelSettings_xycyl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="guide" type="ColorRect" parent="." unique_id=224180980]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -112.0
+offset_right = 368.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.10747974, 0.10747974, 0.10747967, 0.6)
+
+[node name="text" type="Label" parent="guide" unique_id=1276347097]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 728.0
+offset_bottom = 88.0
+label_settings = SubResource("LabelSettings_blul6")
+
+[node name="microscope_screen" parent="." unique_id=1116009674 instance=ExtResource("4_5y2ix")]
+visible = false
+
+[node name="shop_screen" parent="." unique_id=2077115726 instance=ExtResource("5_wfysg")]
+visible = false
+
+[node name="antidote_screen" parent="." unique_id=281006036 instance=ExtResource("7_dlyu0")]
+visible = false
+
+[node name="poster_container" type="Control" parent="." unique_id=524565161]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dafcp1h7ayfne"]
 
 [ext_resource type="Script" uid="uid://od3jg3d1mvgv" path="res://scenes/objects/world/misc/status_bubble.gd" id="1_g2t8g"]
-[ext_resource type="Texture2D" uid="uid://bb5lto8ig5u4g" path="res://assets/sprites/objects/action_bubble_template.png" id="1_s4ngq"]
+[ext_resource type="Texture2D" uid="uid://bb5lto8ig5u4g" path="res://assets/sprites/objects/misc/action_bubble_template.png" id="1_s4ngq"]
 
 [node name="status_bubble" type="Node3D" unique_id=1740854564]
 script = ExtResource("1_g2t8g")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdfje2xdstmkk"]
 
 [ext_resource type="Script" uid="uid://bctcxrpbvd54u" path="res://scenes/objects/items/mop.gd" id="1_ctaj3"]
-[ext_resource type="Texture2D" uid="uid://dkh8gc602jl65" path="res://assets/sprites/objects/mop.png" id="2_hbjhm"]
+[ext_resource type="Texture2D" uid="uid://dkh8gc602jl65" path="res://assets/sprites/objects/items/mop.png" id="2_hbjhm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bnra"]
 

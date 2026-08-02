@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkhvrcq5sh51q"]
 
 [ext_resource type="Script" uid="uid://cjtviykuv1103" path="res://scenes/objects/items/swab.gd" id="1_m7jsg"]
-[ext_resource type="Texture2D" uid="uid://byleeb4m3vftg" path="res://assets/sprites/objects/swab.png" id="2_m7jsg"]
+[ext_resource type="Texture2D" uid="uid://byleeb4m3vftg" path="res://assets/sprites/objects/items/swab.png" id="2_m7jsg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7jsg"]
 size = Vector3(0.64086914, 0.58432007, 0.58599854)

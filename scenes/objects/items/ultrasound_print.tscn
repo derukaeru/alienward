@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl7ni1qig34fo"]
 
 [ext_resource type="Script" uid="uid://bh35ic1l7ktfn" path="res://scenes/objects/items/ultrasound_print.gd" id="1_6o33m"]
-[ext_resource type="Texture2D" uid="uid://c4o52kbdwbt6n" path="res://assets/sprites/objects/ultrasound_paper.png" id="2_lkyiv"]
+[ext_resource type="Texture2D" uid="uid://c4o52kbdwbt6n" path="res://assets/sprites/objects/items/ultrasound_paper.png" id="2_lkyiv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6o33m"]
 

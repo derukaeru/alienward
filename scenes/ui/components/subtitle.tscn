@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://2k1clpfoqeso"]
+
+[ext_resource type="Script" uid="uid://c70or3by631ck" path="res://scenes/ui/components/subtitle.gd" id="1_08v3k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_g5ues"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ck8s"]
+resource_name = "up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 104), Vector2(0, 104), Vector2(0, -29)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kb28b"]
+_data = {
+&"RESET": SubResource("Animation_g5ues"),
+&"up": SubResource("Animation_7ck8s")
+}
+
+[node name="subtitle" type="Label" unique_id=244758418]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -576.0
+offset_right = 256.0
+offset_bottom = -544.0
+grow_vertical = 0
+text = "creating shi"
+label_settings = SubResource("LabelSettings_dlyu0")
+script = ExtResource("1_08v3k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1902443587]
+libraries/ = SubResource("AnimationLibrary_kb28b")

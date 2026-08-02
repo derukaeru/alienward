@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c41nfst6ynh2f"]
 
 [ext_resource type="Script" uid="uid://devramk8aelhd" path="res://scenes/objects/items/chili.gd" id="1_xo7bh"]
-[ext_resource type="Texture2D" uid="uid://d3mgfl15h1hqx" path="res://assets/sprites/objects/chili.png" id="2_xo7bh"]
+[ext_resource type="Texture2D" uid="uid://d3mgfl15h1hqx" path="res://assets/sprites/objects/items/chili.png" id="2_xo7bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo7bh"]
 size = Vector3(0.66186523, 0.79785156, 0.6739502)

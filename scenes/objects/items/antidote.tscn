@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b328136vl47io"]
 
 [ext_resource type="Script" uid="uid://tys3yr1yo5m6" path="res://scenes/objects/items/antidote.gd" id="1_xoq7v"]
-[ext_resource type="Texture2D" uid="uid://cnely2yvr8exu" path="res://assets/sprites/objects/test_texture.png" id="2_2sth7"]
+[ext_resource type="Texture2D" uid="uid://cnely2yvr8exu" path="res://assets/sprites/objects/misc/test_texture.png" id="2_2sth7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltbe8"]
 size = Vector3(0.6484375, 0.58599854, 0.5780945)

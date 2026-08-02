@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvc5jqvc2bum4"]
 
 [ext_resource type="Script" uid="uid://prfcv1odxxp2" path="res://scenes/objects/items/ink_sac.gd" id="1_6ljg1"]
-[ext_resource type="Texture2D" uid="uid://df1yri0gtbcot" path="res://assets/sprites/objects/ink_sac.png" id="2_16ggf"]
+[ext_resource type="Texture2D" uid="uid://df1yri0gtbcot" path="res://assets/sprites/objects/items/ink_sac.png" id="2_16ggf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5r64"]
 

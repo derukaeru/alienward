@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc1ltqjscypku"]
 
 [ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_7s3ac"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/shop_poster.png" id="2_qqff4"]
+[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_qqff4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqk1y"]
 size = Vector3(0.49243164, 0.5975952, 0.099609375)

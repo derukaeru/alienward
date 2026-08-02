@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjod10hvj1g0s"]
 
 [ext_resource type="Script" uid="uid://kmkh4yfqu6yd" path="res://scenes/objects/effects/water_spill.gd" id="1_2n1ca"]
-[ext_resource type="Texture2D" uid="uid://c5qhrehq4s0cy" path="res://assets/sprites/objects/water_spill.png" id="2_0rqsb"]
+[ext_resource type="Texture2D" uid="uid://c5qhrehq4s0cy" path="res://assets/sprites/objects/dirt/water_spill.png" id="2_0rqsb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rqsb"]
 size = Vector3(1.1526337, 0.046, 1.0560303)
