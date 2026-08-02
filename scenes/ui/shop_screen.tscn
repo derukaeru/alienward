@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4sil7n400wmm"]
 
 [ext_resource type="Script" uid="uid://dd2at83xubwnm" path="res://scenes/ui/shop_screen.gd" id="1_uannm"]
+[ext_resource type="Texture2D" uid="uid://csagniyehrk5k" path="res://assets/sprites/ui/menu/shop_screen.png" id="2_ciiwj"]
 [ext_resource type="Texture2D" uid="uid://c40w002lqkhxm" path="res://assets/sprites/objects/items/ginger.png" id="2_pbglb"]
 [ext_resource type="Texture2D" uid="uid://df1yri0gtbcot" path="res://assets/sprites/objects/items/ink_sac.png" id="3_ruw7t"]
 [ext_resource type="Texture2D" uid="uid://d3mgfl15h1hqx" path="res://assets/sprites/objects/items/chili.png" id="4_o2snr"]
@@ -48,6 +49,9 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_j70yl"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_ciiwj"]
+font_size = 48
+
 [node name="shop_screen" type="Control" unique_id=2077115726]
 layout_mode = 3
 anchors_preset = 15
@@ -57,26 +61,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uannm")
 
-[node name="background" type="ColorRect" parent="." unique_id=1493373726]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.016
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 8.192
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.096204735, 0.09620475, 0.09620472, 1)
+[node name="background" type="TextureRect" parent="." unique_id=1553410878]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ciiwj")
 
 [node name="leave" type="Button" parent="." unique_id=852219517]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_top = 24.0
-offset_right = -22.0
-offset_bottom = 88.0
+offset_left = -157.0
+offset_top = 11.0
+offset_right = -15.0
+offset_bottom = 75.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 48
 text = "exit"
@@ -91,10 +90,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.0
-offset_top = -180.0
-offset_right = 272.0
-offset_bottom = 180.0
+offset_left = -264.0
+offset_top = -144.0
+offset_right = 232.0
+offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_woskx")
@@ -107,7 +106,7 @@ size_flags_vertical = 3
 [node name="ginger" type="ColorRect" parent="shop_container/items" unique_id=1905308769]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-color = Color(0.28118682, 0.28118688, 0.28118682, 0.78431374)
+color = Color(0.36033997, 0.3526, 0.43, 0.8235294)
 
 [node name="buy" type="Button" parent="shop_container/items/ginger" unique_id=752324850]
 layout_mode = 1
@@ -120,6 +119,7 @@ offset_right = -8.0
 offset_bottom = 84.0
 grow_horizontal = 0
 mouse_filter = 1
+theme_override_font_sizes/font_size = 32
 text = "buy"
 
 [node name="TextureRect" type="TextureRect" parent="shop_container/items/ginger" unique_id=1652531030]
@@ -142,7 +142,7 @@ vertical_alignment = 1
 [node name="ink_sac" type="ColorRect" parent="shop_container/items" unique_id=1207048492]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-color = Color(0.28118682, 0.28118688, 0.28118682, 0.78431374)
+color = Color(0.36033997, 0.3526, 0.43, 0.8039216)
 
 [node name="buy" type="Button" parent="shop_container/items/ink_sac" unique_id=1318512904]
 layout_mode = 1
@@ -155,6 +155,7 @@ offset_right = -8.0
 offset_bottom = 84.0
 grow_horizontal = 0
 mouse_filter = 1
+theme_override_font_sizes/font_size = 32
 text = "buy"
 
 [node name="TextureRect" type="TextureRect" parent="shop_container/items/ink_sac" unique_id=66031617]
@@ -177,7 +178,7 @@ vertical_alignment = 1
 [node name="chili" type="ColorRect" parent="shop_container/items" unique_id=1811070905]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-color = Color(0.28118682, 0.28118688, 0.28118682, 0.78431374)
+color = Color(0.35686275, 0.34901962, 0.42745098, 0.78431374)
 
 [node name="buy" type="Button" parent="shop_container/items/chili" unique_id=1591641556]
 layout_mode = 1
@@ -190,6 +191,7 @@ offset_right = -8.0
 offset_bottom = 84.0
 grow_horizontal = 0
 mouse_filter = 1
+theme_override_font_sizes/font_size = 32
 text = "buy"
 
 [node name="TextureRect" type="TextureRect" parent="shop_container/items/chili" unique_id=180555549]
@@ -212,7 +214,7 @@ vertical_alignment = 1
 [node name="coffee_bean" type="ColorRect" parent="shop_container/items" unique_id=725020980]
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-color = Color(0.28118682, 0.28118688, 0.28118682, 0.78431374)
+color = Color(0.35686275, 0.34901962, 0.42745098, 0.78431374)
 
 [node name="buy" type="Button" parent="shop_container/items/coffee_bean" unique_id=1781663373]
 layout_mode = 1
@@ -225,6 +227,7 @@ offset_right = -8.0
 offset_bottom = 84.0
 grow_horizontal = 0
 mouse_filter = 1
+theme_override_font_sizes/font_size = 32
 text = "buy"
 
 [node name="TextureRect" type="TextureRect" parent="shop_container/items/coffee_bean" unique_id=4824857]
@@ -251,6 +254,21 @@ offset_top = 520.0
 offset_right = 384.0
 offset_bottom = 520.0
 mouse_filter = 2
+
+[node name="title" type="Label" parent="." unique_id=1333078053]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "shop"
+label_settings = SubResource("LabelSettings_ciiwj")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="leave" to="." method="leave"]
 [connection signal="pressed" from="shop_container/items/ginger/buy" to="." method="buy_base_item" binds= ["ginger"]]
