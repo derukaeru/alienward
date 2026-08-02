@@ -13,11 +13,12 @@ var is_in_incubator: bool = false
 var incubator: Incubator
 
 var held: bool = false
+var particles: GPUParticles3D
 
 enum LETTER_TO_VAL {A, C, G, T}
 var is_cured: bool = false
 var effect: Dictionary = {
-	effect_index = 1,
+	effect_index = 0,
 	intensity = 1.0,
 	frequency = 1.0,
 	duration = 1.0,
@@ -77,8 +78,7 @@ func _process(delta) -> void:
 		global_position = player.global_position
 	
 	if can_activate_effect:
-		if effect_timer > -1:
-			effect_timer -= delta
+		effect_timer -= delta
 			
 		if effect_timer <= 0:
 			can_activate_effect = false
@@ -92,7 +92,6 @@ func _process(delta) -> void:
 		if uncomfy_timer <= 0:
 			demanded_temperature = randf_range(0.1, 1.9)
 			uncomfy = true
-	
 
 func activate_effect() -> void:
 	EffectsManager.apply_effect(self)
@@ -123,7 +122,12 @@ func give_antidote(antidote: BaseAntidoteItem) -> void:
 	if effect.type == antidote.data.type:
 		effect.type = -1
 		is_cured = true
+		can_activate_effect = false
+		
+		EffectsManager.remove_effect(self)
+		
 		right_antidote()
+		
 
 func right_antidote() -> void:
 	pass

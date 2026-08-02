@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bjxbuxds7t565" path="res://assets/sprites/world/sky/free hdri_sky_751.jpg" id="1_6m72w"]
 [ext_resource type="Script" uid="uid://chep6als5b8lj" path="res://scenes/world/world.gd" id="1_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
-[ext_resource type="PackedScene" uid="uid://djhx67h6d4tv8" path="res://scenes/objects/effects/fumes.tscn" id="5_v5dby"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v5dby"]
 panorama = ExtResource("1_6m72w")
@@ -69,6 +68,3 @@ pixel_size = 0.01
 billboard = 1
 texture_filter = 0
 text = "empty"
-
-[node name="fumes" parent="." unique_id=419716013 instance=ExtResource("5_v5dby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.4151535)

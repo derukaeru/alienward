@@ -17,4 +17,3 @@ debug_color = Color(0.40595806, 0.8836641, 0.9999998, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56845784, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]

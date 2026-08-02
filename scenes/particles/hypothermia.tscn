@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://7xhtroopsorm"]
+
+[ext_resource type="Texture2D" uid="uid://cxybvou0q65kx" path="res://assets/sprites/particles/hypothermia.png" id="1_7sv0w"]
+
+[sub_resource type="Curve" id="Curve_tvi4r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.234979, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nkua8"]
+curve = SubResource("Curve_tvi4r")
+
+[sub_resource type="Gradient" id="Gradient_wxpsg"]
+colors = PackedColorArray(0.2416557, 0.65273863, 0.99999994, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_twmjw"]
+gradient = SubResource("Gradient_wxpsg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1u75v"]
+emission_shape_scale = Vector3(1.5, 1, 1.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -532.5
+angle_max = 435.00003
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+angular_velocity_min = -39.300014
+angular_velocity_max = 19.849983
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_twmjw")
+alpha_curve = SubResource("CurveTexture_nkua8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw4r6"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_7sv0w")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_s5722"]
+material = SubResource("StandardMaterial3D_pw4r6")
+
+[node name="hypothermia" type="GPUParticles3D" unique_id=795278243]
+amount = 16
+lifetime = 1.5999999999999999
+process_material = SubResource("ParticleProcessMaterial_1u75v")
+draw_pass_1 = SubResource("QuadMesh_s5722")

@@ -7,6 +7,10 @@ func activate(baby: Baby) -> void:
 	#shader_material.shader = load(Registry.UID["bioluminescence_shader"])
 	#baby.sprite.material = shader_material
 	
+	var particle: GPUParticles3D = load(Registry.particles.bioluminesce).instantiate()
+	baby.add_child(particle)
+	baby.particles = particle
+	
 	var timer: Timer = Timer.new()
 	timer.wait_time = baby.effect.duration
 	timer.one_shot = true
@@ -23,3 +27,7 @@ func deactivate(baby: Baby) -> void:
 	baby.state = Baby.STATES.SLEEPING
 	
 	baby.set_effect_activation()
+	
+	if baby.particles:
+		baby.particles.queue_free()
+		baby.particles = null

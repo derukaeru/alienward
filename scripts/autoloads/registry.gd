@@ -87,5 +87,6 @@ var UID: Dictionary[String, String] = {
 }
 
 var particles: Dictionary = {
-	
+	"bioluminesce": "uid://dvhq2ottwxi1p",
+	"hallucinogen": "uid://dxcsbp5hqoh4m"
 }

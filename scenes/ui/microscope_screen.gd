@@ -14,7 +14,7 @@ extends Control
 
 enum LETTERS_TO_VAL { A, C, G, T }
 var bacteria_colors: Array = []
-var effect_names: Array = ["effect_index", "intensity", "frequency", "duration"]
+var effect_names: Array = ["effect index", "intensity", "frequency", "duration"]
 
 var IDENTIFY_SPEED: float = 4.4
 var identifying_bacteria: Bacteria
@@ -67,7 +67,7 @@ func set_dna_color(bacteria_index: int) -> void:
 	if not baby: return
 
 	bacteria_type_label.text = str(effect_names[bacteria_index])
-	dna_value_label.text = str(baby.effect[effect_names[bacteria_index]])
+	dna_value_label.text = str(baby.effect[effect_names[bacteria_index].replace(" ", "_")])
 
 func identify_bacteria(_bacteria: Bacteria) -> void:
 	if _bacteria.index == GameManager.UNASSIGNED or _bacteria.identified: return

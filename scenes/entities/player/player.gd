@@ -88,7 +88,7 @@ func _physics_process(delta) -> void:
 				speed_debuff = 0.84
 			
 			if hypothermia:
-				speed_debuff = 0.45
+				speed_debuff = 0.42
 			
 			velocity.x = direction.x * speed * speed_debuff
 			velocity.z = direction.z * speed * speed_debuff
@@ -108,7 +108,7 @@ func _physics_process(delta) -> void:
 	
 	camera.rotation_degrees.z = tilt_target
 
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	ui_lag_target = ui_lag_target.lerp(Vector2.ZERO, UI_LAG_SPEED * delta)
 	ui_lag_offset = ui_lag_offset.lerp(ui_lag_target, UI_LAG_SPEED * delta)
 
