@@ -8,6 +8,7 @@ var base_antidote_name: String
 func _ready() -> void:
 	tooltip_text = Lang.TOOLTIPS.antidote_stand
 	EventBus.generate_antidote.connect(generate_antidote)
+	EventBus.remove_base.connect(remove_base)
 
 func interact() -> void:
 	var player: Player = Util.get_player()
@@ -20,6 +21,12 @@ func interact() -> void:
 
 		player.remove_held_item()
 		animation.play("pop")
+		
+		var particle: GPUParticles3D = load(Registry.particles.interact).instantiate()
+		add_child(particle)
+		
+		particle.global_position.y += 1.0
+		particle.emitting = true
 	else:
 		if player.ui.antidote_open: return
 
@@ -34,8 +41,7 @@ func generate_antidote(data: Dictionary = {}) -> void:
 
 	var antidote_instance: Antidote = load(Registry.UID.antidote_instance).instantiate()
 	antidote_instance.data = data
-
-	base_antidote_sprite.texture = null
+	
 	Util.add_entity_to_container(antidote_instance)
 	player.pick_up(antidote_instance)
 
@@ -43,3 +49,7 @@ func _process(_delta: float) -> void:
 	base_antidote_sprite.rotation.y += 0.01
 	if base_antidote_sprite.rotation.y > 360:
 		base_antidote_sprite.rotation.y = 0
+
+func remove_base() -> void:
+	base_antidote_name = ""
+	base_antidote_sprite.texture = null

@@ -43,7 +43,7 @@ material = SubResource("StandardMaterial3D_rwim2")
 
 [node name="interact" type="GPUParticles3D" unique_id=285961746]
 emitting = false
-lifetime = 1.4000000000000001
+lifetime = 1.4
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_3cjkp")

@@ -66,12 +66,16 @@ func change_duration_value(value: float) -> void:
 func generate_antidote() -> void:
 	if not base_antidote_name: return
 	
+	EventBus.generate_antidote.emit(antidote_data)
+	EventBus.remove_base.emit()
+	
+	remove_base()
+
+func remove_base() -> void:
 	# remove base antidote item in screen
 	for entry in base_container.get_children():
 		entry.queue_free()
-	
-	EventBus.generate_antidote.emit(antidote_data)
-	
+		
 	base_antidote_name = ""
 	antidote_data = {
 		base = -1,
@@ -83,3 +87,5 @@ func generate_antidote() -> void:
 	change_frequency_value(0)
 	change_intensity_value(0)
 	change_duration_value(0)
+	
+	EventBus.remove_base.emit()

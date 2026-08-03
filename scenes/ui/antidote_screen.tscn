@@ -279,6 +279,21 @@ label_settings = SubResource("LabelSettings_b0bhu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="remove_base" type="Button" parent="." unique_id=1495152061]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -104.0
+offset_right = 41.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "remove base"
+
 [connection signal="pressed" from="exit" to="." method="leave"]
 [connection signal="pressed" from="decrease_frequency_value" to="." method="change_frequency_value" binds= [-0.1]]
 [connection signal="pressed" from="increase_frequency_value" to="." method="change_frequency_value" binds= [0.1]]
@@ -287,3 +302,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="decrease_duration_value" to="." method="change_duration_value" binds= [-0.1]]
 [connection signal="pressed" from="increase_duration_value" to="." method="change_duration_value" binds= [0.1]]
 [connection signal="pressed" from="generate_antidote" to="." method="generate_antidote"]
+[connection signal="pressed" from="remove_base" to="." method="remove_base"]

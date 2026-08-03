@@ -3,10 +3,6 @@ class_name BioluminescenceEffect extends BaseEffect
 func activate(baby: Baby) -> void:
 	if not baby: return
 	
-	#var shader_material: ShaderMaterial = ShaderMaterial.new()
-	#shader_material.shader = load(Registry.UID["bioluminescence_shader"])
-	#baby.sprite.material = shader_material
-	
 	var particle: GPUParticles3D = load(Registry.particles.bioluminesce).instantiate()
 	baby.add_child(particle)
 	baby.particles = particle

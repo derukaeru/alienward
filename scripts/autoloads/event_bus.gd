@@ -14,6 +14,7 @@ signal open_antidote_stand
 signal close_antidote_stand
 signal update_base_antidote_item_name(antidote_name: String)
 signal generate_antidote(data: Dictionary)
+signal remove_base
 
 signal generate_image(patient_id: int)
 signal clean_mop
