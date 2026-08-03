@@ -11,6 +11,8 @@ class_name Patient extends CharacterBody3D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var bubble_container: Node3D = $bubble_container
 
+@onready var walking_particle: GPUParticles3D = $walking_particle
+
 var speed: float = 2.32
 var gravity: float = 9.8
 var id: int = GameManager.UNASSIGNED
@@ -69,13 +71,14 @@ func _physics_process(delta) -> void:
 		var next = nav_agent.get_next_path_position()
 		var direction = (next - global_position).normalized()
 		velocity = direction * speed
-
-		if velocity.length() > 0.1:
-			moving = true
-
 		move_and_slide()
+	
+	if velocity.length() > 0.1:
+		moving = true
+		walking_particle.emitting = true
 	else:
 		moving = false
+		walking_particle.emitting = false
 
 	if state == STATES.WALKING:
 		if moving:

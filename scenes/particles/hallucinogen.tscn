@@ -16,13 +16,6 @@ colors = PackedColorArray(0.39007708, 0.55672354, 0.20861006, 1, 0.66363186, 0.1
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_meelk"]
 gradient = SubResource("Gradient_du1fm")
 
-[sub_resource type="Curve" id="Curve_qrhuo"]
-_data = [Vector2(0.009740263, 0.11797762), 0.0, 0.0, 0, 0, Vector2(0.99025977, 0.36516857), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_du1fm"]
-curve = SubResource("Curve_qrhuo")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bcx6h"]
 emission_shape_scale = Vector3(2.3, 0.1, 2.3)
 emission_shape = 3
@@ -38,9 +31,8 @@ angular_velocity_max = 479.99997
 orbit_velocity_min = -0.22899991
 orbit_velocity_max = 0.37500012
 gravity = Vector3(0, 0, 0)
-scale_min = 0.099999994
-scale_max = 0.29999998
-scale_curve = SubResource("CurveTexture_du1fm")
+scale_min = 0.39999998
+scale_max = 1.1999999
 color_ramp = SubResource("GradientTexture1D_meelk")
 alpha_curve = SubResource("CurveTexture_meelk")
 turbulence_noise_strength = 6.39
@@ -52,6 +44,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_qrhuo")
 texture_filter = 0
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false

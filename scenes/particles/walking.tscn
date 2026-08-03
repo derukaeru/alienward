@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://no04et6vgdfj"]
+
+[ext_resource type="Texture2D" uid="uid://b6g40f5v8jj88" path="res://assets/sprites/particles/walking.png" id="1_ujw3p"]
+
+[sub_resource type="Curve" id="Curve_yv7md"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23051947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mr18g"]
+curve = SubResource("Curve_yv7md")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6r4b"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.39999998
+alpha_curve = SubResource("CurveTexture_mr18g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j45jn"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ujw3p")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4uohn"]
+material = SubResource("StandardMaterial3D_j45jn")
+
+[node name="walking" type="GPUParticles3D" unique_id=374057101]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_h6r4b")
+draw_pass_1 = SubResource("QuadMesh_4uohn")

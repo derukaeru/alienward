@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6n2foxpu75km" path="res://assets/models/entities/npc.png" id="4_cyk10"]
 [ext_resource type="ArrayMesh" uid="uid://ndb7bjepxp4k" path="res://assets/models/entities/npc.obj" id="4_kcbfn"]
 [ext_resource type="Script" uid="uid://dnsqly26s4wb0" path="res://scripts/components/interactable.gd" id="5_cyk10"]
+[ext_resource type="PackedScene" uid="uid://no04et6vgdfj" path="res://scenes/particles/walking.tscn" id="6_0fe8l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ii721"]
 radius = 0.5263672
@@ -144,6 +145,9 @@ libraries/ = SubResource("AnimationLibrary_dgdeb")
 
 [node name="bubble_container" type="Node3D" parent="." unique_id=1339094573]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.429076, 0)
+
+[node name="walking_particle" parent="." unique_id=374057101 instance=ExtResource("6_0fe8l")]
+emitting = false
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="target_reached"]
 [connection signal="interacted" from="InteractableComponent" to="." method="interacted"]

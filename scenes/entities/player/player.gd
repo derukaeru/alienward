@@ -1,12 +1,13 @@
 class_name Player extends CharacterBody3D
 
-var default_speed: float = 6.8
-var speed: float = default_speed
-@export var gravity: float = 9.8
-
 @onready var camera_mount: Node3D = $CameraMount
 @onready var camera: Camera3D = $CameraMount/Camera3D
 @onready var raycast: RayCast3D = $CameraMount/Camera3D/RayCast3D
+@onready var walking_particle: GPUParticles3D = $walking_particle
+
+var default_speed: float = 6.8
+var speed: float = default_speed
+@export var gravity: float = 9.8
 
 var ui: CanvasLayer
 
@@ -95,9 +96,12 @@ func _physics_process(delta) -> void:
 			
 			ui.held_item.get_node("AnimationPlayer").play("bob")
 			ui.hand.get_node("AnimationPlayer").play("bob")
+			
+			walking_particle.emitting = true
 		else:
 			velocity.x = 0
 			velocity.z = 0
+			walking_particle.emitting = false
 	
 	move_and_slide()
 	

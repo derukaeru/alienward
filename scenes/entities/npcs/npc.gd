@@ -5,6 +5,7 @@ class_name NPC extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var bubble_container: Node3D = $bubble_container
+@onready var walking_particle: GPUParticles3D = $walking_particle
 
 var speed: float = 2.4
 var patient_id: int = GameManager.UNASSIGNED
@@ -58,19 +59,21 @@ func move_to(_name: String) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+		
 	if not nav_agent.is_navigation_finished():
 		var next = nav_agent.get_next_path_position()
 		var direction = (next - global_position).normalized()
 		velocity = direction * speed
-
-		if velocity.length() > 0.1:
-			moving = true
-		else:
-			moving = false
-
+		
 		move_and_slide()
-
+	
+	if velocity.length() > 0.1:
+		moving = true
+		walking_particle.emitting = true
+	else:
+		moving = false
+		walking_particle.emitting = false
+	
 	if state == STATES.WALKING or state == STATES.GUIDING_TO_WARD or state == STATES.GUIDING_OUT_OF_WARD or state == STATES.GUIDING_OUTSIDE:
 		look_target = Vector3(velocity.x, 0, velocity.z)
 		

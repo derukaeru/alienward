@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkc3c580pnp20"]
 
 [ext_resource type="Script" uid="uid://c2yp5cja56jyt" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
+[ext_resource type="PackedScene" uid="uid://no04et6vgdfj" path="res://scenes/particles/walking.tscn" id="2_635qg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
 
@@ -35,3 +36,6 @@ collide_with_bodies = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_58kc7")
 surface_material_override/0 = SubResource("StandardMaterial3D_nh4ur")
+
+[node name="walking_particle" parent="." unique_id=374057101 instance=ExtResource("2_635qg")]
+emitting = false
