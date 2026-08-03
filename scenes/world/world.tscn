@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjxbuxds7t565" path="res://assets/sprites/world/sky/free hdri_sky_751.jpg" id="1_6m72w"]
 [ext_resource type="Script" uid="uid://chep6als5b8lj" path="res://scenes/world/world.gd" id="1_v5dby"]
 [ext_resource type="PackedScene" uid="uid://dkc3c580pnp20" path="res://scenes/entities/player/player.tscn" id="2_1fp7r"]
+[ext_resource type="Texture2D" uid="uid://dh764ut0mqjne" path="res://assets/sprites/particles/ambient.png" id="5_v5dby"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v5dby"]
 panorama = ExtResource("1_6m72w")
@@ -23,6 +24,50 @@ tonemap_exposure = 0.6
 fog_light_color = Color(0.28235295, 0.32156864, 0.6509804, 1)
 fog_light_energy = 1.15
 fog_sky_affect = 0.0
+
+[sub_resource type="Curve" id="Curve_t5ptc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23701298, 0.9943821), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bq33v"]
+curve = SubResource("Curve_t5ptc")
+
+[sub_resource type="Gradient" id="Gradient_j2gmx"]
+colors = PackedColorArray(0.4236506, 0.42365065, 0.42365053, 1, 0.8776157, 0.8776158, 0.8776157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1yooq"]
+gradient = SubResource("Gradient_j2gmx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb53w"]
+emission_shape_scale = Vector3(14, 1, 12)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -82.49999
+angle_max = 135.00002
+spread = 180.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+color_initial_ramp = SubResource("GradientTexture1D_1yooq")
+alpha_curve = SubResource("CurveTexture_bq33v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qq27"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_v5dby")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dlabj"]
+material = SubResource("StandardMaterial3D_5qq27")
+orientation = 2
 
 [node name="world" type="Node3D" unique_id=699643948]
 script = ExtResource("1_v5dby")
@@ -68,3 +113,10 @@ pixel_size = 0.01
 billboard = 1
 texture_filter = 0
 text = "empty"
+
+[node name="ambient_particles" type="GPUParticles3D" parent="." unique_id=1361937951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9776716, 1.9071443, 0.8169689)
+amount = 10
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_gb53w")
+draw_pass_1 = SubResource("PlaneMesh_dlabj")

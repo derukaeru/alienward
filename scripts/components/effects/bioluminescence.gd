@@ -29,5 +29,4 @@ func deactivate(baby: Baby) -> void:
 	baby.set_effect_activation()
 	
 	if baby.particles:
-		baby.particles.queue_free()
-		baby.particles = null
+		baby.particles.emitting = false

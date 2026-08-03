@@ -7,6 +7,11 @@ func activate(baby: Baby) -> void:
 	freeze_puddle.global_position = baby.global_position
 	freeze_puddle.duration = baby.effect.duration
 	freeze_puddle.baby = baby
+	
+	EventBus.baby_cured.connect(
+		func(id: int) -> void:
+			if id == freeze_puddle.baby.id: freeze_puddle.queue_free()
+	)
 
 func deactivate(baby: Baby) -> void:
 	baby.state = Baby.STATES.SLEEPING

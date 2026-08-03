@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bs0v6ah3qi2pw"]
+
+[ext_resource type="Texture2D" uid="uid://cjdatsuho4uln" path="res://assets/sprites/particles/interact.png" id="1_lnui4"]
+[ext_resource type="Script" uid="uid://ckvj5gtvlvfwh" path="res://scenes/particles/interact.gd" id="2_1uvpp"]
+
+[sub_resource type="Curve" id="Curve_1uvpp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.7811074, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fkodo"]
+curve = SubResource("Curve_1uvpp")
+
+[sub_resource type="Gradient" id="Gradient_w5h5x"]
+colors = PackedColorArray(0.38223726, 0.32349494, 0.28784773, 1, 0.88309056, 0.85313725, 0.8475116, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6was0"]
+gradient = SubResource("Gradient_w5h5x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cjkp"]
+emission_shape_scale = Vector3(0.2, 0.2, 1)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+scale_min = 0.29999998
+scale_max = 0.59999996
+color_initial_ramp = SubResource("GradientTexture1D_6was0")
+alpha_curve = SubResource("CurveTexture_fkodo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwim2"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_lnui4")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_6cmoh"]
+material = SubResource("StandardMaterial3D_rwim2")
+
+[node name="interact" type="GPUParticles3D" unique_id=285961746]
+emitting = false
+lifetime = 1.4000000000000001
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3cjkp")
+draw_pass_1 = SubResource("QuadMesh_6cmoh")
+script = ExtResource("2_1uvpp")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

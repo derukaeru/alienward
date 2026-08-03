@@ -1,11 +1,14 @@
 class_name Fumes extends Area3D
 
+@onready var hallucinogen: GPUParticles3D = $hallucinogen
+
 var duration: float = 20.0
 var bodies: Array = []
 var baby: Baby
 
 func _ready() -> void:
-	get_tree().create_timer(duration).timeout.connect(end)
+	get_tree().create_timer(duration).timeout.connect(func(): hallucinogen.emitting = false)
+	hallucinogen.finished.connect(end)
 
 func _on_body_entered(body) -> void:
 	if body is Player:
@@ -27,6 +30,7 @@ func give_effect(body: Player) -> void:
 
 func end() -> void:
 	if not baby: return
+	
 	baby.state = Baby.STATES.SLEEPING
 	baby.set_effect_activation()
 	

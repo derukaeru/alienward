@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7xhtroopsorm"]
 
 [ext_resource type="Texture2D" uid="uid://cxybvou0q65kx" path="res://assets/sprites/particles/hypothermia.png" id="1_7sv0w"]
+[ext_resource type="Script" uid="uid://cjy0ohkay1n4b" path="res://scenes/particles/hypothermia.gd" id="2_tvi4r"]
 
 [sub_resource type="Curve" id="Curve_tvi4r"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.234979, 0.0, 0, 0]
@@ -53,3 +54,6 @@ amount = 16
 lifetime = 1.6
 process_material = SubResource("ParticleProcessMaterial_1u75v")
 draw_pass_1 = SubResource("QuadMesh_s5722")
+script = ExtResource("2_tvi4r")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

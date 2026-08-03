@@ -120,22 +120,23 @@ func give_antidote(antidote: BaseAntidoteItem) -> void:
 		return
 	
 	if effect.type == antidote.data.type:
-		effect.type = -1
-		is_cured = true
-		can_activate_effect = false
-		
-		EffectsManager.remove_effect(self)
-		
 		right_antidote()
-		
 
 func right_antidote() -> void:
-	pass
+	effect.type = -1
+	is_cured = true
+	can_activate_effect = false
+	
+	state = STATES.SLEEPING
+	EffectsManager.remove_effect(self)
+	EventBus.baby_cured.emit(id)
 
 func wrong_antidote() -> void:
 	pass
 
 func set_effect_activation() -> void:
+	if is_cured: return
+	
 	can_activate_effect = true
 	effect_timer = 10 - (2.0 - effect.frequency) + minimum_effect_timer
 

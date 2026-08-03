@@ -1,35 +1,41 @@
 class_name HyperhydrosisEffect extends BaseEffect
 
-
-var spawning_water: bool = false
-var spawn_timer: Timer
-var stop_spawn_timer: Timer
+var spawn_water_components: Dictionary
 
 var spawn_radius: float = 1.0
 
 func activate(baby: Baby) -> void:
-	if spawning_water: return
-	spawning_water = true
-
-	spawn_timer = Timer.new()
-	spawn_timer.timeout.connect(spawn_water.bind(baby))
-
-	Util.add_entity_to_container(spawn_timer)
-	spawn_timer.start(0.3)
-
-	stop_spawn_timer = Timer.new()
-	stop_spawn_timer.timeout.connect(deactivate.bind(baby))
-
-	Util.add_entity_to_container(stop_spawn_timer)
-	stop_spawn_timer.start(baby.effect.duration)
+	if spawn_water_components.has(str(baby.id)): return
+	var new_water_spawn: Array = []
+	
+	# spawn timer
+	new_water_spawn.append(Timer.new())
+	new_water_spawn[0].timeout.connect(spawn_water.bind(baby))
+	Util.add_entity_to_container(new_water_spawn[0])
+	new_water_spawn[0].start(0.3)
+	
+	# stop timer
+	new_water_spawn.append(Timer.new())
+	new_water_spawn[1].timeout.connect(deactivate.bind(baby))
+	Util.add_entity_to_container(new_water_spawn[1])
+	new_water_spawn[1].start(baby.effect.duration)
+	
+	spawn_water_components[str(baby.id)] = new_water_spawn
 
 func deactivate(baby: Baby) -> void:
+	if not spawn_water_components.has(str(baby.id)): return
+	
+	var id: String = str(baby.id)
+	
+	var spawn_timer: Timer = spawn_water_components[id][0]
+	var stop_timer: Timer = spawn_water_components[id][1]
+	
 	spawn_timer.stop()
 
 	spawn_timer.queue_free()
-	stop_spawn_timer.queue_free()
-
-	spawning_water = false
+	stop_timer.queue_free()
+	
+	spawn_water_components.erase(id)
 	baby.state = Baby.STATES.SLEEPING
 	baby.set_effect_activation()
 

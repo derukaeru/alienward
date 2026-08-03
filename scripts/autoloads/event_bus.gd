@@ -63,3 +63,4 @@ signal canceled_guide
 
 signal player_spawned
 signal set_ward_timer(index: int, time: float)
+signal baby_cured(id: int)
