@@ -95,4 +95,5 @@ var particles: Dictionary = {
 	"hot": "uid://ccaymdv5xwedh",
 	"cold": "uid://sd1sr6o3c5vh",
 	"trash": "uid://dnjhrwsakef3x",
+	"item": "uid://bs358qv81gp2v",
 }

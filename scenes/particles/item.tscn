@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bs358qv81gp2v"]
+
+[ext_resource type="Texture2D" uid="uid://rab013qprhem" path="res://assets/sprites/particles/trash.png" id="1_t7jvj"]
+[ext_resource type="Script" uid="uid://cw7t0mymq0a6s" path="res://scenes/particles/item.gd" id="2_tghr5"]
+
+[sub_resource type="Curve" id="Curve_t7jvj"]
+_data = [Vector2(0.8279221, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tghr5"]
+curve = SubResource("Curve_t7jvj")
+
+[sub_resource type="Gradient" id="Gradient_i6nri"]
+colors = PackedColorArray(0.31431612, 0.31431612, 0.3143161, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i86gd"]
+gradient = SubResource("Gradient_i6nri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t7jvj"]
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5999999
+gravity = Vector3(0, 1, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+color_initial_ramp = SubResource("GradientTexture1D_i86gd")
+alpha_curve = SubResource("CurveTexture_tghr5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tghr5"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_t7jvj")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i6nri"]
+material = SubResource("StandardMaterial3D_tghr5")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="item" type="GPUParticles3D" unique_id=151422391]
+emitting = false
+amount_ratio = 0.91
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_t7jvj")
+draw_pass_1 = SubResource("PlaneMesh_i6nri")
+script = ExtResource("2_tghr5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

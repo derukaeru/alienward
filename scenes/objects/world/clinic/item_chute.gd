@@ -13,3 +13,8 @@ func generate_item(item_id: String) -> void:
 	Util.add_entity_to_container(item)
 	
 	item.global_position = global_position + Vector3(0.0, -1.5, 0.0)
+	
+	var particle: GPUParticles3D = load(Registry.particles.item).instantiate()
+	add_child(particle)
+	
+	particle.global_position.y -= 0.5
