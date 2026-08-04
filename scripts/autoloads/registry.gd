@@ -91,5 +91,8 @@ var particles: Dictionary = {
 	"hallucinogen": "uid://dxcsbp5hqoh4m",
 	"hypothermia": "uid://7xhtroopsorm",
 	"interact": "uid://bs0v6ah3qi2pw",
-	"walking": "uid://no04et6vgdfj"
+	"walking": "uid://no04et6vgdfj",
+	"hot": "uid://ccaymdv5xwedh",
+	"cold": "uid://sd1sr6o3c5vh",
+	"trash": "uid://dnjhrwsakef3x",
 }

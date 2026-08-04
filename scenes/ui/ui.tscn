@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b4sil7n400wmm" path="res://scenes/ui/shop_screen.tscn" id="5_wfysg"]
 [ext_resource type="Texture2D" uid="uid://cdtl7q844a4ui" path="res://assets/sprites/ui/menu/components/interact_icon.png" id="7_5r0o6"]
 [ext_resource type="PackedScene" uid="uid://5kj01o53rvfd" path="res://scenes/ui/antidote_screen.tscn" id="7_dlyu0"]
+[ext_resource type="Texture2D" uid="uid://chei6gda1h8na" path="res://assets/sprites/ui/menu/components/temperature.png" id="8_4kltc"]
 [ext_resource type="Texture2D" uid="uid://laftbbw8wgml" path="res://assets/sprites/ui/clock/clock_background.png" id="8_cdbp7"]
 [ext_resource type="Texture2D" uid="uid://bub6eyq10qxah" path="res://assets/sprites/ui/clock/clock_hand_big.png" id="9_5r0o6"]
 
@@ -113,7 +114,12 @@ font = ExtResource("2_vxc86")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]
-font_size = 40
+font_size = 32
+font_color = Color(0.85490197, 0.8901961, 0.92941177, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y220t"]
+font_size = 32
+font_color = Color(0.85490197, 0.8901961, 0.92941177, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6nex0"]
 
@@ -296,10 +302,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -40.0
-offset_right = 80.0
-offset_bottom = 40.0
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -312,23 +318,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 8.0
-offset_top = -24.0
-offset_right = 56.0
-offset_bottom = 24.0
+offset_top = -56.0
+offset_right = 64.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0"
+text = "0°C"
 label_settings = SubResource("LabelSettings_dlyu0")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="icon" type="TextureRect" parent="incubator_screen" unique_id=980023089]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 64.0
-offset_bottom = 72.0
+offset_left = 96.0
+offset_top = 40.0
+offset_right = 152.0
+offset_bottom = 96.0
+texture = ExtResource("8_4kltc")
+
+[node name="demanded" type="Label" parent="incubator_screen" unique_id=1357093417]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 296.0
+offset_bottom = 152.0
+text = "Target Temp: 20°C"
+label_settings = SubResource("LabelSettings_y220t")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="checkup" type="ColorRect" parent="." unique_id=144457452]
 visible = false

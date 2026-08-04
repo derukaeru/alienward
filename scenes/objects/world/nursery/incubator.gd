@@ -29,7 +29,7 @@ func _process(_delta) -> void:
 func interact() -> void:
 	if incubated_baby:
 		if incubated_baby.demanded_temperature != temperature:
-			EventBus.open_incubator_screen.emit(self)
+			EventBus.open_incubator_screen.emit(self, incubated_baby.demanded_temperature)
 		else:
 			incubate_baby()
 	else:

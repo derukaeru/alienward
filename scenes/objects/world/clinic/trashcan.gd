@@ -22,3 +22,8 @@ func _on_interacted() -> void:
 	
 	EventBus.throw_item.emit()
 	animation.play("pop")
+	
+	var particle: GPUParticles3D = load(Registry.particles.trash).instantiate()
+	add_child(particle)
+	
+	particle.global_position.y += 1.2

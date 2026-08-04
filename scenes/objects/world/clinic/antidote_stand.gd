@@ -26,7 +26,6 @@ func interact() -> void:
 		add_child(particle)
 		
 		particle.global_position.y += 1.0
-		particle.emitting = true
 	else:
 		if player.ui.antidote_open: return
 

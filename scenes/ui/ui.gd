@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var no_ward_label: Label = $guide_patient/no_ward
 
 @onready var incubator_screen: Control = $incubator_screen
+@onready var demanded_temperature: Label = $incubator_screen/demanded
 
 @onready var body: Control = $body
 @onready var held_item: Control = $body/held_item
@@ -211,14 +212,17 @@ func close_antidote_screen() -> void:
 	antidote_open = false
 	EventBus.player_can_move.emit()
 
-func open_incubator_screen(inc: Incubator) -> void:
+func open_incubator_screen(inc: Incubator, demanded_temp: int) -> void:
 	if incubator_open or not inc: return
 	incubator = inc
 	temperature = incubator.temperature
-
+	
+	var temp_in_celsius: float = remap(demanded_temp, 0.0, 2.0, 0, 20)
+	demanded_temperature.text = "Demanded Temperature: " + str(int(temp_in_celsius)) + "°C"
+	
 	incubator_open = true
 	incubator_screen.show()
-
+	
 	EventBus.stop_player_movement.emit()
 
 func close_incubator_screen() -> void:

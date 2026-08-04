@@ -21,9 +21,7 @@ func interact() -> void:
 			
 			var particle: GPUParticles3D = load(Registry.particles.interact).instantiate()
 			add_child(particle)
-			
 			particle.global_position.y += 1.0
-			particle.emitting = true
 			
 			return
 		

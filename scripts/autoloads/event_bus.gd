@@ -24,7 +24,7 @@ signal pick_up_baby_from_delivery_table(baby: Baby)
 signal add_entity_to_container(entity: Node)
 
 signal open_patient_screen(patient: Patient)
-signal open_incubator_screen(incubator: Incubator)
+signal open_incubator_screen(incubator: Incubator, demanded_temperature: int)
 
 signal throw_item
 signal open_curtain(index: int)

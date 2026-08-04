@@ -14,6 +14,7 @@ var incubator: Incubator
 
 var held: bool = false
 var particles: GPUParticles3D
+var temperature_particles: GPUParticles3D
 
 enum LETTER_TO_VAL {A, C, G, T}
 var is_cured: bool = false
@@ -68,8 +69,11 @@ func _process(delta) -> void:
 				if incubate_timer <= 0:
 					is_incubated = true
 			
-			if uncomfy:
+			if uncomfy and incubator:
 				if incubator.temperature == demanded_temperature:
+					if temperature_particles:
+						temperature_particles.emitting = false
+					
 					uncomfy = false
 					uncomfy_timer = default_uncomfy_timer
 	elif held:
@@ -86,12 +90,19 @@ func _process(delta) -> void:
 			
 			activate_effect()
 	
-	if not uncomfy:
+	if not uncomfy and incubator and not is_cured:
 		uncomfy_timer -= delta
 		
 		if uncomfy_timer <= 0:
 			demanded_temperature = randf_range(0.1, 1.9)
 			uncomfy = true
+			
+			if demanded_temperature < incubator.temperature:
+				temperature_particles = load(Registry.particles.hot).instnatiate()
+				add_child(temperature_particles)
+			else:
+				temperature_particles = load(Registry.particles.cold).instnatiate()
+				add_child(temperature_particles)
 
 func activate_effect() -> void:
 	EffectsManager.apply_effect(self)
@@ -125,6 +136,8 @@ func give_antidote(antidote: BaseAntidoteItem) -> void:
 func right_antidote() -> void:
 	effect.type = -1
 	is_cured = true
+	uncomfy = false
+	uncomfy_timer = -1
 	can_activate_effect = false
 	
 	state = STATES.SLEEPING
