@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b8t1jem6f3q4w"]
+
+[ext_resource type="Texture2D" uid="uid://3b4e8is3lc8v" path="res://assets/sprites/particles/hyperhidrosis.png" id="1_gx5kr"]
+[ext_resource type="Script" uid="uid://bp1cggxuonqfa" path="res://scenes/particles/hyperhydrosis.gd" id="2_odgiy"]
+
+[sub_resource type="Curve" id="Curve_prcmi"]
+_data = [Vector2(0.8279221, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ddk3h"]
+curve = SubResource("Curve_prcmi")
+
+[sub_resource type="Gradient" id="Gradient_2qkrt"]
+colors = PackedColorArray(0.2910773, 0.3368725, 0.6044129, 1, 0.44220376, 0.78096837, 0.8803821, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0f870"]
+gradient = SubResource("Gradient_2qkrt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aglor"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.8999999
+initial_velocity_max = 2.8999999
+scale_min = 0.5
+color_initial_ramp = SubResource("GradientTexture1D_0f870")
+alpha_curve = SubResource("CurveTexture_ddk3h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm3f4"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_gx5kr")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b3mgq"]
+material = SubResource("StandardMaterial3D_hm3f4")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="hyperhydrosis" type="GPUParticles3D" unique_id=1677223614]
+process_material = SubResource("ParticleProcessMaterial_aglor")
+draw_pass_1 = SubResource("PlaneMesh_b3mgq")
+script = ExtResource("2_odgiy")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

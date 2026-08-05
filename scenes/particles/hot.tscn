@@ -42,7 +42,7 @@ billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
-particles_anim_loop = false
+particles_anim_loop = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_60xy4"]
 material = SubResource("StandardMaterial3D_we8ce")

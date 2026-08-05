@@ -90,6 +90,7 @@ var particles: Dictionary = {
 	"bioluminesce": "uid://dvhq2ottwxi1p",
 	"hallucinogen": "uid://dxcsbp5hqoh4m",
 	"hypothermia": "uid://7xhtroopsorm",
+	"hyperhydrosis": "uid://b8t1jem6f3q4w",
 	"interact": "uid://bs0v6ah3qi2pw",
 	"walking": "uid://no04et6vgdfj",
 	"hot": "uid://ccaymdv5xwedh",

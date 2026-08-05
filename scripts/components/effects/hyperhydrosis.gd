@@ -20,6 +20,11 @@ func activate(baby: Baby) -> void:
 	Util.add_entity_to_container(new_water_spawn[1])
 	new_water_spawn[1].start(baby.effect.duration)
 	
+	# particle
+	var particle: GPUParticles3D = load(Registry.particles.hyperhydrosis).instantiate()
+	new_water_spawn.append(particle)
+	baby.add_child(particle)
+	
 	spawn_water_components[str(baby.id)] = new_water_spawn
 
 func deactivate(baby: Baby) -> void:
@@ -29,11 +34,14 @@ func deactivate(baby: Baby) -> void:
 	
 	var spawn_timer: Timer = spawn_water_components[id][0]
 	var stop_timer: Timer = spawn_water_components[id][1]
+	var particle: GPUParticles3D = spawn_water_components[id][2]
 	
 	spawn_timer.stop()
 
 	spawn_timer.queue_free()
 	stop_timer.queue_free()
+	
+	particle.emitting = false
 	
 	spawn_water_components.erase(id)
 	baby.state = Baby.STATES.SLEEPING
