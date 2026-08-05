@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dix67ojrdr6ht"]
 
 [ext_resource type="Script" uid="uid://ujs8yn1ubop0" path="res://scenes/menu/title_screen.gd" id="1_spmwh"]
-[ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/background/title_screen.png" id="2_4crq4"]
+[ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/background/repeating_background_2.png" id="2_4crq4"]
+[ext_resource type="Texture2D" uid="uid://bk6q7ny2igsu1" path="res://assets/sprites/ui/menu/title_screen_background.png" id="3_0daku"]
 [ext_resource type="Texture2D" uid="uid://caclbhwuoilvm" path="res://assets/sprites/ui/buttons/start.png" id="3_7rd1m"]
 [ext_resource type="Texture2D" uid="uid://e4pub042hjx7" path="res://assets/sprites/ui/buttons/settings.png" id="4_spmwh"]
 [ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="5_lh61k"]
 [ext_resource type="Texture2D" uid="uid://cacgw3lk2dis" path="res://assets/sprites/ui/buttons/continue.png" id="6_lh61k"]
 [ext_resource type="Texture2D" uid="uid://dnv4tlehcp3nl" path="res://assets/sprites/ui/buttons/return.png" id="7_1hsha"]
+[ext_resource type="Texture2D" uid="uid://q00h387ernvh" path="res://assets/sprites/ui/buttons/new.png" id="7_5jxps"]
 [ext_resource type="PackedScene" uid="uid://5186ghdvrog8" path="res://scenes/menu/settings_screen.tscn" id="8_1hsha"]
 
 [sub_resource type="Shader" id="Shader_7rd1m"]
@@ -22,8 +24,8 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq80g"]
 shader = SubResource("Shader_7rd1m")
-shader_parameter/speed_x = 0.5
-shader_parameter/speed_y = 0.5
+shader_parameter/speed_x = 0.3
+shader_parameter/speed_y = 0.3
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hsha"]
 texture = ExtResource("3_7rd1m")
@@ -34,11 +36,8 @@ texture = ExtResource("4_spmwh")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jxps"]
 texture = ExtResource("5_lh61k")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0daku"]
-load_path = "res://.godot/imported/new.png-b050e635e5c811d4af679d686d864fda.ctex"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfkmp"]
-texture = SubResource("CompressedTexture2D_0daku")
+texture = ExtResource("7_5jxps")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwfra"]
 texture = ExtResource("6_lh61k")
@@ -58,29 +57,39 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_spmwh")
 
-[node name="background" type="TextureRect" parent="." unique_id=51746027]
+[node name="scrolling_background" type="TextureRect" parent="." unique_id=51746027]
 material = SubResource("ShaderMaterial_oq80g")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -109.30536
+offset_top = -180.48267
+offset_right = 91.76068
+offset_bottom = 190.50757
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("2_4crq4")
 stretch_mode = 1
 
+[node name="background" type="TextureRect" parent="." unique_id=1985606831]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_0daku")
+
 [node name="main_menu" type="Control" parent="." unique_id=402590163]
 anchors_preset = 0
-offset_top = 72.0
-offset_right = 40.0
-offset_bottom = 112.0
+offset_right = 768.0
+offset_bottom = 576.0
 
 [node name="start" type="Button" parent="main_menu" unique_id=1101440627]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 200.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 292.0
 pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
@@ -92,9 +101,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_1hsha")
 
 [node name="settings" type="Button" parent="main_menu" unique_id=1572325678]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 296.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 388.0
 pivot_offset_ratio = Vector2(0.9, 0.5)
 size_flags_vertical = 3
@@ -106,9 +115,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_0daku")
 
 [node name="exit" type="Button" parent="main_menu" unique_id=1838405728]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 392.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 484.0
 pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
@@ -126,9 +135,9 @@ offset_bottom = 40.0
 
 [node name="new" type="Button" parent="start_menu" unique_id=1690121704]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 200.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 292.0
 pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
@@ -140,9 +149,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_hfkmp")
 
 [node name="continue" type="Button" parent="start_menu" unique_id=988210412]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 296.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 388.0
 pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
@@ -154,9 +163,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_mwfra")
 
 [node name="return" type="Button" parent="start_menu" unique_id=1782268769]
 layout_mode = 0
-offset_left = 248.0
+offset_left = 280.0
 offset_top = 392.0
-offset_right = 464.0
+offset_right = 496.0
 offset_bottom = 484.0
 pivot_offset_ratio = Vector2(0.1, 0.5)
 size_flags_vertical = 3
@@ -168,10 +177,10 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_28w6f")
 
 [node name="seed" type="LineEdit" parent="start_menu" unique_id=1401536924]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 432.0
-offset_right = 176.0
-offset_bottom = 480.0
+offset_left = 40.0
+offset_top = 456.0
+offset_right = 192.0
+offset_bottom = 504.0
 theme_override_font_sizes/font_size = 32
 placeholder_text = "232421"
 alignment = 1
@@ -182,10 +191,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 352.0
-offset_right = 128.0
-offset_bottom = 382.0
+offset_left = 88.0
+offset_top = 384.0
+offset_right = 154.0
+offset_bottom = 416.0
 grow_vertical = 0
 text = "seed"
 label_settings = SubResource("LabelSettings_1hsha")
@@ -212,20 +221,20 @@ grow_vertical = 2
 
 [connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/start" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="main_menu/start" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/settings" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="main_menu/exit" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/new" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
 [connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="start_menu/continue" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]

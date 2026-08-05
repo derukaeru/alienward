@@ -114,8 +114,9 @@ func _process(_delta) -> void:
 	var player: Player = Util.get_player()
 	if not player: return
 
-	if not identifying_timer.is_stopped():
-		identifying_bacteria_bar.value = identifying_bacteria_bar.max_value - identifying_timer.time_left
+	if identifying_timer:
+		if not identifying_timer.is_stopped():
+			identifying_bacteria_bar.value = identifying_bacteria_bar.max_value - identifying_timer.time_left
 
 	if Input.is_action_just_pressed("ui_cancel") and player.ui.microscope_open:
 		_on_leave_pressed()

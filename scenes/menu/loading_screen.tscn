@@ -41,6 +41,8 @@ _data = {
 &"fade": SubResource("Animation_w2ej8")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_4je5t"]
+
 [node name="loading_screen" type="CanvasLayer" unique_id=1128375937]
 script = ExtResource("1_4je5t")
 
@@ -55,3 +57,20 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1230957482]
 libraries/ = SubResource("AnimationLibrary_4je5t")
+
+[node name="loading" type="Label" parent="." unique_id=215729983]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "loading"
+label_settings = SubResource("LabelSettings_4je5t")
+horizontal_alignment = 1
+vertical_alignment = 1
