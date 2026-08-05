@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b3rfrcxq10bx7"]
 
 [ext_resource type="Script" uid="uid://b6yxatl5vkw5x" path="res://scenes/ui/ui.gd" id="1_n7q4b"]
-[ext_resource type="FontFile" uid="uid://bjfk6l7cvt1vf" path="res://assets/font/alagard.ttf" id="2_vxc86"]
 [ext_resource type="Texture2D" uid="uid://cceairqcr4n0v" path="res://assets/sprites/ui/hand/hand_hold.png" id="2_wfysg"]
 [ext_resource type="Shader" uid="uid://cie80ise51xdw" path="res://assets/shaders/crosshair.gdshader" id="3_5y2ix"]
 [ext_resource type="PackedScene" uid="uid://d2wp275ru8mkw" path="res://scenes/ui/microscope_screen.tscn" id="4_5y2ix"]
@@ -110,7 +109,6 @@ font_size = 32
 shader = ExtResource("3_5y2ix")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vxc86"]
-font = ExtResource("2_vxc86")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_dlyu0"]

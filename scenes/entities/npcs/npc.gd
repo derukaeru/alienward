@@ -35,10 +35,8 @@ var state: STATES = STATES.IDLE
 var look_target: Vector3
 
 func _ready() -> void:
-	if waiting_seat_position:
-		move_to("seat_%d" % waiting_seat_position)
-		add_status_bubble("waiting")
-
+	patient = Util.get_patient_with_id(patient_id)
+	
 	EventBus.incubated_child.connect(look_at_child)
 	EventBus.patient_to_ward.connect(escort_patient)
 	EventBus.patient_leaving_checkup.connect(leaving_checkup)
@@ -48,7 +46,10 @@ func _ready() -> void:
 			if patient_id == id: move_to("seat_%d" % waiting_seat_position)
 	)
 	
-	patient = Util.get_patient_with_id(patient_id)
+	if waiting_seat_position == GameManager.UNASSIGNED: return
+	
+	move_to("seat_%d" % waiting_seat_position)
+	add_status_bubble("waiting")
 
 func move_to(_name: String) -> void:
 	state = STATES.WALKING

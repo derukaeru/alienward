@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dsdfxpm2pp4xi"]
+
+[ext_resource type="Texture2D" uid="uid://dstl8k4gpxtsx" path="res://assets/sprites/particles/patient.png" id="1_icjh4"]
+[ext_resource type="Script" uid="uid://bnc4ulqe7f8y2" path="res://scenes/particles/patient.gd" id="2_dkuwp"]
+
+[sub_resource type="Curve" id="Curve_icjh4"]
+_data = [Vector2(0.8084416, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -14.584286, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dkuwp"]
+curve = SubResource("Curve_icjh4")
+
+[sub_resource type="Gradient" id="Gradient_3163y"]
+colors = PackedColorArray(0.20436028, 0.43711954, 0.16759735, 1, 0.87834936, 0.90122, 0.79615194, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_twj33"]
+gradient = SubResource("Gradient_3163y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ssbq3"]
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 6.0499997
+initial_velocity_max = 6.0499997
+scale_min = 0.19999999
+color_initial_ramp = SubResource("GradientTexture1D_twj33")
+alpha_curve = SubResource("CurveTexture_dkuwp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkuwp"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_icjh4")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3163y"]
+material = SubResource("StandardMaterial3D_dkuwp")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="patient" type="GPUParticles3D" unique_id=1998696633]
+emitting = false
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ssbq3")
+draw_pass_1 = SubResource("PlaneMesh_3163y")
+script = ExtResource("2_dkuwp")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

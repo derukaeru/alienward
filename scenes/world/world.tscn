@@ -33,7 +33,7 @@ point_count = 3
 curve = SubResource("Curve_t5ptc")
 
 [sub_resource type="Gradient" id="Gradient_j2gmx"]
-colors = PackedColorArray(0.4236506, 0.42365065, 0.42365053, 1, 0.8776157, 0.8776158, 0.8776157, 1)
+colors = PackedColorArray(0.3795445, 0.38475364, 0.6849544, 1, 0.8179584, 0.88775086, 0.9572105, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1yooq"]
 gradient = SubResource("Gradient_j2gmx")
@@ -116,7 +116,7 @@ text = "empty"
 
 [node name="ambient_particles" type="GPUParticles3D" parent="." unique_id=1361937951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9776716, 1.9071443, 0.8169689)
-amount = 10
+amount = 16
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_gb53w")
 draw_pass_1 = SubResource("PlaneMesh_dlabj")

@@ -159,11 +159,11 @@ func interacted() -> void:
 			if player.held_item.patient_id == id:
 				has_ultrasound = true
 				player.remove_held_item()
-
-				state = STATES.READY_TO_LEAVE
-				EventBus.patient_leaving_checkup.emit(id)
 				
-				move_to("patient_enter")
+				leave_clinic()
+				
+				var particle: GPUParticles3D = load(Registry.particles.patient).instantiate()
+				add_child(particle)
 
 func scan_done() -> void:
 	scanned = true
@@ -213,12 +213,8 @@ func target_reached() -> void:
 		state = STATES.CHECKUP
 		EventBus.patient_reached_clinic.emit(id)
 		look_at_target(Util.get_patient_spot("checkup"))
-	elif target_name == "patient_enter":
-		# left the ward
-		queue_free()
-		
-		EventBus.add_money.emit(randi_range(100, 130))
-		EventBus.left.emit(id)
+	elif target_name == "patient_leave":
+		left()
 
 func birth_child() -> void:
 	if state != STATES.LABOR: return
@@ -267,6 +263,19 @@ func leave_ward() -> void:
 	global_position = Util.get_patient_spot("ward_%d" % ward_index)
 	state = STATES.LEAVING
 	
-	GameManager.ward_occupation[ward_index] = false
 	EventBus.open_curtain.emit(ward_index)
-	move_to("patient_enter")
+	move_to("patient_leave")
+	GameManager.ward_occupation[ward_index] = false
+
+func leave_clinic() -> void:
+	state = STATES.LEAVING
+	EventBus.patient_leaving_checkup.emit(id)
+	
+	move_to("patient_leave")
+	GameManager.clinic_open = true
+
+func left() -> void:
+	EventBus.add_money.emit(randi_range(100, 130))
+	EventBus.left.emit(id)
+	
+	queue_free()
