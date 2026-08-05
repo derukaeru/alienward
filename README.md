@@ -11,12 +11,14 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
 
 - it's not the first time that i've made a game, but most of the games i make are from game jams (timed competitions for game development), meaning they don't have a lot of time to be polished, which is what I'm trying to achieve in making this game, to learn about making a polished, compact and content-filled project.
 
-## where you can play this game
+### quick start
 
-the game is not released yet, but it will be released on my [itch.io page](derukaeru.itch.io)!
+  #### online
+  - the game is not released yet, but it will be released on my [itch.io page](derukaeru.itch.io)!
 
-### running this game locally
 
+  #### running this game locally
+  - 
 
 
 
