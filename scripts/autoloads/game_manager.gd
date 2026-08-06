@@ -77,10 +77,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
 			get_tree().paused = false
+			pause_screen.animation.play_backwards("toggle")
+			await pause_screen.animation.animation_finished
 			pause_screen.hide()
 			Util.mouse_captured()
 		else:
 			get_tree().paused = true
+			pause_screen.animation.play("toggle")
+			
 			pause_screen.show()
 			Util.mouse_visible()
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):

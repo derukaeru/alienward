@@ -4,6 +4,8 @@ extends Control
 @onready var settings_btn: Button = $settings
 @onready var exit_btn: Button = $exit
 
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
 var button_scale: float = 1.25
 
 func mouse_entered(source) -> void:

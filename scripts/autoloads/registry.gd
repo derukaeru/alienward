@@ -97,5 +97,8 @@ var particles: Dictionary = {
 	"cold": "uid://sd1sr6o3c5vh",
 	"trash": "uid://dnjhrwsakef3x",
 	"item": "uid://bs358qv81gp2v",
-	"patient": "uid://dsdfxpm2pp4xi"
+	"patient": "uid://dsdfxpm2pp4xi",
+	"right_antidote": "uid://daa4kjt2ilbfm",
+	"wrong_antidote": "uid://cg8o0m0hq8u5x",
+	"tantrum": "uid://b50g03bpj8n38"
 }

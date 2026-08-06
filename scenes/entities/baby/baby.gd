@@ -15,6 +15,7 @@ var incubator: Incubator
 var held: bool = false
 var particles: GPUParticles3D
 var temperature_particles: GPUParticles3D
+var tantrum_particles: GPUParticles3D 
 
 enum LETTER_TO_VAL {A, C, G, T}
 var is_cured: bool = false
@@ -94,19 +95,24 @@ func _process(delta) -> void:
 		uncomfy_timer -= delta
 		
 		if uncomfy_timer <= 0:
-			demanded_temperature = randf_range(0.1, 1.9)
-			uncomfy = true
-			
-			if demanded_temperature < incubator.temperature:
-				temperature_particles = load(Registry.particles.hot).instnatiate()
-				add_child(temperature_particles)
-			else:
-				temperature_particles = load(Registry.particles.cold).instnatiate()
-				add_child(temperature_particles)
+			activate_uncomfy()
+
+func activate_uncomfy() -> void:
+	demanded_temperature = randf_range(0.1, 1.9)
+	uncomfy = true
+	
+	if demanded_temperature < incubator.temperature:
+		temperature_particles = load(Registry.particles.hot).instnatiate()
+		add_child(temperature_particles)
+	else:
+		temperature_particles = load(Registry.particles.cold).instnatiate()
+		add_child(temperature_particles)
 
 func activate_effect() -> void:
 	EffectsManager.apply_effect(self)
 	state = STATES.RUCKUS
+	
+	tantrum_particles = load(Registry.particles.tantrum).instantiate()
 
 func pick_up() -> void:
 	if incubator:
@@ -140,18 +146,31 @@ func right_antidote() -> void:
 	uncomfy_timer = -1
 	can_activate_effect = false
 	
+	if tantrum_particles:
+		tantrum_particles.emitting = false
+	
+	var right_particles: GPUParticles3D = load(Registry.particles.right_antidote).instantiate()
+	add_child(right_particles)
+	
 	state = STATES.SLEEPING
 	EffectsManager.remove_effect(self)
 	EventBus.baby_cured.emit(id)
 
 func wrong_antidote() -> void:
-	pass
+	var wrong_particles: GPUParticles3D = load(Registry.particles.wrong_antidote).instantiate()
+	add_child(wrong_particles)
+	
+	if uncomfy_timer >= 5:
+		uncomfy_timer -= 5
 
 func set_effect_activation() -> void:
 	if is_cured: return
 	
 	can_activate_effect = true
 	effect_timer = 10 - (2.0 - effect.frequency) + minimum_effect_timer
+	
+	if tantrum_particles:
+		tantrum_particles.emitting = false
 
 func generate_dna() -> void:
 	var choices: String = "ACGT"

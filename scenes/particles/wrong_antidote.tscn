@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cg8o0m0hq8u5x"]
+
+[ext_resource type="Script" uid="uid://ccqr4nlofm44i" path="res://scenes/particles/wrong_antidote.gd" id="1_hqju8"]
+[ext_resource type="Texture2D" uid="uid://d3sebsjivnigr" path="res://assets/sprites/particles/wrong_antidote.png" id="1_v2psh"]
+
+[sub_resource type="Gradient" id="Gradient_7mufb"]
+colors = PackedColorArray(0.41603425, 1.0709092e-06, 0.017439023, 1, 0.99999994, 0.24313459, 0.20644993, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rjxmh"]
+gradient = SubResource("Gradient_7mufb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d6xvo"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = -1.0
+initial_velocity_max = -0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 0.7
+color_initial_ramp = SubResource("GradientTexture1D_rjxmh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xcax"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_v2psh")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_khsmf"]
+material = SubResource("StandardMaterial3D_2xcax")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="wrong_antidote" type="GPUParticles3D" unique_id=746683957]
+emitting = false
+amount = 6
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_d6xvo")
+draw_pass_1 = SubResource("PlaneMesh_khsmf")
+script = ExtResource("1_hqju8")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

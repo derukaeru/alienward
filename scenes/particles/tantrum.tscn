@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b50g03bpj8n38"]
+
+[ext_resource type="Texture2D" uid="uid://cima4usitskv6" path="res://assets/sprites/particles/tantrum.png" id="1_oxmas"]
+[ext_resource type="Script" uid="uid://biwbt3yd7dwkc" path="res://scenes/particles/tantrum.gd" id="2_b0t1o"]
+
+[sub_resource type="Gradient" id="Gradient_b0t1o"]
+colors = PackedColorArray(0.55079067, 0.14106724, 0.122318335, 1, 0.8626788, 0.34947634, 0.34845704, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1nunl"]
+gradient = SubResource("Gradient_b0t1o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0foel"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angular_velocity_min = -1.800016
+angular_velocity_max = 1.0999839
+radial_velocity_min = -0.25002235
+radial_velocity_max = 0.24997765
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+color_initial_ramp = SubResource("GradientTexture1D_1nunl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2t3m"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_oxmas")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vp1qv"]
+material = SubResource("StandardMaterial3D_h2t3m")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="tantrum" type="GPUParticles3D" unique_id=1837663301]
+amount = 4
+lifetime = 1.5
+explosiveness = 0.58
+process_material = SubResource("ParticleProcessMaterial_0foel")
+draw_pass_1 = SubResource("PlaneMesh_vp1qv")
+script = ExtResource("2_b0t1o")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
