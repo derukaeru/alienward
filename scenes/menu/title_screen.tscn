@@ -50,6 +50,10 @@ texture = ExtResource("7_1hsha")
 [sub_resource type="LabelSettings" id="LabelSettings_1hsha"]
 font_size = 32
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwfra"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_28w6f"]
+
 [sub_resource type="Animation" id="Animation_mwfra"]
 length = 0.001
 tracks/0/type = "value"
@@ -171,6 +175,106 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("settings_screen/settings_exit:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(677, 35)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("settings_screen/settings_exit:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("main_menu:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("start_menu:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j1i0p"]
+resource_name = "settings_screen"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scrolling_background:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.7853982, -2.3561945]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("settings_screen/settings_exit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(677, 35), Vector2(500, 35)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("settings_screen/settings_exit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("main_menu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_28w6f"]
@@ -300,6 +404,7 @@ tracks/9/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1i0p"]
 _data = {
 &"RESET": SubResource("Animation_mwfra"),
+&"settings_screen": SubResource("Animation_j1i0p"),
 &"start_menu": SubResource("Animation_28w6f")
 }
 
@@ -357,7 +462,7 @@ texture = ExtResource("4_hfkmp")
 [node name="selector_poly" type="Polygon2D" parent="." unique_id=1062840953]
 position = Vector2(280, 200)
 color = Color(0.78431374, 0.83137256, 0.84313726, 1)
-polygon = PackedVector2Array(-282, -251, -270, -235, -270, -235, -335, -63)
+polygon = PackedVector2Array(-282, -251, -270, -235, -270, -235, -422, 95)
 uv = PackedVector2Array(-282, -251, 250, 104, 130, 123, -300, -80)
 
 [node name="main_menu" type="Control" parent="." unique_id=402590163]
@@ -491,6 +596,37 @@ vertical_alignment = 1
 visible = false
 layout_mode = 1
 
+[node name="settings_exit" type="Button" parent="settings_screen" unique_id=1357453397]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 37.0
+offset_top = 35.0
+offset_right = 139.0
+offset_bottom = 77.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwfra")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mwfra")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mwfra")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mwfra")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mwfra")
+text = "exit"
+
+[node name="Polygon2D" type="Polygon2D" parent="settings_screen/settings_exit" unique_id=1058127611]
+position = Vector2(-13, 2)
+color = Color(0.36078432, 0.4745098, 0.6509804, 1)
+polygon = PackedVector2Array(-13, 1, 120, -23, 116, 37, 23, 50)
+
+[node name="label" type="Label" parent="settings_screen/settings_exit" unique_id=1044989546]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 38.0
+text = "exit"
+label_settings = SubResource("LabelSettings_28w6f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="title" type="TextureRect" parent="." unique_id=226655472]
 layout_mode = 1
 anchors_preset = 8
@@ -532,3 +668,6 @@ libraries/ = SubResource("AnimationLibrary_j1i0p")
 [connection signal="mouse_exited" from="start_menu/return" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="_on_return_pressed"]
+[connection signal="mouse_entered" from="settings_screen/settings_exit" to="." method="_settings_exit_mouse_entered"]
+[connection signal="mouse_exited" from="settings_screen/settings_exit" to="." method="_settings_exit_mouse_exited"]
+[connection signal="pressed" from="settings_screen/settings_exit" to="." method="_on_settings_exit_pressed"]

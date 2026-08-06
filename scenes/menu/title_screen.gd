@@ -12,6 +12,7 @@ extends Control
 @onready var seed_label: LineEdit = $start_menu/seed_info/seed
 
 @onready var selector_poly: Polygon2D = $selector_poly
+@onready var settings_exit: Button = $settings_screen/settings_exit
 
 var default_poly_vertex_1: Vector2 = Vector2(250.0, 75.0)
 var default_poly_vertex_2: Vector2 = Vector2(132.0, 125.0)
@@ -87,6 +88,9 @@ func _on_start_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	settings_screen.show()
+	settings_screen.animation.play("open")
+	animation.play("settings_screen")
+	main_menu.hide()
 
 func _on_exit_pressed() -> void:
 	pass 
@@ -106,3 +110,19 @@ func _on_return_pressed() -> void:
 	start_menu.hide()
 	
 	animation.play_backwards("start_menu")
+
+func _on_settings_exit_pressed() -> void:
+	settings_screen.animation.play_backwards("open")
+	animation.play_backwards("settings_screen")
+	main_menu.show()
+	
+	await settings_screen.animation.animation_finished
+	settings_screen.hide()
+
+func _settings_exit_mouse_entered() -> void:
+	var tw: Tween = get_tree().create_tween()
+	tw.tween_property(settings_exit, "scale", Vector2(1.2, 1.2), 0.1)
+
+func _settings_exit_mouse_exited() -> void:
+	var tw: Tween = get_tree().create_tween()
+	tw.tween_property(settings_exit, "scale", Vector2(1, 1), 0.1)
