@@ -14,6 +14,199 @@ texture = ExtResource("2_wx27k")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ioglc"]
 texture = ExtResource("3_ruv5c")
 
+[sub_resource type="Animation" id="Animation_ruv5c"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resume:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(216, 86)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resume:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(276, 154.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resume:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resume:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("resume:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("settings:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(276, 244.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("exit:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(276, 334.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("settings:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("exit:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x8jkt"]
+resource_name = "toggle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resume:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(276, 65), Vector2(276, 154.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resume:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("settings:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-29, 245), Vector2(276, 244.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("exit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(572, 335), Vector2(276, 334.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("settings:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("exit:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp2s5"]
+_data = {
+&"RESET": SubResource("Animation_ruv5c"),
+&"toggle": SubResource("Animation_x8jkt")
+}
+
 [node name="pause_screen" type="Control" unique_id=2145161773]
 layout_mode = 3
 anchors_preset = 15
@@ -33,6 +226,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6392157)
 
 [node name="resume" type="Button" parent="." unique_id=1698791073]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 276.0
 offset_top = 154.5
@@ -47,6 +241,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_c2pq0")
 theme_override_styles/focus = SubResource("StyleBoxTexture_c2pq0")
 
 [node name="settings" type="Button" parent="." unique_id=640017073]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 276.0
 offset_top = 244.5
@@ -61,10 +256,11 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_x8jkt")
 theme_override_styles/focus = SubResource("StyleBoxTexture_x8jkt")
 
 [node name="exit" type="Button" parent="." unique_id=1152742921]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 276.0
 offset_top = 334.5
-offset_right = 492.0
+offset_right = 491.99997
 offset_bottom = 421.5
 pivot_offset_ratio = Vector2(0.1, 0.9)
 size_flags_vertical = 3
@@ -73,6 +269,9 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ioglc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ioglc")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ioglc")
 theme_override_styles/focus = SubResource("StyleBoxTexture_ioglc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=272359898]
+libraries/ = SubResource("AnimationLibrary_pp2s5")
 
 [connection signal="mouse_entered" from="resume" to="." method="mouse_entered" flags=18]
 [connection signal="mouse_exited" from="resume" to="." method="mouse_exited" flags=18]

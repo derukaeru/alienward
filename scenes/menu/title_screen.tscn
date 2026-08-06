@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/background/repeating_background_2.png" id="2_4crq4"]
 [ext_resource type="Texture2D" uid="uid://bk6q7ny2igsu1" path="res://assets/sprites/ui/menu/title_screen_background.png" id="3_0daku"]
 [ext_resource type="Texture2D" uid="uid://caclbhwuoilvm" path="res://assets/sprites/ui/buttons/start.png" id="3_7rd1m"]
+[ext_resource type="Texture2D" uid="uid://dxsfy83rjka07" path="res://assets/sprites/ui/menu/title_screen_menu.png" id="4_hfkmp"]
+[ext_resource type="Texture2D" uid="uid://sm43tklfe0ye" path="res://assets/sprites/ui/menu/components/star.png" id="4_mwfra"]
 [ext_resource type="Texture2D" uid="uid://e4pub042hjx7" path="res://assets/sprites/ui/buttons/settings.png" id="4_spmwh"]
 [ext_resource type="Texture2D" uid="uid://cyhh6nhes3byj" path="res://assets/sprites/ui/buttons/exit.png" id="5_lh61k"]
 [ext_resource type="Texture2D" uid="uid://cacgw3lk2dis" path="res://assets/sprites/ui/buttons/continue.png" id="6_lh61k"]
@@ -48,6 +50,259 @@ texture = ExtResource("7_1hsha")
 [sub_resource type="LabelSettings" id="LabelSettings_1hsha"]
 font_size = 32
 
+[sub_resource type="Animation" id="Animation_mwfra"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("start_menu_background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-676, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("start_menu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("start_menu/seed_info/seed:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(169, 511)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("start_menu/seed_info/seed_label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(217, 479)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("main_menu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scrolling_background:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.7853982]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("start_menu_background:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.54509807, 0.7529412, 0.7921569, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("star:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-192, 189)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("selector_poly:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(280, 200)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("start_menu/seed_info:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_28w6f"]
+resource_name = "start_menu"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("start_menu_background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-676, 0), Vector2(-418, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("start_menu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-148, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("start_menu/seed_info/seed:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(169, 511)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("start_menu/seed_info/seed_label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(217, 479)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("main_menu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-148, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scrolling_background:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.7853982, 0.7853982]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("start_menu_background:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.54509807, 0.7529412, 0.7921569, 1), Color(0.36078432, 0.4745098, 0.6509804, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("star:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-245, 189), Vector2(307, 189)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("selector_poly:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(280, 200), Vector2(141, 200)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("start_menu/seed_info:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1i0p"]
+_data = {
+&"RESET": SubResource("Animation_mwfra"),
+&"start_menu": SubResource("Animation_28w6f")
+}
+
 [node name="title_screen" type="Control" unique_id=198211424]
 layout_mode = 3
 anchors_preset = 15
@@ -80,6 +335,31 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_0daku")
 
+[node name="star" type="TextureRect" parent="." unique_id=654588647]
+layout_mode = 0
+offset_left = -192.0
+offset_top = 189.0
+offset_right = -96.0
+offset_bottom = 285.0
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+localize_numeral_system = false
+texture = ExtResource("4_mwfra")
+
+[node name="start_menu_background" type="TextureRect" parent="." unique_id=833494937]
+modulate = Color(0.54509807, 0.7529412, 0.7921569, 1)
+layout_mode = 0
+offset_left = -676.0
+offset_right = 92.0
+offset_bottom = 576.0
+texture = ExtResource("4_hfkmp")
+
+[node name="selector_poly" type="Polygon2D" parent="." unique_id=1062840953]
+position = Vector2(280, 200)
+color = Color(0.78431374, 0.83137256, 0.84313726, 1)
+polygon = PackedVector2Array(-282, -251, -270, -235, -270, -235, -335, -63)
+uv = PackedVector2Array(-282, -251, 250, 104, 130, 123, -300, -80)
+
 [node name="main_menu" type="Control" parent="." unique_id=402590163]
 anchors_preset = 0
 offset_right = 768.0
@@ -91,7 +371,7 @@ offset_left = 280.0
 offset_top = 200.0
 offset_right = 496.0
 offset_bottom = 292.0
-pivot_offset_ratio = Vector2(0.1, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_1hsha")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1hsha")
@@ -105,7 +385,7 @@ offset_left = 280.0
 offset_top = 296.0
 offset_right = 496.0
 offset_bottom = 388.0
-pivot_offset_ratio = Vector2(0.9, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_0daku")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0daku")
@@ -119,7 +399,7 @@ offset_left = 280.0
 offset_top = 392.0
 offset_right = 496.0
 offset_bottom = 484.0
-pivot_offset_ratio = Vector2(0.1, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_5jxps")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5jxps")
@@ -139,7 +419,7 @@ offset_left = 280.0
 offset_top = 200.0
 offset_right = 496.0
 offset_bottom = 292.0
-pivot_offset_ratio = Vector2(0.1, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfkmp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hfkmp")
@@ -153,7 +433,7 @@ offset_left = 280.0
 offset_top = 296.0
 offset_right = 496.0
 offset_bottom = 388.0
-pivot_offset_ratio = Vector2(0.1, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_mwfra")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mwfra")
@@ -167,7 +447,7 @@ offset_left = 280.0
 offset_top = 392.0
 offset_right = 496.0
 offset_bottom = 484.0
-pivot_offset_ratio = Vector2(0.1, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_28w6f")
@@ -175,26 +455,32 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_28w6f")
 
-[node name="seed" type="LineEdit" parent="start_menu" unique_id=1401536924]
+[node name="seed_info" type="Control" parent="start_menu" unique_id=1653051490]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="seed" type="LineEdit" parent="start_menu/seed_info" unique_id=1401536924]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 456.0
-offset_right = 192.0
-offset_bottom = 504.0
+offset_left = 169.0
+offset_top = 511.0
+offset_right = 321.0
+offset_bottom = 559.0
 theme_override_font_sizes/font_size = 32
 placeholder_text = "232421"
 alignment = 1
 virtual_keyboard_type = 2
 
-[node name="seed_label" type="Label" parent="start_menu" unique_id=400511426]
+[node name="seed_label" type="Label" parent="start_menu/seed_info" unique_id=400511426]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = 384.0
-offset_right = 154.0
-offset_bottom = 416.0
+offset_left = 217.0
+offset_top = 439.0
+offset_right = 283.0
+offset_bottom = 471.0
 grow_vertical = 0
 text = "seed"
 label_settings = SubResource("LabelSettings_1hsha")
@@ -219,27 +505,30 @@ offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810548708]
+libraries/ = SubResource("AnimationLibrary_j1i0p")
+
+[connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18 binds= [0]]
 [connection signal="mouse_exited" from="main_menu/start" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/start" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18 binds= [1]]
 [connection signal="mouse_exited" from="main_menu/settings" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
-[connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18 binds= [2]]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/exit" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
-[connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18 binds= [0]]
 [connection signal="mouse_exited" from="start_menu/new" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
-[connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18 binds= [1]]
 [connection signal="mouse_exited" from="start_menu/continue" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
-[connection signal="mouse_entered" from="start_menu/return" to="." method="mouse_entered" flags=18]
+[connection signal="mouse_entered" from="start_menu/return" to="." method="mouse_entered" flags=18 binds= [2]]
 [connection signal="mouse_exited" from="start_menu/return" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="_on_return_pressed"]
