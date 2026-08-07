@@ -5,67 +5,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgwxf"]
 size = Vector3(3, 4, 2.0132751)
 
-[sub_resource type="Animation" id="Animation_jgwxf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.9, 1.7, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StaticBody3D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.9, 1.7, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xk6my"]
-resource_name = "open"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.9, 1.7, 0), Vector3(-2.9, 1.7, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StaticBody3D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.9, 1.7, 0), Vector3(2.9, 1.7, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_prbdi"]
-_data = {
-&"RESET": SubResource("Animation_jgwxf"),
-&"open": SubResource("Animation_xk6my")
-}
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk6my"]
 size = Vector3(1.8, 3.4, 0.05)
 
@@ -84,9 +23,6 @@ script = ExtResource("1_xk6my")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=704604895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.0013580322)
 shape = SubResource("BoxShape3D_jgwxf")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=909102725]
-libraries/ = SubResource("AnimationLibrary_prbdi")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=85650488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.7, 0)
