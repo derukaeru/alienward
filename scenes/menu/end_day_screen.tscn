@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dyrrt8tjndmkg" path="res://scenes/menu/end_day_screen.gd" id="1_x714m"]
 [ext_resource type="Shader" uid="uid://dwp8c34320vgs" path="res://assets/shaders/background_scroll.gdshader" id="2_058xm"]
-[ext_resource type="Texture2D" uid="uid://cknc8wesm2aum" path="res://assets/sprites/ui/background/repeating_background_1.png" id="3_54jbx"]
+[ext_resource type="Texture2D" uid="uid://c1thgjl4mumq8" path="res://assets/sprites/ui/background/repeating_background_2.png" id="3_54jbx"]
 [ext_resource type="Texture2D" uid="uid://cjvja0eq8m36r" path="res://assets/sprites/ui/menu/components/end_day_label.png" id="4_54jbx"]
+[ext_resource type="Texture2D" uid="uid://sm43tklfe0ye" path="res://assets/sprites/ui/menu/components/star.png" id="4_pwikx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pwikx"]
 shader = ExtResource("2_058xm")
@@ -12,15 +13,330 @@ shader_parameter/speed_y = -0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_pwikx"]
 font_size = 32
+font_color = Color(0.36078432, 0.4745098, 0.6509804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4icbj"]
 font_size = 32
+font_color = Color(0.36078432, 0.4745098, 0.6509804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_u6ldi"]
 font_size = 32
+font_color = Color(0.36078432, 0.4745098, 0.6509804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h788s"]
 font_size = 32
+font_color = Color(0.36078432, 0.4745098, 0.6509804, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54jbx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2kk7m"]
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prsfd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vy12"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_54jbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("poly_background:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(834, 84, 0, 213, 83, 466, 905, 535)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("poly_background_2:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(834, 115, 826, -27, 104, 92, 41, 231)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scrolling_background:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("star:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 328)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("end_day_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(224, 48)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("end_day_label:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("served_patients:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(288, 224)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("dirtiness:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(344, 256)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("patient_satisfaction:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(336, 288)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("money_earned:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(304, 320)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("menu:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(480, 408)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("continue:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 409)]
+}
+
+[sub_resource type="Animation" id="Animation_pwikx"]
+resource_name = "open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("poly_background:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(834, 84, 781, 173, 820, 463, 905, 535), PackedVector2Array(834, 84, 0, 213, 96, 376, 905, 535)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("poly_background_2:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(834, 115, 826, -27, 793, 34, 786, 129), PackedVector2Array(834, 115, 826, -27, 104, 92, 41, 231)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scrolling_background:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7853982]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("star:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(872, 328), Vector2(112, 328)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("end_day_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(224, -152), Vector2(224, 48)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("end_day_label:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.70685834, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("served_patients:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 224), Vector2(288, 224)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("dirtiness:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-232, 256), Vector2(344, 256)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("patient_satisfaction:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(968, 288), Vector2(336, 288)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("money_earned:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-320, 320), Vector2(304, 320)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("menu:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(800, 408), Vector2(480, 408)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("continue:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-184, 408), Vector2(256, 409)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4icbj"]
+_data = {
+&"RESET": SubResource("Animation_54jbx"),
+&"open": SubResource("Animation_pwikx")
+}
 
 [node name="end_day_screen" type="Control" unique_id=2096003163]
 layout_mode = 3
@@ -31,52 +347,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x714m")
 
-[node name="background" type="ColorRect" parent="." unique_id=902454670]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.370489, 0.5864558, 0.6559822, 1)
-
 [node name="scrolling_background" type="TextureRect" parent="." unique_id=241887705]
-modulate = Color(1, 1, 1, 0.5647059)
+modulate = Color(0.66656864, 0.6665687, 0.66656864, 1)
 material = SubResource("ShaderMaterial_pwikx")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -177.23071
-offset_bottom = -132.92303
+offset_left = -81.64801
+offset_top = -116.089264
+offset_right = 50.35199
+offset_bottom = 83.3855
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.3, 1.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_54jbx")
 stretch_mode = 1
 
-[node name="translucent_background" type="ColorRect" parent="." unique_id=31080454]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -232.0
-offset_right = 224.0
-offset_bottom = 232.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.09, 0.09, 0.09, 0.8509804)
+[node name="star" type="TextureRect" parent="." unique_id=1065145436]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 328.0
+offset_right = 208.0
+offset_bottom = 424.0
+scale = Vector2(3, 3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_pwikx")
+
+[node name="poly_background" type="Polygon2D" parent="." unique_id=1501790112]
+color = Color(0.78431374, 0.83137256, 0.84313726, 1)
+polygon = PackedVector2Array(834, 84, 0, 213, 83, 466, 905, 535)
+
+[node name="poly_background_2" type="Polygon2D" parent="." unique_id=1774752972]
+color = Color(0.36078432, 0.4745098, 0.6509804, 1)
+polygon = PackedVector2Array(834, 115, 826, -27, 104, 92, 41, 231)
 
 [node name="end_day_label" type="TextureRect" parent="." unique_id=875010601]
 modulate = Color(0.6584541, 0.74728984, 0.85425824, 1)
 layout_mode = 0
-offset_left = 160.0
-offset_top = 56.0
-offset_right = 608.0
-offset_bottom = 152.0
+offset_left = 224.0
+offset_top = 48.0
+offset_right = 672.0
+offset_bottom = 144.0
 texture = ExtResource("4_54jbx")
 
 [node name="served_patients" type="Label" parent="." unique_id=1844334852]
@@ -87,10 +400,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -104.0
-offset_right = 160.0
-offset_bottom = -74.0
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 223.99994
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Served Patients: 0000"
@@ -106,10 +419,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -56.0
-offset_right = 112.0
-offset_bottom = -24.0
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 184.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Dirtiness: 0000"
@@ -125,10 +437,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -15.0
-offset_right = 125.0
-offset_bottom = 15.0
+offset_left = -48.0
+offset_right = 202.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Satisfaction: 5/5"
@@ -142,10 +453,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = 24.0
-offset_right = 152.0
-offset_bottom = 64.0
+offset_left = -80.0
+offset_top = 32.0
+offset_right = 224.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Money Earned: 0000"
@@ -161,14 +472,33 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -352.0
-offset_top = -144.0
-offset_right = -192.0
-offset_bottom = -80.0
+offset_left = -288.0
+offset_top = -168.0
+offset_right = -112.0
+offset_bottom = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_54jbx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_54jbx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_54jbx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_54jbx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_54jbx")
 text = "menu"
+
+[node name="Polygon2D" type="Polygon2D" parent="menu" unique_id=1249772232]
+position = Vector2(17, 2)
+color = Color(0.36078432, 0.4745098, 0.6509804, 1)
+polygon = PackedVector2Array(-15, -20, -36, 47, 186, 71, 168, 21)
+
+[node name="Label" type="Label" parent="menu" unique_id=233778760]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 65.0
+text = "menu"
+label_settings = SubResource("LabelSettings_2kk7m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="continue" type="Button" parent="." unique_id=251140937]
 visible = false
@@ -176,13 +506,38 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 192.0
-offset_top = -144.0
-offset_right = 352.0
-offset_bottom = -80.0
+offset_left = 256.0
+offset_top = -167.0
+offset_right = 423.0
+offset_bottom = -108.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_prsfd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_prsfd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_prsfd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_prsfd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_prsfd")
 text = "next day"
 
+[node name="Polygon2D" type="Polygon2D" parent="continue" unique_id=32350068]
+color = Color(0.36078432, 0.4745098, 0.6509804, 1)
+polygon = PackedVector2Array(-38, 19, 155, -17, 173, 61, 12, 54)
+
+[node name="Label" type="Label" parent="continue" unique_id=622751101]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 64.0
+text = "next day"
+label_settings = SubResource("LabelSettings_3vy12")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=231057580]
+libraries/ = SubResource("AnimationLibrary_4icbj")
+
+[connection signal="mouse_entered" from="menu" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="menu" to="." method="_on_mouse_exited" flags=18]
 [connection signal="pressed" from="menu" to="." method="menu"]
+[connection signal="mouse_entered" from="continue" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="continue" to="." method="_on_mouse_exited" flags=18]
 [connection signal="pressed" from="continue" to="." method="_continue"]
