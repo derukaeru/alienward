@@ -5,29 +5,58 @@ extends Control
 @onready var exit_btn: Button = $exit
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var settings_screen: Control = $settings_screen
+@onready var settings_exit: Button = $settings_exit
 
-var button_scale: float = 1.25
-
-func mouse_entered(source) -> void:
+func mouse_entered(source: Node) -> void:
 	var tw: Tween = get_tree().create_tween()
-	tw.tween_property(source, "scale", Vector2(button_scale, button_scale), 0.1)
+	tw.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tw.tween_property(source, "position:x", 300.0, 0.1)
 
-func mouse_exited(source) -> void:
+func mouse_exited(source: Node) -> void:
 	var tw: Tween = get_tree().create_tween()
-	tw.tween_property(source, "scale", Vector2(1, 1), 0.1)
+	tw.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tw.tween_property(source, "position:x", 276.0, 0.1)
 
-func mouse_pressed(source) -> void:
-	var tw: Tween = get_tree().create_tween()
-	tw.tween_property(source, "scale", Vector2(button_scale * 0.9, button_scale * 0.9), 0.04)
-	tw.tween_property(source, "scale", Vector2(button_scale, button_scale), 0.04)
+func mouse_pressed(source: Node) -> void:
+	pass
 	
 func _on_resume_pressed() -> void:
-	get_tree().paused = false
+	animation.play_backwards("toggle")
+	await animation.animation_finished
+	
 	hide()
 	Util.mouse_captured()
+	
+	get_tree().paused = false
 
 func _on_settings_pressed() -> void:
-	pass
+	settings_screen.show()
+	settings_exit.show()
+	
+	settings_screen.animation.play("open")
+	animation.play("settings_screen")
+	
+	settings_screen.update_data()
+	
 
 func _on_exit_pressed() -> void:
 	pass
+
+func _settings_exit_mouse_entered() -> void:
+	var tw: Tween = get_tree().create_tween()
+	tw.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tw.tween_property(settings_exit, "scale", Vector2(1.2, 1.2), 0.1)
+
+func _settings_exit_mouse_exited() -> void:
+	var tw: Tween = get_tree().create_tween()
+	tw.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tw.tween_property(settings_exit, "scale", Vector2(1, 1), 0.1)
+
+func _settings_exit_pressed() -> void:
+	settings_screen.animation.play_backwards("open")
+	animation.play_backwards("settings_screen")
+	
+	await settings_screen.animation.animation_finished
+	settings_screen.hide()
+	settings_exit.hide()

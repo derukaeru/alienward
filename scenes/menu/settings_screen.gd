@@ -7,6 +7,9 @@ extends Control
 @onready var star: TextureRect = $star
 
 func _ready() -> void:
+	update_data()
+
+func update_data() -> void:
 	$main_volume_slider.value = SettingsManager.MAIN_VOLUME
 	$music_slider.value = SettingsManager.MUSIC_VOLUME
 	$sound_effect_volume_slider.value = SettingsManager.SOUND_EFFECT_VOLUME

@@ -54,7 +54,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.89709926]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -620,6 +620,7 @@ _data = {
 }
 
 [node name="settings_screen" type="Control" unique_id=558026876]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -661,7 +662,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -227.0
 offset_top = -77.0
-offset_right = 76.99988
+offset_right = 76.99982
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -759,7 +760,7 @@ text = "Sensitivity"
 layout_mode = 0
 offset_left = 106.0
 offset_top = 380.0
-offset_right = 182.99997
+offset_right = 182.99995
 offset_bottom = 396.0
 text = "fullscreen"
 
@@ -772,11 +773,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -111.0
 offset_top = -247.0
-offset_right = 117.00012
-offset_bottom = -182.99995
+offset_right = 117.00018
+offset_bottom = -182.99991
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.89709926
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "Settings"
 label_settings = SubResource("LabelSettings_5xb6v")
