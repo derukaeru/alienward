@@ -3,9 +3,12 @@ extends Node3D
 @onready var entities: Node3D = $entities
 
 func _ready() -> void:
+	Util.generate_spots()
 	EventBus.add_entity_to_container.connect(add_entity)
+	
 	GameManager.ui.show()
 	GameManager.start_day()
+	
 	get_tree().create_timer(0.0).timeout.connect(
 		func() -> void:
 			EventBus.player_spawned.emit()

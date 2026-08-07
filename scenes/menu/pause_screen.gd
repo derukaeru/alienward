@@ -41,7 +41,9 @@ func _on_settings_pressed() -> void:
 	
 
 func _on_exit_pressed() -> void:
-	pass
+	SceneChanger.change_scene("title_screen")
+	GameManager.ui.hide()
+	GameManager.reset_day()
 
 func _settings_exit_mouse_entered() -> void:
 	var tw: Tween = get_tree().create_tween()

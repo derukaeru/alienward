@@ -409,6 +409,7 @@ _data = {
 }
 
 [node name="title_screen" type="Control" unique_id=198211424]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -418,6 +419,7 @@ grow_vertical = 2
 script = ExtResource("1_spmwh")
 
 [node name="scrolling_background" type="TextureRect" parent="." unique_id=51746027]
+process_mode = 3
 material = SubResource("ShaderMaterial_oq80g")
 layout_mode = 1
 anchors_preset = 15
@@ -435,12 +437,14 @@ texture = ExtResource("2_4crq4")
 stretch_mode = 1
 
 [node name="background" type="TextureRect" parent="." unique_id=1985606831]
+process_mode = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_0daku")
 
 [node name="star" type="TextureRect" parent="." unique_id=654588647]
+process_mode = 3
 layout_mode = 0
 offset_left = -192.0
 offset_top = 189.0
@@ -452,6 +456,7 @@ localize_numeral_system = false
 texture = ExtResource("4_mwfra")
 
 [node name="start_menu_background" type="TextureRect" parent="." unique_id=833494937]
+process_mode = 3
 modulate = Color(0.54509807, 0.7529412, 0.7921569, 1)
 layout_mode = 0
 offset_left = -676.0
@@ -460,17 +465,20 @@ offset_bottom = 576.0
 texture = ExtResource("4_hfkmp")
 
 [node name="selector_poly" type="Polygon2D" parent="." unique_id=1062840953]
+process_mode = 3
 position = Vector2(280, 200)
 color = Color(0.78431374, 0.83137256, 0.84313726, 1)
 polygon = PackedVector2Array(-282, -251, -270, -235, -270, -235, -422, 95)
 uv = PackedVector2Array(-282, -251, 250, 104, 130, 123, -300, -80)
 
 [node name="main_menu" type="Control" parent="." unique_id=402590163]
+process_mode = 3
 anchors_preset = 0
 offset_right = 768.0
 offset_bottom = 576.0
 
 [node name="start" type="Button" parent="main_menu" unique_id=1101440627]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 200.0
@@ -485,6 +493,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_1hsha")
 theme_override_styles/focus = SubResource("StyleBoxTexture_1hsha")
 
 [node name="settings" type="Button" parent="main_menu" unique_id=1572325678]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 296.0
@@ -499,6 +508,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_0daku")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0daku")
 
 [node name="exit" type="Button" parent="main_menu" unique_id=1838405728]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 392.0
@@ -513,12 +523,14 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_5jxps")
 theme_override_styles/focus = SubResource("StyleBoxTexture_5jxps")
 
 [node name="start_menu" type="Control" parent="." unique_id=442290957]
+process_mode = 3
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="new" type="Button" parent="start_menu" unique_id=1690121704]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 200.0
@@ -533,6 +545,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_hfkmp")
 theme_override_styles/focus = SubResource("StyleBoxTexture_hfkmp")
 
 [node name="continue" type="Button" parent="start_menu" unique_id=988210412]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 296.0
@@ -547,6 +560,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_mwfra")
 theme_override_styles/focus = SubResource("StyleBoxTexture_mwfra")
 
 [node name="return" type="Button" parent="start_menu" unique_id=1782268769]
+process_mode = 3
 layout_mode = 0
 offset_left = 280.0
 offset_top = 392.0
@@ -561,12 +575,14 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_28w6f")
 theme_override_styles/focus = SubResource("StyleBoxTexture_28w6f")
 
 [node name="seed_info" type="Control" parent="start_menu" unique_id=1653051490]
+process_mode = 3
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="seed" type="LineEdit" parent="start_menu/seed_info" unique_id=1401536924]
+process_mode = 3
 layout_mode = 0
 offset_left = 169.0
 offset_top = 511.0
@@ -578,6 +594,7 @@ alignment = 1
 virtual_keyboard_type = 2
 
 [node name="seed_label" type="Label" parent="start_menu/seed_info" unique_id=400511426]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -597,6 +614,7 @@ visible = false
 layout_mode = 1
 
 [node name="settings_exit" type="Button" parent="settings_screen" unique_id=1357453397]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -614,11 +632,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_mwfra")
 text = "exit"
 
 [node name="Polygon2D" type="Polygon2D" parent="settings_screen/settings_exit" unique_id=1058127611]
+process_mode = 3
 position = Vector2(-13, 2)
 color = Color(0.36078432, 0.4745098, 0.6509804, 1)
 polygon = PackedVector2Array(-13, 1, 120, -23, 116, 37, 23, 50)
 
 [node name="label" type="Label" parent="settings_screen/settings_exit" unique_id=1044989546]
+process_mode = 3
 layout_mode = 0
 offset_right = 102.0
 offset_bottom = 38.0
@@ -628,6 +648,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="title" type="TextureRect" parent="." unique_id=226655472]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -642,6 +663,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810548708]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_j1i0p")
 
 [connection signal="mouse_entered" from="main_menu/start" to="." method="mouse_entered" flags=18 binds= [0]]
@@ -650,20 +672,20 @@ libraries/ = SubResource("AnimationLibrary_j1i0p")
 [connection signal="pressed" from="main_menu/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="main_menu/settings" to="." method="mouse_entered" flags=18 binds= [1]]
 [connection signal="mouse_exited" from="main_menu/settings" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_menu/settings" to="." method="mouse_pressed" flags=18]
+[connection signal="pressed" from="main_menu/settings" to="." method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="main_menu/exit" to="." method="mouse_entered" flags=18 binds= [2]]
 [connection signal="mouse_exited" from="main_menu/exit" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="main_menu/exit" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="main_menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="start_menu/new" to="." method="mouse_entered" flags=18 binds= [0]]
 [connection signal="mouse_exited" from="start_menu/new" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/new" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="start_menu/new" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="start_menu/continue" to="." method="mouse_entered" flags=18 binds= [1]]
 [connection signal="mouse_exited" from="start_menu/continue" to="." method="mouse_exited" flags=18]
-[connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]
 [connection signal="pressed" from="start_menu/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="start_menu/continue" to="." method="mouse_pressed" flags=18]
 [connection signal="mouse_entered" from="start_menu/return" to="." method="mouse_entered" flags=18 binds= [2]]
 [connection signal="mouse_exited" from="start_menu/return" to="." method="mouse_exited" flags=18]
 [connection signal="pressed" from="start_menu/return" to="." method="mouse_pressed" flags=18]

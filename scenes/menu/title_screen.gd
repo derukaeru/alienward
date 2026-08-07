@@ -22,6 +22,11 @@ var default_poly_pos: Vector2 = Vector2(-270.0, -235.0)
 var button_scale: float = 1.12
 var poly_tw: Tween
 
+func _ready() -> void:
+	get_tree().paused = false
+	GameManager.ui.hide()
+	GameManager.pause_screen.hide()
+
 func _process(delta) -> void:
 	star.rotation_degrees += 48 * delta
 	if star.rotation_degrees >= 360:
@@ -97,12 +102,13 @@ func _on_exit_pressed() -> void:
 
 func _on_new_pressed() -> void:
 	GameManager.SEED = int(seed_label.text) if int(seed_label.text.length() >= 0) else 232421
-	SceneChanger.change_scene("intro_screen")
+	
+	SceneChanger.change_scene("world")
+	# SceneChanger.change_scene("intro_screen")
 
 func _on_continue_pressed() -> void:
 	SaveManager.load_progress()
 	
-	GameManager.start_day()
 	SceneChanger.change_scene("world")
 
 func _on_return_pressed() -> void:

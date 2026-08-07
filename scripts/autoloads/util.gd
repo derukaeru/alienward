@@ -3,22 +3,24 @@ extends Node
 var npc_spots: Dictionary
 var patient_spots: Dictionary
 
+func generate_spots() -> void:
+	npc_spots = get_tree().get_first_node_in_group("map").npc_spots
+	patient_spots = get_tree().get_first_node_in_group("map").patient_spots
+
 func get_npc_spot(spot_name: String) -> Vector3:
-	if not npc_spots: get_npc_spots()
+	get_npc_spots()
 	return npc_spots[spot_name].global_position
 	
 func get_patient_spot(spot_name: String) -> Vector3:
-	if not patient_spots: get_patient_spots()
+	get_patient_spots()
 	return patient_spots[spot_name].global_position
 
 func get_npc_spots() -> Dictionary:
-	if not npc_spots:
-		npc_spots = get_tree().get_first_node_in_group("map").npc_spots
+	npc_spots = get_tree().get_first_node_in_group("map").npc_spots
 	return npc_spots
 	
 func get_patient_spots() -> Dictionary:
-	if not patient_spots:
-		patient_spots = get_tree().get_first_node_in_group("map").patient_spots
+	patient_spots = get_tree().get_first_node_in_group("map").patient_spots
 	return patient_spots
 
 func get_player() -> Player:

@@ -44,9 +44,11 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_4je5t"]
 
 [node name="loading_screen" type="CanvasLayer" unique_id=1128375937]
+process_mode = 3
 script = ExtResource("1_4je5t")
 
 [node name="cover" type="ColorRect" parent="." unique_id=772281242]
+process_mode = 3
 material = SubResource("ShaderMaterial_ldyco")
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,11 +56,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1230957482]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_4je5t")
 
 [node name="loading" type="Label" parent="." unique_id=215729983]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -74,3 +79,4 @@ text = "loading"
 label_settings = SubResource("LabelSettings_4je5t")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

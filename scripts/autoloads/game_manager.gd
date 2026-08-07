@@ -76,19 +76,27 @@ func _process(delta: float) -> void:
 	if ui.shop_open or ui.microscope_open: return
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
-			get_tree().paused = false
-			pause_screen.animation.play_backwards("toggle")
-			await pause_screen.animation.animation_finished
-			pause_screen.hide()
-			Util.mouse_captured()
+			unpause()
 		else:
-			get_tree().paused = true
-			pause_screen.animation.play("toggle")
-			
-			pause_screen.show()
-			Util.mouse_visible()
+			pause()
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		has_interacted = false
+
+func unpause() -> void:
+	get_tree().paused = false
+	pause_screen.animation.play_backwards("toggle")
+	
+	await pause_screen.animation.animation_finished
+	
+	pause_screen.hide()
+	Util.mouse_captured()
+
+func pause() -> void:
+	get_tree().paused = true
+	pause_screen.animation.play("toggle")
+	
+	pause_screen.show()
+	Util.mouse_visible()
 
 func add_money(amount: int) -> void:
 	money += amount
@@ -135,6 +143,7 @@ func start_day(day: int = current_day) -> void:
 	if current_day >= 7: return
 	
 	time = DEFAULT_TIME_LENGTH
+	time_until_next_patient = time - 2
 	current_day = day
 	day_going = true
 	
@@ -152,6 +161,7 @@ func reset_day() -> void:
 	
 	day_going = false
 	time = DEFAULT_TIME_LENGTH
+	time_until_next_patient = time - 2
 	
 	processed_patient_this_day = 0
 	money_earned = 0
