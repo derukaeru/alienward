@@ -15,7 +15,7 @@ var processed_patient_this_day: int = 0
 
 var DEFAULT_TIME_LENGTH: float = 60 * 8 # 8 minutes
 var time: float = DEFAULT_TIME_LENGTH
-var time_between_patients: float = 60 * 2 # 2 minutes
+var time_between_patients: float = 60 * 1.5 # 2 minutes
 var time_until_next_patient: float = time - 2 # 2 seconds after game starts
 
 var money_earned: int = 0

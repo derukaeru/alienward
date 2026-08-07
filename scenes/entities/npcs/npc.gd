@@ -130,7 +130,7 @@ func add_status_bubble(type: String) -> void:
 	var bubble: StatusBubble = load(Registry.UID.status_bubble_instance).instantiate()
 	bubble.status_type = "status_" + type
 
-	bubble_container.add_child(bubble)
+	#bubble_container.add_child(bubble)
 
 func target_reached() -> void:
 	remove_status_bubble()

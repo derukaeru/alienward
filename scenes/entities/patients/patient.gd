@@ -99,8 +99,8 @@ func _process(_delta) -> void:
 		var player_collider: Node = player.raycast.get_collider()
 		if not player_collider == interactable_component:
 			scanning = false
-			add_status_bubble("scanning")
-
+			GameManager.ui.hide_tooltip()
+			
 			scanning_timer.stop()
 			scanning_timer.queue_free()
 			
@@ -147,7 +147,8 @@ func interacted() -> void:
 	elif state == STATES.CHECKUP:
 		if player.held_item_id == ITEMS.IDS.ultrasound_scanner and not scanned:
 			scanning = true
-
+			GameManager.ui.show_tooltip("scanning...")
+			
 			scanning_timer = Timer.new()
 			scanning_timer.one_shot = true
 			add_child(scanning_timer)
@@ -168,6 +169,7 @@ func interacted() -> void:
 func scan_done() -> void:
 	scanned = true
 	scanning = false
+	GameManager.ui.hide_tooltip()
 
 	scanning_sprite.hide()
 	EventBus.patient_scanned.emit(id)
@@ -187,8 +189,8 @@ func add_status_bubble(type: String) -> void:
 	remove_status_bubble()
 	var bubble: StatusBubble = load(Registry.UID.status_bubble_instance).instantiate()
 	bubble.status_type = "status_" + type
-
-	bubble_container.add_child(bubble)
+	
+	#bubble_container.add_child(bubble)
 
 func target_reached() -> void:
 	remove_status_bubble()

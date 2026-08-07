@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://byfj2coscs1u0"]
 
 [ext_resource type="Script" uid="uid://cyvnewtgjn67i" path="res://scenes/objects/world/clinic/ultrasound_screen.gd" id="1_b7kio"]
+[ext_resource type="Texture2D" uid="uid://dauef0aqf0pmj" path="res://assets/models/objects/crt_tv.png" id="2_aqlx6"]
 [ext_resource type="ArrayMesh" uid="uid://bcl4kb2x2d2li" path="res://assets/models/objects/crt_tv.obj" id="2_oppel"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7vd4x"]
-viewport_path = NodePath("screen")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb3hi"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_7vd4x")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6clt"]
+albedo_texture = ExtResource("2_aqlx6")
+texture_filter = 0
 
 [sub_resource type="Animation" id="Animation_b7kio"]
 resource_name = "pop"
@@ -30,8 +28,8 @@ metadata/_custom_type_script = "uid://dnsqly26s4wb0"
 
 [node name="CrtTv" type="MeshInstance3D" parent="ModelContainer" unique_id=411781735]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_c6clt")
 mesh = ExtResource("2_oppel")
-surface_material_override/5 = SubResource("StandardMaterial3D_qb3hi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ModelContainer" unique_id=1009527753]
 libraries/ = SubResource("AnimationLibrary_30x7i")
@@ -39,5 +37,3 @@ libraries/ = SubResource("AnimationLibrary_30x7i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1544898431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005722046, 0.29400635, 0.05102539)
 shape = SubResource("BoxShape3D_io262")
-
-[node name="screen" type="SubViewport" parent="." unique_id=1812660758]

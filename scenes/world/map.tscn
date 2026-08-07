@@ -303,7 +303,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.6
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.934905, 0.48528564, -0.8765839)
 
 [node name="chair" parent="NavigationRegion3D/physical_objects" unique_id=1269723263 instance=ExtResource("9_3apbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.748257, 0, -3.1326795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.95978, 0, -3.1326795)
 
 [node name="delivery_tables" type="Node3D" parent="NavigationRegion3D/physical_objects" unique_id=1798339698]
 

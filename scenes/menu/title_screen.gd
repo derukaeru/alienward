@@ -24,8 +24,11 @@ var poly_tw: Tween
 
 func _ready() -> void:
 	get_tree().paused = false
+	
 	GameManager.ui.hide()
 	GameManager.pause_screen.hide()
+	
+	animation.play("open")
 
 func _process(delta) -> void:
 	star.rotation_degrees += 48 * delta
