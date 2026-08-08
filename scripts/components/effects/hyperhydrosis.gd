@@ -1,7 +1,6 @@
 class_name HyperhydrosisEffect extends BaseEffect
 
 var spawn_water_components: Dictionary
-
 var spawn_radius: float = 1.0
 
 func activate(baby: Baby) -> void:
@@ -54,7 +53,7 @@ func spawn_water(baby: Baby) -> void:
 	var nav_map: RID = Util.get_nav_reg().get_navigation_map()
 	var pos: Vector3 = get_random_navmesh_point_near(baby.global_position, spawn_radius, nav_map)
 
-	water_spill.global_position = baby.global_position + Vector3(pos.x, 0.0, pos.y)
+	water_spill.global_position = Vector3(pos.x, 0.02, pos.z)
 	water_spill.global_position.y = 0.1
 
 func get_random_navmesh_point_near(center: Vector3, radius: float, nav_map: RID, max_tries: int = 5) -> Vector3:

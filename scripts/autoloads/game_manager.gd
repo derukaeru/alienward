@@ -73,10 +73,14 @@ func _process(delta: float) -> void:
 			if time <= 0:
 				end_day()
 	
+	if not day_going: return
 	if ui.shop_open or ui.microscope_open: return
 	if Input.is_action_just_pressed("ui_cancel"):
 		if get_tree().paused:
-			unpause()
+			if pause_screen.settings_screen.visible:
+				pause_screen._settings_exit_pressed()
+			else:
+				unpause()
 		else:
 			pause()
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):

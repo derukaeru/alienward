@@ -64,7 +64,7 @@ var UID: Dictionary[String, String] = {
 	"clipboard": "uid://dpwx6lq1basmc",
 	"swab_sprite": "uid://byleeb4m3vftg",
 	"ultrasound_scanner": "uid://b6x66nbtoqd3",
-	"antidote": NULL_SPRITE,
+	"antidote": "uid://c5j3tewk04pg8",
 	"mop": "uid://dkh8gc602jl65",
 	"swab": "uid://bkhvrcq5sh51q",
 	"swab_used": "uid://cjfwpijoxhkk6",

@@ -18,7 +18,7 @@ func mouse_exited(source: Node) -> void:
 	tw.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tw.tween_property(source, "position:x", 276.0, 0.1)
 
-func mouse_pressed(source: Node) -> void:
+func mouse_pressed(_source: Node) -> void:
 	pass
 	
 func _on_resume_pressed() -> void:
@@ -43,6 +43,7 @@ func _on_settings_pressed() -> void:
 func _on_exit_pressed() -> void:
 	SceneChanger.change_scene("title_screen")
 	GameManager.ui.hide()
+	GameManager.pause_screen.hide()
 	GameManager.reset_day()
 
 func _settings_exit_mouse_entered() -> void:
