@@ -5,11 +5,13 @@
 - swab the newborns to analyze their genetics. Each child comes with their own traits, needs, and effects, most often chaotic. 
 your job is to keep them alive, keep the floors clean, keep the lights on — and somehow break even.
 
+
 ### why i made this game
 
 - mainly to learn skills that i have not learned yet from game jams (such as polishing, sound system, ai systems, etc.) as i am making this all by myself. 
 
 - it's not the first time that i've made a game, but most of the games i make are from game jams (timed competitions for game development), meaning they don't have a lot of time to be polished, which is what I'm trying to achieve in making this game, to learn about making a polished, compact and content-filled project.
+
 
 ### quick start
 
@@ -22,6 +24,9 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
   - then import the folder in the godot project manager
   - open it and run using F5 or click the play button
 
+  #### or
+  - download the exe on the itch page
+
 
 ### stuff about the development
 
@@ -30,6 +35,7 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
 
 - now that were past that, what are the obstacles did i face making this game and what did i learn from this:
 - 
+
 
 ### what to be added in the future
 
@@ -55,6 +61,43 @@ i just need some reviews/feedback if what im building is actually good :p
 - chair
 - ward bed
 
+
 ### for those confused with the gameplay
+
+- there are posters in the game that will teach you how to use the stuff
+<details>
+  <summary>but this is the flow of the game for those still confused</summary>
+
+- start day
+
+- patient comes in
+- 1. check up
+- 2. labor
+
+(1) 
+- patient goes to clinic
+- scan the patient using the ultrasound scanner
+- click the tv to generate the print
+- give the ultrasound print from the tv next to the scanner
+- patient leaves
+
+(2)
+- patient goes in
+- click on the patient to select an available ward
+- goes to ward
+= gives birth to baby
+- bring baby to nursery area
+- swab baby
+- use microscope on swab
+- get an antidote item using the scanned "effect index" from the microscope
+- insert the item in the antidote stand
+- generate an antidote by inputting the other values from the microscope
+- give the antidote to the baby
+- care for baby until patient gets better
+- give baby to the parent watching
+- patient leaves
+- clean up dirt and water on the ground
+</math>
+</details>
 
 ps. yes this being fully lowercased is intentional lol 
