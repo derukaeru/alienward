@@ -69,10 +69,7 @@ func _ready() -> void:
 				Util.add_subtitle(Lang.subtitles.cleaned_mop)
 	)
 	
-	var raw_mouse_sense: float = SettingsManager.MOUSE_SENSITIVITY
-	var mouse_sense: float = remap(raw_mouse_sense, 0.0, 1.0, 0.001, 0.01)
-	
-	mouse_sensitivity = mouse_sense
+	SettingsManager.apply_mouse_sense()
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():

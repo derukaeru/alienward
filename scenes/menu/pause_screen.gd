@@ -43,7 +43,6 @@ func _on_settings_pressed() -> void:
 func _on_exit_pressed() -> void:
 	SceneChanger.change_scene("title_screen")
 	GameManager.ui.hide()
-	GameManager.pause_screen.hide()
 	GameManager.reset_day()
 
 func _settings_exit_mouse_entered() -> void:

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bgrqw4ijysn4j"]
 
 [ext_resource type="Script" uid="uid://x4mrqamaf3tn" path="res://scenes/objects/world/misc/door.gd" id="1_yar34"]
+[ext_resource type="Texture2D" uid="uid://bf5bweidaa0xf" path="res://assets/models/objects/door.png" id="2_7nqt0"]
+[ext_resource type="ArrayMesh" uid="uid://cwglefsb7rptk" path="res://assets/models/objects/door.obj" id="3_5gg18"]
 
 [sub_resource type="Animation" id="Animation_ofk05"]
 length = 0.001
@@ -42,11 +44,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofk05"]
 size = Vector3(2.6, 2.6, 0.08)
 
-[sub_resource type="BoxMesh" id="BoxMesh_yar34"]
-size = Vector3(2.6, 3.4, 0.05)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yar34"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsobq"]
 shading_mode = 0
+albedo_texture = ExtResource("2_7nqt0")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yar34"]
@@ -64,10 +64,10 @@ libraries/ = SubResource("AnimationLibrary_uw3m6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2984259, 0.002)
 shape = SubResource("BoxShape3D_ofk05")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door_collision" unique_id=1074966541]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5969579, 0)
-mesh = SubResource("BoxMesh_yar34")
-surface_material_override/0 = SubResource("StandardMaterial3D_yar34")
+[node name="Door" type="MeshInstance3D" parent="door_collision" unique_id=2029175045]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.016, -0.101, 0)
+material_override = SubResource("StandardMaterial3D_lsobq")
+mesh = ExtResource("3_5gg18")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1177964344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034820557, 1.0175271, 0.0048585236)

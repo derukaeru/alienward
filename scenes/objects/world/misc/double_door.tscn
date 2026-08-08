@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b48nevnapawfg"]
 
 [ext_resource type="Script" uid="uid://cyofwrvoilt4p" path="res://scenes/objects/world/misc/double_door.gd" id="1_xk6my"]
+[ext_resource type="Texture2D" uid="uid://bf5bweidaa0xf" path="res://assets/models/objects/door.png" id="2_eaql5"]
+[ext_resource type="ArrayMesh" uid="uid://cwglefsb7rptk" path="res://assets/models/objects/door.obj" id="3_re4yj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgwxf"]
 size = Vector3(3, 4, 2.0132751)
@@ -8,11 +10,10 @@ size = Vector3(3, 4, 2.0132751)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk6my"]
 size = Vector3(1.8, 3.4, 0.05)
 
-[sub_resource type="BoxMesh" id="BoxMesh_xk6my"]
-size = Vector3(1.8, 3.4, 0.05)
-
-[sub_resource type="BoxMesh" id="BoxMesh_prbdi"]
-size = Vector3(1.8, 3.4, 0.05)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j6sk"]
+shading_mode = 0
+albedo_texture = ExtResource("2_eaql5")
+texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prbdi"]
 size = Vector3(1.8, 3.4, 0.05)
@@ -30,17 +31,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.7, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1803307140]
 shape = SubResource("BoxShape3D_xk6my")
 
-[node name="door" type="MeshInstance3D" parent="StaticBody3D" unique_id=2042448105]
-mesh = SubResource("BoxMesh_xk6my")
+[node name="Door" type="MeshInstance3D" parent="StaticBody3D" unique_id=1940260585]
+transform = Transform3D(2.715, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1.7327288, 0)
+material_override = SubResource("StandardMaterial3D_8j6sk")
+mesh = ExtResource("3_re4yj")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1730082659]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.7, 0)
 
-[node name="door2" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1196814444]
-mesh = SubResource("BoxMesh_prbdi")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1246510730]
 shape = SubResource("BoxShape3D_prbdi")
+
+[node name="Door2" type="MeshInstance3D" parent="StaticBody3D2" unique_id=848535068]
+transform = Transform3D(2.715, 0, 0, 0, 4, 0, 0, 0, 4, -0.053596497, -1.7327288, 0)
+material_override = SubResource("StandardMaterial3D_8j6sk")
+mesh = ExtResource("3_re4yj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

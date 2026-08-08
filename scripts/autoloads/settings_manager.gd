@@ -31,6 +31,6 @@ func apply_mouse_sense() -> void:
 	if not player: return
 	
 	var raw_mouse_sense: float = SettingsManager.MOUSE_SENSITIVITY
-	var mouse_sense: float = remap(raw_mouse_sense, 0.0, 1.0, 0.001, 0.01)
+	var mouse_sense: float = remap(raw_mouse_sense, 0.0, 1.0, 0.001, 0.008)
 	
 	player.mouse_sensitivity = mouse_sense
