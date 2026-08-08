@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djyxfkfc40w2x"]
 
 [ext_resource type="Script" uid="uid://bkjhwsph5cp70" path="res://scripts/components/poster_ui.gd" id="1_n43wd"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_uxu3p"]
+[ext_resource type="Texture2D" uid="uid://5sbefiq153f" path="res://assets/sprites/ui/posters/scanner_poster.png" id="2_pqxiq"]
 
 [node name="scanner_poster" type="Control" unique_id=456595748]
 layout_mode = 3
@@ -26,4 +26,4 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_uxu3p")
+texture = ExtResource("2_pqxiq")

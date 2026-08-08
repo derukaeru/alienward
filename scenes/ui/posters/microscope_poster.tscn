@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beqre8hdl254b"]
 
 [ext_resource type="Script" uid="uid://bkjhwsph5cp70" path="res://scripts/components/poster_ui.gd" id="1_5b5y4"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_4el57"]
+[ext_resource type="Texture2D" uid="uid://c8frdvuflla8i" path="res://assets/sprites/ui/posters/microscope_poster.png" id="2_wt1hf"]
 
 [node name="microscope_poster" type="Control" unique_id=1003807217]
 layout_mode = 3
@@ -26,4 +26,4 @@ offset_right = 168.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_4el57")
+texture = ExtResource("2_wt1hf")

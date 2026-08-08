@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqtswdiq7wp4x"]
 
 [ext_resource type="Script" uid="uid://bkjhwsph5cp70" path="res://scripts/components/poster_ui.gd" id="1_ky0mc"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_d7187"]
+[ext_resource type="Texture2D" uid="uid://h12a82tjyskd" path="res://assets/sprites/ui/posters/incubator_poster.png" id="2_y43jw"]
 
 [node name="incubator_poster" type="Control" unique_id=1566659243]
 layout_mode = 3
@@ -26,4 +26,4 @@ offset_right = 168.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_d7187")
+texture = ExtResource("2_y43jw")

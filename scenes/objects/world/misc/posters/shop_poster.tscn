@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_v7gnh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jecdd"]
-size = Vector3(0.47988892, 0.6062622, 0.047058105)
+size = Vector3(0.5979996, 0.74824524, 0.047058105)
 
 [node name="shop_poster" type="Area3D" unique_id=265662158]
 script = ExtResource("1_jecdd")
@@ -12,10 +12,10 @@ poster_name = "shop_poster"
 metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1488479490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004043579, -0.00076293945, 0.021087646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004573822, 0.01007843, 0.021087646)
 shape = SubResource("BoxShape3D_jecdd")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=79881368]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_v7gnh")

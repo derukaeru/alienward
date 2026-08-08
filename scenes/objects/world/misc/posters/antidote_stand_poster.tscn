@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cc1ltqjscypku"]
 
 [ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_7s3ac"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_qqff4"]
+[ext_resource type="Texture2D" uid="uid://b8213bmnlj2a" path="res://assets/sprites/ui/posters/antidote_stand_poster.png" id="2_qqff4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fqk1y"]
-size = Vector3(0.49243164, 0.5975952, 0.099609375)
+size = Vector3(0.6256714, 0.8169403, 0.099609375)
 
 [node name="antidote_stand_poster" type="Area3D" unique_id=1220706051]
 script = ExtResource("1_7s3ac")
@@ -13,10 +13,10 @@ show_tooltip_text = true
 metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=846841097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007446289, -0.0010681152, 0.03491211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016571045, -0.004142761, 0.03491211)
 shape = SubResource("BoxShape3D_fqk1y")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1450737955]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_qqff4")

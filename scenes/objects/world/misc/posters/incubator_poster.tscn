@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dr5eou8dfamn2"]
 
 [ext_resource type="Script" uid="uid://cq6lch3nlqr6n" path="res://scripts/components/poster.gd" id="1_4qixv"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_22g4b"]
+[ext_resource type="Texture2D" uid="uid://h12a82tjyskd" path="res://assets/sprites/ui/posters/incubator_poster.png" id="2_22g4b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_22g4b"]
-size = Vector3(0.47937012, 0.6084595, 0.06878662)
+size = Vector3(0.64837646, 0.8068924, 0.06878662)
 
 [node name="incubator_poster" type="Area3D" unique_id=1631354894]
 script = ExtResource("1_4qixv")
@@ -12,10 +12,10 @@ poster_name = "incubator_poster"
 metadata/_custom_type_script = "uid://cq6lch3nlqr6n"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1606078159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1035156e-05, -0.003326416, 0.016542315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008313835, 0.0009422302, 0.016542315)
 shape = SubResource("BoxShape3D_22g4b")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1026763427]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_22g4b")

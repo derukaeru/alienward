@@ -84,6 +84,7 @@ var UID: Dictionary[String, String] = {
 	"incubator_poster": "uid://bqtswdiq7wp4x",
 	"microscope_poster": "uid://beqre8hdl254b",
 	"scanner_poster": "uid://djyxfkfc40w2x",
+	"movement_poster": "uid://dx6nsj7i2rsjl"
 }
 
 var particles: Dictionary = {

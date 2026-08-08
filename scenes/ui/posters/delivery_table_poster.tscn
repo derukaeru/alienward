@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uyh3ngha1ght"]
 
 [ext_resource type="Script" uid="uid://bkjhwsph5cp70" path="res://scripts/components/poster_ui.gd" id="1_2247w"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_1ddda"]
+[ext_resource type="Texture2D" uid="uid://b44ipgacjhpoc" path="res://assets/sprites/ui/posters/delivery_table_poster.png" id="2_oi6oj"]
 
 [node name="delivery_table_poster" type="Control" unique_id=1011000044]
 layout_mode = 3
@@ -26,4 +26,4 @@ offset_right = 168.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1ddda")
+texture = ExtResource("2_oi6oj")

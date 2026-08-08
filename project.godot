@@ -12,9 +12,13 @@ config_version=5
 
 config/name="alienward"
 config/tags=PackedStringArray("to_be_finished", "ysws")
-run/main_scene="uid://cx0rposj2xxxe"
+run/main_scene="uid://b4ggbq71lpwo4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://d4ip6whi7dbhb"
 
 [autoload]
 

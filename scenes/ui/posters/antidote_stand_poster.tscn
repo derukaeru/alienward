@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cmpu3q7b4lbfd"]
 
 [ext_resource type="Script" uid="uid://bkjhwsph5cp70" path="res://scripts/components/poster_ui.gd" id="1_hie2r"]
-[ext_resource type="Texture2D" uid="uid://elfta1is4bvp" path="res://assets/sprites/ui/posters/shop_poster.png" id="2_aom63"]
+[ext_resource type="Texture2D" uid="uid://b8213bmnlj2a" path="res://assets/sprites/ui/posters/antidote_stand_poster.png" id="2_3g4bx"]
 
 [node name="antidote_stand_poster" type="Control" unique_id=1364463990]
 layout_mode = 3
@@ -26,4 +26,4 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_aom63")
+texture = ExtResource("2_3g4bx")
