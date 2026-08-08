@@ -1,7 +1,7 @@
 ### what is this game
 
-- **alienward** is a cozy-chaotic sandbox simulator where you manage an alien maternity ward. Each patient arrives at a different stage of pregnancy, carrying different symptoms, personality and needs. 
-
+- **alienward** is a cozy-chaotic sandbox simulator where you manage an alien maternity ward. 
+- each patient arrives at a different stage of pregnancy, carrying different symptoms, personality and needs. 
 - swab the newborns to analyze their genetics. Each child comes with their own traits, needs, and effects, most often chaotic. 
 your job is to keep them alive, keep the floors clean, keep the lights on — and somehow break even.
 
@@ -16,10 +16,11 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
   #### online
   - the game is not released yet, but it will be released on my [itch.io page](derukaeru.itch.io)!
 
-
   #### running this game locally
-  - 
-
+  - first get the godot engine at https://godotengine.org/, specifically version 4.6.2 stable
+  - the clone the repo using `git clone https://github.com/derukaeru/alienward.git`
+  - then import the folder in the godot project manager
+  - open it and run using F5 or click the play button
 
 
 ### stuff about the development
@@ -30,7 +31,30 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
 - now that were past that, what are the obstacles did i face making this game and what did i learn from this:
 - 
 
+### what to be added in the future
 
+this might seem like a lot (i think it is too), but most of these are pretty simple to add.
+i just need some reviews/feedback if what im building is actually good :p
 
+- fix end day screen values
+- revamp the textures
+- add guide
+- add shaders
+- add save states
+- add intro scene
+- add sound effects
+- add ambient music
+
+**ui**
+- revamp shop screen
+- revamp microscope screen
+- revamp antidote screen
+
+**models**
+- table
+- chair
+- ward bed
+
+### for those confused with the gameplay
 
 ps. yes this being fully lowercased is intentional lol 
