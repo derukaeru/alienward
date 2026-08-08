@@ -101,7 +101,7 @@ func _on_settings_pressed() -> void:
 	main_menu.hide()
 
 func _on_exit_pressed() -> void:
-	pass 
+	get_tree().quit() 
 
 func _on_new_pressed() -> void:
 	GameManager.SEED = int(seed_label.text) if int(seed_label.text.length() >= 0) else 232421
