@@ -1,10 +1,8 @@
 ### what is this game
 
 - **alienward** is a cozy-chaotic sandbox simulator where you manage an alien maternity ward. 
-- each patient arrives at a different stage of pregnancy, carrying different symptoms, personality and needs. 
-- swab the newborns to analyze their genetics. Each child comes with their own traits, needs, and effects, most often chaotic. 
-your job is to keep them alive, keep the floors clean, keep the lights on — and somehow break even.
-
+- each patient arrives for a different purpose and you have to guide and help them
+- each child that is born has their own effect and you have to analyze and create an antidote to cure the effect!
 
 ### why i made this game
 
@@ -16,7 +14,7 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
 ### quick start
 
   #### online
-  - the game is not released yet, but it will be released on my [itch.io page](derukaeru.itch.io)!
+  - the game is available on [itch.io](https://derukaeru.itch.io/alienward)!
 
   #### running this game locally
   - first get the godot engine at https://godotengine.org/, specifically version 4.6.2 stable
@@ -34,7 +32,13 @@ your job is to keep them alive, keep the floors clean, keep the lights on — an
 - second off, i've nearly dropped this project multiple times mainly because of burnout, lack of motivation and life getting in the way, leading to me doing only an hour a day (just to keep the streak on macondo). but its great to see that its come this far and from all of the things ive learned from this project, it was definitely worth it.
 
 - now that were past that, what are the obstacles did i face making this game and what did i learn from this:
-- 
+- my favorite thing that i learned from this is definitely the persona-style ui and the animations, definitely the most proud thing i've made on this lol
+- i've definitely had problems with choosing how the game would go and game design in general
+- scope creep is also one of the biggest problems i've faced and removed about 50% of content (like an outside room and more baby effects)
+- also the art, my art is seriously so bad that i need to do it while this is in review (by macondo) just so i can focus on it
+- i know that it would be best to add more people into this project but, this is a personal project and i dont want to manage other people working on it
+- also playtest, im not the most social person so the only one playing this game, is me
+- probably more obstacles i've faced but forgot, maybe i'll add them at a later time 
 
 
 ### what to be added in the future
