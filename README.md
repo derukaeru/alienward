@@ -6,7 +6,9 @@
 
 ### some screenshots!
 
-I FORGOT TO ADD BRUHH
+<img width="719" height="540" alt="Screenshot 2026-08-08 211621" src="https://github.com/user-attachments/assets/d4546d89-767b-4272-a212-6d4c946f2fb6" />
+<img width="719" height="540" alt="Screenshot 2026-08-08 211426" src="https://github.com/user-attachments/assets/6bed5f49-a722-4531-b1e4-2879cf769925" />
+<img width="701" height="514" alt="Screenshot 2026-08-13 170451" src="https://github.com/user-attachments/assets/f6d1754e-a612-4b44-bd98-465ba3543a4c" />
 
 ### why i made this game
 
@@ -16,6 +18,7 @@ I FORGOT TO ADD BRUHH
 
 
 ### quick start
+
 
   #### online
   - the game is available on [itch.io](https://derukaeru.itch.io/alienward)!
