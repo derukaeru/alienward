@@ -4,6 +4,10 @@
 - each patient arrives for a different purpose and you have to guide and help them
 - each child that is born has their own effect and you have to analyze and create an antidote to cure the effect!
 
+### some screenshots!
+
+I FORGOT TO ADD BRUHH
+
 ### why i made this game
 
 - mainly to learn skills that i have not learned yet from game jams (such as polishing, sound system, ai systems, etc.) as i am making this all by myself. 
